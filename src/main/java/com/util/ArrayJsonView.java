@@ -18,8 +18,7 @@ public class ArrayJsonView extends AbstractView {
     @Override
     protected void renderMergedOutputModel(
             Map<String, Object> map,
-            HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
+            HttpServletRequest request, HttpServletResponse response) throws Exception {
         Collection<?> collect = map.values();
         //只要一个LIST
         if (collect.size() != 1) return;
@@ -27,5 +26,4 @@ public class ArrayJsonView extends AbstractView {
         PrintWriter out = response.getWriter();
         out.append(RayJsonSpread.toJSONString(list.toArray()));
     }
-
 }
