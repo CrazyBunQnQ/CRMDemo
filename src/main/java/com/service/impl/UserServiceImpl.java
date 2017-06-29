@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
 
+    public User findUser(String name, String password) {
+        User user = userDao.findUser(name, password);
+        return user;
+    }
+
     public User getUserById(int userId) {
         return this.userDao.selectByPrimaryKey(3);
     }

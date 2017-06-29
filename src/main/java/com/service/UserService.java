@@ -7,5 +7,15 @@ import com.bean.User;
  * @auther CrazyBunQnQ
  */
 public interface UserService {
+    /**
+     * According to the user name password query users
+     *
+     * @param name
+     * @param password
+     *
+     * @return
+     */
+    public User findUser(String name, String password);
+
     public User getUserById(int userId);
 }
