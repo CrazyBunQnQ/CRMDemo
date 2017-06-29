@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @version 2017/6/29.
+ * @auther CrazyBunQnQ
+ */
 @Data
 public class CompanyLinkman {
     /**

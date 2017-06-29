@@ -2,6 +2,10 @@ package com.bean;
 
 import lombok.Data;
 
+/**
+ * @version 2017/6/29.
+ * @auther CrazyBunQnQ
+ */
 @Data
 public class DictionaryClass {
     /**
