@@ -52,4 +52,8 @@ public class LoginController {
         modelAndView.setViewName("/main");
         return modelAndView;
     }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }
