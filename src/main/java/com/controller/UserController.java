@@ -2,7 +2,6 @@ package com.controller;
 
 import com.bean.User;
 import com.service.UserService;
-import lombok.*;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
