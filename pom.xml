@@ -165,6 +165,12 @@
             <version>1.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>CRMDemo</finalName>
