@@ -56,4 +56,13 @@
         <!--此处可以配置成 *.do 来对应 struts 的后缀习惯-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <servlet-class>com.servlet.VerifyCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <url-pattern>/verifyCode</url-pattern>
+    </servlet-mapping>
 </web-app>
