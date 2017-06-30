@@ -17,7 +17,7 @@ public class ProductType {
     private Integer pid;
     private String fcode;
     /**
-     * 密码
+     * 编码
      */
     private String code;
     private String name;
@@ -27,6 +27,7 @@ public class ProductType {
      * 备注
      */
     private String remark;
+    private String fatherName;
 
     public void setFcode(String fcode) {
         this.fcode = fcode == null ? null : fcode.trim();

@@ -1,12 +1,14 @@
 package com.bean;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class UserWithBLOBs extends User {
     /**
      * 备注
