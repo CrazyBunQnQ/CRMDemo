@@ -2,7 +2,7 @@
 
 ## Demand
 
-## Database Table
+## [Database Table](https://github.com/CrazyBunQnQ/CRMDemo/blob/master/doc/Demand.md)
 
 ## [Database File](https://github.com/CrazyBunQnQ/CRMDemo/blob/master/doc/crm_demo.sql)
 
