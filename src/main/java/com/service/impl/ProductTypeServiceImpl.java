@@ -22,7 +22,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         DataModel<ProductType> dm = new DataModel<ProductType>();
         List<ProductType> rows = productTypeDao.findProductTypeByPage(pager.getFrom(), pager.getPageSize());
         dm.setRows(rows);
-        //总条数
+        /**
+         * 总条数
+         */
         int total = productTypeDao.countProductType();
         pager.setTotalRecord(total);
         dm.setPager(pager);
