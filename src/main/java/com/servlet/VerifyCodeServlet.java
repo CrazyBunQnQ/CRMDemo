@@ -94,9 +94,9 @@ public class VerifyCodeServlet extends HttpServlet {
 //            随机字符
             String strRand = String.valueOf(codeSequence[random.nextInt(codeSequence.length)]);
 //            随机颜色
-            red = random.nextInt(255);
-            green = random.nextInt(255);
-            blue = random.nextInt(255);
+            red = random.nextInt(166);
+            green = random.nextInt(166);
+            blue = random.nextInt(166);
 
 //            绘制图像
             g.setColor(new Color(red, green, blue));
