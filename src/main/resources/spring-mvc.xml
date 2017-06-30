@@ -8,6 +8,8 @@
     <!--自动扫描包-->
     <context:component-scan base-package="com.controller"/>
 
+    <mvc:annotation-driven/>
+
     <!--避免 IE 执行 AJAX 时，返回 JSON 出现下载文件-->
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -30,7 +32,7 @@
     <!--定义跳转的文件前后缀，试图模式配置-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--自动给后面 action 的方法 return 的字符串加上前缀和后缀，变成一个可用的 url 地址-->
-        <property name="prefix" value="/jsp/"/>
+        <!--<property name="prefix" value="/jsp/"/>-->
         <property name="suffix" value=".jsp"/>
     </bean>
 
