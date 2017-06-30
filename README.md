@@ -1,4 +1,4 @@
-# This is a customer relationship management (CRM) system
+# Customer Relationship Management (CRM) system
 
 ## [Demand](https://github.com/CrazyBunQnQ/CRMDemo/blob/master/doc/Demand.md)
 
