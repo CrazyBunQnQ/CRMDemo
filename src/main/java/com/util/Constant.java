@@ -13,7 +13,7 @@ public class Constant {
     /**
      * 启用
      */
-    public static final String START_USING = "start_using";
+    public static final String START_USING = "启用";
 
     public static final String USER_IS_DISABLE = "用户被禁用，请联系管理员！";
 
