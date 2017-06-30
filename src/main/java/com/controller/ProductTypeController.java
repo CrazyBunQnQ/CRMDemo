@@ -29,7 +29,7 @@ public class ProductTypeController {
         //将查询的数据集合绑定到ModelAndView
         List<ProductType> rows = dm.getRows();
         for (ProductType some : rows) {
-            System.out.println(some.getName());
+            log.info(some.getName());
         }
         mav.addObject("rows", rows);
         //将分页相关的数据 绑定到ModelAndView
@@ -45,7 +45,6 @@ public class ProductTypeController {
         mav.addObject("selectOptionsStr", str);
         return mav;
     }
-
 
     public void setProductTypeService(ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;
