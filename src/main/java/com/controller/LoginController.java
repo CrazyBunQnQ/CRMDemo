@@ -33,15 +33,15 @@ public class LoginController {
                     modelAndView.setViewName("redirect:toMain");
                 } else {
                     modelAndView.addObject("err", Constant.USER_IS_DISABLE);
-                    modelAndView.setViewName("/login");
+                    modelAndView.setViewName("/login.jsp");
                 }
             } else {
                 modelAndView.addObject("err", Constant.USER_NAME_OR_PASSWORD_ERROR);
-                modelAndView.setViewName("/login");
+                modelAndView.setViewName("/login.jsp");
             }
         } else {
             modelAndView.addObject("err", Constant.VERIFICATION_CODE_ERROR);
-            modelAndView.setViewName("/login");
+            modelAndView.setViewName("/login.jsp");
         }
         return modelAndView;
     }
@@ -49,7 +49,7 @@ public class LoginController {
     @RequestMapping("toMain")
     public ModelAndView toMain() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/main");
+        modelAndView.setViewName("/main.jsp");
         return modelAndView;
     }
 

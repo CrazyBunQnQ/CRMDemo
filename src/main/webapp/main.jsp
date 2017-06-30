@@ -11,16 +11,16 @@
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>系统界面</title>
-    <link href="../css_js/_main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../css_js/jquery/jquery-1.3.2.min.js"></script>
-    <script src="../css_js/popup.js" type="text/javascript"></script>
-    <script src="../css_js/popup4nextTDate.js" type="text/javascript"></script>
-    <script src="../css_js/popup4exExcel.js" type="text/javascript"></script>
-    <script src="../css_js/popup4Linkman.js" type="text/javascript"></script>
-    <link href="../css_js/general.css" rel="stylesheet" type="text/css"></link>
-    <script src="../css_js/cal.js" type="text/javascript"></script>
-    <link href="../css_js/calendar.css" rel="stylesheet" type="text/css"></link>
-    <script src="../css_js/popup4exExcel_sub.js" type="text/javascript"></script>
+    <link href="css_js/_main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script src="css_js/popup.js" type="text/javascript"></script>
+    <script src="css_js/popup4nextTDate.js" type="text/javascript"></script>
+    <script src="css_js/popup4exExcel.js" type="text/javascript"></script>
+    <script src="css_js/popup4Linkman.js" type="text/javascript"></script>
+    <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
+    <script src="css_js/cal.js" type="text/javascript"></script>
+    <link href="css_js/calendar.css" rel="stylesheet" type="text/css"></link>
+    <script src="css_js/popup4exExcel_sub.js" type="text/javascript"></script>
     <script type="text/javascript">
         var isHide = false;
         function getNewVal(objname) {
@@ -176,15 +176,15 @@
             var companyTableTitle = false;
             if (popedom.indexOf("load4Visit") != -1) {
                 companyTableTitle = true;
-                companyTableHtml += '<tr><td><img align="absmiddle" src="../image/left_tree1_1.gif"width="16" height="16"><a href="company/companyList" class="nav" target="right_window"> 客户拜访</a></td></tr>';
+                companyTableHtml += '<tr><td><img align="absmiddle" src="image/left_tree1_1.gif"width="16" height="16"><a href="company/companyList" class="nav" target="right_window"> 客户拜访</a></td></tr>';
             }
             if (popedom.indexOf("load4LinkManMain") != -1) {
                 companyTableTitle = true;
-                companyTableHtml += '<tr><td><img align="absmiddle" src="../image/left_tree1_2.gif" width="16" height="17"> <a href="load4LinkManMain.action?MType=linkManList_module" class="nav" target="right_window">联系人列表</a></td></tr>';
+                companyTableHtml += '<tr><td><img align="absmiddle" src="image/left_tree1_2.gif" width="16" height="17"> <a href="load4LinkManMain.action?MType=linkManList_module" class="nav" target="right_window">联系人列表</a></td></tr>';
             }
             if (popedom.indexOf("load4CompanyTouchMain") != -1) {
                 companyTableTitle = true;
-                companyTableHtml += '<tr><td><img align="absmiddle" src="../image/left_tree1_3.gif"width="15" height="17"> <a href="load4CompanyTouchMain.action?MType=touch_module" class="nav" target="right_window">联系记录列表</a></td></tr>';
+                companyTableHtml += '<tr><td><img align="absmiddle" src="image/left_tree1_3.gif"width="15" height="17"> <a href="load4CompanyTouchMain.action?MType=touch_module" class="nav" target="right_window">联系记录列表</a></td></tr>';
             }
             if (!companyTableTitle) {
                 $("#companyTitle").hide(0);
@@ -202,7 +202,7 @@
         <td height="76" valign="top">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td colspan="3" class="topTd"><img src="../image/logo.gif"
+                    <td colspan="3" class="topTd"><img src="image/logo.gif"
                                                        width="265" height="64"></td>
                 </tr>
                 <tr>
@@ -210,18 +210,18 @@
                             style="color: #444444"> 欢迎您 ${userSession.cnname}</span> <span
                             style="color: #0871ee">支持热线(xxxx-xxxxxxxx) </span> <span
                             style="color: #ed4101">使用帮助 </span> <span style="color: #0871ee">联系我们</span></td>
-                    <td width="17"><img src="../image/topButLine.gif" width="36"
+                    <td width="17"><img src="image/topButLine.gif" width="36"
                                         height="30"></td>
-                    <td width="568" class="topRight"><img src="../image/icon/gzt.gif"
+                    <td width="568" class="topRight"><img src="image/icon/gzt.gif"
                                                           width="16" height="15" align="absmiddle"> 工作台| <img
-                            src="../image/icon/wdxx.gif" width="16" height="12"> 我的消息(0) | <img
-                            src="../image/icon/wdzh.gif" width="16" height="16" align="absmiddle">
-                        我的账户 | <img src="../image/icon/tc.gif" width="10" height="10"
+                            src="image/icon/wdxx.gif" width="16" height="12"> 我的消息(0) | <img
+                            src="image/icon/wdzh.gif" width="16" height="16" align="absmiddle">
+                        我的账户 | <img src="image/icon/tc.gif" width="10" height="10"
                                     align="absmiddle"> <span style="cursor: pointer"
                                                              onClick="javascript:window.location.href='logout.action'">退出</span>
-                        | <img src="../image/icon/bz.gif"
+                        | <img src="image/icon/bz.gif"
                                width="16" height="15" align="absmiddle"> 帮助 | <img
-                                src="../image/icon/gy.gif" width="16" height="16" align="absmiddle">
+                                src="image/icon/gy.gif" width="16" height="16" align="absmiddle">
                         关于
                     </td>
                 </tr>
@@ -240,7 +240,7 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td height="27" colspan="2" align="center"
-                                    background="../image/left_main_bg.gif"><span
+                                    background="image/left_main_bg.gif"><span
                                         style="color: #004e7b; font-size: 14px; font-weight: bold;">操作菜单</span></td>
                             </tr>
 
@@ -249,11 +249,11 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="companyTitle">
                                         <tr>
                                             <td width="80%" class="f_td"><img align="absmiddle"
-                                                                              src="../image/left_tree1.gif" width="17"
+                                                                              src="image/left_tree1.gif" width="17"
                                                                               height="20"> 客户管理
                                             </td>
                                             <td width="20%" class="f_td"><img
-                                                    src="../image/left_tree_open.gif" width="15" height="15"
+                                                    src="image/left_tree_open.gif" width="15" height="15"
                                                     style="cursor: pointer;" class="left_treeControl1"></td>
                                         </tr>
                                     </table>
@@ -270,9 +270,9 @@
                             </tr>
                             <tr>
                                 <td class="f_td"><img align="absmiddle"
-                                                      src="../image/left_tree2.gif" width="17" height="20"> 销售管理
+                                                      src="image/left_tree2.gif" width="17" height="20"> 销售管理
                                 </td>
-                                <td class="f_td"><img src="../image/left_tree_open.gif"
+                                <td class="f_td"><img src="image/left_tree_open.gif"
                                                       width="15" height="15" style="cursor: pointer;"
                                                       class="left_treeControl2"></td>
                             </tr>
@@ -281,37 +281,37 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0"
                                            class="subTreeTable">
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree2_1.gif"
+                                            <td><img align="absmiddle" src="image/left_tree2_1.gif"
                                                      width="16" height="16"><a
                                                     href="productType/productTypeList"
                                                     class="nav" target="right_window"> 商品类别</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree2_2.gif"
+                                            <td><img align="absmiddle" src="image/left_tree2_2.gif"
                                                      width="16" height="17"><a
                                                     href="product/productList" class="nav"
                                                     target="right_window"> 商品资料</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree2_3.gif"
+                                            <td><img align="absmiddle" src="image/left_tree2_3.gif"
                                                      width="15" height="17"><a
                                                     href="order/orderList" class="nav"
                                                     target="right_window"> 销售单</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree2_4.gif"
+                                            <td><img align="absmiddle" src="image/left_tree2_4.gif"
                                                      width="16" height="16"> 开销售单
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><img src="../image/left_tree2_5.gif" width="17"
+                                            <td><img src="image/left_tree2_5.gif" width="17"
                                                      height="17" align="absmiddle" style="margin-right: 5px;"><a
                                                     href="load4NeedGatherMain.action" class="nav"
                                                     target="right_window">应收款项</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><img src="../image/left_tree2_6.gif" align="absmiddle"
+                                            <td><img src="image/left_tree2_6.gif" align="absmiddle"
                                                      style="margin-right: 5px;"><a
                                                     href="load4GatherMain.action" class="nav"
                                                     target="right_window">销售收款</a></td>
@@ -324,9 +324,9 @@
 
                             <tr>
                                 <td class="f_td"><img align="absmiddle"
-                                                      src="../image/left_tree5.gif"> 系统设置
+                                                      src="image/left_tree5.gif"> 系统设置
                                 </td>
-                                <td class="f_td"><img src="../image/left_tree_open.gif"
+                                <td class="f_td"><img src="image/left_tree_open.gif"
                                                       width="15" height="15" style="cursor: pointer;"
                                                       class="left_treeControl3"></td>
                             </tr>
@@ -335,25 +335,25 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0"
                                            class="subTreeTable">
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree5_1.gif"
+                                            <td><img align="absmiddle" src="image/left_tree5_1.gif"
                                                      width="16" height="16"><a
                                                     href="userGroup/userGroupList" class="nav"
                                                     target="right_window"> 部门管理</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree5_2.gif"
+                                            <td><img align="absmiddle" src="image/left_tree5_2.gif"
                                                      width="16" height="17"><a href="user/userList"
                                                                                class="nav" target="right_window">
                                                 人事管理</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree5_3.gif"
+                                            <td><img align="absmiddle" src="image/left_tree5_3.gif"
                                                      width="15" height="17"><a href="role/roleList"
                                                                                class="nav" target="right_window">
                                                 操作权限组</a></td>
                                         </tr>
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree5_4.gif"
+                                            <td><img align="absmiddle" src="image/left_tree5_4.gif"
                                                      width="16" height="16"><a
                                                     href="accessGroup/accessGroupList" class="nav"
                                                     target="right_window"> 查询权限组</a></td>
@@ -366,9 +366,9 @@
 
                             <tr>
                                 <td class="f_td"><img align="absmiddle"
-                                                      src="../image/left_tree6.gif"> 用户贡献
+                                                      src="image/left_tree6.gif"> 用户贡献
                                 </td>
-                                <td class="f_td"><img src="../image/left_tree_open.gif"
+                                <td class="f_td"><img src="image/left_tree_open.gif"
                                                       width="15" height="15" style="cursor: pointer;"
                                                       class="left_treeControl4"></td>
                             </tr>
@@ -377,7 +377,7 @@
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0"
                                            class="subTreeTable">
                                         <tr>
-                                            <td><img align="absmiddle" src="../image/left_tree6.gif"
+                                            <td><img align="absmiddle" src="image/left_tree6.gif"
                                                      width="16" height="16"><a
                                                     href="contribution/chart" class="nav"
                                                     target="right_window"> 客户贡献图表</a></td>
@@ -388,9 +388,9 @@
                         </table>
                     </td>
                     <td width="8" class="center_control" valign="middle"><img
-                            src="../image/index_center_control.jpg" id="center_control_img"></td>
+                            src="image/index_center_control.jpg" id="center_control_img"></td>
                     <td valign="top">
-                        <iframe src="../html/workdesk.html" width="100%"
+                        <iframe src="html/workdesk.html" width="100%"
                                 height="100%" frameborder="0" name="right_window"></iframe>
                     </td>
                 </tr>

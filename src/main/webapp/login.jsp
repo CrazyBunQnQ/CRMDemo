@@ -9,9 +9,9 @@
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>XXcrm系统---系统登录</title>
-    <link href="../css_js/_main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../css_js/jquery/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="../css_js/md5.js"></script>
+    <link href="css_js/_main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="css_js/md5.js"></script>
     <script language="javascript">
         function init() {
             var o = document.getElementById("Layer1");
@@ -72,7 +72,7 @@
     </script>
     <style type="text/css">
         body {
-            background-image: url(../image/loginbg.gif);
+            background-image: url(image/loginbg.gif);
             background-repeat: repeat-x;
             background-color: #dff0f8;
             font-size: 12px;
@@ -84,7 +84,7 @@
             top: 187px;
             width: 496px;
             height: 292px;
-            background-image: url(../image/login_mainBg.jpg);
+            background-image: url(image/login_mainBg.jpg);
             background-repeat: no-repeat;
             z-index: 1;
         }
@@ -119,7 +119,7 @@
             width: 103px;
             height: 21px;
             border: 1px solid #9bc8e9;
-            background-image: url(../image/errorbg.jpg);
+            background-image: url(image/errorbg.jpg);
 
         }
 
@@ -133,7 +133,7 @@
             width: 50px;
             height: 20px;
             border: 1px solid #a3bfd4;
-            background-image: url(../image/login_button_bg.gif);
+            background-image: url(image/login_button_bg.gif);
             background-repeat: no-repeat;
             font-size: 12px;
             color: #3f7eef;
@@ -189,14 +189,14 @@
 
 <div id="Layer1">
 
-    <div id="Layer2"><img src="../image/login_left.jpg" width="91" height="97"></div>
+    <div id="Layer2"><img src="image/login_left.jpg" width="91" height="97"></div>
     <div id="Layer3">
         <span id="errorInfo" style="font-size:12px;color:#ff0000;">${err }</span><br/>
         <form action="${pageContext.request.contextPath }/user/login" method="post">
             用户名:<input type="text" label="用户名" name="name" cssClass="login_input_style"><br/>
             密　码:<input type="password" label="密　码" name="password" id="password" cssClass="login_input_style"/><br/>
             验证码:<input type="text" value="" label="验证码" name="verifyCode" cssClass="login_checknum_style"/>
-            <a href="javascript:changeImg();"><img src="verifyCodeServlet" border="0" id="verifyCodeImg"></a><br/>
+            <a href="javascript:changeImg();"><img src="verifyCode" border="0" id="verifyCodeImg"></a><br/>
             <input type="submit" value="提交" onclick="return checkEmpty()">
         </form>
     </div>
