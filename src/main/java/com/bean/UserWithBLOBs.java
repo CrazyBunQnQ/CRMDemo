@@ -8,17 +8,53 @@ import lombok.Data;
  */
 @Data
 public class UserWithBLOBs extends User {
+    /**
+     * 备注
+     */
     private String remark;
+    /**
+     * 菜单
+     */
     private String menus;
+    /**
+     * 权限
+     */
     private String popedom;
+    /**
+     * 业余爱好
+     */
     private String avocation;
+    /**
+     * 偏好特长
+     */
     private String strongsuit;
+    /**
+     * 信息沟通
+     */
     private String communicate;
+    /**
+     * 培训情况
+     */
     private String bringup;
+    /**
+     * 组织能力
+     */
     private String organise;
+    /**
+     * 分析能力
+     */
     private String analyse;
+    /**
+     * 计划能力
+     */
     private String planing;
+    /**
+     * 人员开发
+     */
     private String empolder;
+    /**
+     * 人际关系
+     */
     private String relation;
 
     public void setRemark(String remark) {
