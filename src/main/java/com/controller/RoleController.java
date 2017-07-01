@@ -25,7 +25,7 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("/roleList")
-    public ModelAndView selectRoleList(Role role, Pager pager) {
+    public ModelAndView selectRoleList(Role role, Pager pager, String isDel, String exportType, Integer[] role_id) {
         ModelAndView modelAndView = new ModelAndView();
         DataModel<Role> dm = roleService.selectList(role, pager);
 
