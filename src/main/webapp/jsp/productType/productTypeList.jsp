@@ -1,15 +1,18 @@
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> --%>
-<%-- <%@ taglib prefix="s" uri="/struts-tags"%> --%>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="../../taglibs.jsp" %>
 <html>
 <head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="${contextPath }/css_js/index.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="${contextPath }/css_js/jquery/jquery-1.3.2.min.js"></script>
-    <script src="${contextPath }/css_js/popup4exExcel.js" type="text/javascript"></script>
-    <link href="${contextPath }/css_js/general.css" rel="stylesheet" type="text/css"></link>
+    <link href="css_js/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script src="css_js/popup4exExcel.js" type="text/javascript"></script>
+    <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
     <title>商品类别列表</title>
     <script type="text/javascript">
         function initPageSize() {
@@ -169,8 +172,8 @@
             <td valign="middle">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" background="${contextPath }/image/index_main_div_titleBg.gif"><img
-                                style="margin-left:5px;" src="${contextPath }/image/index_main_div_left.gif" width="6"
+                        <td height="21" background="image/index_main_div_titleBg.gif"><img
+                                style="margin-left:5px;" src="image/index_main_div_left.gif" width="6"
                                 height="2" align="absmiddle">&nbsp;<span
                                 style="font-weight:bold;font-size:12px;">商品类别搜索</span></td>
                     </tr>
@@ -186,9 +189,9 @@
                                     <td width="10%">商品类别名称:</td>
                                     <td width="27%"><input type="text" name="name" class="inputTextStyle"
                                                            value="${productType.name}"></td>
-                                    <td width="7%"><img src="${contextPath }/image/s1.gif" width="59"
+                                    <td width="7%"><img src="image/s1.gif" width="59"
                                                         height="22" onclick="submitForm()" alt="搜索按钮"></td>
-                                    <td width="16%" align="left"><img src="${contextPath }/image/s2.gif" width="62"
+                                    <td width="16%" align="left"><img src="image/s2.gif" width="62"
                                                                       height="22" onclick="clearSearchArea();"></td>
                                     <td width="5%" align="left">&nbsp;</td>
                                 </tr>
@@ -204,15 +207,15 @@
                         <td height="10" bgcolor="#f7fbfc">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td height="11"><img src="${contextPath }/image/t1.gif" align="absmiddle"> <span
+                        <td height="11"><img src="image/t1.gif" align="absmiddle"> <span
                                 style="font-size:14; font-weight:bold;">商品类别列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
-                            <img src="${contextPath }/image/s3.gif" width="62" height="22"
+                            <img src="image/s3.gif" width="62" height="22"
                                  onclick="javascript:window.location.href='${contextPath}/productType/toAddProductType'"><img
-                                    src="${contextPath }/image/s7.gif" width="59" height="22" alt="删除按钮"
-                                    onclick="toDel();"><img src="${contextPath }/image/shuxing.gif"
+                                    src="image/s7.gif" width="59" height="22" alt="删除按钮"
+                                    onclick="toDel();"><img src="image/shuxing.gif"
                                                             onclick="openTreeWindow();" width="62" height="22"/></td>
                     </tr>
                     <tr>
@@ -223,7 +226,7 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" id="selectTable_content">
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="${contextPath }/image/t2.gif"
+                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
                                                                             align="absmiddle" width="15" height="16">
 
                                         <span onclick="exportExcel()"
@@ -305,19 +308,19 @@
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="select_row">
                                             <tr>
                                                 <td width="4%" height="28" align="center"
-                                                    background="${contextPath }/image/select_title_title.jpg"><input
+                                                    background="image/select_title_title.jpg"><input
                                                         type="checkbox" name="ids" id="ids" onclick="toChange()"></td>
                                                 <td width="12%" align="left"
-                                                    background="${contextPath }/image/select_title_title.jpg"><strong>商品类别名称</strong>
+                                                    background="image/select_title_title.jpg"><strong>商品类别名称</strong>
                                                 </td>
                                                 <td width="29%" align="center"
-                                                    background="${contextPath }/image/select_title_title.jpg"><strong>商品类别编码</strong><strong></strong>
+                                                    background="image/select_title_title.jpg"><strong>商品类别编码</strong><strong></strong>
                                                 </td>
                                                 <td width="21%" align="center"
-                                                    background="${contextPath }/image/select_title_title.jpg"><strong>上一级</strong>
+                                                    background="image/select_title_title.jpg"><strong>上一级</strong>
                                                 </td>
                                                 <td width="34%" align="center"
-                                                    background="${contextPath }/image/select_title_title.jpg">
+                                                    background="image/select_title_title.jpg">
                                                     <strong>备注</strong><strong></strong></td>
                                             </tr>
 
@@ -383,7 +386,7 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="${contextPath }/image/t2.gif"
+                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
                                                                             align="absmiddle" width="15" height="16"> 导出
                                         | 选择条目:<span id="select_num2">0</span></td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
