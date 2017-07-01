@@ -27,14 +27,14 @@ public interface RoleDao {
      *
      * @return
      */
-    List<Role> selectRoleByPage(@Param("from") int from, @Param("pageSize") int pageSize);
+    List<Role> selectRoleByPage(@Param("name") String name, @Param("from") int from, @Param("pageSize") int pageSize);
 
     /**
      * Query total number of roles
      *
      * @return
      */
-    int countRole();
+    int countRole(@Param("name") String name);
 
     int updateByPrimaryKeySelective(RoleWithBLOBs record);
 

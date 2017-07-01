@@ -17,5 +17,5 @@ public interface RoleService {
      *
      * @return
      */
-    public DataModel<Role> selectList(Pager pager);
+    public DataModel<Role> selectList(Role role, Pager pager);
 }

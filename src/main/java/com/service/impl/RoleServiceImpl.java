@@ -23,11 +23,11 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
-    public DataModel<Role> selectList(Pager pager) {
+    public DataModel<Role> selectList(Role role, Pager pager) {
         DataModel<Role> dm = new DataModel<Role>();
-        List<Role> rows = roleDao.selectRoleByPage(pager.getFrom(), pager.getPageSize());
+        List<Role> rows = roleDao.selectRoleByPage(role.getName(), pager.getFrom(), pager.getPageSize());
         dm.setRows(rows);
-        int total = roleDao.countRole();
+        int total = roleDao.countRole(role.getName());
         pager.setTotalRecord(total);
         dm.setPager(pager);
         return dm;

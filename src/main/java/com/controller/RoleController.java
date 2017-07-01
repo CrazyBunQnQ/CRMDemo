@@ -4,7 +4,6 @@ import com.bean.Role;
 import com.service.RoleService;
 import com.util.DataModel;
 import com.util.Pager;
-import lombok.*;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,16 +24,16 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("/roleList")
-    public ModelAndView selectRoleList(Pager pager) {
+    public ModelAndView selectRoleList(Role role, Pager pager) {
         ModelAndView modelAndView = new ModelAndView();
-        DataModel<Role> dm = roleService.selectList(pager);
+        DataModel<Role> dm = roleService.selectList(role, pager);
 
         List<Role> rows = dm.getRows();
-        for (Role role:rows) {
-            log.info(role.getName());
+        for (Role some : rows) {
+            log.info(some.getName());
         }
-        modelAndView.addObject("rows",rows);
-        modelAndView.addObject("pager",dm.getPager());
+        modelAndView.addObject("rows", rows);
+        modelAndView.addObject("pager", dm.getPager());
         modelAndView.setViewName("/jsp/role/roleList");
 
         return modelAndView;

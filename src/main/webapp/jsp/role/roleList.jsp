@@ -155,13 +155,10 @@
     <table width="99%" srole="0" cellspacing="0" cellpadding="0" id="index_content">
         <tr>
             <td valign="middle">
-                <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="index_main_div1">
+                <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
                     <tr>
-                        <td height="21" background="image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
-                                                                                           src="image/index_main_div_left.gif"
-                                                                                           width="6" height="2"
-                                                                                           align="absmiddle">&nbsp;<span
-                                style="font-weight:bold;font-size:12px;">操作权限列表</span></td>
+                        <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　操作权限组</span>
+                        </td>
                     </tr>
                 </table>
 
