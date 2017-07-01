@@ -8,7 +8,13 @@ import lombok.Data;
  */
 @Data
 public class RoleWithBLOBs extends Role {
+    /**
+     * 备注
+     */
     private String remark;
+    /**
+     * 权限
+     */
     private String popedom;
 
     public void setRemark(String remark) {

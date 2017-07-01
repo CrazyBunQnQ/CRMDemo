@@ -1,16 +1,15 @@
 package com.service.impl;
 
 import com.bean.Role;
+import com.bean.RoleWithBLOBs;
 import com.dao.RoleDao;
 import com.service.RoleService;
 import com.util.DataModel;
 import com.util.Pager;
-import lombok.*;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Paper;
 import java.util.List;
 
 /**
@@ -31,5 +30,9 @@ public class RoleServiceImpl implements RoleService {
         pager.setTotalRecord(total);
         dm.setPager(pager);
         return dm;
+    }
+
+    public boolean saveRole(RoleWithBLOBs role) {
+        return roleDao.insertSelective(role) > 0;
     }
 }

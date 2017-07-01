@@ -117,14 +117,14 @@
             window.open("${contextPath}/popedom/getPopedomTreeStr?role_id=" + role_id, "_blank",
                 "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
         }
-        function openTreeWindow2(role_id) {
-            window.open("${contextPath}/popedom/toSetPopedom2?role_id=" + role_id, "_blank",
-                "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
-        }
-        function openTreeWindow3(role_id) {
-            window.open("${contextPath}/popedom/toSetPopedom3?role_id=" + role_id, "_blank",
-                "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
-        }
+        /*function openTreeWindow2(role_id) {
+         window.open("${contextPath}/popedom/toSetPopedom2?role_id=" + role_id, "_blank",
+         "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
+         }
+         function openTreeWindow3(role_id) {
+         window.open("${contextPath}/popedom/toSetPopedom3?role_id=" + role_id, "_blank",
+         "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
+         }*/
         function clearSearchArea() {
             $("#selectTable input").val("");
         }
@@ -206,7 +206,7 @@
                         <td height="16" valign="top"><br/>
                             <img src="image/s3.gif" width="62" style="cursor: pointer"
                                  height="22" alt="新建按钮"
-                                 onclick="javascript:window.location.href='load4AddRole.action'">
+                                 onclick="javascript:window.location.href='role/load4AddRole'">
                             <img
                                     src="image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();"></td>
                     </tr>
@@ -305,10 +305,10 @@
                                                     <td align="center">
                                                         <span onclick="openTreeWindow('${role.id}')"
                                                               style="cursor: pointer">设置</span>
-                                                        <span onclick="openTreeWindow2('${role.id}')"
+                                                        <%--<span onclick="openTreeWindow2('${role.id}')"
                                                               style="cursor: pointer">设置2</span>
                                                         <span onclick="openTreeWindow3('${role.id}')"
-                                                              style="cursor: pointer">设置3</span>
+                                                              style="cursor: pointer">设置3</span>--%>
                                                     </td>
                                                 </tr>
 

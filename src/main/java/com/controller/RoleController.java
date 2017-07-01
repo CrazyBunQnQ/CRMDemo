@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.bean.Role;
+import com.bean.RoleWithBLOBs;
 import com.service.RoleService;
 import com.util.DataModel;
 import com.util.Pager;
@@ -43,6 +44,14 @@ public class RoleController {
     public ModelAndView load4AddRole() {
         ModelAndView modelAndView = new ModelAndView("/jsp/role/roleAdd");
 
+        return modelAndView;
+    }
+
+    @RequestMapping("/roleAdd")
+    public ModelAndView insertRole(RoleWithBLOBs role) {
+        ModelAndView modelAndView = new ModelAndView();
+        boolean addSuccess = roleService.saveRole(role);
+        modelAndView.setViewName(addSuccess ? "/jsp/role/roleList" : "/jsp/role/roleAdd");
 
         return modelAndView;
     }

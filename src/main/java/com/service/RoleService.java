@@ -1,6 +1,7 @@
 package com.service;
 
 import com.bean.Role;
+import com.bean.RoleWithBLOBs;
 import com.util.DataModel;
 import com.util.Pager;
 
@@ -18,4 +19,6 @@ public interface RoleService {
      * @return
      */
     public DataModel<Role> selectList(Role role, Pager pager);
+
+    public boolean saveRole(RoleWithBLOBs role);
 }

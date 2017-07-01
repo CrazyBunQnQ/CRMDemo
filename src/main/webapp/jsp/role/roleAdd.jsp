@@ -18,7 +18,7 @@
 </head>
 
 <body STYLE='OVERFLOW:SCROLL;OVERFLOW-X:HIDDEN'>
-<form name="form1" method="post" action="roleAdd" id="roleForm">
+<form name="form1" method="post" action="/role/roleAdd" id="roleForm">
     <%--<input type="hidden" name="edit_id" id="edit_id" value="<s:property value="edit_id"/>--%>
     <input type="hidden" name="edit_id" id="edit_id" value="${role.id }"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
