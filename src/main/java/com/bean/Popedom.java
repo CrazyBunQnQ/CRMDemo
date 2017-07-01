@@ -3,7 +3,7 @@ package com.bean;
 import lombok.Data;
 
 /**
- * 权限
+ * 操作组权限
  *
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
