@@ -20,4 +20,6 @@ public class Constant {
     public static final String USER_NAME_OR_PASSWORD_ERROR = "用户名或者密码错误！";
 
     public static final String VERIFICATION_CODE_ERROR = "验证码错误！";
+
+    public static final String IS_DEL = "true";
 }

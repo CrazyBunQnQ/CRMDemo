@@ -3,6 +3,7 @@ package com.controller;
 import com.bean.Role;
 import com.bean.RoleWithBLOBs;
 import com.service.RoleService;
+import com.util.Constant;
 import com.util.DataModel;
 import com.util.Pager;
 import lombok.extern.log4j.Log4j;
@@ -27,6 +28,20 @@ public class RoleController {
     @RequestMapping("/roleList")
     public ModelAndView selectRoleList(Role role, Pager pager, String isDel, String exportType, Integer[] role_id) {
         ModelAndView modelAndView = new ModelAndView();
+
+        if (exportType != null && !exportType.trim().isEmpty()) {
+
+            return null;
+        }
+
+        if (Constant.IS_DEL.equals(isDel)) {
+            for (int i:role_id) {
+//                log.info("role ids: " + role_id.length);
+                log.info("role_id:" + i) ;
+            }
+            roleService.removeRoleByIds(role_id);
+        }
+
         DataModel<Role> dm = roleService.selectList(role, pager);
 
         List<Role> rows = dm.getRows();

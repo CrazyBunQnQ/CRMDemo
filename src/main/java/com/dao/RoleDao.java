@@ -13,6 +13,8 @@ import java.util.List;
 public interface RoleDao {
     int deleteByPrimaryKey(Integer id);
 
+    int deleteByPrimaryKeys(@Param("ids") Integer[] ids);
+
     int insert(RoleWithBLOBs record);
 
     int insertSelective(RoleWithBLOBs record);

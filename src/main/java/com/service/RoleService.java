@@ -21,4 +21,13 @@ public interface RoleService {
     public DataModel<Role> selectList(Role role, Pager pager);
 
     public boolean saveRole(RoleWithBLOBs role);
+
+    /**
+     * According to the id array batch remove roles
+     *
+     * @param ids
+     *
+     * @return
+     */
+    public boolean removeRoleByIds(Integer[] ids);
 }

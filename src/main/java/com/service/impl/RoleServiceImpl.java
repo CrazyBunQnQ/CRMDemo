@@ -22,6 +22,7 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
+    @Override
     public DataModel<Role> selectList(Role role, Pager pager) {
         DataModel<Role> dm = new DataModel<Role>();
         List<Role> rows = roleDao.selectRoleByPage(role.getName(), pager.getFrom(), pager.getPageSize());
@@ -32,7 +33,13 @@ public class RoleServiceImpl implements RoleService {
         return dm;
     }
 
+    @Override
     public boolean saveRole(RoleWithBLOBs role) {
         return roleDao.insertSelective(role) > 0;
+    }
+
+    @Override
+    public boolean removeRoleByIds(Integer[] ids) {
+        return roleDao.deleteByPrimaryKeys(ids) > 0;
     }
 }
