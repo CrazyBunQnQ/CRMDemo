@@ -38,4 +38,16 @@ public class RoleController {
 
         return modelAndView;
     }
+
+    @RequestMapping("/load4AddRole")
+    public ModelAndView load4AddRole() {
+        ModelAndView modelAndView = new ModelAndView("/jsp/role/roleAdd");
+
+
+        return modelAndView;
+    }
+
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
 }
