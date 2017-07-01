@@ -2,9 +2,13 @@
 <%@ include file="../../taglibs.jsp" %>
 <html>
 <head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="text/javascript" src="${contextPath}/css_js/jquery/jquery-1.3.2.min.js"></script>
-    <link href="${contextPath}/css_js/index.css" rel="stylesheet" type="text/css"></link>
+    <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <link href="css_js/index.css" rel="stylesheet" type="text/css"></link>
     <title>添加商品类别</title>
     <script type="text/javascript">
         $(function () {
@@ -57,8 +61,8 @@
             <td height="12"></td>
         </tr>
         <tr>
-            <td valign="middle"><img src="${contextPath}/image/s10.gif" width="58" height="22" style="cursor: pointer;"
-                                     onclick="submitForm();"><img src="${contextPath}/image/s8.gif" width="59"
+            <td valign="middle"><img src="image/s10.gif" width="58" height="22" style="cursor: pointer;"
+                                     onclick="submitForm();"><img src="image/s8.gif" width="59"
                                                                   height="22" onclick="returnProductList();"></td>
         </tr>
         <tr>
@@ -69,8 +73,8 @@
             <td valign="middle">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" valign="top" background="${contextPath}/image/index_main_div_titleBg.gif"><img
-                                style="margin-left:5px;" src="${contextPath}/image/index_main_div_left.gif" width="6"
+                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif"><img
+                                style="margin-left:5px;" src="image/index_main_div_left.gif" width="6"
                                 height="2" align="absmiddle">&nbsp;<span
                                 style="font-weight:bold;font-size:12px;">基本信息</span></td>
                     </tr>
