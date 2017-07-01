@@ -4,12 +4,16 @@
 <%@ include file="../../taglibs.jsp" %>
 <html>
 <head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>操作权限组新建</title>
-    <link href="../css_js/index.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="../css_js/jquery/jquery-1.3.2.min.js"></script>
-    <script src="../css_js/popup4exExcel.js" type="text/javascript"></script>
-    <link href="../css_js/general.css" rel="stylesheet" type="text/css"></link>
+    <link href="css_js/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script src="css_js/popup4exExcel.js" type="text/javascript"></script>
+    <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
     <script type="text/javascript">
         function initPageSize() {
             var pageSizes = document.getElementsByName("_pageSize");
@@ -153,20 +157,20 @@
             <td valign="middle">
                 <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" background="../image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
-                                                                                              src="../image/index_main_div_left.gif"
-                                                                                              width="6" height="2"
-                                                                                              align="absmiddle">&nbsp;<span
+                        <td height="21" background="image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
+                                                                                           src="image/index_main_div_left.gif"
+                                                                                           width="6" height="2"
+                                                                                           align="absmiddle">&nbsp;<span
                                 style="font-weight:bold;font-size:12px;">操作权限列表</span></td>
                     </tr>
                 </table>
 
                 <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" background="../image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
-                                                                                              src="../image/index_main_div_left.gif"
-                                                                                              width="6" height="2"
-                                                                                              align="absmiddle">&nbsp;<span
+                        <td height="21" background="image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
+                                                                                           src="image/index_main_div_left.gif"
+                                                                                           width="6" height="2"
+                                                                                           align="absmiddle">&nbsp;<span
                                 style="font-weight:bold;font-size:12px;">操作权限组搜索</span></td>
                     </tr>
                     <tr>
@@ -181,9 +185,9 @@
                                     <td width="17%">&nbsp;</td>
                                     <td width="11%">&nbsp;</td>
                                     <td width="17%">&nbsp;</td>
-                                    <td width="5%"><img src="../image/s1.gif" width="59" height="22"
+                                    <td width="5%"><img src="image/s1.gif" width="59" height="22"
                                                         onclick="submitForm();"></td>
-                                    <td width="10%" align="left"><img src="../image/s2.gif" width="62" height="22"
+                                    <td width="10%" align="left"><img src="image/s2.gif" width="62" height="22"
                                                                       onclick="clearSearchArea();"></td>
                                     <td width="1%" align="left">&nbsp;</td>
                                 </tr>
@@ -198,16 +202,16 @@
                         <td height="10" bgcolor="#f7fbfc">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td height="11"><img src="../image/t1.gif" align="absmiddle"> <span
+                        <td height="11"><img src="image/t1.gif" align="absmiddle"> <span
                                 style="font-size:14; font-weight:bold;">操作权限列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
-                            <img src="../image/s3.gif" width="62" style="cursor: pointer"
+                            <img src="image/s3.gif" width="62" style="cursor: pointer"
                                  height="22" alt="新建按钮"
                                  onclick="javascript:window.location.href='load4AddRole.action'">
                             <img
-                                    src="../image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();"></td>
+                                    src="image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();"></td>
                     </tr>
                     <tr>
                         <td height="5" valign="top"></td>
@@ -217,7 +221,7 @@
                             <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="selectTable_content">
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="../image/t2.gif"
+                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
                                                                             align="absmiddle" width="15" height="16">
                                         <span
                                                 onclick="exportExcel()" class="pager" style="cursor: pointer">导出
@@ -280,20 +284,21 @@
                                         <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="select_row">
                                             <tr>
                                                 <td width="4%" height="28" align="center"
-                                                    background="../image/select_title_title.jpg"><input type="checkbox"
-                                                                                                        name="checkbox"
-                                                                                                        value="checkbox"
-                                                                                                        onclick="toChange();">
+                                                    background="image/select_title_title.jpg"><input type="checkbox"
+                                                                                                     name="checkbox"
+                                                                                                     value="checkbox"
+                                                                                                     onclick="toChange();">
                                                 </td>
                                                 <td width="39%" align="left"
-                                                    background="../image/select_title_title.jpg"><strong>名称</strong>
+                                                    background="image/select_title_title.jpg"><strong>名称</strong>
                                                 </td>
                                                 <td width="57%" align="center"
-                                                    background="../image/select_title_title.jpg"><strong>可进行的操作</strong><strong>人员设置</strong>
+                                                    background="image/select_title_title.jpg">
+                                                    <strong>可进行的操作</strong><strong>人员设置</strong>
                                                 </td>
                                             </tr>
 
-                                            <c:forEach items="${roleList }" var="role">
+                                            <c:forEach items="${rows}" var="role">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
                                                         <input type="checkbox" name="role_id" value="${role.id}"
@@ -321,7 +326,7 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="../image/t2.gif"
+                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
                                                                             align="absmiddle" width="15" height="16"> 导出
                                         | 选择条目:<span id="select_num2">0</span></td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
