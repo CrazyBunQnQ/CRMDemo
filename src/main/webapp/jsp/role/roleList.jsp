@@ -30,17 +30,15 @@
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
                 if (window.confirm("确定删除？")) {
-
-                    document.getElementById("isDel").value = "del";
+                    document.getElementById("isDel").value = "true";
                     document.forms[0].submit();
-
                 }
             }
         }
         //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
         function checkBoxNum() {
-            if ($("input[name='product_id']:checked").length > 0) {
-                return $("input[name='product_id']:checked").length;
+            if ($("input[name='role_id']:checked").length > 0) {
+                return $("input[name='role_id']:checked").length;
             } else {
                 return 0;
             }
@@ -148,27 +146,27 @@
 <body onload="initPageSize()">
 <form name="roleList" method="post" name="form1" id="form1">
     <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
-    <input type="hidden" name="pageSize" value="${pager.pageSize}"
-           id="hiddenPageSize"/> <input type="hidden" name="isDel" value=""
-                                        id="isDel"/> <input type="hidden" name="exportType" value=""
-                                                            id="exportType"/>
+    <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
+    <input type="hidden" name="isDel" value="false" id="isDel"/>
+    <input type="hidden" name="exportType" value="" id="exportType"/>
+
     <table width="99%" srole="0" cellspacing="0" cellpadding="0" id="index_content">
         <tr>
             <td valign="middle">
                 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
                     <tr>
-                        <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　操作权限组</span>
+                        <td height="26" width="100%">
+                            <span style="color:#002450; font-size:13px; font-weight:bold;">　操作权限组</span>
                         </td>
                     </tr>
                 </table>
 
                 <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" background="image/index_main_div_titleBg.gif"><img style="margin-left:5px;"
-                                                                                           src="image/index_main_div_left.gif"
-                                                                                           width="6" height="2"
-                                                                                           align="absmiddle">&nbsp;<span
-                                style="font-weight:bold;font-size:12px;">操作权限组搜索</span></td>
+                        <td height="21" background="image/index_main_div_titleBg.gif">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">&nbsp;
+                            <span style="font-weight:bold;font-size:12px;">操作权限组搜索</span></td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
@@ -193,22 +191,21 @@
                     </tr>
                 </table>
 
-
                 <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="select_table">
                     <tr>
                         <td height="10" bgcolor="#f7fbfc">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td height="11"><img src="image/t1.gif" align="absmiddle"> <span
-                                style="font-size:14; font-weight:bold;">操作权限列表</span></td>
+                        <td height="11">
+                            <img src="image/t1.gif" align="absmiddle">
+                            <span style="font-size:14px; font-weight:bold;">操作权限列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
-                            <img src="image/s3.gif" width="62" style="cursor: pointer"
-                                 height="22" alt="新建按钮"
+                            <img src="image/s3.gif" width="62" style="cursor: pointer" height="22" alt="新建按钮"
                                  onclick="javascript:window.location.href='role/load4AddRole'">
-                            <img
-                                    src="image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();"></td>
+                            <img src="image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();">
+                        </td>
                     </tr>
                     <tr>
                         <td height="5" valign="top"></td>
@@ -217,21 +214,20 @@
                         <td height="28" valign="top">
                             <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="selectTable_content">
                                 <tr>
-                                    <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
-                                                                            align="absmiddle" width="15" height="16">
-                                        <span
-                                                onclick="exportExcel()" class="pager" style="cursor: pointer">导出
-						</span> | 选择条目:<span id="select_num">0</span></td>
+                                    <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16">
+                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">导出</span>
+                                        | 选择条目:
+                                        <span id="select_num">0</span>
+                                    </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
-                                    <td width="57%" bgcolor="#f2faff" align="right"
-                                        style="font-size: 12px;">共${pager.totalRecord}条 <span
-                                            class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
+                                    <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
+                                        共${pager.totalRecord}条
+                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
-                                        ${pager.page}/${pager.totalPage} <span onclick="nextPage()"
-                                                                               class="pager"
-                                                                               style="cursor: pointer">下一页</span> <span
-                                                onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        ${pager.page}/${pager.totalPage}
+                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
+                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
                                                 id="_pageNum_up">
                                             <c:forEach begin="1" end="${pager.totalPage }" var="i">
@@ -239,8 +235,9 @@
                                                         <c:if test="${pager.page==i}">selected="selected"</c:if>>第${i}页
                                                 </option>
                                             </c:forEach>
-                                        </select> <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
-                                                          id="_pageSize_up">
+                                        </select>
+                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
+                                                id="_pageSize_up">
                                             <option value="5"
                                                     <c:if test="${pager.pageSize==5}">selected="selected"</c:if>>5条
                                             </option>
@@ -281,14 +278,12 @@
                                         <table width="100%" srole="0" cellspacing="0" cellpadding="0" id="select_row">
                                             <tr>
                                                 <td width="4%" height="28" align="center"
-                                                    background="image/select_title_title.jpg"><input type="checkbox"
-                                                                                                     name="checkbox"
-                                                                                                     value="checkbox"
-                                                                                                     onclick="toChange();">
+                                                    background="image/select_title_title.jpg">
+                                                    <input type="checkbox" name="checkbox" value="checkbox"
+                                                           onclick="toChange();">
                                                 </td>
-                                                <td width="39%" align="left"
-                                                    background="image/select_title_title.jpg"><strong>名称</strong>
-                                                </td>
+                                                <td width="39%" align="left" background="image/select_title_title.jpg">
+                                                    <strong>名称</strong></td>
                                                 <td width="57%" align="center"
                                                     background="image/select_title_title.jpg">
                                                     <strong>可进行的操作</strong><strong>人员设置</strong>
@@ -305,15 +300,14 @@
                                                     <td align="center">
                                                         <span onclick="openTreeWindow('${role.id}')"
                                                               style="cursor: pointer">设置</span>
-                                                        <%--<span onclick="openTreeWindow2('${role.id}')"
-                                                              style="cursor: pointer">设置2</span>
-                                                        <span onclick="openTreeWindow3('${role.id}')"
-                                                              style="cursor: pointer">设置3</span>--%>
+                                                            <%--<span onclick="openTreeWindow2('${role.id}')"
+                                                                  style="cursor: pointer">设置2</span>
+                                                            <span onclick="openTreeWindow3('${role.id}')"
+                                                                  style="cursor: pointer">设置3</span>--%>
                                                     </td>
                                                 </tr>
 
                                             </c:forEach>
-
 
                                             <tr>
                                                 <td colspan="3">&nbsp;</td>
@@ -322,19 +316,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="40%" height="19" bgcolor="#f2faff"
-                                        style="font-size: 12px;">&nbsp;<img src="image/t2.gif"
-                                                                            align="absmiddle" width="15" height="16"> 导出
-                                        | 选择条目:<span id="select_num2">0</span></td>
+                                    <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16">
+                                        导出 | 选择条目:
+                                        <span id="select_num2">0</span>
+                                    </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
-                                    <td width="57%" bgcolor="#f2faff" align="right"
-                                        style="font-size: 12px;">共${pager.totalRecord}条 <span
-                                            class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
+                                    <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
+                                        共${pager.totalRecord}条
+                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
-                                        ${pager.page}/${pager.totalPage} <span onclick="nextPage()"
-                                                                               class="pager"
-                                                                               style="cursor: pointer">下一页</span> <span
-                                                onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        ${pager.page}/${pager.totalPage}
+                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
+                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_down','_null');"
                                                 id="_pageNum_down">
                                             <c:forEach begin="1" end="${pager.totalPage }" var="i">
@@ -342,9 +336,9 @@
                                                         <c:if test="${pager.page==i}">selected="selected"</c:if>>第${i}页
                                                 </option>
                                             </c:forEach>
-                                        </select> <select name="_pageSize"
-                                                          onchange="toUrl('_null','_pageSize_down')"
-                                                          id="_pageSize_down">
+                                        </select>
+                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_down')"
+                                                id="_pageSize_down">
                                             <option value="5"
                                                     <c:if test="${pager.pageSize==5}">selected="selected"</c:if>>5条
                                             </option>
@@ -378,13 +372,13 @@
                                             <option value="50"
                                                     <c:if test="${pager.pageSize==50}">selected="selected"</c:if>>50条
                                             </option>
-                                        </select></td>
+                                        </select>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                 </table>
-
             </td>
         </tr>
     </table>
