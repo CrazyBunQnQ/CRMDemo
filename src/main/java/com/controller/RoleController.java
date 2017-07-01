@@ -51,7 +51,7 @@ public class RoleController {
     public ModelAndView insertRole(RoleWithBLOBs role) {
         ModelAndView modelAndView = new ModelAndView();
         boolean addSuccess = roleService.saveRole(role);
-        modelAndView.setViewName(addSuccess ? "/jsp/role/roleList" : "/jsp/role/roleAdd");
+        modelAndView.setViewName(addSuccess ? "redirect:roleList" : "redirect:roleAdd");
 
         return modelAndView;
     }

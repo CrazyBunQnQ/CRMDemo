@@ -12,6 +12,10 @@
     <title>添加用户</title>
     <script type="text/javascript">
         function submitForm() {
+            if (document.getElementById("name").value.trim() === "") {
+                document.getElementById("errorInfo").innerHTML = "操作权限组名称不能为空！";
+                return;
+            }
             document.getElementById("roleForm").submit();
         }
     </script>
@@ -55,7 +59,7 @@
                                    id="selectTable">
                                 <tr>
                                     <td width="10%"><span style="color:#FF0000">名称:</span></td>
-                                    <td width="41%"><input type="text" name="name" value="${role.name}"
+                                    <td width="41%"><input type="text" name="name" id="name" value="${role.name}"
                                                            class="addCText"></td>
                                     <td width="7%" align="left">&nbsp;</td>
                                     <td width="42%">&nbsp;</td>
