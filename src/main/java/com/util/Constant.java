@@ -33,7 +33,7 @@ public class Constant {
 
     public static final String EXPORT_ALL = "excel_all";
 
-    public static final String EXPORT_PAGE = "excel_PAGE";
+    public static final String EXPORT_PAGE = "excel_page";
 
     public static final String EXPORT_SELECTED = "excel_selected";
 

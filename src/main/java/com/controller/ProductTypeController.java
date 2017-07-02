@@ -24,7 +24,7 @@ public class ProductTypeController {
 
     @RequestMapping("/productTypeList")
     public ModelAndView findProductTypeList(Pager pager, String isDel, Integer[] productType_id, ProductType productType, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeList");
         boolean success = false;
 
         if (exportType != null && !"".equals(exportType.trim())) {
@@ -45,7 +45,6 @@ public class ProductTypeController {
 
         //将分页相关的数据 绑定到ModelAndView
         modelAndView.addObject("pager", dm.getPager());
-        modelAndView.setViewName("/jsp/productType/productTypeList");
         return modelAndView;
     }
 

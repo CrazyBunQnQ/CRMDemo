@@ -37,7 +37,7 @@ public interface ProductTypeService {
     /**
      * 导出 excel 报表
      *
-     * @param exportType     导出类型（excel_all, excel_page, excel_selected）
+     * @param exportType     导出类型（export_all, export_page, export_selected）
      * @param pager          如果导出当前页则需要获取页号
      * @param productType_id 如果导出选中的则需要获取选中的 id 数组
      * @param productType    如果有过滤条件的话需要封装查询条件
