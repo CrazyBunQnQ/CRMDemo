@@ -24,7 +24,6 @@
                     }
                 }
             }
-
         }
         function toDel() {
             var cbNum = checkBoxNum();

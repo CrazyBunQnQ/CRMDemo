@@ -68,10 +68,10 @@
         SELECT COUNT(id)
         FROM b_product_type WHERE 1=1
         <if test="productType.code!=null and productType.code!=''">
-            AND p1.code LIKE CONCAT('%', #{productType.code},'%')
+            AND code LIKE CONCAT('%', #{productType.code},'%')
         </if>
         <if test="productType.name!=null and productType.name!=''">
-            AND p1.name LIKE CONCAT('%', #{productType.name}, '%')
+            AND name LIKE CONCAT('%', #{productType.name}, '%')
         </if>
     </select>
     <select id="findRootProductType" resultType="com.bean.ProductType">

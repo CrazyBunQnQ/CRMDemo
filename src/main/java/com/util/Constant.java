@@ -36,4 +36,12 @@ public class Constant {
     public static final String EXPORT_PAGE = "excel_PAGE";
 
     public static final String EXPORT_SELECTED = "excel_selected";
+
+    public static final String EXPORT_SUCCESS = "导出成功！";
+
+    public static final String EXPORT_FAILURE = "导出失败！";
+
+    public static final String REMOVE_SUCCESS = "删除成功！";
+
+    public static final String REMOVE_FAILURE = "删除失败！";
 }

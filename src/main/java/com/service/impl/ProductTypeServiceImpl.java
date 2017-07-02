@@ -48,6 +48,8 @@ public class ProductTypeServiceImpl implements ProductTypeService {
          * 总条数
          */
         int total = productTypeDao.countProductType(productType);
+        pager.setTotalRecord(total);
+        dataModel.setRows(rows);
         dataModel.setPager(pager);
         return dataModel;
     }

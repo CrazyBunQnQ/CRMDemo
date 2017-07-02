@@ -24,8 +24,8 @@
                     }
                 }
             }
-
         }
+
         function toDel() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
@@ -33,10 +33,10 @@
 
                     document.getElementById("isDel").value = "del";
                     document.forms[0].submit();
-
                 }
             }
         }
+
         //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
         function checkBoxNum() {
             if ($("input[name='productType_id']:checked").length > 0) {
@@ -83,6 +83,7 @@
                 document.forms[0].submit();
             }
         }
+
         function prePage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -99,6 +100,7 @@
                 document.forms[0].submit();
             }
         }
+
         function firstPage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -106,6 +108,7 @@
                 document.forms[0].submit();
             }
         }
+
         function lastPage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -113,24 +116,29 @@
                 document.forms[0].submit();
             }
         }
+
         function submitForm() {
             document.forms[0].submit();
         }
+
         function resetForm() {
             document.forms[0].reset();
         }
+
         function exportExcel() {
             loadPopup_excel('导出Excel');
         }
+
         function openTreeWindow() {
-            //window.open("optionTreeWidnow","_blank");
-            window.location = "optionTreeWidnow";
+            window.location = "/productType/optionTreeWindow";
         }
+
         //清除搜索区域内容
         function clearSearchArea() {
             $("#selectTable input").val("");
 
         }
+
         //更改“选择条目”的数目
         function updateNum() {
             var num = $("input[name='productType_id']:checked").length;
@@ -138,9 +146,8 @@
             $("#select_num2").html(num);
         }
 
-        //点击全选  checkbox的时候
+        //点击全选 checkbox 的时候
         function toChange() {
-
             var num = $("#ids:checked").length;
             if (num == 0) {
                 $("input[name='productType_id']").attr("checked", false);
@@ -149,16 +156,19 @@
             }
             updateNum();
         }
-
     </script>
 </head>
-
 
 <body>
 <form action="${contextPath }/productType/productTypeList" method="post" name="form1" id="form1">
     <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
+    <!--
+      选中导出所有  的时候  给隐藏域设置值为export_all
+      选中当前页的 给隐藏域设置值为 export_page
+      导出选中的 给隐藏域设置值为 export_selected
+     -->
     <input type="hidden" name="exportType" value="" id="exportType"/>
     <!-- </form>	 -->
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
@@ -201,14 +211,13 @@
                     </tr>
                 </table>
 
-
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="select_table">
                     <tr>
                         <td height="10" bgcolor="#f7fbfc">&nbsp;</td>
                     </tr>
                     <tr>
                         <td height="11"><img src="image/t1.gif" align="absmiddle"> <span
-                                style="font-size:14; font-weight:bold;">商品类别列表</span></td>
+                                style="font-size:14px; font-weight:bold;">商品类别列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
@@ -314,7 +323,8 @@
                                                     background="image/select_title_title.jpg"><strong>商品类别名称</strong>
                                                 </td>
                                                 <td width="29%" align="center"
-                                                    background="image/select_title_title.jpg"><strong>商品类别编码</strong><strong></strong>
+                                                    background="image/select_title_title.jpg">
+                                                    <strong>商品类别编码</strong><strong></strong>
                                                 </td>
                                                 <td width="21%" align="center"
                                                     background="image/select_title_title.jpg"><strong>上一级</strong>
@@ -327,11 +337,12 @@
                                             <c:forEach items="${rows}" var="productType">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-
                                                         <input type="checkbox" name="productType_id"
                                                                value="${productType.id}" onclick="updateNum();">
                                                     </td>
-                                                    <td>${productType.name}</td>
+                                                    <td>
+                                                        <a href="/productType/toUpdateProductType?productTypeId=${productType.id}">${productType.name}</a>
+                                                    </td>
                                                     <td align="center">${productType.code}</td>
                                                     <td align="center">
                                                             ${productType.fatherName}
@@ -454,13 +465,13 @@
                                             <option value="50"
                                                     <c:if test="${pager.pageSize==50}">selected="selected"</c:if>>50条
                                             </option>
-                                        </select></td>
+                                        </select>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                 </table>
-
             </td>
         </tr>
     </table>

@@ -11,6 +11,7 @@
     <link href="css_js/index.css" rel="stylesheet" type="text/css"></link>
     <title>添加商品类别</title>
     <script type="text/javascript">
+        //点击修改后 让 对应的上一级  默认也选中
         $(function () {
             var pid = "${productType.pid}";
 
@@ -43,16 +44,14 @@
     <%-- <input type="hidden" name="createTime" id="createTime" value="${c_time}${companyLinkman.createTime}" /> --%>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
-            <c:choose>
-                <c:when test="${productType.id==null }">
-                    <td height="26" width="100%"><span
-                            style="color:#002450; font-size:13px; font-weight:bold;">　商品类别新建</span></td>
-                </c:when>
-                <c:otherwise>
-                    <td height="26" width="100%"><span
-                            style="color:#002450; font-size:13px; font-weight:bold;">　商品类别修改</span></td>
-                </c:otherwise>
-            </c:choose>
+            <c:if test="${productType.id==null }">
+                <td height="26" width="100%"><span
+                        style="color:#002450; font-size:13px; font-weight:bold;">　商品类别新建</span></td>
+            </c:if>
+            <c:if test="${productType.id!=null }">
+                <td height="26" width="100%"><span
+                        style="color:#002450; font-size:13px; font-weight:bold;">　商品类别修改</span></td>
+            </c:if>
         </tr>
     </table>
 

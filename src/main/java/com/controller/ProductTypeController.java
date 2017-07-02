@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Log4j
@@ -22,23 +23,34 @@ public class ProductTypeController {
     private ProductTypeService productTypeService;
 
     @RequestMapping("/productTypeList")
-    public ModelAndView findProductTypeList(Pager pager) {
+    public ModelAndView findProductTypeList(Pager pager, String isDel, Integer[] productType_id, ProductType productType, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        DataModel<ProductType> dm = productTypeService.findList(pager, new ProductType());
+        boolean success = false;
+
+        if (exportType != null && !"".equals(exportType.trim())) {
+            success = productTypeService.exportExcel(exportType, pager, productType_id, productType, response);
+            modelAndView.addObject("suc", success ? Constant.EXPORT_SUCCESS : Constant.EXPORT_FAILURE);
+            return modelAndView;
+        }
+
+        if (Constant.IS_DEL.equals(isDel)) {//批量删除
+            success = productTypeService.removeProductType(productType_id);
+            modelAndView.addObject("suc", success ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
+        }
+
+        DataModel<ProductType> dm = productTypeService.findList(pager, productType);
 
         //将查询的数据集合绑定到ModelAndView
         List<ProductType> rows = dm.getRows();
-        for (ProductType some : rows) {
-            log.info(some.getName());
-        }
         modelAndView.addObject("rows", rows);
+
         //将分页相关的数据 绑定到ModelAndView
         modelAndView.addObject("pager", dm.getPager());
         modelAndView.setViewName("/jsp/productType/productTypeList");
         return modelAndView;
     }
 
-    @RequestMapping("toAddProductType")
+    @RequestMapping("/toAddProductType")
     public ModelAndView toAddProductType() {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         String str = productTypeService.findProductTypeStr();
@@ -46,7 +58,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("addProductType")
+    @RequestMapping("/addProductType")
     public ModelAndView addProductType(ProductType productType) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productypeAdd");
         boolean addSuccess = productTypeService.saveProductType(productType);
@@ -64,7 +76,7 @@ public class ProductTypeController {
      *
      * @return
      */
-    @RequestMapping("addOrUpdateProductType")
+    @RequestMapping("/addOrUpdateProductType")
     public ModelAndView saveOrUpdateProductType(ProductType productType, Integer edit_id) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         boolean success = false;
@@ -89,7 +101,7 @@ public class ProductTypeController {
      *
      * @return
      */
-    @RequestMapping("toUpdateProductType")
+    @RequestMapping("/toUpdateProductType")
     public ModelAndView toUpdateProductType(Integer productTypeId) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         ProductType productType = productTypeService.getProductTypeById(productTypeId);
@@ -99,7 +111,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("optionTreeWindow")
+    @RequestMapping("/optionTreeWindow")
     public ModelAndView optionTreeWindow() {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/treeWindow");
         String tree = productTypeService.findTree();
