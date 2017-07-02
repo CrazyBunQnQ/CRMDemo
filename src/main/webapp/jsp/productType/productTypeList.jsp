@@ -130,7 +130,7 @@
         }
 
         function openTreeWindow() {
-            window.location = "/productType/optionTreeWidnow";
+            window.location = "/productType/optionTreeWindow";
         }
 
         //清除搜索区域内容

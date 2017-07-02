@@ -38,7 +38,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("toAddProductType")
+    @RequestMapping("/toAddProductType")
     public ModelAndView toAddProductType() {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         String str = productTypeService.findProductTypeStr();
@@ -46,7 +46,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("addProductType")
+    @RequestMapping("/addProductType")
     public ModelAndView addProductType(ProductType productType) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productypeAdd");
         boolean addSuccess = productTypeService.saveProductType(productType);
@@ -64,7 +64,7 @@ public class ProductTypeController {
      *
      * @return
      */
-    @RequestMapping("addOrUpdateProductType")
+    @RequestMapping("/addOrUpdateProductType")
     public ModelAndView saveOrUpdateProductType(ProductType productType, Integer edit_id) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         boolean success = false;
@@ -89,7 +89,7 @@ public class ProductTypeController {
      *
      * @return
      */
-    @RequestMapping("toUpdateProductType")
+    @RequestMapping("/toUpdateProductType")
     public ModelAndView toUpdateProductType(Integer productTypeId) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         ProductType productType = productTypeService.getProductTypeById(productTypeId);
@@ -99,7 +99,7 @@ public class ProductTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("optionTreeWindow")
+    @RequestMapping("/optionTreeWindow")
     public ModelAndView optionTreeWindow() {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/treeWindow");
         String tree = productTypeService.findTree();
