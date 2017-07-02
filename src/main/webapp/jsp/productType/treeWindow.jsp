@@ -1,18 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../../taglibs.jsp" %>
 <html>
 <head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>树型菜单窗口</title>
     <style>
-
-
         .simpleTree {
             font: normal 12px arial, tahoma, helvetica, sans-serif;
             margin-left: 0px;
@@ -202,8 +199,8 @@
             simpleTreeCollection = $('.simpleTree').simpleTree({
                 autoclose: false,
                 afterClick: function (node) {
-                    //window.opener.location.href = "load4EditProductType.action?edit_id="+node.attr("id");
-                    window.location.href = "productType/toEditProductType?productTypeId=" + node.attr("id");
+                    //window.opener.location.href = "toUpdateProductType.action?edit_id="+node.attr("id");
+                    window.location.href = "productType/toUpdateProductType?productTypeId=" + node.attr("id");
                     window.close();
                 },
                 afterDblClick: function (node) {
