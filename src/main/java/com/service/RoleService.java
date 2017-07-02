@@ -18,7 +18,7 @@ public interface RoleService {
      *
      * @return
      */
-    public DataModel<Role> selectList(Role role, Pager pager);
+    public DataModel<Role> listRoles(Role role, Pager pager);
 
     public boolean saveRole(RoleWithBLOBs role);
 

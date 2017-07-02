@@ -42,7 +42,7 @@ public class RoleController {
             roleService.removeRoleByIds(role_id);
         }
 
-        DataModel<Role> dm = roleService.selectList(role, pager);
+        DataModel<Role> dm = roleService.listRoles(role, pager);
 
         List<Role> rows = dm.getRows();
         for (Role some : rows) {
