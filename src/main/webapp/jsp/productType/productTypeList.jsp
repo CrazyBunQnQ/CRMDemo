@@ -208,7 +208,7 @@
                     </tr>
                     <tr>
                         <td height="11"><img src="image/t1.gif" align="absmiddle"> <span
-                                style="font-size:14; font-weight:bold;">商品类别列表</span></td>
+                                style="font-size:14px; font-weight:bold;">商品类别列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
