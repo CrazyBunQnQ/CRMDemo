@@ -40,7 +40,7 @@
             document.getElementById("productTypeForm").submit();
         }
         function returnProductList() {
-            window.location = "productTypeList";
+            window.location = "productType/productTypeList";
         }
 
     </script>
