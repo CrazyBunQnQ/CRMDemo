@@ -25,7 +25,11 @@ public class Constant {
 
     public static final String ADD_SUCCESS = "新建成功！";
 
+    public static final String UPDATE_SUCCESS = "更新成功！";
+
     public static final String ADD_FAILURE = "新建失败！";
+
+    public static final String UPDATE_FAILURE = "更新失败！";
 
     public static final String EXPORT_ALL = "excel_all";
 

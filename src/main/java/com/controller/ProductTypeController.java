@@ -56,6 +56,57 @@ public class ProductTypeController {
         return modelAndView;
     }
 
+    /**
+     * 添加或更新商品类
+     *
+     * @param productType 需要添加或者修改的商品类
+     * @param edit_id     隐藏域中标识修改的商品类 id
+     *
+     * @return
+     */
+    @RequestMapping("addOrUpdateProductType")
+    public ModelAndView saveOrUpdateProductType(ProductType productType, Integer edit_id) {
+        ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
+        boolean success = false;
+        String str;
+        if (edit_id == null) {//新建 保存
+            success = productTypeService.saveProductType(productType);
+            modelAndView.addObject("suc", success ? Constant.ADD_SUCCESS : Constant.ADD_FAILURE);
+        } else {//修改 保存
+            productType.setId(edit_id);
+            success = productTypeService.updateProductType(productType);
+            modelAndView.addObject("suc", success ? Constant.UPDATE_SUCCESS : Constant.UPDATE_FAILURE);
+        }
+        str = productTypeService.findProductTypeStr();
+        modelAndView.addObject("selectOptionsStr", str);
+        return modelAndView;
+    }
+
+    /**
+     * 跳转到修改页面
+     *
+     * @param productTypeId
+     *
+     * @return
+     */
+    @RequestMapping("toUpdateProductType")
+    public ModelAndView toUpdateProductType(Integer productTypeId) {
+        ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
+        ProductType productType = productTypeService.getProductTypeById(productTypeId);
+        modelAndView.addObject("productType", productType);
+        String str = productTypeService.findProductTypeStr();
+        modelAndView.addObject("selectOptionsStr", str);
+        return modelAndView;
+    }
+
+    @RequestMapping("optionTreeWindow")
+    public ModelAndView optionTreeWindow() {
+        ModelAndView modelAndView = new ModelAndView("/jsp/productType/treeWindow");
+        String tree = productTypeService.findTree();
+        modelAndView.addObject("treeStr", tree);
+        return modelAndView;
+    }
+
     public void setProductTypeService(ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;
     }
