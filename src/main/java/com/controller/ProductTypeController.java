@@ -34,8 +34,7 @@ public class ProductTypeController {
         }
 
         if (Constant.IS_DEL.equals(isDel)) {//批量删除
-            success = productTypeService.removeProductType(productType_id);
-            modelAndView.addObject("suc", success ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
+            modelAndView.addObject("suc", productTypeService.removeProductType(productType_id));
         }
 
         DataModel<ProductType> dm = productTypeService.findList(pager, productType);
@@ -55,16 +54,6 @@ public class ProductTypeController {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeAdd");
         String str = productTypeService.findProductTypeStr();
         modelAndView.addObject("selectOptionsStr", str);
-        return modelAndView;
-    }
-
-    @RequestMapping("/addProductType")
-    public ModelAndView addProductType(ProductType productType) {
-        ModelAndView modelAndView = new ModelAndView("/jsp/productType/productypeAdd");
-        boolean addSuccess = productTypeService.saveProductType(productType);
-        String str = productTypeService.findProductTypeStr();
-        modelAndView.addObject("suc", addSuccess ? Constant.ADD_SUCCESS : Constant.ADD_FAILURE);
-        modelAndView.addObject("selectOptionStr", str);
         return modelAndView;
     }
 

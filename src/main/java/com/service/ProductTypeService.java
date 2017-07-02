@@ -30,7 +30,7 @@ public interface ProductTypeService {
 
     public boolean updateProductType(ProductType productType);
 
-    public boolean removeProductType(Integer[] productType_id);
+    public String removeProductType(Integer[] productType_id);
 
     public String findTree();
 

@@ -101,7 +101,8 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public boolean removeProductType(Integer[] productType_id) {
+    public String removeProductType(Integer[] productType_id) {
+        int num = 0;//记录成功删除的数量
         //TODO 超过 2 级会报错？
         if (productType_id != null && productType_id.length > 0) {
             for (Integer id : productType_id) {
@@ -109,12 +110,18 @@ public class ProductTypeServiceImpl implements ProductTypeService {
                 if (subProductTypeNum == 0) {// no sub product type
                     int productNum = productTypeDao.getProductNum(id);
                     if (productNum == 0) {// no product in this type
-                        productTypeDao.deleteByPrimaryKey(id);
+                        num += productTypeDao.deleteByPrimaryKey(id) > 0 ? 1 : 0;
                     }
                 }
             }
         }
-        return false;
+        if (num == productType_id.length) {
+            return Constant.REMOVE_SUCCESS;
+        } else if (num == 0) {
+            return Constant.REMOVE_FAILURE;
+        } else {
+            return Constant.REMOVE_SUCCESS_PART;
+        }
     }
 
     @Override

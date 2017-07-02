@@ -31,7 +31,7 @@
             if (cbNum > 0) {
                 if (window.confirm("确定删除？")) {
 
-                    document.getElementById("isDel").value = "del";
+                    document.getElementById("isDel").value = "true";
                     document.forms[0].submit();
                 }
             }

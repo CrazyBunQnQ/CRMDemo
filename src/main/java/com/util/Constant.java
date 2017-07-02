@@ -43,5 +43,7 @@ public class Constant {
 
     public static final String REMOVE_SUCCESS = "删除成功！";
 
+    public static final String REMOVE_SUCCESS_PART = "部分删除成功！包含子类别或产品的类型无法删除！";
+
     public static final String REMOVE_FAILURE = "删除失败！";
 }
