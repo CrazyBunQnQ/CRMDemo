@@ -24,8 +24,8 @@
                     }
                 }
             }
-
         }
+
         function toDel() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
@@ -33,10 +33,10 @@
 
                     document.getElementById("isDel").value = "del";
                     document.forms[0].submit();
-
                 }
             }
         }
+
         //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
         function checkBoxNum() {
             if ($("input[name='productType_id']:checked").length > 0) {
@@ -83,6 +83,7 @@
                 document.forms[0].submit();
             }
         }
+
         function prePage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -99,6 +100,7 @@
                 document.forms[0].submit();
             }
         }
+
         function firstPage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -106,6 +108,7 @@
                 document.forms[0].submit();
             }
         }
+
         function lastPage() {
             var hiddenPageNum = document.getElementById("hiddenPageNum");
             if ("" != hiddenPageNum.value) {
@@ -113,24 +116,30 @@
                 document.forms[0].submit();
             }
         }
+
         function submitForm() {
             document.forms[0].submit();
         }
+
         function resetForm() {
             document.forms[0].reset();
         }
+
         function exportExcel() {
             loadPopup_excel('导出Excel');
         }
+
         function openTreeWindow() {
             //window.open("optionTreeWidnow","_blank");
             window.location = "optionTreeWidnow";
         }
+
         //清除搜索区域内容
         function clearSearchArea() {
             $("#selectTable input").val("");
 
         }
+
         //更改“选择条目”的数目
         function updateNum() {
             var num = $("input[name='productType_id']:checked").length;
@@ -140,7 +149,6 @@
 
         //点击全选  checkbox的时候
         function toChange() {
-
             var num = $("#ids:checked").length;
             if (num == 0) {
                 $("input[name='productType_id']").attr("checked", false);
@@ -149,7 +157,6 @@
             }
             updateNum();
         }
-
     </script>
 </head>
 
