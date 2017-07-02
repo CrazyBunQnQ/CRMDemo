@@ -29,6 +29,14 @@
             }
         });
         function submitForm() {
+            if (document.getElementById("ptname").value.trim() === "") {
+                document.getElementById("errorInfo").innerHTML = "名称不能为空!"
+                return;
+            }
+            if (document.getElementById("ptcode").value.trim() === "") {
+                document.getElementById("errorInfo").innerHTML = "编码不能为空!"
+                return;
+            }
             document.getElementById("productTypeForm").submit();
         }
         function returnProductList() {
@@ -38,7 +46,7 @@
     </script>
 </head>
 <body STYLE='OVERFLOW:SCROLL;OVERFLOW-X:HIDDEN'>
-<form name="form1" method="post" action="addOrEditProductType" id="productTypeForm">
+<form name="form1" method="post" action="productType/addOrUpdateProductType" id="productTypeForm">
     <%-- <input type="hidden" name="edit_id" id="edit_id" value="<s:property value="edit_id"/>" /> --%>
     <input type="hidden" name="edit_id" id="edit_id" value="${productType.id }"/>
     <%-- <input type="hidden" name="createTime" id="createTime" value="${c_time}${companyLinkman.createTime}" /> --%>
@@ -83,10 +91,10 @@
                                    id="selectTable">
                                 <tr>
                                     <td width="10%">商品类别名称:</td>
-                                    <td width="37%"><input type="text" name="name" class="addCText"
+                                    <td width="37%"><input type="text" name="name" class="addCText" id="ptname"
                                                            value="${productType.name}"></td>
                                     <td width="10%" align="left">商品类别编码:</td>
-                                    <td width="42%"><input type="text" name="code" class="addCText"
+                                    <td width="42%"><input type="text" name="code" class="addCText" id="ptcode"
                                                            value="${todayStr}${productType.code}"></td>
                                     <td width="1%">&nbsp;</td>
                                 </tr>
