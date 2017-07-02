@@ -130,8 +130,7 @@
         }
 
         function openTreeWindow() {
-            //window.open("optionTreeWidnow","_blank");
-            window.location = "optionTreeWidnow";
+            window.location = "/productType/optionTreeWidnow";
         }
 
         //清除搜索区域内容
@@ -147,7 +146,7 @@
             $("#select_num2").html(num);
         }
 
-        //点击全选  checkbox的时候
+        //点击全选 checkbox 的时候
         function toChange() {
             var num = $("#ids:checked").length;
             if (num == 0) {
@@ -160,12 +159,16 @@
     </script>
 </head>
 
-
 <body>
 <form action="${contextPath }/productType/productTypeList" method="post" name="form1" id="form1">
     <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
+    <!--
+      选中导出所有  的时候  给隐藏域设置值为export_all
+      选中当前页的 给隐藏域设置值为 export_page
+      导出选中的 给隐藏域设置值为 export_selected
+     -->
     <input type="hidden" name="exportType" value="" id="exportType"/>
     <!-- </form>	 -->
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
@@ -207,7 +210,6 @@
                         </td>
                     </tr>
                 </table>
-
 
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="select_table">
                     <tr>
@@ -321,7 +323,8 @@
                                                     background="image/select_title_title.jpg"><strong>商品类别名称</strong>
                                                 </td>
                                                 <td width="29%" align="center"
-                                                    background="image/select_title_title.jpg"><strong>商品类别编码</strong><strong></strong>
+                                                    background="image/select_title_title.jpg">
+                                                    <strong>商品类别编码</strong><strong></strong>
                                                 </td>
                                                 <td width="21%" align="center"
                                                     background="image/select_title_title.jpg"><strong>上一级</strong>
@@ -334,11 +337,12 @@
                                             <c:forEach items="${rows}" var="productType">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-
                                                         <input type="checkbox" name="productType_id"
                                                                value="${productType.id}" onclick="updateNum();">
                                                     </td>
-                                                    <td>${productType.name}</td>
+                                                    <td>
+                                                        <a href="/productType/toUpdateProductType?productTypeId=${productType.id}">${productType.name}</a>
+                                                    </td>
                                                     <td align="center">${productType.code}</td>
                                                     <td align="center">
                                                             ${productType.fatherName}
@@ -461,13 +465,13 @@
                                             <option value="50"
                                                     <c:if test="${pager.pageSize==50}">selected="selected"</c:if>>50条
                                             </option>
-                                        </select></td>
+                                        </select>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                 </table>
-
             </td>
         </tr>
     </table>
