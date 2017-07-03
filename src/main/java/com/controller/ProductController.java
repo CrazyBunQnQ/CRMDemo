@@ -31,7 +31,7 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("/jsp/product/productList");
         boolean success = false;
 
-        if (exportType != null && "".equals(exportType.trim())) {
+        if (exportType != null && !"".equals(exportType.trim())) {
             success = productService.exportExcel(exportType, pager, product_id, product, response);
             modelAndView.addObject("suc", success ? Constant.EXPORT_SUCCESS : Constant.EXPORT_FAILURE);
             return modelAndView;
