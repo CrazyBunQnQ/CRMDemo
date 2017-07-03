@@ -3,8 +3,6 @@ package com.service;
 import com.bean.Product;
 import com.util.DataModel;
 import com.util.Pager;
-import lombok.*;
-import lombok.extern.log4j.Log4j;
 
 import javax.servlet.http.HttpServletResponse;
 

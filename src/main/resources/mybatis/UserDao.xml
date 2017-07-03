@@ -98,16 +98,16 @@
     </select>
     <select id="findUser" resultType="com.bean.User">
         SELECT
-            id,
-            name,
-            cnname,
-            password,
-            popedom,
-            status,
-            creator,
-            role_id         roleId,
-            group_id        groupId,
-            access_group_id accessGroupId
+        id,
+        name,
+        cnname,
+        password,
+        popedom,
+        status,
+        creator,
+        role_id roleId,
+        group_id groupId,
+        access_group_id accessGroupId
         FROM s_user
         WHERE name = #{name} AND password = #{password}
     </select>

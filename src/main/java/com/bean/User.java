@@ -79,8 +79,8 @@ public class User {
      * 现住址
      */
     private String nowaddress;
-    /**现住址电话
-     *
+    /**
+     * 现住址电话
      */
     private String nowtelephone;
     /**

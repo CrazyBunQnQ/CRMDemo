@@ -60,7 +60,7 @@
     <insert id="insert" parameterType="com.bean.RoleWithBLOBs">
         INSERT INTO s_role (id, name, remark, popedom)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR},
-                #{popedom,jdbcType=LONGVARCHAR})
+        #{popedom,jdbcType=LONGVARCHAR})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bean.RoleWithBLOBs">
@@ -113,9 +113,9 @@
 
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.RoleWithBLOBs">
         UPDATE s_role
-        SET name    = #{name,jdbcType=VARCHAR},
-            remark  = #{remark,jdbcType=LONGVARCHAR},
-            popedom = #{popedom,jdbcType=LONGVARCHAR}
+        SET name = #{name,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=LONGVARCHAR},
+        popedom = #{popedom,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 

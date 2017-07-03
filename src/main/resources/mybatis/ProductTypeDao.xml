@@ -76,19 +76,19 @@
     </select>
     <select id="findRootProductType" resultType="com.bean.ProductType">
         SELECT
-            id,
-            name,
-            code,
-            remark
+        id,
+        name,
+        code,
+        remark
         FROM b_product_type
         WHERE pid = 0
     </select>
     <select id="findSubProductType" resultType="com.bean.ProductType">
         SELECT
-            id,
-            name,
-            code,
-            remark
+        id,
+        name,
+        code,
+        remark
         FROM b_product_type
         WHERE pid = #{pid}
     </select>
@@ -104,10 +104,10 @@
     </select>
     <select id="listAllProductType" resultType="com.bean.ProductType">
         SELECT
-            id,
-            name,
-            code,
-            remark
+        id,
+        name,
+        code,
+        remark
         FROM b_product_type
     </select>
     <select id="listSelectedProductType" resultType="com.bean.ProductType">

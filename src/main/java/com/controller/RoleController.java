@@ -35,9 +35,9 @@ public class RoleController {
         }
 
         if (Constant.IS_DEL.equals(isDel)) {
-            for (int i:role_id) {
+            for (int i : role_id) {
 //                log.info("role ids: " + role_id.length);
-                log.info("role_id:" + i) ;
+                log.info("role_id:" + i);
             }
             roleService.removeRoleByIds(role_id);
         }
