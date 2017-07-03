@@ -5,7 +5,6 @@ import com.dao.ProductDao;
 import com.service.ProductService;
 import com.util.DataModel;
 import com.util.Pager;
-import lombok.*;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
