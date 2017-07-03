@@ -27,13 +27,7 @@ public class RoleServiceImpl implements RoleService {
         DataModel<Role> dm = new DataModel<Role>();
         int total = roleDao.countRole(role.getName());
 
-        int num = (pager.getPage()-1) * pager.getPageSize();//理论上的总数
-
-        if (total < pager.getPageSize()) {
-            pager.setPage(1);
-        } else if (total > pager.getPageSize() && total < num) {
-            pager.setPage(num / total + 1);
-        }
+        pager.fixPage(total);
 
         List<Role> rows = roleDao.selectRoleByPage(role.getName(), pager.getFrom(), pager.getPageSize());
         dm.setRows(rows);
