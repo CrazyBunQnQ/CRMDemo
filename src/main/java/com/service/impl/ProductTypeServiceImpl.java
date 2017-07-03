@@ -32,11 +32,14 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public DataModel<ProductType> findList(Pager pager, ProductType productType) {
         DataModel<ProductType> dataModel = new DataModel<>();
-        List<ProductType> rows = productTypeDao.findProductTypeByPage(pager.getFrom(), pager.getPageSize(), productType);
         /**
          * 总条数
          */
         int total = productTypeDao.countProductType(productType);
+
+        pager.fixPage(total);
+
+        List<ProductType> rows = productTypeDao.findProductTypeByPage(pager.getFrom(), pager.getPageSize(), productType);
         pager.setTotalRecord(total);
         dataModel.setRows(rows);
         dataModel.setPager(pager);

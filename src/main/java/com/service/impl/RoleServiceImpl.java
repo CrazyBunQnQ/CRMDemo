@@ -25,9 +25,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public DataModel<Role> listRoles(Role role, Pager pager) {
         DataModel<Role> dm = new DataModel<Role>();
+        int total = roleDao.countRole(role.getName());
+
+        pager.fixPage(total);
+
         List<Role> rows = roleDao.selectRoleByPage(role.getName(), pager.getFrom(), pager.getPageSize());
         dm.setRows(rows);
-        int total = roleDao.countRole(role.getName());
         pager.setTotalRecord(total);
         dm.setPager(pager);
         return dm;
