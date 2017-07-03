@@ -22,6 +22,9 @@ public class PopedomController {
     public ModelAndView getPopedomTreeStr() {
         ModelAndView modelAndView = new ModelAndView();
 
+        String treeStr = popedomService.getTree();
+
+        modelAndView.addObject("treeStr", treeStr);
         modelAndView.setViewName("/jsp/role/popedomSet");
         return modelAndView;
     }

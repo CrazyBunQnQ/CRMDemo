@@ -29,17 +29,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Autowired
     private ProductTypeDao productTypeDao;
 
-    /*@Override
-    public DataModel<ProductType> findList(Pager pager) {
-        DataModel<ProductType> dataModel = new DataModel<ProductType>();
-        List<ProductType> rows = productTypeDao.findProductTypeByPage(pager.getFrom(), pager.getPageSize());
-        dataModel.setRows(rows);
-        int total = productTypeDao.countProductType();
-        pager.setTotalRecord(total);
-        dataModel.setPager(pager);
-        return dataModel;
-    }*/
-
     @Override
     public DataModel<ProductType> findList(Pager pager, ProductType productType) {
         DataModel<ProductType> dataModel = new DataModel<>();

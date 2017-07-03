@@ -9,5 +9,7 @@ import java.util.List;
  * @auther CrazyBunQnQ
  */
 public interface PopedomService {
+    public String getTree();
+
     public List<Popedom> listPopedom();
 }
