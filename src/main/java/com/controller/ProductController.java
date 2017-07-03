@@ -45,7 +45,8 @@ public class ProductController {
         DataModel<Product> dataModel = productService.listProduct(pager, product);
 
         List<Product> rows = dataModel.getRows();
-        modelAndView.addObject("rows", dataModel.getPager());
+        modelAndView.addObject("rows", rows);
+        modelAndView.addObject("pager", dataModel.getPager());
         return modelAndView;
     }
 }

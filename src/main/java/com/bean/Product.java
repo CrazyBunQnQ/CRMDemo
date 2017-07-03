@@ -87,6 +87,8 @@ public class Product {
      * 单价
      */
     private Double price;
+    private Double lowerPrice;
+    private Double upperPrice;
     /**
      * 采购价
      */
