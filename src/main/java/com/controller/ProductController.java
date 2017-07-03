@@ -28,7 +28,7 @@ public class ProductController {
 
     @RequestMapping("productList")
     public ModelAndView listProduct(Pager pager, String isDel, Integer[] product_id, Product product, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView("/jsp/product/productTypeList");
+        ModelAndView modelAndView = new ModelAndView("/jsp/product/productList");
         boolean success = false;
 
         if (exportType != null && "".equals(exportType.trim())) {

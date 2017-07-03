@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @version 2017/7/3.
@@ -24,9 +25,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public DataModel<Product> listProduct(Pager pager, Product product) {
-        DataModel<DataModel> dataModel = new DataModel<>();
+        DataModel<Product> dataModel = new DataModel<Product>();
 
-        return null;
+        int total = productDao.countProduct(product);
+        pager.fixPage(total);
+        List<Product> rows = productDao.listProductByPage(pager.getFrom(), pager.getPageSize(), product);
+
+        pager.setTotalRecord(total);
+        dataModel.setRows(rows);
+        dataModel.setPager(pager);
+        return dataModel;
     }
 
     @Override

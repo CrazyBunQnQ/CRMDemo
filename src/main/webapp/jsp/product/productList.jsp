@@ -194,8 +194,8 @@
                                                class="inputTextStyle"></td>
                                     <td width="14%">单价:</td>
                                     <td width="15%">从
-                                        <input type="text" name="lowerPrice" value="${product.lowerPrice }" size="5"/> 到
-                                        <input type="text" name="upperPrice" value="${product.upperPrice }" size="5"/>
+                                        <%--<input type="text" name="lowerPrice" value="${product.lowerPrice }" size="5"/> 到--%>
+                                        <%--<input type="text" name="upperPrice" value="${product.upperPrice }" size="5"/>--%>
                                     </td>
                                     <td width="7%">&nbsp;</td>
                                     <td width="7%" align="left">&nbsp;</td>

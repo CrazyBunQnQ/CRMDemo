@@ -1,6 +1,9 @@
 package com.dao;
 
 import com.bean.Product;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @version 2017/6/29.
@@ -20,4 +23,8 @@ public interface ProductDao {
     int updateByPrimaryKeyWithBLOBs(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    List<Product> listProductByPage(@Param("from") int from, @Param("pageSize") int pageSize, @Param("product") Product product);
+
+    int countProduct(@Param("product") Product product);
 }
