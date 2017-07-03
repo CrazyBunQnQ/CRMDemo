@@ -203,7 +203,7 @@
                 autoclose: false,
                 drag: false,
                 afterClick: function (node) {
-                    window.location.href = "getPopedomTreeStr?id=" + node.attr("id") + "&role_id=" + ${role.id} +"&timestemp=" + (new Date()).valueOf();
+                    window.location.href = "/popedom/getPopedomTreeStr?id=" + node.attr("id") + "&role_id=" + ${role_id} +"&timestemp=" + (new Date()).valueOf();
                 },
                 afterDblClick: function (node) {
                     //alert("text-"+$('span:first',node).text());
@@ -216,6 +216,7 @@
                 //,docToFolderConvert:true
             });
         });
+
         function chgUrl(url) {
             var timestamp = (new Date()).valueOf();
             url = url.substring(0, 17);
@@ -226,11 +227,12 @@
             }
             return url;
         }
+
         function submitForm() {
             document.forms[0].submit();
         }
-        function selectModel(code) {
 
+        function selectModel(code) {
             var objs = document.getElementsByTagName("input");
             if (code.indexOf("_") == -1) {
                 for (var i = 0; i < objs.length; i++) {
@@ -259,9 +261,7 @@
                             objs[i].checked = o.checked;
                         }
                     }
-
                 }
-
             }
         }
     </script>
@@ -273,12 +273,36 @@
         <tr>
             <td width="20%" valign="top">${treeStr}</td>
             <td width="80%" valign="top">
-                <img alt="" src="image/s10.gif" onclick="submitForm()"><img alt="" src="image/genmulu.gif"
-                                                                            onclick="javascript:window.location='getPopedomTreeStr?role_id=${role_id}'"><img
-                    alt="" src="image/guanbi.gif" onclick="window.close();">
-                <br/><span style="color:#ff0000; font-size:12px;float:left;">${mess}</span>
-
-                ${tableStr}
+                <img alt="" src="image/s10.gif" onclick="submitForm()">
+                <img alt="" src="image/genmulu.gif"
+                     onclick="javascript:window.location='getPopedomTreeStr?role_id=${role_id}'">
+                <img alt="" src="image/guanbi.gif" onclick="window.close();">
+                <br/>
+                <span style="color:#ff0000; font-size:12px;float:left;">${mess}</span>
+                <div id="drag_container">
+                    ${tableStr}
+                    <ul>
+                        <li><span>
+                            <input type="checkbox" id="1_11">sfasfsfa
+                        </span></li>
+                        <li><span>
+                            <input type="checkbox" id="2_22">sfasfsfa
+                        </span>
+                            <ul>
+                                <li><span>
+                                <input type="checkbox" id="code_pop">sfasdfagasgs
+                                    s=code
+                            </span></li>
+                            </ul>
+                        </li>
+                        <li><span>
+                            <input type="checkbox" id="3_33">sfasfsfa
+                        </span></li>
+                        <li><span>
+                            <input type="checkbox" id="4_44">sfasfsfa
+                        </span></li>
+                    </ul>
+                </div>
             </td>
         </tr>
     </table>

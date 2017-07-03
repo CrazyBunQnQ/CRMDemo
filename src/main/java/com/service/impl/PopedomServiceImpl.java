@@ -1,8 +1,11 @@
 package com.service.impl;
 
 import com.bean.Popedom;
+import com.bean.Role;
 import com.dao.PopedomDao;
+import com.dao.RoleDao;
 import com.service.PopedomService;
+import lombok.experimental.var;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,9 @@ import java.util.List;
 public class PopedomServiceImpl implements PopedomService {
     @Autowired
     private PopedomDao popedomDao;
+
+    @Autowired
+    private RoleDao roleDao;
 
     @Override
     public String getTree() {
@@ -59,5 +65,62 @@ public class PopedomServiceImpl implements PopedomService {
     public List<Popedom> listPopedom() {
         List<Popedom> list = new ArrayList<Popedom>();
         return list;
+    }
+
+    public List<Popedom> listPopedomByRole() {
+//        List<Popedom> list = popedomDao.listSubPopedomByRole();
+        return null;
+    }
+
+    @Override
+    public String getPopedomByRoleId(Integer id) {
+        return roleDao.selectByPrimaryKey(id).getPopedom();
+    }
+
+    /*function selectModel(code) {
+        var objs = document.getElementsByTagName("input");
+        if (code.indexOf("_") == -1) {
+            for (var i = 0; i < objs.length; i++) {
+                if (objs[i].id.indexOf("_") != -1) {
+                    var s = objs[i].id.substring(0, objs[i].id.indexOf("_"));
+                    if (code == s) {
+                        var o = document.getElementById(code + "pop");
+                        objs[i].checked = o.checked;
+                    }
+                }
+
+            }
+        } else {
+            selectSubModel(code);
+        }
+    }*/
+    /*function selectSubModel(code) {
+        var objs = document.getElementsByTagName("input");
+        for (var i = 0; i < objs.length; i++) {
+            if (objs[i].id.lastIndexOf("_") != -1) {
+                var s = objs[i].id.substring(0, objs[i].id.lastIndexOf("_"));
+                if (s.indexOf("_") != -1) {
+                    s = objs[i].id.substring(0, objs[i].id.lastIndexOf("_"));
+                    if (code == s) {
+                        var o = document.getElementById(code + "pop");
+                        objs[i].checked = o.checked;
+                    }
+                }
+            }
+        }
+    }*/
+
+    @Override
+    public String getDrag(Integer role_id, Integer id) {
+        List<Popedom> list = popedomDao.listSubPopedom(id == null ? 0 : id);
+        StringBuffer checkedOptionStr = new StringBuffer("<ul>");
+        if (list != null && list.size() > 0) {
+            for (Popedom p : list) {
+                checkedOptionStr.append("<li id><span><input type='checkbox' id='" + p.getCode() + "_" + p.getId() + "'>" + p.getName() + "</span>");
+                checkedOptionStr.append(getDrag(role_id, p.getId()));
+                checkedOptionStr.append("</li>");
+            }
+        }
+        return checkedOptionStr.append("</ul>").toString();
     }
 }

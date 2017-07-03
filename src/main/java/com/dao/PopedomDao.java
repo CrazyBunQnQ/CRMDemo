@@ -34,6 +34,8 @@ public interface PopedomDao {
      */
     List<Popedom> listSubPopedom(@Param("pid") Integer pid);
 
+    List<Popedom> listSubPopedomByRole(@Param("role_id") Integer role_id);
+
     int updateByPrimaryKeySelective(Popedom record);
 
     int updateByPrimaryKeyWithBLOBs(Popedom record);

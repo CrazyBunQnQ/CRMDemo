@@ -51,6 +51,9 @@
         FROM s_popedom
         WHERE pid = #{pid}
     </select>
+    <select id="listSubPopedomByRole" resultType="com.bean.Popedom">
+
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM s_popedom
