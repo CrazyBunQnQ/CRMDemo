@@ -31,7 +31,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public DataModel<ProductType> findList(Pager pager, ProductType productType) {
-        DataModel<ProductType> dataModel = new DataModel<>();
+        DataModel<ProductType> dataModel = new DataModel<ProductType>();
         /**
          * 总条数
          */

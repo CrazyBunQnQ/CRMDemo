@@ -38,7 +38,7 @@ public class ProductController {
         }
 
         if (Constant.IS_DEL.equals(isDel)) {
-            modelAndView.addObject("suc", productService.removeProduct(product_id));
+            modelAndView.addObject("suc", productService.removeProductByIds(product_id) ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
             return modelAndView;
         }
 

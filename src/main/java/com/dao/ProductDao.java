@@ -27,4 +27,6 @@ public interface ProductDao {
     List<Product> listProductByPage(@Param("from") int from, @Param("pageSize") int pageSize, @Param("product") Product product);
 
     int countProduct(@Param("product") Product product);
+
+    int removeByPrimaryKeys(@Param("ids") Integer[] ids);
 }

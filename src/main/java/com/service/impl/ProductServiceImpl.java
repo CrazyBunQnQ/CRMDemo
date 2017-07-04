@@ -37,8 +37,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Object removeProduct(Integer[] product_id) {
-        return null;
+    public boolean removeProductByIds(Integer[] product_id) {
+        return productDao.removeByPrimaryKeys(product_id) > 0;
     }
 
     @Override
