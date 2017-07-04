@@ -107,6 +107,11 @@ public class ProductTypeController {
         return modelAndView;
     }
 
+    @RequestMapping("getSelectOptionsStr")
+    public String getProductTypeStr() {
+        return productTypeService.findProductTypeStr();
+    }
+
     public void setProductTypeService(ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;
     }
