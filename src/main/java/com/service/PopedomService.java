@@ -9,5 +9,12 @@ import java.util.List;
  * @auther CrazyBunQnQ
  */
 public interface PopedomService {
+
+    public String getPopedomByRoleId(Integer id);
+
+    public String getTree();
+
     public List<Popedom> listPopedom();
+
+    String getDrag(Integer role_id, Integer id);
 }

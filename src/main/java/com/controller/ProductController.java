@@ -28,24 +28,25 @@ public class ProductController {
 
     @RequestMapping("productList")
     public ModelAndView listProduct(Pager pager, String isDel, Integer[] product_id, Product product, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = new ModelAndView("/jsp/product/productTypeList");
+        ModelAndView modelAndView = new ModelAndView("/jsp/product/productList");
         boolean success = false;
 
-        if (exportType != null && "".equals(exportType.trim())) {
+        if (exportType != null && !"".equals(exportType.trim())) {
             success = productService.exportExcel(exportType, pager, product_id, product, response);
             modelAndView.addObject("suc", success ? Constant.EXPORT_SUCCESS : Constant.EXPORT_FAILURE);
             return modelAndView;
         }
 
         if (Constant.IS_DEL.equals(isDel)) {
-            modelAndView.addObject("suc", productService.removeProduct(product_id));
+            modelAndView.addObject("suc", productService.removeProductByIds(product_id) ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
             return modelAndView;
         }
 
         DataModel<Product> dataModel = productService.listProduct(pager, product);
 
         List<Product> rows = dataModel.getRows();
-        modelAndView.addObject("rows", dataModel.getPager());
+        modelAndView.addObject("rows", rows);
+        modelAndView.addObject("pager", dataModel.getPager());
         return modelAndView;
     }
 }

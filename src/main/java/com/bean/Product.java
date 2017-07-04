@@ -16,6 +16,10 @@ public class Product {
      */
     private Integer ptypeId;
     /**
+     * 类别名称
+     */
+    private String productTypeName;
+    /**
      * 排序相关（序号）
      */
     private Integer sort;
@@ -83,6 +87,8 @@ public class Product {
      * 单价
      */
     private Double price;
+    private Double lowerPrice;
+    private Double upperPrice;
     /**
      * 采购价
      */

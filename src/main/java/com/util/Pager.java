@@ -50,4 +50,19 @@ public class Pager implements Serializable {
         this.totalRecord = totalRecord;
         totalPage = (totalRecord % pageSize == 0) ? (totalRecord / pageSize) : (totalRecord / pageSize + 1);
     }
+
+    /**
+     * 修正当前页数，避免查询结果为空
+     *
+     * @param total
+     */
+    public void fixPage(int total) {
+        int num = (page - 1) * pageSize;//理论上的总数
+
+        if (total < pageSize) {
+            setPage(1);
+        } else if (total > pageSize && total < num) {
+            setPage(num / total + 1);
+        }
+    }
 }

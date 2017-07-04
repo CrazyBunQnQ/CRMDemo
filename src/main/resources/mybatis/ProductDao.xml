@@ -59,10 +59,76 @@
         from b_product
         where id = #{id,jdbcType=INTEGER}
     </select>
+    <select id="listProductByPage" resultType="com.bean.Product">
+        SELECT
+        p.id,
+        p.name,
+        p.code,
+        pt.name,
+        p.model,
+        p.spec,
+        p.product_size,
+        p.stock,
+        p.price
+        FROM b_product p, b_product_type pt
+        WHERE p.ptype_id = pt.id
+        <if test="product.name!=null and product.name!=''">
+            AND p.name LIKE CONCAT('%', #{product.name}, '%')
+        </if>
+        <if test="product.code!=null and product.code!=''">
+            AND p.code LIKE CONCAT('%', #{product.code}, '%')
+        </if>
+        <if test="product.pycode!=null and product.pycode!=''">
+            AND p.pycode LIKE CONCAT('%', #{product.pycode}, '%')
+        </if>
+        <if test="product.productTypeName!=null and product.productTypeName!=''">
+            AND pt.name LIKE CONCAT('%', #{product.productTypeName}, '%')
+        </if>
+        <if test="product.provider!=null and product.provider!=''">
+            AND p.provider LIKE CONCAT('%', #{product.provider}, '%')
+        </if>
+        <if test="product.lowerPrice!=null and product.lowerPrice!=''">
+            AND p.price > #{product.lowerPrice}
+        </if>
+        <if test="product.upperPrice!=null and product.upperPrice!=''">
+            AND #{product.upperPrice} > p.price
+        </if>
+        LIMIT #{from}, #{pageSize}
+    </select>
+    <select id="countProduct" resultType="java.lang.Integer">
+        SELECT COUNT(p.id) FROM b_product p, b_product_type pt WHERE p.ptype_id=pt.id
+        <if test="product.name!=null and product.name!=''">
+            AND p.name LIKE CONCAT('%', #{product.name}, '%')
+        </if>
+        <if test="product.code!=null and product.code!=''">
+            AND p.code LIKE CONCAT('%', #{product.code}, '%')
+        </if>
+        <if test="product.pycode!=null and product.pycode!=''">
+            AND p.pycode LIKE CONCAT('%', #{product.pycode}, '%')
+        </if>
+        <if test="product.productTypeName!=null and product.productTypeName!=''">
+            AND pt.name LIKE CONCAT('%', #{product.productTypeName}, '%')
+        </if>
+        <if test="product.provider!=null and product.provider!=''">
+            AND p.provider LIKE CONCAT('%', #{product.provider}, '%')
+        </if>
+        <if test="product.lowerPrice!=null and product.lowerPrice!=''">
+            AND p.price > #{product.lowerPrice}
+        </if>
+        <if test="product.upperPrice!=null and product.upperPrice!=''">
+            AND #{product.upperPrice} > p.price
+        </if>
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM b_product
         WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="removeByPrimaryKeys">
+        DELETE FROM b_product WHERE id IN
+        <foreach collection="ids" item="item" separator="," open="(" close=")">
+            #{item, jdbcType=INTEGER}
+        </foreach>
     </delete>
 
     <insert id="insert" parameterType="com.bean.Product">

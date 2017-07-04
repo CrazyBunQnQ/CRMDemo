@@ -30,7 +30,7 @@
             if (cbNum > 0) {
                 if (window.confirm("确定删除？")) {
 
-                    document.getElementById("isDel").value = "del";
+                    document.getElementById("isDel").value = "true";
                     document.forms[0].submit();
 
                 }
@@ -226,6 +226,10 @@
                         <td height="5" valign="top"></td>
                     </tr>
                     <tr>
+                        <td id="errorInfo" style="font-size:12px;color:red;">${suc}</td>
+                        </td>
+                    </tr>
+                    <tr>
                         <td height="28" valign="top">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" id="selectTable_content">
                                 <tr>
@@ -263,8 +267,9 @@
                                                     第${sta.count}页
                                                 </option>
                                             </c:forEach>
-                                        </select> <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
-                                                          id="_pageSize_up">
+                                        </select>
+                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
+                                                id="_pageSize_up">
                                             <option value="5"
                                                     <c:if test="${pager.pageSize==5}">selected="selected"</c:if>>5条
                                             </option>
@@ -298,7 +303,8 @@
                                             <option value="50"
                                                     <c:if test="${pager.pageSize==50}">selected="selected"</c:if>>50条
                                             </option>
-                                        </select></td>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" bgcolor="#f2faff">
@@ -358,7 +364,7 @@
                                                     <td align="center">${bproduct.price}</td>
                                                 </tr>
                                             </s:iterator> --%>
-                                            <c:forEach items="${productList}" var="product">
+                                            <c:forEach items="${rows}" var="product">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
                                                         <input type="checkbox" name="product_id" value="${product.id}"

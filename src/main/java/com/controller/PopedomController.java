@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.bean.Role;
 import com.service.PopedomService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,15 @@ public class PopedomController {
     private PopedomService popedomService;
 
     @RequestMapping("getPopedomTreeStr")
-    public ModelAndView getPopedomTreeStr() {
+    public ModelAndView getPopedomTreeStr(Integer role_id, Integer id) {
         ModelAndView modelAndView = new ModelAndView();
 
+        String treeStr = popedomService.getTree();
+        String dragStr = popedomService.getDrag(role_id, id);
+        String popedom = popedomService.getPopedomByRoleId(role_id);
+
+        modelAndView.addObject("treeStr", treeStr);
+        modelAndView.addObject("tableStr", dragStr);
         modelAndView.setViewName("/jsp/role/popedomSet");
         return modelAndView;
     }

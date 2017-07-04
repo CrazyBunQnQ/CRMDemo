@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public interface ProductService {
     DataModel<Product> listProduct(Pager pager, Product product);
 
-    Object removeProduct(Integer[] product_id);
+    boolean removeProductByIds(Integer[] product_id);
 
     boolean exportExcel(String exportType, Pager pager, Integer[] product_id, Product product, HttpServletResponse response);
 }
