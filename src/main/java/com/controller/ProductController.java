@@ -48,4 +48,12 @@ public class ProductController {
         modelAndView.addObject("pager", dataModel.getPager());
         return modelAndView;
     }
+
+    @RequestMapping("/toAddProduct")
+    public ModelAndView toAddProduct() {
+        ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
+//        String str = productService.getProductStr();
+//        modelAndView.addObject("")
+        return modelAndView;
+    }
 }
