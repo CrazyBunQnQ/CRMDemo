@@ -39,7 +39,6 @@ public class ProductController {
 
         if (Constant.IS_DEL.equals(isDel)) {
             modelAndView.addObject("suc", productService.removeProductByIds(product_id) ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
-            return modelAndView;
         }
 
         DataModel<Product> dataModel = productService.listProduct(pager, product);
