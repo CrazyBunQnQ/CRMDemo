@@ -2,6 +2,7 @@ package com.controller;
 
 import com.bean.Product;
 import com.service.ProductService;
+import com.service.ProductTypeService;
 import com.util.Constant;
 import com.util.DataModel;
 import com.util.Pager;
@@ -25,6 +26,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductTypeService productTypeService;
 
     @RequestMapping("productList")
     public ModelAndView listProduct(Pager pager, String isDel, Integer[] product_id, Product product, String exportType, HttpServletResponse response) {
@@ -54,6 +58,11 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
 //        String str = productService.getProductStr();
 //        modelAndView.addObject("")
+        String productTypeOption = productTypeService.findProductTypeStr();
+        log.error(productTypeOption);
+        modelAndView.addObject("selectOptionsStr", productTypeOption);
         return modelAndView;
     }
+
+//    @RequestMapping("/")
 }

@@ -21,7 +21,7 @@
 
         jQuery(document).ready(function () {
             //加载商品类别(下拉菜单)
-            loadProductTypes();
+//            loadProductTypes();
 
             $('#createTime').simpleDatepicker({startdate: 1960, enddate: 2060});
 
@@ -79,17 +79,6 @@
     </script>
 
     <script type="text/javascript">
-        function loadProductTypes() {
-            $.ajax({
-                url: "productType/getSelectOptionsStr",
-                type: "post",
-                dataType: "json",
-                success: function (data) {
-                    $("#product_type").html(data.selectOptionsStr);
-                }
-            });
-        }
-
         function submitForm() {
 
             if ($('#time1').val() == "点击显示时间列表") {
@@ -230,8 +219,9 @@
                                     <td width="7%" align="left">商品类别:</td>
                                     <td width="42%">
                                         <select name="ptypeId" class="addCText" id="product_type">
-                                            <option value="1">/</option>
-
+                                            <option value="0">/</option>
+                                            ${selectOptionsStr}
+                                            <%--<option value='1'>电器</option><option value='2'>&nbsp;&nbsp;电冰箱<option><option value='3'>&nbsp;&nbsp;洗衣机<option><option value='4'>&nbsp;&nbsp;&nbsp;&nbsp;滚筒洗衣机3<option><option value='6'>&nbsp;&nbsp;&nbsp;&nbsp;波轮洗衣机<option><option value='11'>&nbsp;&nbsp;电视<option><option value='12'>&nbsp;&nbsp;&nbsp;&nbsp;黑白电视<option><option value='13'>&nbsp;&nbsp;&nbsp;&nbsp;液晶电视<option><option value='24'>&nbsp;&nbsp;电脑<option><option value='25'>&nbsp;&nbsp;&nbsp;&nbsp;<option><option value='26'>&nbsp;&nbsp;&nbsp;&nbsp;<option><option value='7'>服装</option><option value='8'>&nbsp;&nbsp;男装<option><option value='9'>&nbsp;&nbsp;女装<option><option value='10'>&nbsp;&nbsp;童装<option><option value='16'>桌子</option><option value='23'>&nbsp;&nbsp;666<option><option value='27'>家具</option>--%>
                                         </select>
                                     </td>
                                     <td width="0%">&nbsp;</td>
