@@ -128,7 +128,7 @@
 
         function updateNum() {
             var num = $("input[name='product_id']:checked").length;
-            $("#select_num").html(num);
+            $("#select_num1").html(num);
             $("#select_num2").html(num);
         }
 
