@@ -16,4 +16,8 @@ public interface ProductService {
     boolean removeProductByIds(Integer[] product_id);
 
     boolean exportExcel(String exportType, Pager pager, Integer[] product_id, Product product, HttpServletResponse response);
+
+    boolean saveProduct(Product product);
+
+    boolean updateProduct(Product product);
 }

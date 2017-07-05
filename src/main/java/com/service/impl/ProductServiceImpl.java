@@ -42,6 +42,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean saveProduct(Product product) {
+        return productDao.insertSelective(product) > 0;
+    }
+
+    @Override
+    public boolean updateProduct(Product product) {
+        return productDao.updateByPrimaryKey(product) > 0;
+    }
+
+    @Override
     public boolean exportExcel(String exportType, Pager pager, Integer[] product_id, Product product, HttpServletResponse response) {
         return false;
     }

@@ -69,11 +69,17 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
         log.error(product.toString());
         boolean sussess = false;
-        String selectOptionsStr;
         if (edit_id == null ) {
-//            sussess = productService.saveProduct(product);
+            sussess = productService.saveProduct(product);
+            modelAndView.addObject("suc", sussess?Constant.ADD_SUCCESS:Constant.ADD_FAILURE);
+        } else {
+            product.setId(edit_id);
+            sussess = productService.updateProduct(product);
+            modelAndView.addObject("suc", sussess?Constant.UPDATE_SUCCESS:Constant.UPDATE_FAILURE);
         }
 
+        String selectOptionsStr = productTypeService.findProductTypeStr();
+        modelAndView.addObject("selectOptionStr", selectOptionsStr);
         return modelAndView;
     }
 

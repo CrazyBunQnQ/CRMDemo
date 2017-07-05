@@ -6,9 +6,9 @@
         <result column="ptype_id" jdbcType="INTEGER" property="ptypeId"/>
         <result column="sort" jdbcType="INTEGER" property="sort"/>
         <result column="creater" jdbcType="VARCHAR" property="creater"/>
-        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="updater" jdbcType="VARCHAR" property="updater"/>
-        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
         <result column="status" jdbcType="CHAR" property="status"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -145,9 +145,9 @@
         time1, time2, remark
         )
         VALUES (#{id,jdbcType=INTEGER}, #{ptypeId,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER},
-        #{creater,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+        #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
         #{updater,jdbcType=VARCHAR},
-        #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR},
+        #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR},
         #{code,jdbcType=VARCHAR},
         #{name,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{spec,jdbcType=VARCHAR},
         #{unit,jdbcType=VARCHAR},
@@ -181,13 +181,13 @@
             <if test="creater != null">
                 creater,
             </if>
-            <if test="createtime != null">
+            <if test="createTime != null">
                 createTime,
             </if>
             <if test="updater != null">
                 updater,
             </if>
-            <if test="updatetime != null">
+            <if test="updateTime != null">
                 updateTime,
             </if>
             <if test="status != null">
@@ -282,14 +282,14 @@
             <if test="creater != null">
                 #{creater,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                #{createtime,jdbcType=TIMESTAMP},
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="updater != null">
                 #{updater,jdbcType=VARCHAR},
             </if>
-            <if test="updatetime != null">
-                #{updatetime,jdbcType=TIMESTAMP},
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
             </if>
             <if test="status != null">
                 #{status,jdbcType=CHAR},
@@ -384,14 +384,14 @@
             <if test="creater != null">
                 creater = #{creater,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                createTime = #{createtime,jdbcType=TIMESTAMP},
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="updater != null">
                 updater = #{updater,jdbcType=VARCHAR},
             </if>
-            <if test="updatetime != null">
-                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
             </if>
             <if test="status != null">
                 status = #{status,jdbcType=CHAR},
@@ -480,9 +480,9 @@
         SET ptype_id = #{ptypeId,jdbcType=INTEGER},
         sort = #{sort,jdbcType=INTEGER},
         creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
         updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
         status = #{status,jdbcType=CHAR},
         code = #{code,jdbcType=VARCHAR},
         name = #{name,jdbcType=VARCHAR},
@@ -517,9 +517,9 @@
         SET ptype_id = #{ptypeId,jdbcType=INTEGER},
         sort = #{sort,jdbcType=INTEGER},
         creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
         updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
         status = #{status,jdbcType=CHAR},
         code = #{code,jdbcType=VARCHAR},
         name = #{name,jdbcType=VARCHAR},
