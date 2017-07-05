@@ -54,16 +54,16 @@
 
             if ('' != '${product.createTimeStr}') {
                 $('#createTime').val('${product.createTimeStr}');
-            <%-- } else if ('' != '${c_time}') {
-                $('#createTime').val('${c_time}'); --%>
+                <%-- } else if ('' != '${c_time}') {
+                    $('#createTime').val('${c_time}'); --%>
             } else {
                 $('#createTime').val('点击显示时间列表');
             }
 
             if ('' != '${product.updateTimeStr}') {
                 $('#updateTime').val('${product.updateTimeStr}');
-            <%-- } else if ('' != '${c_time}') {
-                $('#updateTime').val('${c_time}'); --%>
+                <%-- } else if ('' != '${c_time}') {
+                    $('#updateTime').val('${c_time}'); --%>
             } else {
                 $('#updateTime').val('无');
             }
@@ -175,7 +175,7 @@
 </head>
 <body onload="initPic();">
 <form name="form1" method="post" action="product/addOrUpdateProduct" id="productForm" enctype="multipart/form-data">
-     <input type="hidden" name="edit_id" id="edit_id" value="${product.id}" />
+    <input type="hidden" name="edit_id" id="edit_id" value="${product.id}"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
             <td height="26" width="100%">
@@ -402,11 +402,13 @@
                                 <tr>
                                     <td>自定时间1:</td>
                                     <td>
-                                        <input type="text" name="time1Str" id="time1" class="addTimeInit" value="点击显示时间列表" readonly="readonly">
+                                        <input type="text" name="time1Str" id="time1" class="addTimeInit"
+                                               value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td align="left">自定时间2:</td>
                                     <td>
-                                        <input type="text" name="time2Str" id="time2" class="addTimeInit" value="点击显示时间列表" readonly="readonly">
+                                        <input type="text" name="time2Str" id="time2" class="addTimeInit"
+                                               value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td width="1"></td>
                                 </tr>
@@ -435,7 +437,8 @@
                                     </td>
                                     <td width="9%" align="left">创建日期:</td>
                                     <td width="40%">
-                                        <input id="createTime" type="text" class="addCText" name="createTimeStr" readOnly="readOnly">
+                                        <input id="createTime" type="text" class="addCText" name="createTimeStr"
+                                               readOnly="readOnly">
                                     </td>
                                     <td width="2%">&nbsp;</td>
                                 </tr>
@@ -447,7 +450,8 @@
                                     </td>
                                     <td align="left">修改日期:</td>
                                     <td>
-                                        <input type="text" name="updateTimeStr" class="addCText" id="updateTime" readOnly="readOnly">
+                                        <input type="text" name="updateTimeStr" class="addCText" id="updateTime"
+                                               readOnly="readOnly">
                                     </td>
                                     <td>&nbsp;</td>
                                 </tr>
