@@ -152,7 +152,7 @@ public class Product {
     private String remark;
 
     public void setCreateTimeStr(String createTimeStr) {
-        this.createTime = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", createTimeStr);
+        this.createTime = DateUtils.strToDate("yyyy-MM-dd", createTimeStr);
         this.createTimeStr = createTimeStr;
     }
 
@@ -161,29 +161,29 @@ public class Product {
     }
 
     public void setUpdateTimeStr(String updateTimeStr) {
-        this.updateTime = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", updateTimeStr);
+        this.updateTime = DateUtils.strToDate("yyyy-MM-dd", updateTimeStr);
         this.updateTimeStr = updateTimeStr;
     }
 
     public String getUpdateTimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", updateTime);
+        return DateUtils.dateToStr("yyyy-MM-dd", updateTime);
     }
 
     public void setTime1Str(String time1Str) {
-        this.time1 = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", time1Str);
+        this.time1 = DateUtils.strToDate("yyyy-MM-dd", time1Str);
         this.time1Str = time1Str;
     }
 
     public String getTime1Str() {
-        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", time1);
+        return DateUtils.dateToStr("yyyy-MM-dd", time1);
     }
 
     public String getTime2Str() {
-        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", time2);
+        return DateUtils.dateToStr("yyyy-MM-dd", time2);
     }
 
     public void setTime2Str(String time2Str) {
-        this.time2 = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", time2Str);
+        this.time2 = DateUtils.strToDate("yyyy-MM-dd", time2Str);
         this.time2Str = time2Str;
     }
 
