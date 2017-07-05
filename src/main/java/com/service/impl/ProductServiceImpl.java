@@ -55,4 +55,9 @@ public class ProductServiceImpl implements ProductService {
     public boolean exportExcel(String exportType, Pager pager, Integer[] product_id, Product product, HttpServletResponse response) {
         return false;
     }
+
+    @Override
+    public Product getProductById(Integer edit_id) {
+        return productDao.selectByPrimaryKey(edit_id);
+    }
 }

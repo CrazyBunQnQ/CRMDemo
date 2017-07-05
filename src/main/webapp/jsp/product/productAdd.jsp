@@ -141,7 +141,7 @@
             if ('${product.picture}' != "") {
                 document.getElementById("uploadImg").width = 100;
                 document.getElementById("uploadImg").height = 100;
-                document.getElementById("uploadImg").src = "uploadImages/${product.picture}";
+                document.getElementById("uploadImg").src = "upload/${product.picture}";
             }
         }
         function showPicture(picId, file) {
@@ -175,8 +175,7 @@
 </head>
 <body onload="initPic();">
 <form name="form1" method="post" action="product/addOrUpdateProduct" id="productForm" enctype="multipart/form-data">
-    <%-- <s:fielderror></s:fielderror> --%>
-    <%-- <input type="hidden" name="edit_id" id="edit_id" value="<s:property value="edit_id"/>" /> --%>
+     <input type="hidden" name="edit_id" id="edit_id" value="${product.id}" />
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
             <td height="26" width="100%">

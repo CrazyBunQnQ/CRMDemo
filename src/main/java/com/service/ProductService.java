@@ -20,4 +20,6 @@ public interface ProductService {
     boolean saveProduct(Product product);
 
     boolean updateProduct(Product product);
+
+    Product getProductById(Integer edit_id);
 }

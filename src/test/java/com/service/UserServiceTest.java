@@ -23,8 +23,15 @@ public class UserServiceTest {
 
     @Test
     public void test() {
-        User user = userService.getUserById(1);
+        float a = 0.2f;
+        float b = 0.4f;
 
-        log.info(JSON.toJSONString(user));
+        double a2 = 0.2;
+        double b2 = 0.4;
+
+        System.out.println(a + b);
+        System.out.println(a2 + b2);
+        System.out.println(0.2 + 0.4);
+        System.out.println(0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1);
     }
 }

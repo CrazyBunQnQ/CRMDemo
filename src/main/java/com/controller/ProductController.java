@@ -54,10 +54,12 @@ public class ProductController {
     }
 
     @RequestMapping("/toAddProduct")
-    public ModelAndView toAddProduct() {
+    public ModelAndView toAddProduct(Integer edit_id) {
         ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
-//        String str = productService.getProductStr();
-//        modelAndView.addObject("")
+        if (edit_id != null) {
+            Product product = productService.getProductById(edit_id);
+            modelAndView.addObject("product",product);
+        }
         String selectOptionsStr = productTypeService.findProductTypeStr();
         log.error(selectOptionsStr);
         modelAndView.addObject("selectOptionsStr", selectOptionsStr);
