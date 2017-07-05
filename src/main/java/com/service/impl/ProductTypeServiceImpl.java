@@ -49,11 +49,11 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public String findProductTypeStr() {
         List<ProductType> rootProductTypeList = productTypeDao.findRootProductType();
-        String str = "";
+        StringBuffer str = new StringBuffer("");
         for (ProductType root : rootProductTypeList) {
-            str += "<option value='" + root.getId() + "'>" + root.getName() + "</option>" + findSubProductTypeStr(root.getId(), "");
+            str.append("<option value='" + root.getId() + "'>" + root.getName() + "</option>" + findSubProductTypeStr(root.getId(), ""));
         }
-        return str;
+        return str.toString();
     }
 
     /**
@@ -64,14 +64,14 @@ public class ProductTypeServiceImpl implements ProductTypeService {
      */
     private String findSubProductTypeStr(Integer pid, String nbsp) {
         List<ProductType> subProductTypeList = productTypeDao.findSubProductType(pid);
-        String str = "";
+        StringBuffer str = new StringBuffer("");
         if (subProductTypeList != null && subProductTypeList.size() > 0) {
             nbsp += "&nbsp;&nbsp;";
             for (ProductType sub : subProductTypeList) {
-                str += "<option value='" + sub.getId() + "'>" + nbsp + sub.getName() + "<option>";
-                str += findSubProductTypeStr(sub.getId(), nbsp);
+                str.append("<option value='" + sub.getId() + "'>" + nbsp + sub.getName() + "<option>");
+                str.append(findSubProductTypeStr(sub.getId(), nbsp));
             }
-            return str;
+            return str.toString();
         } else {
             return "";
         }
@@ -107,7 +107,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
                 }
             }
         }
-        if (num == productType_id.length) {
+        if (productType_id != null && num == productType_id.length) {
             return Constant.REMOVE_SUCCESS;
         } else if (num == 0) {
             return Constant.REMOVE_FAILURE;
@@ -132,7 +132,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     private String getTreeStr(int pid) {
         List<ProductType> list = productTypeDao.findSubProductType(pid);
-        if (list == null && list.size() == 0) {
+        if (list == null || list.size() == 0) {
             return "";
         }
         StringBuffer sb = new StringBuffer("<ul>");
@@ -209,7 +209,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
             e.printStackTrace();
         } finally {
             try {
-                outputStream.close();
+                if (outputStream != null) {
+                    outputStream.close();
+                }
             } catch (IOException e) {
                 log.error("输出流关闭失败");
                 e.printStackTrace();

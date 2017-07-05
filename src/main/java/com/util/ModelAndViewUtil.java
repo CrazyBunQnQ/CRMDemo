@@ -3,9 +3,9 @@ package com.util;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author CrazyBunQnQ
@@ -14,7 +14,7 @@ public class ModelAndViewUtil {
     /**
      * 返回JSP
      */
-    public static ModelAndView Jsp(String jspPath) {
+    public static ModelAndView jsp(String jspPath) {
         return new ModelAndView(jspPath);
     }
 
@@ -52,9 +52,10 @@ public class ModelAndViewUtil {
     public static ModelAndView Json_ok(Map<String, Object> map) {
         ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
         mav.addObject("result", "1");
-        Set<String> keySet = map.keySet();
-        for (String key : keySet) {
-            mav.addObject(key, map.get(key));
+        Iterator<Map.Entry<String, Object>> entrySet = map.entrySet().iterator();
+        while (entrySet.hasNext()) {
+            Map.Entry<String, Object> entry = entrySet.next();
+            mav.addObject(entry.getKey(), entry.getValue());
         }
         return mav;
     }
