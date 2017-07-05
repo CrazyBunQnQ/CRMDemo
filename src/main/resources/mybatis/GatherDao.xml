@@ -21,7 +21,7 @@
         <result column="bill_code" jdbcType="VARCHAR" property="billCode"/>
         <result column="handler" jdbcType="VARCHAR" property="handler"/>
         <result column="total" jdbcType="DOUBLE" property="total"/>
-        <result column="statusid" jdbcType="VARCHAR" property="statusid"/>
+        <result column="statusid" jdbcType="VARCHAR" property="statusId"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="auditor" jdbcType="VARCHAR" property="auditor"/>
         <result column="audit_date" jdbcType="TIMESTAMP" property="auditDate"/>
@@ -89,7 +89,7 @@
         #{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR},
         #{payer,jdbcType=VARCHAR}, #{payDate,jdbcType=TIMESTAMP}, #{payType,jdbcType=VARCHAR},
         #{billCode,jdbcType=VARCHAR}, #{handler,jdbcType=VARCHAR}, #{total,jdbcType=DOUBLE},
-        #{statusid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},
+        #{statusId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},
         #{auditDate,jdbcType=TIMESTAMP}, #{code,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR},
         #{auditIdea,jdbcType=LONGVARCHAR})
     </insert>
@@ -214,7 +214,7 @@
                 #{total,jdbcType=DOUBLE},
             </if>
             <if test="statusid != null">
-                #{statusid,jdbcType=VARCHAR},
+                #{statusId,jdbcType=VARCHAR},
             </if>
             <if test="status != null">
                 #{status,jdbcType=VARCHAR},
@@ -286,7 +286,7 @@
                 total = #{total,jdbcType=DOUBLE},
             </if>
             <if test="statusid != null">
-                statusid = #{statusid,jdbcType=VARCHAR},
+                statusid = #{statusId,jdbcType=VARCHAR},
             </if>
             <if test="status != null">
                 status = #{status,jdbcType=VARCHAR},
@@ -329,7 +329,7 @@
         bill_code = #{billCode,jdbcType=VARCHAR},
         handler = #{handler,jdbcType=VARCHAR},
         total = #{total,jdbcType=DOUBLE},
-        statusid = #{statusid,jdbcType=VARCHAR},
+        statusid = #{statusId,jdbcType=VARCHAR},
         status = #{status,jdbcType=VARCHAR},
         auditor = #{auditor,jdbcType=VARCHAR},
         audit_date = #{auditDate,jdbcType=TIMESTAMP},
@@ -358,7 +358,7 @@
         bill_code = #{billCode,jdbcType=VARCHAR},
         handler = #{handler,jdbcType=VARCHAR},
         total = #{total,jdbcType=DOUBLE},
-        statusid = #{statusid,jdbcType=VARCHAR},
+        statusid = #{statusId,jdbcType=VARCHAR},
         status = #{status,jdbcType=VARCHAR},
         auditor = #{auditor,jdbcType=VARCHAR},
         audit_date = #{auditDate,jdbcType=TIMESTAMP},
