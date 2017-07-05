@@ -29,4 +29,8 @@ public interface ProductDao {
     int countProduct(@Param("product") Product product);
 
     int removeByPrimaryKeys(@Param("ids") Integer[] ids);
+
+    List<Product> listAllProduct();
+
+    List<Product> listSelectedProduct(@Param("ids") Integer[] ids);
 }

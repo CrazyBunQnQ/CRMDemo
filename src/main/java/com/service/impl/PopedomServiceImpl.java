@@ -1,11 +1,9 @@
 package com.service.impl;
 
 import com.bean.Popedom;
-import com.bean.Role;
 import com.dao.PopedomDao;
 import com.dao.RoleDao;
 import com.service.PopedomService;
-import lombok.experimental.var;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,7 +47,7 @@ public class PopedomServiceImpl implements PopedomService {
      */
     private String getSubTree(int pid) {
         List<Popedom> subList = popedomDao.listSubPopedom(pid);
-        if (subList == null && subList.size() == 0) {
+        if (subList == null || subList.size() == 0) {
             return "";
         }
         StringBuffer sb = new StringBuffer("<ul>");
@@ -112,7 +110,7 @@ public class PopedomServiceImpl implements PopedomService {
 
     @Override
     public String getDrag(Integer role_id, Integer id) {
-        List<Popedom> list = popedomDao.listSubPopedom(id == null ? 0 : id);
+        List<Popedom> list = popedomDao.listSubPopedom(id == null ? Integer.valueOf(0) : Integer.valueOf(id));
         StringBuffer checkedOptionStr = new StringBuffer("<ul>");
         if (list != null && list.size() > 0) {
             for (Popedom p : list) {
