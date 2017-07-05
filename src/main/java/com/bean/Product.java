@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.util.DateUtils;
 import lombok.Data;
 
 import java.util.Date;
@@ -30,7 +31,8 @@ public class Product {
     /**
      * 创建时间
      */
-    private Date createtime;
+    private Date createTime;
+    private String createTimeStr;
     /**
      * 修改人
      */
@@ -38,7 +40,8 @@ public class Product {
     /**
      * 更改时间
      */
-    private Date updatetime;
+    private Date updateTime;
+    private String updateTimeStr;
     /**
      * 状态
      */
@@ -137,14 +140,52 @@ public class Product {
      * 自定时间 1
      */
     private Date time1;
+    private String time1Str;
     /**
      * 自定时间 2
      */
     private Date time2;
+    private String time2Str;
     /**
      * 备注
      */
     private String remark;
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTime = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", createTimeStr);
+        this.createTimeStr = createTimeStr;
+    }
+
+    public String getCreateTimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", createTime);
+    }
+
+    public void setUpdateTimeStr(String updateTimeStr) {
+        this.updateTime = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", updateTimeStr);
+        this.updateTimeStr = updateTimeStr;
+    }
+
+    public String getUpdateTimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", updateTime);
+    }
+
+    public void setTime1Str(String time1Str) {
+        this.time1 = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", time1Str);
+        this.time1Str = time1Str;
+    }
+
+    public String getTime1Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", time1);
+    }
+
+    public String getTime2Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", time2);
+    }
+
+    public void setTime2Str(String time2Str) {
+        this.time2 = DateUtils.strToDate("yyyy-MM-dd HH:mm:ss", time2Str);
+        this.time2Str = time2Str;
+    }
 
     public void setCreater(String creater) {
         this.creater = creater == null ? null : creater.trim();

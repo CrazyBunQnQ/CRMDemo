@@ -29,13 +29,14 @@
             $('#time2').simpleDatepicker({startdate: 1960, enddate: 2060});
             //是否已经有了数据
 
-            if ('' != '${product.time1}') {
-                $('#time1').val('${product.time1}');
+            if ('' != '${product.time1Str}') {
+                $('#time1').val('${product.time1Str}');
             } else {
                 $('#time1').val('点击显示时间列表');
             }
-            if ('' != '${product.time2}') {
-                $('#time2').val('${product.time2}');
+
+            if ('' != '${product.time2Str}') {
+                $('#time2').val('${product.time2Str}');
             } else {
                 $('#time2').val('点击显示时间列表');
             }
@@ -45,36 +46,35 @@
                 $('#time1').removeClass("addTimeInit");
                 $('#time1').addClass("addTimeClick");
             }
+
             if ($('#time2').val() != "点击显示时间列表") {
                 $('#time2').removeClass("addTimeInit");
                 $('#time2').addClass("addTimeClick");
             }
-            if ('' != '${product.createTime}') {
-                $('#createTime').val('<s:date name="#request.product.createTime" format="yyyy-MM-dd HH:mm:ss" nice="false" />');
-            }
-            else if ('' != '${c_time}') {
-                $('#createTime').val('${c_time}');
+
+            if ('' != '${product.createTimeStr}') {
+                $('#createTime').val('${product.createTimeStr}');
+            <%-- } else if ('' != '${c_time}') {
+                $('#createTime').val('${c_time}'); --%>
             } else {
                 $('#createTime').val('点击显示时间列表');
             }
 
-            if ('' != '${product.updateTime}') {
-                <%--$('#updateTime').val('<s:date name="#request.product.updateTime" format="yyyy-MM-dd HH:mm:ss" nice="false" />');--%>
-            }
-            else if ('' != '${c_time}') {
-                $('#updateTime').val('${c_time}');
+            if ('' != '${product.updateTimeStr}') {
+                $('#updateTime').val('${product.updateTimeStr}');
+            <%-- } else if ('' != '${c_time}') {
+                $('#updateTime').val('${c_time}'); --%>
             } else {
-                $('#updateTime').val('点击显示时间列表');
+                $('#updateTime').val('无');
             }
         });
+
         jQuery(document).ready(function () {
             if ('${product.creater}' != "") {
                 $("#creater").val('${product.creater}');
             } else {
                 $("#creater").val('${user.name}');
             }
-
-
         });
     </script>
 
@@ -174,7 +174,7 @@
     </script>
 </head>
 <body onload="initPic();">
-<form name="form1" method="post" action="product/addProduct" id="productForm" enctype="multipart/form-data">
+<form name="form1" method="post" action="product/addOrUpdateProduct" id="productForm" enctype="multipart/form-data">
     <%-- <s:fielderror></s:fielderror> --%>
     <%-- <input type="hidden" name="edit_id" id="edit_id" value="<s:property value="edit_id"/>" /> --%>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
@@ -215,13 +215,12 @@
                                 <tr>
                                     <td width="10%"><span class="STYLE1">商品名称</span>:</td>
                                     <td width="41%"><input type="text" value="${product.name}" id="name" name="name"
-                                                           class="addCText" onkeyup="getPinyinCode();"></td>
+                                                           class="addCText" <%--onkeyup="getPinyinCode();"--%>></td>
                                     <td width="7%" align="left">商品类别:</td>
                                     <td width="42%">
                                         <select name="ptypeId" class="addCText" id="product_type">
                                             <option value="0">/</option>
                                             ${selectOptionsStr}
-                                            <%--<option value='1'>电器</option><option value='2'>&nbsp;&nbsp;电冰箱<option><option value='3'>&nbsp;&nbsp;洗衣机<option><option value='4'>&nbsp;&nbsp;&nbsp;&nbsp;滚筒洗衣机3<option><option value='6'>&nbsp;&nbsp;&nbsp;&nbsp;波轮洗衣机<option><option value='11'>&nbsp;&nbsp;电视<option><option value='12'>&nbsp;&nbsp;&nbsp;&nbsp;黑白电视<option><option value='13'>&nbsp;&nbsp;&nbsp;&nbsp;液晶电视<option><option value='24'>&nbsp;&nbsp;电脑<option><option value='25'>&nbsp;&nbsp;&nbsp;&nbsp;<option><option value='26'>&nbsp;&nbsp;&nbsp;&nbsp;<option><option value='7'>服装</option><option value='8'>&nbsp;&nbsp;男装<option><option value='9'>&nbsp;&nbsp;女装<option><option value='10'>&nbsp;&nbsp;童装<option><option value='16'>桌子</option><option value='23'>&nbsp;&nbsp;666<option><option value='27'>家具</option>--%>
                                         </select>
                                     </td>
                                     <td width="0%">&nbsp;</td>
@@ -268,18 +267,18 @@
                                 </tr>
                                 <tr>
                                     <td>单价:</td>
-                                    <td><input type="text" value="${product.stock}" name="price" class="addCText"></td>
+                                    <td><input type="text" value="${product.price}" name="price" class="addCText"></td>
                                     <td align="left">采购价:</td>
-                                    <td><input type="text" value="${product.buyPrice}" name="buy_price"
+                                    <td><input type="text" value="${product.buyPrice}" name="buyPrice"
                                                class="addCText"></td>
                                     <td>&nbsp;</td>
                                 </tr>
-                                <tr>
+                                <%--<tr>
                                     <td>商品图片:</td>
-                                    <td colspan="4"><input type="file" name="productImage"
+                                    <td colspan="4"><input type="file" name="picture"
                                                            onchange="javascript:fileChange(this)" style="width:90%"/>
                                     </td>
-                                </tr>
+                                </tr>--%>
                                 <tr>
                                     <td>图片预览:</td>
                                     <td colspan="3"><img src="image/nonepicture.gif" width="0" height="0"
@@ -334,7 +333,7 @@
                                     <td>自定选项1:</td>
                                     <td><select name="choice1" class="addCText" id="product_choice1">
                                         <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                        <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
                                             <s:if test="#sdDetail.SDictionaryClass.id == 31">
                                                 <s:if test="#sdDetail.value == #request.product.choice1">
                                                     <option value="${sdDetail.value}"
@@ -344,14 +343,14 @@
                                                     <option value="${sdDetail.value}">${sdDetail.value}</option>
                                                 </s:else>
                                             </s:if>
-                                        </s:iterator>
+                                        </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice1')">
                                     </td>
                                     <td align="left">自定选项2:</td>
                                     <td><select name="choice2" class="addCText" id="product_choice2">
                                         <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                        <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
                                             <s:if test="#sdDetail.SDictionaryClass.id == 32">
                                                 <s:if test="#sdDetail.value == #request.product.choice2">
                                                     <option value="${sdDetail.value}"
@@ -361,7 +360,7 @@
                                                     <option value="${sdDetail.value}">${sdDetail.value}</option>
                                                 </s:else>
                                             </s:if>
-                                        </s:iterator>
+                                        </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice2')"></td>
                                     <td width="1"></td>
@@ -370,7 +369,7 @@
                                     <td>自定选项3:</td>
                                     <td><select name="choice3" class="addCText" id="product_choice3">
                                         <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                        <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
                                             <s:if test="#sdDetail.SDictionaryClass.id == 33">
                                                 <s:if test="#sdDetail.value == #request.product.choice3">
                                                     <option value="${sdDetail.value}"
@@ -380,13 +379,13 @@
                                                     <option value="${sdDetail.value}">${sdDetail.value}</option>
                                                 </s:else>
                                             </s:if>
-                                        </s:iterator>
+                                        </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice3')"></td>
                                     <td align="left">自定选项4</td>
                                     <td><select name="choice4" class="addCText" id="product_choice4">
                                         <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                        <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
                                             <s:if test="#sdDetail.SDictionaryClass.id == 34">
                                                 <s:if test="#sdDetail.value == #request.product.choice4">
                                                     <option value="${sdDetail.value}"
@@ -396,7 +395,7 @@
                                                     <option value="${sdDetail.value}">${sdDetail.value}</option>
                                                 </s:else>
                                             </s:if>
-                                        </s:iterator>
+                                        </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice4')"></td>
                                     <td width="1"></td>
@@ -404,15 +403,11 @@
                                 <tr>
                                     <td>自定时间1:</td>
                                     <td>
-                                        <!-- <input type="text" name="time1"  id="time1" class="addTimeInit" value="点击显示时间列表" readonly="readonly"> -->
-                                        <input type="text" id="time1" class="addTimeInit" value="点击显示时间列表"
-                                               readonly="readonly">
+                                        <input type="text" name="time1Str" id="time1" class="addTimeInit" value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td align="left">自定时间2:</td>
                                     <td>
-                                        <!-- <input type="text" name="time2"  id="time2" class="addTimeInit" value="点击显示时间列表" readonly="readonly"> -->
-                                        <input type="text" id="time2" class="addTimeInit" value="点击显示时间列表"
-                                               readonly="readonly">
+                                        <input type="text" name="time2Str" id="time2" class="addTimeInit" value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td width="1"></td>
                                 </tr>
@@ -441,9 +436,7 @@
                                     </td>
                                     <td width="9%" align="left">创建日期:</td>
                                     <td width="40%">
-                                        <%-- <input name="createTime" id="createTime" value="${c_time}${product.createTime}" type="text" class="addCText" id="createTime" readOnly="readOnly">  --%>
-                                        <input id="createTime" type="text" class="addCText" name="createTime2"
-                                               readOnly="readOnly">
+                                        <input id="createTime" type="text" class="addCText" name="createTimeStr" readOnly="readOnly">
                                     </td>
                                     <td width="2%">&nbsp;</td>
                                 </tr>
@@ -455,8 +448,7 @@
                                     </td>
                                     <td align="left">修改日期:</td>
                                     <td>
-                                        <%-- <input name="updateTime" type="text" value='<s:date name="#request.c_time" format="yyyy-MM-dd HH:mm:ss" nice="false" />'" class="addCText" id="updateTime" readOnly="readOnly"> --%>
-                                        <input type="text" class="addCText" id="updateTime" readOnly="readOnly">
+                                        <input type="text" name="updateTimeStr" class="addCText" id="updateTime" readOnly="readOnly">
                                     </td>
                                     <td>&nbsp;</td>
                                 </tr>

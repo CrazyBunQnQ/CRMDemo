@@ -58,9 +58,22 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
 //        String str = productService.getProductStr();
 //        modelAndView.addObject("")
-        String productTypeOption = productTypeService.findProductTypeStr();
-        log.error(productTypeOption);
-        modelAndView.addObject("selectOptionsStr", productTypeOption);
+        String selectOptionsStr = productTypeService.findProductTypeStr();
+        log.error(selectOptionsStr);
+        modelAndView.addObject("selectOptionsStr", selectOptionsStr);
+        return modelAndView;
+    }
+
+    @RequestMapping("/addOrUpdateProduct")
+    public ModelAndView saveOrUpdateProduct(Product product, Integer edit_id) {
+        ModelAndView modelAndView = new ModelAndView("/jsp/product/productAdd");
+        log.error(product.toString());
+        boolean sussess = false;
+        String selectOptionsStr;
+        if (edit_id == null ) {
+//            sussess = productService.saveProduct(product);
+        }
+
         return modelAndView;
     }
 
