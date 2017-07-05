@@ -25,12 +25,10 @@ public class ProductTypeController {
     @RequestMapping("/productTypeList")
     public ModelAndView findProductTypeList(Pager pager, String isDel, Integer[] productType_id, ProductType productType, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("/jsp/productType/productTypeList");
-        boolean success = false;
 
         if (exportType != null && !"".equals(exportType.trim())) {
-            success = productTypeService.exportExcel(exportType, pager, productType_id, productType, response);
-            modelAndView.addObject("suc", success ? Constant.EXPORT_SUCCESS : Constant.EXPORT_FAILURE);
-            return modelAndView;
+            productTypeService.exportExcel(exportType, pager, productType_id, productType, response);
+            return null;
         }
 
         if (Constant.IS_DEL.equals(isDel)) {//批量删除
