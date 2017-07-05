@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 @Log4j
 public class HellowTF {
     @Test
-    public void HelloWTest() throws UnsupportedEncodingException {
+    public void helloWTest() throws UnsupportedEncodingException {
         try (Graph g = new Graph()) {
             final String value = "Hello from " + TensorFlow.version();
 
