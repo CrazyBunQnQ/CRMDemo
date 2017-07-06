@@ -180,7 +180,7 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <input type="text" name="cName" value="${order.CName}" class="inputTextStyle">
+                                        <input type="text" name="cName" value="${order.cusName}" class="inputTextStyle">
                                     </td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">
@@ -309,15 +309,14 @@
                                             <c:forEach items="${rows}" var="border">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-                                                        <input type="checkbox" name="order_id" value="${border.id}"
-                                                               checked="checked">
+                                                        <input type="checkbox" name="order_id" value="${border.id}">
                                                     </td>
                                                     <td><a href="load4EditOrder.action?edit_id=${border.id}"
                                                            class="normal">${border.code}</a></td>
                                                     <td align="center">
-                                                            <%--<fmt:formatDate value="${border.orderDate}" pattern="yyyy-MM-dd"/>--%>
+                                                        ${border.orderDateStr}
                                                     </td>
-                                                    <td align="center">${border.CName}</td>
+                                                    <td align="center">${border.cusName}</td>
                                                     <td align="center">${border.total}</td>
                                                     <td align="center">${border.agio}</td>
                                                     <td align="center">${border.agioTotal}</td>

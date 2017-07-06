@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.util.DateUtils;
 import lombok.Data;
 
 import java.util.Date;
@@ -25,6 +26,7 @@ public class Order {
      *
      */
     private Date createtime;
+    private String createtimeStr;
     /**
      * 更改人
      */
@@ -33,6 +35,7 @@ public class Order {
      * 更改时间
      */
     private Date updatetime;
+    private String updatetimeStr;
     /**
      * 编码
      */
@@ -41,6 +44,7 @@ public class Order {
      * 开单日期
      */
     private Date orderDate;
+    private String orderDateStr;
     /**
      * 客户 id
      */
@@ -48,7 +52,7 @@ public class Order {
     /**
      * 客户名称
      */
-    private String cName;
+    private String cusName;
     /**
      * 客户类型
      */
@@ -89,6 +93,7 @@ public class Order {
      * 审计日期
      */
     private Date auditDate;
+    private String auditDateStr;
     /**
      * 状态 id
      */
@@ -109,6 +114,42 @@ public class Order {
     private Date time2;
     private String shareFlag;
 
+    public void setCreatetimeStr(String createtimeStr) {
+        this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
+        this.createtimeStr = createtimeStr;
+    }
+
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
+    public void setUpdatetimeStr(String updatetimeStr) {
+        this.updatetime = DateUtils.strToDate("yyyy-MM-dd", updatetimeStr);
+        this.updatetimeStr = updatetimeStr;
+    }
+
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    }
+
+    public void setOrderDateStr(String orderDateStr) {
+        this.orderDate = DateUtils.strToDate("yyyy-MM-dd", orderDateStr);
+        this.orderDateStr = orderDateStr;
+    }
+
+    public String getOrderDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+    }
+
+    public void setAuditDateStr(String auditDateStr) {
+        this.auditDate = DateUtils.strToDate("yyyy-MM-dd", auditDateStr);
+        this.auditDateStr = auditDateStr;
+    }
+
+    public String getAuditDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
+    }
+
     public void setCreater(String creater) {
         this.creater = creater == null ? null : creater.trim();
     }
@@ -121,8 +162,8 @@ public class Order {
         this.code = code == null ? null : code.trim();
     }
 
-    public void setCName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+    public void setCusName(String cName) {
+        this.cusName = cName == null ? null : cName.trim();
     }
 
     public void setcType(String cType) {

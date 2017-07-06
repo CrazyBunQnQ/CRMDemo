@@ -88,7 +88,7 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
                 int colIndex = 0;
                 sheet.addCell(new Label(colIndex++, rowIndex, o.getCode()));
 //                sheet.addCell(new Label(colIndex++, rowIndex, o.getCreatetime()));
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getCName()));
+                sheet.addCell(new Label(colIndex++, rowIndex, o.getCusName()));
                 sheet.addCell(new Label(colIndex++, rowIndex, o.getSeller()));
                 sheet.addCell(new Label(colIndex++, rowIndex, String.valueOf(o.getTotal())));
                 sheet.addCell(new Label(colIndex++, rowIndex, String.valueOf(o.getAgioTotal())));
