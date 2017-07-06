@@ -121,7 +121,7 @@ public class Order {
         this.code = code == null ? null : code.trim();
     }
 
-    public void setcName(String cName) {
+    public void setCName(String cName) {
         this.cName = cName == null ? null : cName.trim();
     }
 

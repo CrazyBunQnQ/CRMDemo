@@ -27,7 +27,7 @@ public abstract class BaseController<B> {
             modelAndView.addObject("suc", service.removeByIds(selectedId) ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
         }
 
-        DataModel<B> dataModel = (DataModel<B>) service.list(pager, bean);
+        DataModel<B> dataModel = service.list(pager, bean);
 
         List<B> rows = dataModel.getRows();
         modelAndView.addObject("rows", rows);

@@ -180,7 +180,7 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <input type="text" name="cName" value="${order.cName}" class="inputTextStyle">
+                                        <%--<input type="text" name="cName" value="${order.cName}" class="inputTextStyle">--%>
                                     </td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">
@@ -306,7 +306,7 @@
                                                     <strong>单据状态</strong>
                                                 </td>
                                             </tr>
-                                            <c:forEach items="${orderList }" var="border">
+                                            <c:forEach items="${rows}" var="border">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
                                                         <input type="checkbox" name="order_id" value="${border.id}"
@@ -318,7 +318,6 @@
                                                             <%--<fmt:formatDate value="${border.orderDate}" pattern="yyyy-MM-dd"/>--%>
                                                     </td>
                                                     <td align="center">${border.cName}</td>
-                                                    <td align="center">系统管理员</td>
                                                     <td align="center">${border.total}</td>
                                                     <td align="center">${border.agio}</td>
                                                     <td align="center">${border.agioTotal}</td>

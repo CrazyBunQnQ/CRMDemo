@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.bean.Order;
+import com.bean.OrderWithBLOBs;
 import com.service.OrderService;
 import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping("/order")
-public class OrderController extends BaseController<Order> {
+public class OrderController extends BaseController<OrderWithBLOBs> {
 
     @Autowired
     private OrderService orderService;
 
     @Override
     @RequestMapping("/orderList")
-    public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, Order order, String exportType, HttpServletResponse response) {
+    public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, OrderWithBLOBs order, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baselist(orderService, pager, isDel, selectedId, order, exportType, response);
         modelAndView.setViewName("/jsp/order/orderList");
         return modelAndView;
