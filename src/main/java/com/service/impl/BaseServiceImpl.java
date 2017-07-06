@@ -44,7 +44,7 @@ public abstract class BaseServiceImpl<B> implements BaseService<B> {
         return (B) baseDao.selectByPrimaryKey(edit_id);
     }
 
-    protected List<B> export(BaseDao baseDao, String exportType, Pager pager, Integer[] selectedId, B b, HttpServletResponse response) {
+    protected List<B> export(BaseDao baseDao, String exportType, Pager pager, Integer[] selectedId, B b) {
         List<B> list = null;
 
         switch (exportType) {
