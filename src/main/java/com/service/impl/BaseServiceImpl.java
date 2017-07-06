@@ -55,7 +55,7 @@ public abstract class BaseServiceImpl<B> implements BaseService<B> {
                 list = baseDao.listByPage(pager.getFrom(), pager.getPageSize(), b);
                 break;
             case Constant.EXPORT_SELECTED:
-                list = baseDao.listSelect(selectedId);
+                list = baseDao.listSelected(selectedId);
                 break;
             default:
         }

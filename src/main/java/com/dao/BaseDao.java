@@ -15,7 +15,7 @@ public interface BaseDao<B> {
 
     List<B> listAll();
 
-    List<B> listSelect(@Param("ids") Integer[] ids);
+    List<B> listSelected(@Param("ids") Integer[] ids);
 
     int removeByPrimaryKeys(@Param("ids") Integer[] ids);
 
