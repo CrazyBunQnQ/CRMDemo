@@ -180,7 +180,7 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <%--<input type="text" name="cName" value="${order.cName}" class="inputTextStyle">--%>
+                                        <input type="text" name="cName" value="${order.CName}" class="inputTextStyle">
                                     </td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">
@@ -317,7 +317,7 @@
                                                     <td align="center">
                                                             <%--<fmt:formatDate value="${border.orderDate}" pattern="yyyy-MM-dd"/>--%>
                                                     </td>
-                                                    <td align="center">${border.cName}</td>
+                                                    <td align="center">${border.CName}</td>
                                                     <td align="center">${border.total}</td>
                                                     <td align="center">${border.agio}</td>
                                                     <td align="center">${border.agioTotal}</td>
