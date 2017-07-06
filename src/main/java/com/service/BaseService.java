@@ -1,25 +1,24 @@
 package com.service;
 
-import com.util.DataModel;
 import com.util.Pager;
-import lombok.extern.log4j.Log4j;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
- * @version 2017/7/6.
- * @auther CrazyBunQnQ
+ * Created by HCol on 2017/7/6.
  */
-public interface BaseService<S> {
-    <T> DataModel<T> list(Pager pager, T t);
+public interface BaseService<B> {
+
+    B getById(Integer edit_id);
+
+    List<B> list(Pager pager, B b);
+
+    boolean save(B b);
+
+    boolean update(B b);
+
+    boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, B b, HttpServletResponse response);
 
     boolean removeByIds(Integer[] selectedId);
-
-    <T> boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, T t, HttpServletResponse response);
-
-    <T> boolean save(T t);
-
-    <T> boolean update(T t);
-
-    <T> T getById(Integer edit_id);
 }

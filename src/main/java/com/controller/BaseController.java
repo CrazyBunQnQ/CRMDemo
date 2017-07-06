@@ -4,44 +4,34 @@ import com.service.BaseService;
 import com.util.Constant;
 import com.util.DataModel;
 import com.util.Pager;
-import lombok.*;
-import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * @version 2017/7/6.
- * @auther CrazyBunQnQ
+ * Created by HCol on 2017/7/6.
  */
-@Log4j
-public class BaseController<S> {
-    @Autowired
-    protected BaseService<S> baseService;
-    protected String pathName;
+public abstract class BaseController<B> {
 
-    public <T> ModelAndView list(Pager pager, String isDel, Integer[] selectedId, T t, String exportType, HttpServletResponse response) {
-        String className = getClass().getName();
-        pathName = className.substring(0, className.indexOf("Controller"));
-        ModelAndView modelAndView = new ModelAndView("/jsp/" + pathName + "/" + pathName + "List");
+    protected abstract ModelAndView list(Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response);
+
+    protected ModelAndView baselist(BaseService service, Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
 
         if (exportType != null && !"".equals(exportType.trim())) {
-            baseService.exportExcel(exportType, pager, selectedId, t, response);
-            return null;
+            service.exportExcel(exportType, pager, selectedId, bean, response);
         }
 
-        if (Constant.IS_DEL.equals(isDel.trim())) {
-            modelAndView.addObject("suc", baseService.removeByIds(selectedId)?Constant.REMOVE_SUCCESS:Constant.REMOVE_FAILURE);
+        if (Constant.IS_DEL.equals(isDel)) {
+            modelAndView.addObject("suc", service.removeByIds(selectedId) ? Constant.REMOVE_SUCCESS : Constant.REMOVE_FAILURE);
         }
 
-        DataModel<T> dataModel = baseService.list(pager, t);
+        DataModel<B> dataModel = (DataModel<B>) service.list(pager, bean);
 
-        List<T> rows = dataModel.getRows();
+        List<B> rows = dataModel.getRows();
         modelAndView.addObject("rows", rows);
         modelAndView.addObject("pager", dataModel.getPager());
-
         return modelAndView;
     }
 }

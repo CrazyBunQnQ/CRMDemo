@@ -38,16 +38,14 @@
                     }
                 }
             }
-
         }
+
         function toDel() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
                 if (window.confirm("确定删除？")) {
-
                     document.getElementById("isDel").value = "true";
                     document.forms[0].submit();
-
                 }
             }
         }

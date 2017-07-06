@@ -7,7 +7,7 @@ import com.bean.OrderWithBLOBs;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface OrderDao {
+public interface OrderDao extends BaseDao<Order> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(OrderWithBLOBs record);
