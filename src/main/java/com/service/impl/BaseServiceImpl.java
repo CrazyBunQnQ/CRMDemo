@@ -1,11 +1,10 @@
 package com.service.impl;
 
-import com.service.OrderService;
+import com.service.BaseService;
 import com.util.DataModel;
 import com.util.Pager;
 import lombok.*;
 import lombok.extern.log4j.Log4j;
-import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @auther CrazyBunQnQ
  */
 @Log4j
-@Service
-public class OrderServiceImpl implements OrderService {
+public class BaseServiceImpl implements BaseService {
     @Override
     public <T> DataModel<T> list(Pager pager, T t) {
         return null;

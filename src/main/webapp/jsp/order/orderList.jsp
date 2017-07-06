@@ -45,7 +45,7 @@
             if (cbNum > 0) {
                 if (window.confirm("确定删除？")) {
 
-                    document.getElementById("isDel").value = "del";
+                    document.getElementById("isDel").value = "true";
                     document.forms[0].submit();
 
                 }
@@ -53,8 +53,8 @@
         }
         //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
         function checkBoxNum() {
-            if ($("input[name='product_id']:checked").length > 0) {
-                return $("input[name='product_id']:checked").length;
+            if ($("input[name='order_id']:checked").length > 0) {
+                return $("input[name='order_id']:checked").length;
             } else {
                 return 0;
             }
