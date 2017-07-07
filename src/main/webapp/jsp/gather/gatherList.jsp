@@ -27,7 +27,7 @@
     </script>
 </head>
 <body onload="initPageSize()">
-<form name="load4NeedGatherMain.action" method="post" name="form1" id="form1">
+<form name="load4GatherMain.action" method="post" name="form1" id="form1">
     <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
@@ -40,13 +40,12 @@
                         <td height="21" background="image/index_main_div_titleBg.gif">
                             <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
                                  align="absmiddle">
-                            &nbsp;<span style="font-weight:bold;font-size:12px;">应收款</span></td>
+                            &nbsp;<span style="font-weight:bold;font-size:12px;">收款单</span></td>
                     </tr>
                     <tr>
                         <td height="46" align="left" valign="middle" bgcolor="#f7fbfc"
-                            style="font-size:12px;color:#424446;"> 　　
-                            <span style="color:#FF0000"> </span>未结清　　
-                            <span style="color:#FF0000"> 已结清</span></td>
+                            style="font-size:12px;color:#424446;">　　　草稿　　待审核　　已审核　　已驳回　　
+                            <span style="color:#FF0000">全部</span></td>
                     </tr>
                 </table>
 
@@ -55,44 +54,26 @@
                         <td height="21" background="image/index_main_div_titleBg.gif">
                             <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
                                  align="absmiddle">
-                            &nbsp;<span style="font-weight:bold;font-size:12px;">应收款搜索</span></td>
+                            &nbsp;
+                            <span style="font-weight:bold;font-size:12px;">收款单搜索</span></td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%"
                                    id="selectTable">
                                 <tr>
-                                    <td width="11%">销售单号:</td>
-                                    <td width="17%"><input type="text" name="textfield" class="inputTextStyle"></td>
                                     <td width="11%">客户名称:</td>
+                                    <td width="17%"><input type="text" name="textfield" class="inputTextStyle"></td>
+                                    <td width="11%">收款单号:</td>
                                     <td width="17%"><input type="text" name="textfield4" class="inputTextStyle"></td>
-                                    <td width="11%">产生日期:</td>
+                                    <td width="11%">收款时间:</td>
                                     <td width="17%"><input type="text" name="textfield42" class="inputTextStyle"></td>
                                     <td width="5%"><img src="image/s1.gif" width="59" height="22"></td>
                                     <td width="10%" align="left"><img src="image/s2.gif" width="62" height="22"></td>
                                     <td width="1%" align="left">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>所属人:</td>
-                                    <td><input type="text" name="textfield2" class="inputTextStyle"></td>
-                                    <td>客户省份:</td>
-                                    <td><select name="select2" class="selectOptionStyle">
-                                        <option value="-1" selected="selected">---</option>
-                                        <option value="1">重要客户</option>
-                                        <option value="2">潜在客户</option>
-                                    </select></td>
-                                    <td>客户城市:</td>
-                                    <td><select name="select" class="selectOptionStyle">
-                                        <option value="-1" selected="selected">---</option>
-                                        <option value="1">重要客户</option>
-                                        <option value="2">潜在客户</option>
-                                    </select></td>
-                                    <td>&nbsp;</td>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>客户区域名称:</td>
+                                    <td>经手人:</td>
                                     <td><select name="select3" class="selectOptionStyle">
                                         <option value="-1" selected="selected">---</option>
                                         <option value="1">重要客户</option>
@@ -118,16 +99,18 @@
                     <tr>
                         <td height="11">
                             <img src="image/t1.gif" align="absmiddle">
-                            <span style="font-size:14; font-weight:bold;">应收款列表</span>
+                            <span style="font-size:14; font-weight:bold;">收款单列表</span>
                         </td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
-                            <img src="image/s3.gif" width="62" height="22">
-                        </td>
+                            <img src="image/s3.gif" width="62" height="22"></td>
                     </tr>
                     <tr>
                         <td height="5" valign="top"></td>
+                    </tr>
+                    <tr>
+                        <td id="errorInfo" style="font-size:12px;color:red;">${suc}</td>
                     </tr>
                     <tr>
                         <td height="28" valign="top">
@@ -164,22 +147,20 @@
                                                     </s:else>
                                                 </s:iterator>
                                             </s:bean>--%>
-                                        </select>
-                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
-                                                id="_pageSize_up">
-                                            <option value="5">5条</option>
-                                            <option value="6">6条</option>
-                                            <option value="7">7条</option>
-                                            <option value="8">8条</option>
-                                            <option value="9">9条</option>
-                                            <option value="10">10条</option>
-                                            <option value="15">15条</option>
-                                            <option value="20">20条</option>
-                                            <option value="25">25条</option>
-                                            <option value="30">30条</option>
-                                            <option value="50">50条</option>
-                                        </select>
-                                    </td>
+                                        </select> <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
+                                                          id="_pageSize_up">
+                                        <option value="5">5条</option>
+                                        <option value="6">6条</option>
+                                        <option value="7">7条</option>
+                                        <option value="8">8条</option>
+                                        <option value="9">9条</option>
+                                        <option value="10">10条</option>
+                                        <option value="15">15条</option>
+                                        <option value="20">20条</option>
+                                        <option value="25">25条</option>
+                                        <option value="30">30条</option>
+                                        <option value="50">50条</option>
+                                    </select></td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" bgcolor="#f2faff">
@@ -187,93 +168,48 @@
                                             <tr>
                                                 <td width="4%" height="28" align="center"
                                                     background="image/select_title_title.jpg">
-                                                    <input type="checkbox" name="checkbox" value="checkbox">
+                                                    <input type="checkbox" name="ids" id="ids" onclick="toChange()">
                                                 </td>
-                                                <td width="15%" align="left" background="image/select_title_title.jpg">
-                                                    <strong>销售单号</strong></td>
-                                                <td width="10%" align="center"
-                                                    background="image/select_title_title.jpg">
-                                                    <strong>客户名称</strong></td>
-                                                <td width="14%" align="center"
-                                                    background="image/select_title_title.jpg">
-                                                    <strong>产生日期</strong>
-                                                </td>
+                                                <td width="18%" align="left" background="image/select_title_title.jpg">
+                                                    <strong>收款单号</strong></td>
+                                                <td width="22%" align="center"
+                                                    background="image/select_title_title.jpg"><strong>收款日期</strong></td>
+                                                <td width="18%" align="center"
+                                                    background="image/select_title_title.jpg"><strong>客户名称</strong></td>
+                                                <td width="13%" align="center"
+                                                    background="image/select_title_title.jpg"><strong>总金额</strong></td>
+                                                <td width="16%" align="center"
+                                                    background="image/select_title_title.jpg"><strong>经手人</strong></td>
                                                 <td width="9%" align="center" background="image/select_title_title.jpg">
-                                                    <strong>应收金额</strong></td>
-                                                <td width="10%" align="center"
-                                                    background="image/select_title_title.jpg">
-                                                    <strong>已收金额</strong>
-                                                </td>
-                                                <td width="10%" align="center"
-                                                    background="image/select_title_title.jpg">
-                                                    <strong>应收余额</strong>
-                                                </td>
-                                                <td width="9%" align="center" background="image/select_title_title.jpg">
-                                                    <strong>是否完成</strong></td>
-                                                <td width="10%" align="center"
-                                                    background="image/select_title_title.jpg">
-                                                    <strong>所属人</strong></td>
-                                                <td width="9%" align="center" background="image/select_title_title.jpg">
-                                                    <strong>收款</strong></td>
+                                                    <strong>单据状态</strong></td>
                                             </tr>
 
-                                            <s:iterator value="#request.needGatherList" id="bneedGather">
+                                            <c:forEach items="${rows}" var="bgather">
                                                 <tr class="select_content_bg">
-                                                    <td align="center"><s:if test="#session.needGather_ids==null">
-
-                                                        <input type="checkbox" name="needGather_id"
-                                                               value="${bneedGather.id}">
-                                                    </s:if> <s:else>
-                                                        <s:set name="flag" value="1"/>
-                                                        <s:iterator value="#session.needGather_ids" id="c_ids">
-                                                            <s:if test="#c_ids==#bneedGather.id">
-                                                                <input type="checkbox" name="needGather_id"
-                                                                       value="${bneedGather.id}" checked="checked">
-                                                                <s:set name="flag" value="0"/>
-                                                            </s:if>
-                                                        </s:iterator>
-                                                        <s:if test="#flag == 1">
-                                                            <input type="checkbox" name="needGather_id"
-                                                                   value="${bneedGather.id}">
-                                                        </s:if>
-                                                    </s:else></td>
-                                                    <td>${bneedGather.saleCode}</td>
-                                                    <td align="center">${bneedGather.CName}</td>
-                                                    <td align="center"><s:date name="#bneedGather.buildDate"
-                                                                               format="yyyy-MM-dd HH:mm:ss"
-                                                                               nice="false"/></td>
-                                                    <td align="center">${bneedGather.total}</td>
-                                                    <td align="center">${bneedGather.payed}</td>
-                                                    <td align="center">${bneedGather.balance}</td>
-                                                    <td align="center">${bneedGather.overFlag}</td>
-                                                    <td align="center">${bneedGather.creator}</td>
                                                     <td align="center">
-                                                        <s:if test="#bneedGather.BGather==null">
-                                                            <a href="load4AddGather.action?CId=${bneedGather.CId}"
-                                                               class="normal">收款</a>
-                                                        </s:if>
-                                                        <s:elseif test="#bneedGather.overFlag == 'Y'">
-                                                            <a href="load4EditGather.action?edit_id=${bneedGather.BGather.id}&CId=${bneedGather.CId}"
-                                                               class="normal">已收款</a>
-                                                        </s:elseif>
-                                                        <s:else>
-                                                            <a href="load4EditGather.action?edit_id=${bneedGather.BGather.id}&CId=${bneedGather.CId}"
-                                                               class="normal">收款中</a>
-                                                        </s:else>
+                                                        <input type="checkbox" name="selectedId" value="${bgather.id}"
+                                                               onclick="updateNum()">
                                                     </td>
+                                                    <td>
+                                                        <a href="gather/toAddOrUpdateGather?edit_id=${bgather.id}&CId=${bgather.CId}"
+                                                           class="normal">${bgather.code }</a></td>
+                                                    <td align="center">${bgather.payDate }</td>
+                                                    <td align="center">${bgather.CName }</td>
+                                                    <td align="center">${bgather.total }</td>
+                                                    <td align="center">${bgather.handler }</td>
+                                                    <td align="center">${bgather.status }</td>
                                                 </tr>
-                                            </s:iterator>
-
+                                            </c:forEach>
                                             <tr>
-                                                <td colspan="10">&nbsp;</td>
+                                                <td colspan="7">&nbsp;</td>
                                             </tr>
                                         </table>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
-                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 |
-                                        选择条目:<span id="select_num2">0</span>
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16">
+                                        导出 | 选择条目:<span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
@@ -282,7 +218,8 @@
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
                                         ${pager.page}/${pager.totalPage}
                                         <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
-                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        <span onclick="lastPage(${pager.totalPage})" class="pager"
+                                              style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_down','_null');"
                                                 id="_pageNum_down">
                                             <%--<s:bean name="org.apache.struts2.util.Counter" id="counter">

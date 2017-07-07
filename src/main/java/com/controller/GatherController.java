@@ -2,9 +2,7 @@ package com.controller;
 
 import com.bean.GatherWithBLOBs;
 import com.service.GatherService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.util.Pager;
-import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +41,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
     }
 
     @Override
+    @RequestMapping("addOrUpdateGather")
     protected ModelAndView addOrUpdate(GatherWithBLOBs bean, Integer edit_id) {
         ModelAndView modelAndView = super.baseAddOrUpdate(gatherService, bean, edit_id);
         modelAndView.setViewName("/jsp/gather/gatherAdd");
