@@ -74,6 +74,9 @@
         <if test="bean.cusName != null and bean.cusName != ''">
             AND o.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
         </if>
+        <if test="bean.status != null and bean.status != ''">
+            AND o.status LIKE CONCAT('%', #{bean.status}, '%')
+        </if>
     </select>
 
     <select id="listByPage" resultType="com.bean.OrderWithBLOBs">
@@ -88,6 +91,9 @@
         </if>
         <if test="bean.cusName != null and bean.cusName != ''">
             AND o.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
+        </if>
+        <if test="bean.status != null and bean.status != ''">
+            AND o.status LIKE CONCAT('%', #{bean.status}, '%')
         </if>
     </select>
 
@@ -105,6 +111,18 @@
             o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id
+        <if test="bean.code !=null and bean.code != ''">
+            AND o.code LIKE CONCAT('%', #{bean.code}, '%')
+        </if>
+        <if test="bean.seller != null and bean.seller != ''">
+            AND o.seller LIKE CONCAT('%', #{bean.seller}, '%')
+        </if>
+        <if test="bean.cusName != null and bean.cusName != ''">
+            AND o.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
+        </if>
+        <if test="bean.status != null and bean.status != ''">
+            AND o.status LIKE CONCAT('%', #{bean.status}, '%')
+        </if>
     </select>
 
     <select id="listSelected" resultType="com.bean.OrderWithBLOBs">

@@ -2,7 +2,10 @@ package com.bean;
 
 import com.util.DateUtils;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -12,6 +15,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
+@Log4j
 public class Order {
     private Integer id;
     /**
@@ -162,8 +166,8 @@ public class Order {
         this.code = code == null ? null : code.trim();
     }
 
-    public void setCusName(String cName) {
-        this.cusName = cName == null ? null : cName.trim();
+    public void setCusName(String cusName) {
+        this.cusName = cusName == null ? null : cusName.trim();
     }
 
     public void setcType(String cType) {
@@ -195,6 +199,14 @@ public class Order {
     }
 
     public void setStatus(String status) {
+        if (status.contains("%")) {
+            try {
+                status = URLDecoder.decode(status, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                log.error("解码错误");
+                e.printStackTrace();
+            }
+        }
         this.status = status == null ? null : status.trim();
     }
 

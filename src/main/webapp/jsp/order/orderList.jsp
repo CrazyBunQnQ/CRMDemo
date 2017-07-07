@@ -151,8 +151,7 @@
                             <span <c:if test="${order.status=='待审核' }">style="color: #FF0000"</c:if>>待审核</span>
                             <span <c:if test="${order.status=='已审核' }">style="color: #FF0000"</c:if>>已审核</span>
                             <span <c:if test="${order.status=='已驳回' }">style="color: #FF0000"</c:if>>已驳回</span>
-                            <span
-                                    <c:if test="${order.status==null || order.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
+                            <span <c:if test="${order.status==null || order.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
                         </td>
                     </tr>
                 </table>
