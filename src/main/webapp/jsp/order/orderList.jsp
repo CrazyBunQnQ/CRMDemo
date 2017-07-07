@@ -11,11 +11,10 @@
     <link href="css_js/index.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
     <script src="css_js/popup4exExcel.js" type="text/javascript"></script>
+    <script src="css_js/commons.js" type="text/javascript"></script>
     <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
     <script type="text/javascript">
         function initPageSize() {
-
-
             $("#order_status span").click(function () {
                 var orderStatus = $(this).html();
 
@@ -27,7 +26,6 @@
                     //$("#hiddenStatus").val(orderStatus);
                     window.location = "order/orderList?status=" + orderStatus;
                 }
-
             });
 
             var pageSizes = document.getElementsByName("_pageSize");
@@ -38,109 +36,6 @@
                     }
                 }
             }
-        }
-
-        function toDel() {
-            var cbNum = checkBoxNum();
-            if (cbNum > 0) {
-                if (window.confirm("确定删除？")) {
-                    document.getElementById("isDel").value = "true";
-                    document.forms[0].submit();
-                }
-            }
-        }
-        //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
-        function checkBoxNum() {
-            if ($("input[name='selectedId']:checked").length > 0) {
-                return $("input[name='selectedId']:checked").length;
-            } else {
-                return 0;
-            }
-        }
-        function toUrl(pageNumId, pageSizeId) {
-            var _pageNum, _pageSize;
-            if (pageNumId != "_null") {
-                _pageNum = document.getElementById(pageNumId);
-            } else {
-                _pageNum = document.getElementById("_pageNum_up");
-            }
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = _pageNum.options[_pageNum.selectedIndex].value;
-            }
-            if (pageSizeId != "_null") {
-                _pageSize = document.getElementById(pageSizeId);
-            } else {
-                _pageSize = document.getElementById("_pageSize_up");
-            }
-            var hiddenPageSize = document.getElementById("hiddenPageSize");
-            if ("" != hiddenPageSize.value) {
-                hiddenPageSize.value = _pageSize.options[_pageSize.selectedIndex].value;
-            }
-            document.forms[0].submit();
-        }
-
-        function nextPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = hiddenPageNum.value - 0 + 1;
-                document.forms[0].submit();
-            }
-        }
-        function prePage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = hiddenPageNum.value - 0;
-                if (hiddenPageNum.value > 1) {
-                    hiddenPageNum.value -= 1;
-                }
-                document.forms[0].submit();
-            }
-        }
-        function firstPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = 1;
-                document.forms[0].submit();
-            }
-        }
-        function lastPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = ${pager.totalPage};
-                document.forms[0].submit();
-            }
-        }
-        function submitForm() {
-            document.forms[0].submit();
-        }
-        function resetForm() {
-            document.forms[0].reset();
-        }
-        function exportExcel() {
-            loadPopup_excel('导出Excel');
-        }
-        function openTreeWindow() {
-            window.open("optionTreeWidnow.action", "_blank"
-            );
-        }
-
-        //更改"选中条目"的树木
-        function updateNum() {
-            var num = $("input[name='selectedId']:checked").length;
-            $("#select_num1").html(num);
-            $("#select_num2").html(num);
-        }
-
-        //点击全选
-        function toChange() {
-            var num = $("#ids:checked").length;
-            if (num === 0) {
-                $("input[name='selectedId']").attr("checked", false);
-            } else {
-                $("input[name='selectedId']").attr("checked", "checked");
-            }
-            updateNum();
         }
     </script>
 </head>
@@ -252,7 +147,7 @@
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
                                         ${pager.page}/${pager.totalPage}
                                         <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
-                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        <span onclick="lastPage(${pager.totalPage})" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
                                                 id="_pageNum_up">
                                             <%--<s:bean name="org.apache.struts2.util.Counter" id="counter">
