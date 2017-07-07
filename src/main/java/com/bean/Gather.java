@@ -11,7 +11,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
-public class Gather {
+public class Gather extends BaseBean{
     private Integer id;
     /**
      * 所属人

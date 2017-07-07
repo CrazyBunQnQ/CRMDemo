@@ -5,6 +5,7 @@ import com.service.BaseService;
 import com.util.Constant;
 import com.util.DataModel;
 import com.util.Pager;
+import lombok.extern.log4j.Log4j;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by HCol on 2017/7/6.
  */
+@Log4j
 public abstract class BaseController<B extends BaseBean> {
 
     protected abstract ModelAndView list(Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response);

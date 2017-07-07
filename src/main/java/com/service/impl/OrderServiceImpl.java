@@ -99,7 +99,6 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
             }
 
             workbook.write();
-            ;
             workbook.close();
             exportSuccess = true;
         } catch (UnsupportedEncodingException e) {
