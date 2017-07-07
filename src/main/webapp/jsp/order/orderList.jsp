@@ -51,8 +51,8 @@
         }
         //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
         function checkBoxNum() {
-            if ($("input[name='order_id']:checked").length > 0) {
-                return $("input[name='order_id']:checked").length;
+            if ($("input[name='selectedId']:checked").length > 0) {
+                return $("input[name='selectedId']:checked").length;
             } else {
                 return 0;
             }
@@ -124,6 +124,24 @@
             window.open("optionTreeWidnow.action", "_blank"
             );
         }
+
+        //更改"选中条目"的树木
+        function updateNum() {
+            var num = $("input[name='selectedId']:checked").length;
+            $("#select_num1").html(num);
+            $("#select_num2").html(num);
+        }
+
+        //点击全选
+        function toChange() {
+            var num = $("#ids:checked").length;
+            if (num === 0) {
+                $("input[name='selectedId']").attr("checked", false);
+            } else {
+                $("input[name='selectedId']").attr("checked", "checked");
+            }
+            updateNum();
+        }
     </script>
 </head>
 <body onload="initPageSize()">
@@ -151,7 +169,8 @@
                             <span <c:if test="${order.status=='待审核' }">style="color: #FF0000"</c:if>>待审核</span>
                             <span <c:if test="${order.status=='已审核' }">style="color: #FF0000"</c:if>>已审核</span>
                             <span <c:if test="${order.status=='已驳回' }">style="color: #FF0000"</c:if>>已驳回</span>
-                            <span <c:if test="${order.status==null || order.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
+                            <span
+                                    <c:if test="${order.status==null || order.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
                         </td>
                     </tr>
                 </table>
@@ -224,7 +243,7 @@
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
                                         <img src="image/t2.gif" align="absmiddle" width="15" height="16">
                                         <span onclick="exportExcel()" class="pager" style="cursor: pointer">导出</span> |
-                                        选择条目:0
+                                        选择条目:<span id="select_num1">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
@@ -274,7 +293,7 @@
                                             <tr>
                                                 <td width="4%" height="28" align="center"
                                                     background="image/select_title_title.jpg">
-                                                    <input type="checkbox" name="checkbox" value="checkbox">
+                                                    <input type="checkbox" name="ids" id="ids" onclick="toChange()">
                                                 </td>
                                                 <td width="15%" align="left" background="image/select_title_title.jpg">
                                                     <strong>销售单号</strong>
@@ -311,13 +330,14 @@
                                             <c:forEach items="${rows}" var="border">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-                                                        <input type="checkbox" name="order_id" value="${border.id}">
+                                                        <input type="checkbox" name="selectedId" value="${border.id}"
+                                                               onclick="updateNum()">
                                                     </td>
-                                                    <%--<td><a href="load4EditOrder.action?edit_id=${border.id}"--%>
+                                                        <%--<td><a href="load4EditOrder.action?edit_id=${border.id}"--%>
                                                     <td><a href="order/toAddOrUpdateOrder?edit_id=${border.id}"
                                                            class="normal">${border.code}</a></td>
                                                     <td align="center">
-                                                        ${border.orderDateStr}
+                                                            ${border.orderDateStr}
                                                     </td>
                                                     <td align="center">${border.cusName}</td>
                                                     <td align="center">${border.total}</td>
@@ -335,7 +355,7 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
-                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 | 选择条目:0
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 | 选择条目:<span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">

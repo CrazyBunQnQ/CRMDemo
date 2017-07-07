@@ -135,9 +135,9 @@
     </select>
 
     <delete id="removeByPrimaryKeys">
-        DELETE FROM b_order WHERE id IN
+        DELETE FROM b_need_gather WHERE sale_id IN
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
-            #{ids, jdbcType=INTEGER}
+            #{id, jdbcType=INTEGER}
         </foreach>
     </delete>
 
