@@ -42,8 +42,16 @@ public class OrderController extends BaseController<OrderWithBLOBs> {
 
     @Override
     @RequestMapping("/addOrUpdateOrder")
-    protected ModelAndView addOrUpdate(OrderWithBLOBs order, Integer edit_id) {
-        ModelAndView modelAndView = super.baseAddOrUpdate(orderService, order, edit_id);
+    protected ModelAndView addOrUpdate(OrderWithBLOBs bean, Integer edit_id) {
+        // TODO 拥有者
+        if (bean.getOwnerUsr() == null) {
+            bean.setOwnerUsr(1);
+        }
+        if (bean.getCusId() == null) {
+            bean.setCusId(1);
+        }
+
+        ModelAndView modelAndView = super.baseAddOrUpdate(orderService, bean, edit_id);
         modelAndView.setViewName("/jsp/order/orderAdd");
 
         // TODO 业务员列表

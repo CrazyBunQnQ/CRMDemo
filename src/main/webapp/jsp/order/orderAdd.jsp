@@ -18,43 +18,43 @@
 
     <script type="text/javascript">
         jQuery(document).ready(function () {
-            $('#time1').simpleDatepicker({startdate: 1960, enddate: 2060});
-            $('#time2').simpleDatepicker({startdate: 1960, enddate: 2060});
-            $('#orderDate').simpleDatepicker({startdate: 1960, enddate: 2060});
+            $('#time1Str').simpleDatepicker({startdate: 1960, enddate: 2060});
+            $('#time2Str').simpleDatepicker({startdate: 1960, enddate: 2060});
+            $('#orderDateStr').simpleDatepicker({startdate: 1960, enddate: 2060});
 
             //是否已经有了数据
-            if ('' != '${order.time1}') {
-                $('#time1').val('${order.time1}');
+            if ('' != '${bean.time1Str}') {
+                $('#time1Str').val('${bean.time1Str}');
             } else {
-                $('#time1').val('点击显示时间列表');
+                $('#time1Str').val('点击显示时间列表');
             }
-            if ('' != '${order.time2}') {
-                $('#time2').val('${order.time2}');
+            if ('' != '${bean.time2Str}') {
+                $('#time2Str').val('${bean.time2Str}');
             } else {
-                $('#time2').val('点击显示时间列表');
+                $('#time2Str').val('点击显示时间列表');
             }
-            if ('' != '${order.orderDate}') {
-                $('#orderDate').val('${order.orderDate}');
+            if ('' != '${bean.orderDateStr}') {
+                $('#orderDateStr').val('${bean.orderDateStr}');
             } else {
-                $('#orderDate').val('点击显示时间列表');
+                $('#orderDateStr').val('点击显示时间列表');
             }
 
             //判断状态显示时间颜色
-            if ($('#time1').val() != "点击显示时间列表") {
-                $('#time1').removeClass("addTimeInit");
-                $('#time1').addClass("addTimeClick");
+            if ($('#time1Str').val() != "点击显示时间列表") {
+                $('#time1Str').removeClass("addTimeInit");
+                $('#time1Str').addClass("addTimeClick");
             }
-            if ($('#time2').val() != "点击显示时间列表") {
-                $('#time2').removeClass("addTimeInit");
-                $('#time2').addClass("addTimeClick");
+            if ($('#time2Str').val() != "点击显示时间列表") {
+                $('#time2Str').removeClass("addTimeInit");
+                $('#time2Str').addClass("addTimeClick");
             }
-            if ('${order.createTime}' != "") {
-                $("#createTime").val('${order.createTime}');
+            if ('${bean.createtimeStr}' != "") {
+                $("#createtimeStr").val('${bean.createtimeStr}');
             }
         });
         jQuery(document).ready(function () {
-            if ('${order.creater}' != "") {
-                $("#creater").val('${order.creater}');
+            if ('${bean.creater}' != "") {
+                $("#creater").val('${bean.creater}');
             } else {
                 $("#creater").val('${user.name}');
             }
@@ -63,20 +63,20 @@
 
     <script type="text/javascript">
         function submitForm() {
-            if ($('#time1').val() == "点击显示时间列表") {
-                $('#time1').val("");
+            if ($('#time1Str').val() == "点击显示时间列表") {
+                $('#time1Str').val("");
             }
-            if ($('#time2').val() == "点击显示时间列表") {
-                $('#time2').val("");
-                if ($('#createTime') != "") {
-                    $('#createTime').val('');
+            if ($('#time2Str').val() == "点击显示时间列表") {
+                $('#time2Str').val("");
+                if ($('#createtimeStr') != "") {
+                    $('#createtimeStr').val('');
                 }
 
-                if ($('#orderDate') != "") {
-                    $("#orderDate").val('');
+                if ($('#orderDateStr') != "") {
+                    $("#orderDateStr").val('');
                 }
-                document.getElementById("orderForm").submit();
             }
+            document.getElementById("orderForm").submit();
         }
 
         function getPinyinCode() {
@@ -101,9 +101,9 @@
         }
 
         function openCompanyLinkmanWindow() {
-            var o = document.getElementById("CId");
+            var o = document.getElementById("cusId");
             if (o.value != "") {
-                window.open("load4LinkManMain.action?CId=" + o.value + "&MType=linkManOpenWindow", "_blank",
+                window.open("load4LinkManMain.action?cusId=" + o.value + "&MType=linkManOpenWindow", "_blank",
                     "width=740,height=380,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
             } else {
                 alert("请选择客户!");
@@ -112,7 +112,7 @@
     </script>
 </head>
 <body>
-<form name="orderForm" method="post" id="orderForm" action="orderAdd.action">
+<form name="orderForm" method="post" id="orderForm" action="order/addOrUpdateOrder">
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
             <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　销售单--新建</span>
@@ -150,21 +150,22 @@
                                 <tr>
                                     <td width="10%"><span style="color:#FF0000">销售单号:</span></td>
                                     <td width="41%"><input type="text" name="code" class="addCText"
-                                                           value="${todayStr}${order.code}"></td>
+                                                           value="${bean.code}"></td>
                                     <td width="7%" align="left"><span style="color:#FF0000">开单日期:</span></td>
-                                    <td width="42%"><input type="text" name="orderDate" value="${order.orderDate}"
-                                                           id="orderDate" class="addCText"></td>
+                                    <td width="42%"><input type="text" name="orderDateStr" value="${bean.orderDateStr}"
+                                                           id="orderDateStr" class="addCText"></td>
                                     <td width="0%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><span style="color:#FF0000">客户名称:</span></td>
-                                    <td><input type="text" name="companyName" value="${order.cusName}" class="addCText">
-                                        <input type="hidden" name="CId" value="${order.CId}" id="CId"/>
-                                        <input type="hidden" name="cusName" value="${order.CId}"/>
+                                    <td><input type="text" name="cusName" value="${bean.cusName}" class="addCText">
+                                        <input type="hidden" name="cusId" value="${bean.cusId}" id="cusId"/>
+                                        <%--<input type="hidden" name="cusName" value="${bean.cusName}"/>--%>
                                         <img src="image/dakaichuangkou.gif" width="21" height="19"
                                              onclick="openCompanyWindow();"></td>
                                     <td align="left">业务员:</td>
                                     <td><select name="seller" class="addCText">
+                                        <option value="admin" selected="selected">admin</option>
                                         <%--<s:iterator value="#request.userList" id="s_user">
                                             <s:if test="#request.edit_id==null">
                                                 <s:if test="#s_user.name==#session.user.name">
@@ -192,7 +193,7 @@
                                 </tr>
                                 <tr>
                                     <td>联系人:</td>
-                                    <td><input type="text" name="linkman" value="${order.linkman}" class="addCText"
+                                    <td><input type="text" name="linkman" value="${bean.linkman}" class="addCText"
                                                id="linkman">
                                         <img src="image/dakaichuangkou.gif" width="21" height="19"
                                              onclick="openCompanyLinkmanWindow();"></td>
@@ -230,20 +231,20 @@
                                 <tr>
                                     <td width="66">自定义1:</td>
                                     <td>
-                                        <input name="custom1" value="${product.custom1}" type="text" class="addCText"
+                                        <input name="custom1" value="${bean.custom1}" type="text" class="addCText"
                                                id="custom1"></td>
                                     <td width="66" align="left">自定义2:</td>
                                     <td width="40%">
-                                        <input name="custom2" value="${product.custom2}" type="text"
+                                        <input name="custom2" value="${bean.custom2}" type="text"
                                                class="addCText" id="custom2"></td>
                                     <td width="1">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>自定义3:</td>
-                                    <td><input name="custom3" value="${product.custom3}" type="text" class="addCText"
+                                    <td><input name="custom3" value="${bean.custom3}" type="text" class="addCText"
                                                id="custom3"></td>
                                     <td align="left">自定义4:</td>
-                                    <td><input name="custom4" value="${product.custom4}" type="text" class="addCText"
+                                    <td><input name="custom4" value="${bean.custom4}" type="text" class="addCText"
                                                id="custom4"></td>
                                     <td width="1"></td>
                                 </tr>
@@ -252,34 +253,12 @@
                                     <td>
                                         <select name="choice1" class="addCText" id="product_choice1">
                                             <option value="1">---</option>
-                                            <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                                <s:if test="#sdDetail.SDictionaryClass.id == 31">
-                                                    <s:if test="#sdDetail.value == #request.product.choice1">
-                                                        <option value="${sdDetail.value}"
-                                                                selected='selected'>${sdDetail.value}</option>
-                                                    </s:if>
-                                                    <s:else>
-                                                        <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                    </s:else>
-                                                </s:if>
-                                            </s:iterator>--%>
                                         </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice1')">
                                     </td>
                                     <td align="left">自定选项2:</td>
                                     <td><select name="choice2" class="addCText" id="product_choice2">
                                         <option value="1">---</option>
-                                        <%--  <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                              <s:if test="#sdDetail.SDictionaryClass.id == 32">
-                                                  <s:if test="#sdDetail.value == #request.product.choice2">
-                                                      <option value="${sdDetail.value}"
-                                                              selected='selected'>${sdDetail.value}</option>
-                                                  </s:if>
-                                                  <s:else>
-                                                      <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                  </s:else>
-                                              </s:if>
-                                          </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice2')"></td>
                                     <td width="1"></td>
@@ -289,45 +268,23 @@
                                     <td>
                                         <select name="choice3" class="addCText" id="product_choice3">
                                             <option value="1">---</option>
-                                            <%-- <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                                 <s:if test="#sdDetail.SDictionaryClass.id == 33">
-                                                     <s:if test="#sdDetail.value == #request.product.choice3">
-                                                         <option value="${sdDetail.value}"
-                                                                 selected='selected'>${sdDetail.value}</option>
-                                                     </s:if>
-                                                     <s:else>
-                                                         <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                     </s:else>
-                                                 </s:if>
-                                             </s:iterator>--%>
                                         </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice3')"></td>
                                     <td align="left">自定选项4</td>
                                     <td>
                                         <select name="choice4" class="addCText" id="product_choice4">
                                             <option value="1">---</option>
-                                            <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                                <s:if test="#sdDetail.SDictionaryClass.id == 34">
-                                                    <s:if test="#sdDetail.value == #request.product.choice4">
-                                                        <option value="${sdDetail.value}"
-                                                                selected='selected'>${sdDetail.value}</option>
-                                                    </s:if>
-                                                    <s:else>
-                                                        <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                    </s:else>
-                                                </s:if>
-                                            </s:iterator>--%>
                                         </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice4')"></td>
                                     <td width="1"></td>
                                 </tr>
                                 <tr>
                                     <td>自定时间1:</td>
-                                    <td><input type="text" name="time1" id="time1"
+                                    <td><input type="text" name="time1Str" id="time1Str"
                                                class="addTimeInit" value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td align="left">自定时间2:</td>
-                                    <td><input type="text" name="time2" id="time2"
+                                    <td><input type="text" name="time2Str" id="time2Str"
                                                class="addTimeInit" value="点击显示时间列表" readonly="readonly">
                                     </td>
                                     <td width="1"></td>
@@ -351,22 +308,22 @@
                                 <tr>
                                     <td width="7%">创建人:</td>
                                     <td width="42%">
-                                        <input name="creater" type="text" class="addCText" id="creater"
+                                        <input name="creater" type="text" class="addCText" id="creater" value="admin"
                                                readOnly="readOnly">
                                     </td>
                                     <td width="9%" align="left">创建日期:</td>
                                     <td width="40%">
-                                        <input name="createTime" id="createTime" value="${c_time}${product.createTime}"
-                                               type="text" class="addCText" id="createTime" readOnly="readOnly"></td>
+                                        <input name="createtimeStr" id="createtimeStr" value="${bean.createtimeStr}"
+                                               type="text" class="addCText" id="createtimeStr" readOnly="readOnly"></td>
                                     <td width="2%">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>修改人:</td>
-                                    <td><input name="updater" type="text" class="addCText" value="${user.name}"
+                                    <td><input name="updater" type="text" class="addCText" value="admin"
                                                id="updater" readOnly="readOnly"></td>
                                     <td align="left">修改日期:</td>
-                                    <td><input name="updateTime" type="text" value='${c_time}' class="addCText"
-                                               id="updateTime" readOnly="readOnly"></td>
+                                    <td><input name="updatetimeStr" type="text" value='' class="addCText"
+                                               id="updatetimeStr" readOnly="readOnly"></td>
                                     <td>&nbsp;</td>
                                 </tr>
                             </table>

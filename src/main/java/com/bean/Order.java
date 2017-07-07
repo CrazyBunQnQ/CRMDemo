@@ -52,7 +52,7 @@ public class Order extends BaseBean {
     /**
      * 客户 id
      */
-    private Integer cId;
+    private Integer cusId;
     /**
      * 客户名称
      */
@@ -115,7 +115,9 @@ public class Order extends BaseBean {
     private String choice3;
     private String choice4;
     private Date time1;
+    private String time1Str;
     private Date time2;
+    private String time2Str;
     private String shareFlag;
 
     public String getCreatetimeStr() {
@@ -152,6 +154,24 @@ public class Order extends BaseBean {
     public void setAuditDateStr(String auditDateStr) {
         this.auditDate = DateUtils.strToDate("yyyy-MM-dd", auditDateStr);
         this.auditDateStr = auditDateStr;
+    }
+
+    public String getTime1Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd", time1);
+    }
+
+    public void setTime1Str(String time1Str) {
+        this.time1 = DateUtils.strToDate("yyyy-MM-dd", time1Str);
+        this.time1Str = time1Str;
+    }
+
+    public String getTime2Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd", time2);
+    }
+
+    public void setTime2Str(String time2Str) {
+        this.time2 = DateUtils.strToDate("yyyy-MM-dd", time2Str);
+        this.time2Str = time2Str;
     }
 
     public void setCreater(String creater) {
