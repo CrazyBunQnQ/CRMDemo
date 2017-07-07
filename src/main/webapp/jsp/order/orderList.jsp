@@ -313,7 +313,8 @@
                                                     <td align="center">
                                                         <input type="checkbox" name="order_id" value="${border.id}">
                                                     </td>
-                                                    <td><a href="load4EditOrder.action?edit_id=${border.id}"
+                                                    <%--<td><a href="load4EditOrder.action?edit_id=${border.id}"--%>
+                                                    <td><a href="order/toAddOrUpdateOrder?edit_id=${border.id}"
                                                            class="normal">${border.code}</a></td>
                                                     <td align="center">
                                                         ${border.orderDateStr}
