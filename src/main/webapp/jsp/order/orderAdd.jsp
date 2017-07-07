@@ -17,13 +17,12 @@
     <title>Insert title here</title>
 
     <script type="text/javascript">
-
         jQuery(document).ready(function () {
             $('#time1').simpleDatepicker({startdate: 1960, enddate: 2060});
             $('#time2').simpleDatepicker({startdate: 1960, enddate: 2060});
             $('#orderDate').simpleDatepicker({startdate: 1960, enddate: 2060});
-            //是否已经有了数据
 
+            //是否已经有了数据
             if ('' != '${order.time1}') {
                 $('#time1').val('${order.time1}');
             } else {
@@ -39,8 +38,8 @@
             } else {
                 $('#orderDate').val('点击显示时间列表');
             }
-            //判断状态显示时间颜色
 
+            //判断状态显示时间颜色
             if ($('#time1').val() != "点击显示时间列表") {
                 $('#time1').removeClass("addTimeInit");
                 $('#time1').addClass("addTimeClick");
@@ -59,24 +58,21 @@
             } else {
                 $("#creater").val('${user.name}');
             }
-
         });
     </script>
 
     <script type="text/javascript">
         function submitForm() {
-
             if ($('#time1').val() == "点击显示时间列表") {
                 $('#time1').val("");
             }
             if ($('#time2').val() == "点击显示时间列表") {
                 $('#time2').val("");
-                if ('${#createTime}' != "") {
-                    $("#createTime").val('');
+                if ($('#createTime') != "") {
+                    $('#createTime').val('');
                 }
 
-
-                if ('${#orderDate}' != "") {
+                if ($('#orderDate') != "") {
                     $("#orderDate").val('');
                 }
                 document.getElementById("orderForm").submit();
@@ -98,10 +94,12 @@
                 });
             }
         }
+
         function openCompanyWindow() {
             window.open("load4Visit.action?MType=companyList_openWindow", "_blank",
                 "width=740,height=380,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
         }
+
         function openCompanyLinkmanWindow() {
             var o = document.getElementById("CId");
             if (o.value != "") {
@@ -110,12 +108,10 @@
             } else {
                 alert("请选择客户!");
             }
-
         }
     </script>
 </head>
 <body>
-<s:fielderror></s:fielderror>
 <form name="orderForm" method="post" id="orderForm" action="orderAdd.action">
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
@@ -129,21 +125,23 @@
             <td height="12"></td>
         </tr>
         <tr>
-            <td valign="middle"><img src="image/s10.gif" width="58"
-                                     height="22" style="cursor: pointer;" onclick="submitForm();"><img
-                    src="image/s8.gif" width="59" height="22"><span
-                    style="font-size:12px;color:#009900;">保存后可新建明细</span></td>
+            <td valign="middle">
+                <img src="image/s10.gif" width="58" height="22" style="cursor: pointer;" onclick="submitForm();">
+                <img src="image/s8.gif" width="59" height="22">
+                <span style="font-size:12px;color:#009900;">保存后可新建明细</span>
+            </td>
         </tr>
         <tr>
-            <td id="errorInfo" style="font-size:12px;color:red;"><s:actionmessage/></td>
+            <td id="errorInfo" style="font-size:12px;color:red;">${suc}</td>
         </tr>
         <tr>
             <td valign="middle">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
-                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif"><img
-                                style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
-                                align="absmiddle">&nbsp;<span style="font-weight:bold;font-size:12px;">基本信息</span></td>
+                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">&nbsp;
+                            <span style="font-weight:bold;font-size:12px;">基本信息</span></td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
@@ -219,9 +217,11 @@
 
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div2">
                     <tr>
-                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif"><img
-                                style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
-                                align="absmiddle">&nbsp;<span style="font-weight:bold;font-size:12px;">自定义信息</span></td>
+                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">&nbsp;
+                            <span style="font-weight:bold;font-size:12px;">自定义信息</span>
+                        </td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
@@ -229,11 +229,13 @@
                                    id="selectTable2">
                                 <tr>
                                     <td width="66">自定义1:</td>
-                                    <td><input name="custom1" value="${product.custom1}" type="text" class="addCText"
+                                    <td>
+                                        <input name="custom1" value="${product.custom1}" type="text" class="addCText"
                                                id="custom1"></td>
                                     <td width="66" align="left">自定义2:</td>
-                                    <td width="40%"><input name="custom2" value="${product.custom2}" type="text"
-                                                           class="addCText" id="custom2"></td>
+                                    <td width="40%">
+                                        <input name="custom2" value="${product.custom2}" type="text"
+                                               class="addCText" id="custom2"></td>
                                     <td width="1">&nbsp;</td>
                                 </tr>
                                 <tr>
@@ -247,71 +249,75 @@
                                 </tr>
                                 <tr>
                                     <td>自定选项1:</td>
-                                    <td><select name="choice1" class="addCText" id="product_choice1">
-                                        <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                            <s:if test="#sdDetail.SDictionaryClass.id == 31">
-                                                <s:if test="#sdDetail.value == #request.product.choice1">
-                                                    <option value="${sdDetail.value}"
-                                                            selected='selected'>${sdDetail.value}</option>
+                                    <td>
+                                        <select name="choice1" class="addCText" id="product_choice1">
+                                            <option value="1">---</option>
+                                            <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                                <s:if test="#sdDetail.SDictionaryClass.id == 31">
+                                                    <s:if test="#sdDetail.value == #request.product.choice1">
+                                                        <option value="${sdDetail.value}"
+                                                                selected='selected'>${sdDetail.value}</option>
+                                                    </s:if>
+                                                    <s:else>
+                                                        <option value="${sdDetail.value}">${sdDetail.value}</option>
+                                                    </s:else>
                                                 </s:if>
-                                                <s:else>
-                                                    <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                </s:else>
-                                            </s:if>
-                                        </s:iterator>
-                                    </select> <img src="image/s11.gif" onclick="loadPopup('product_choice1')">
+                                            </s:iterator>--%>
+                                        </select>
+                                        <img src="image/s11.gif" onclick="loadPopup('product_choice1')">
                                     </td>
                                     <td align="left">自定选项2:</td>
                                     <td><select name="choice2" class="addCText" id="product_choice2">
                                         <option value="1">---</option>
-                                        <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                            <s:if test="#sdDetail.SDictionaryClass.id == 32">
-                                                <s:if test="#sdDetail.value == #request.product.choice2">
-                                                    <option value="${sdDetail.value}"
-                                                            selected='selected'>${sdDetail.value}</option>
-                                                </s:if>
-                                                <s:else>
-                                                    <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                </s:else>
-                                            </s:if>
-                                        </s:iterator>
+                                        <%--  <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                              <s:if test="#sdDetail.SDictionaryClass.id == 32">
+                                                  <s:if test="#sdDetail.value == #request.product.choice2">
+                                                      <option value="${sdDetail.value}"
+                                                              selected='selected'>${sdDetail.value}</option>
+                                                  </s:if>
+                                                  <s:else>
+                                                      <option value="${sdDetail.value}">${sdDetail.value}</option>
+                                                  </s:else>
+                                              </s:if>
+                                          </s:iterator>--%>
                                     </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice2')"></td>
                                     <td width="1"></td>
                                 </tr>
                                 <tr>
                                     <td>自定选项3:</td>
-                                    <td><select name="choice3" class="addCText" id="product_choice3">
-                                        <option value="1">---</option>
-                                       <%-- <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                            <s:if test="#sdDetail.SDictionaryClass.id == 33">
-                                                <s:if test="#sdDetail.value == #request.product.choice3">
-                                                    <option value="${sdDetail.value}"
-                                                            selected='selected'>${sdDetail.value}</option>
-                                                </s:if>
-                                                <s:else>
-                                                    <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                </s:else>
-                                            </s:if>
-                                        </s:iterator>--%>
-                                    </select>
+                                    <td>
+                                        <select name="choice3" class="addCText" id="product_choice3">
+                                            <option value="1">---</option>
+                                            <%-- <s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                                 <s:if test="#sdDetail.SDictionaryClass.id == 33">
+                                                     <s:if test="#sdDetail.value == #request.product.choice3">
+                                                         <option value="${sdDetail.value}"
+                                                                 selected='selected'>${sdDetail.value}</option>
+                                                     </s:if>
+                                                     <s:else>
+                                                         <option value="${sdDetail.value}">${sdDetail.value}</option>
+                                                     </s:else>
+                                                 </s:if>
+                                             </s:iterator>--%>
+                                        </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice3')"></td>
                                     <td align="left">自定选项4</td>
-                                    <td><select name="choice4" class="addCText" id="product_choice4">
-                                        <option value="1">---</option>
-                                        <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
-                                            <s:if test="#sdDetail.SDictionaryClass.id == 34">
-                                                <s:if test="#sdDetail.value == #request.product.choice4">
-                                                    <option value="${sdDetail.value}"
-                                                            selected='selected'>${sdDetail.value}</option>
+                                    <td>
+                                        <select name="choice4" class="addCText" id="product_choice4">
+                                            <option value="1">---</option>
+                                            <%--<s:iterator value="#request.sDictionaryDetailList" id="sdDetail">
+                                                <s:if test="#sdDetail.SDictionaryClass.id == 34">
+                                                    <s:if test="#sdDetail.value == #request.product.choice4">
+                                                        <option value="${sdDetail.value}"
+                                                                selected='selected'>${sdDetail.value}</option>
+                                                    </s:if>
+                                                    <s:else>
+                                                        <option value="${sdDetail.value}">${sdDetail.value}</option>
+                                                    </s:else>
                                                 </s:if>
-                                                <s:else>
-                                                    <option value="${sdDetail.value}">${sdDetail.value}</option>
-                                                </s:else>
-                                            </s:if>
-                                        </s:iterator>--%>
-                                    </select>
+                                            </s:iterator>--%>
+                                        </select>
                                         <img src="image/s11.gif" onclick="loadPopup('product_choice4')"></td>
                                     <td width="1"></td>
                                 </tr>
@@ -331,12 +337,12 @@
                     </tr>
                 </table>
 
-
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div3">
                     <tr>
-                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif"><img
-                                style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
-                                align="absmiddle">&nbsp;<span style="font-weight:bold;font-size:12px;">其他信息</span></td>
+                        <td height="21" valign="top" background="image/index_main_div_titleBg.gif">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">&nbsp;
+                            <span style="font-weight:bold;font-size:12px;">其他信息</span></td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
@@ -344,13 +350,14 @@
                                    id="selectTable3">
                                 <tr>
                                     <td width="7%">创建人:</td>
-                                    <td width="42%"><input name="creater" type="text" class="addCText" id="creater"
-                                                           readOnly="readOnly">
+                                    <td width="42%">
+                                        <input name="creater" type="text" class="addCText" id="creater"
+                                               readOnly="readOnly">
                                     </td>
                                     <td width="9%" align="left">创建日期:</td>
-                                    <td width="40%"><input name="createTime" id="createTime"
-                                                           value="${c_time}${product.createTime}" type="text"
-                                                           class="addCText" id="createTime" readOnly="readOnly"></td>
+                                    <td width="40%">
+                                        <input name="createTime" id="createTime" value="${c_time}${product.createTime}"
+                                               type="text" class="addCText" id="createTime" readOnly="readOnly"></td>
                                     <td width="2%">&nbsp;</td>
                                 </tr>
                                 <tr>
@@ -366,15 +373,15 @@
                         </td>
                     </tr>
                 </table>
-
             </td>
         </tr>
         <tr>
             <td valign="middle">&nbsp;</td>
         </tr>
         <tr>
-            <td valign="middle"><img src="image/s10.gif" width="58" height="22"><img src="image/s8.gif" width="59"
-                                                                                     height="22"></td>
+            <td valign="middle">
+                <img src="image/s10.gif" width="58" height="22">
+                <img src="image/s8.gif" width="59" height="22"></td>
         </tr>
         <tr>
             <td valign="middle">&nbsp;</td>
