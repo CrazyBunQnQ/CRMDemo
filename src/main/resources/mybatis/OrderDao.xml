@@ -95,6 +95,7 @@
         <if test="bean.status != null and bean.status != ''">
             AND o.status LIKE CONCAT('%', #{bean.status}, '%')
         </if>
+        LIMIT #{from}, #{pageSize}
     </select>
 
     <select id="listAll" resultType="com.bean.OrderWithBLOBs">
@@ -111,26 +112,14 @@
             o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id
-        <if test="bean.code !=null and bean.code != ''">
-            AND o.code LIKE CONCAT('%', #{bean.code}, '%')
-        </if>
-        <if test="bean.seller != null and bean.seller != ''">
-            AND o.seller LIKE CONCAT('%', #{bean.seller}, '%')
-        </if>
-        <if test="bean.cusName != null and bean.cusName != ''">
-            AND o.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
-        </if>
-        <if test="bean.status != null and bean.status != ''">
-            AND o.status LIKE CONCAT('%', #{bean.status}, '%')
-        </if>
     </select>
 
     <select id="listSelected" resultType="com.bean.OrderWithBLOBs">
         SELECT o.id, o.code, o.order_date, o.c_name, o.seller, o.total, o.agio_total, ng.total, o.auditor, o.status
         FROM b_order o, b_need_gather ng
-        WHERE o.id = ng.sale_id
+        WHERE o.id = ng.sale_id AND o.id IN
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
-            #{ids, jdbcType=INTEGER}
+            #{id, jdbcType=INTEGER}
         </foreach>
     </select>
 
@@ -148,30 +137,32 @@
 
     <insert id="insert" parameterType="com.bean.OrderWithBLOBs">
         INSERT INTO b_order (id, owner_usr, creater,
-        createTime, updater, updateTime,
-        code, order_date, c_id,
-        c_name, c_type, linkman,
-        telephone, address, seller,
-        total, agio, agio_total,
-        auditor, audit_date, status_id,
-        status, custom1, custom2,
-        custom3, custom4, choice1,
-        choice2, choice3, choice4,
-        time1, time2, share_flag,
-        remark, audit_reason, share_ids
+                             createTime, updater, updateTime,
+                             code, order_date, c_id,
+                             c_name, c_type, linkman,
+                             telephone, address, seller,
+                             total, agio, agio_total,
+                             auditor, audit_date, status_id,
+                             status, custom1, custom2,
+                             custom3, custom4, choice1,
+                             choice2, choice3, choice4,
+                             time1, time2, share_flag,
+                             remark, audit_reason, share_ids
         )
         VALUES (#{id,jdbcType=INTEGER}, #{ownerUsr,jdbcType=INTEGER}, #{creater,jdbcType=VARCHAR},
-        #{createtime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP},
-        #{code,jdbcType=VARCHAR}, #{orderDate,jdbcType=DATE}, #{cusId,jdbcType=INTEGER},
-        #{cusName,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR},
-        #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{seller,jdbcType=VARCHAR},
-        #{total,jdbcType=DOUBLE}, #{agio,jdbcType=DOUBLE}, #{agioTotal,jdbcType=DOUBLE},
-        #{auditor,jdbcType=VARCHAR}, #{auditDate,jdbcType=DATE}, #{statusId,jdbcType=VARCHAR},
-        #{status,jdbcType=VARCHAR}, #{custom1,jdbcType=VARCHAR}, #{custom2,jdbcType=VARCHAR},
-        #{custom3,jdbcType=VARCHAR}, #{custom4,jdbcType=VARCHAR}, #{choice1,jdbcType=VARCHAR},
-        #{choice2,jdbcType=VARCHAR}, #{choice3,jdbcType=VARCHAR}, #{choice4,jdbcType=VARCHAR},
-        #{time1,jdbcType=TIMESTAMP}, #{time2,jdbcType=TIMESTAMP}, #{shareFlag,jdbcType=CHAR},
-        #{remark,jdbcType=LONGVARCHAR}, #{auditReason,jdbcType=LONGVARCHAR}, #{shareIds,jdbcType=LONGVARCHAR}
+                                        #{createtime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR},
+                                        #{updatetime,jdbcType=TIMESTAMP},
+                                        #{code,jdbcType=VARCHAR}, #{orderDate,jdbcType=DATE}, #{cusId,jdbcType=INTEGER},
+                                        #{cusName,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR},
+            #{linkman,jdbcType=VARCHAR},
+            #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{seller,jdbcType=VARCHAR},
+            #{total,jdbcType=DOUBLE}, #{agio,jdbcType=DOUBLE}, #{agioTotal,jdbcType=DOUBLE},
+            #{auditor,jdbcType=VARCHAR}, #{auditDate,jdbcType=DATE}, #{statusId,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR}, #{custom1,jdbcType=VARCHAR}, #{custom2,jdbcType=VARCHAR},
+            #{custom3,jdbcType=VARCHAR}, #{custom4,jdbcType=VARCHAR}, #{choice1,jdbcType=VARCHAR},
+            #{choice2,jdbcType=VARCHAR}, #{choice3,jdbcType=VARCHAR}, #{choice4,jdbcType=VARCHAR},
+            #{time1,jdbcType=TIMESTAMP}, #{time2,jdbcType=TIMESTAMP}, #{shareFlag,jdbcType=CHAR},
+                #{remark,jdbcType=LONGVARCHAR}, #{auditReason,jdbcType=LONGVARCHAR}, #{shareIds,jdbcType=LONGVARCHAR}
         )
     </insert>
 
@@ -513,78 +504,78 @@
 
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.OrderWithBLOBs">
         UPDATE b_order
-        SET owner_usr = #{ownerUsr,jdbcType=INTEGER},
-        creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-        updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-        code = #{code,jdbcType=VARCHAR},
-        order_date = #{orderDate,jdbcType=DATE},
-        c_id = #{cusId,jdbcType=INTEGER},
-        c_name = #{cusName,jdbcType=VARCHAR},
-        c_type = #{cType,jdbcType=VARCHAR},
-        linkman = #{linkman,jdbcType=VARCHAR},
-        telephone = #{telephone,jdbcType=VARCHAR},
-        address = #{address,jdbcType=VARCHAR},
-        seller = #{seller,jdbcType=VARCHAR},
-        total = #{total,jdbcType=DOUBLE},
-        agio = #{agio,jdbcType=DOUBLE},
-        agio_total = #{agioTotal,jdbcType=DOUBLE},
-        auditor = #{auditor,jdbcType=VARCHAR},
-        audit_date = #{auditDate,jdbcType=DATE},
-        status_id = #{statusId,jdbcType=VARCHAR},
-        status = #{status,jdbcType=VARCHAR},
-        custom1 = #{custom1,jdbcType=VARCHAR},
-        custom2 = #{custom2,jdbcType=VARCHAR},
-        custom3 = #{custom3,jdbcType=VARCHAR},
-        custom4 = #{custom4,jdbcType=VARCHAR},
-        choice1 = #{choice1,jdbcType=VARCHAR},
-        choice2 = #{choice2,jdbcType=VARCHAR},
-        choice3 = #{choice3,jdbcType=VARCHAR},
-        choice4 = #{choice4,jdbcType=VARCHAR},
-        time1 = #{time1,jdbcType=TIMESTAMP},
-        time2 = #{time2,jdbcType=TIMESTAMP},
-        share_flag = #{shareFlag,jdbcType=CHAR},
-        remark = #{remark,jdbcType=LONGVARCHAR},
-        audit_reason = #{auditReason,jdbcType=LONGVARCHAR},
-        share_ids = #{shareIds,jdbcType=LONGVARCHAR}
+        SET owner_usr    = #{ownerUsr,jdbcType=INTEGER},
+            creater      = #{creater,jdbcType=VARCHAR},
+            createTime   = #{createtime,jdbcType=TIMESTAMP},
+            updater      = #{updater,jdbcType=VARCHAR},
+            updateTime   = #{updatetime,jdbcType=TIMESTAMP},
+            code         = #{code,jdbcType=VARCHAR},
+            order_date   = #{orderDate,jdbcType=DATE},
+            c_id         = #{cusId,jdbcType=INTEGER},
+            c_name       = #{cusName,jdbcType=VARCHAR},
+            c_type       = #{cType,jdbcType=VARCHAR},
+            linkman      = #{linkman,jdbcType=VARCHAR},
+            telephone    = #{telephone,jdbcType=VARCHAR},
+            address      = #{address,jdbcType=VARCHAR},
+            seller       = #{seller,jdbcType=VARCHAR},
+            total        = #{total,jdbcType=DOUBLE},
+            agio         = #{agio,jdbcType=DOUBLE},
+            agio_total   = #{agioTotal,jdbcType=DOUBLE},
+            auditor      = #{auditor,jdbcType=VARCHAR},
+            audit_date   = #{auditDate,jdbcType=DATE},
+            status_id    = #{statusId,jdbcType=VARCHAR},
+            status       = #{status,jdbcType=VARCHAR},
+            custom1      = #{custom1,jdbcType=VARCHAR},
+            custom2      = #{custom2,jdbcType=VARCHAR},
+            custom3      = #{custom3,jdbcType=VARCHAR},
+            custom4      = #{custom4,jdbcType=VARCHAR},
+            choice1      = #{choice1,jdbcType=VARCHAR},
+            choice2      = #{choice2,jdbcType=VARCHAR},
+            choice3      = #{choice3,jdbcType=VARCHAR},
+            choice4      = #{choice4,jdbcType=VARCHAR},
+            time1        = #{time1,jdbcType=TIMESTAMP},
+            time2        = #{time2,jdbcType=TIMESTAMP},
+            share_flag   = #{shareFlag,jdbcType=CHAR},
+            remark       = #{remark,jdbcType=LONGVARCHAR},
+            audit_reason = #{auditReason,jdbcType=LONGVARCHAR},
+            share_ids    = #{shareIds,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.bean.Order">
         UPDATE b_order
-        SET owner_usr = #{ownerUsr,jdbcType=INTEGER},
-        creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-        updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-        code = #{code,jdbcType=VARCHAR},
-        order_date = #{orderDate,jdbcType=DATE},
-        c_id = #{cusId,jdbcType=INTEGER},
-        c_name = #{cusName,jdbcType=VARCHAR},
-        c_type = #{cType,jdbcType=VARCHAR},
-        linkman = #{linkman,jdbcType=VARCHAR},
-        telephone = #{telephone,jdbcType=VARCHAR},
-        address = #{address,jdbcType=VARCHAR},
-        seller = #{seller,jdbcType=VARCHAR},
-        total = #{total,jdbcType=DOUBLE},
-        agio = #{agio,jdbcType=DOUBLE},
-        agio_total = #{agioTotal,jdbcType=DOUBLE},
-        auditor = #{auditor,jdbcType=VARCHAR},
-        audit_date = #{auditDate,jdbcType=DATE},
-        status_id = #{statusId,jdbcType=VARCHAR},
-        status = #{status,jdbcType=VARCHAR},
-        custom1 = #{custom1,jdbcType=VARCHAR},
-        custom2 = #{custom2,jdbcType=VARCHAR},
-        custom3 = #{custom3,jdbcType=VARCHAR},
-        custom4 = #{custom4,jdbcType=VARCHAR},
-        choice1 = #{choice1,jdbcType=VARCHAR},
-        choice2 = #{choice2,jdbcType=VARCHAR},
-        choice3 = #{choice3,jdbcType=VARCHAR},
-        choice4 = #{choice4,jdbcType=VARCHAR},
-        time1 = #{time1,jdbcType=TIMESTAMP},
-        time2 = #{time2,jdbcType=TIMESTAMP},
-        share_flag = #{shareFlag,jdbcType=CHAR}
+        SET owner_usr  = #{ownerUsr,jdbcType=INTEGER},
+            creater    = #{creater,jdbcType=VARCHAR},
+            createTime = #{createtime,jdbcType=TIMESTAMP},
+            updater    = #{updater,jdbcType=VARCHAR},
+            updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            code       = #{code,jdbcType=VARCHAR},
+            order_date = #{orderDate,jdbcType=DATE},
+            c_id       = #{cusId,jdbcType=INTEGER},
+            c_name     = #{cusName,jdbcType=VARCHAR},
+            c_type     = #{cType,jdbcType=VARCHAR},
+            linkman    = #{linkman,jdbcType=VARCHAR},
+            telephone  = #{telephone,jdbcType=VARCHAR},
+            address    = #{address,jdbcType=VARCHAR},
+            seller     = #{seller,jdbcType=VARCHAR},
+            total      = #{total,jdbcType=DOUBLE},
+            agio       = #{agio,jdbcType=DOUBLE},
+            agio_total = #{agioTotal,jdbcType=DOUBLE},
+            auditor    = #{auditor,jdbcType=VARCHAR},
+            audit_date = #{auditDate,jdbcType=DATE},
+            status_id  = #{statusId,jdbcType=VARCHAR},
+            status     = #{status,jdbcType=VARCHAR},
+            custom1    = #{custom1,jdbcType=VARCHAR},
+            custom2    = #{custom2,jdbcType=VARCHAR},
+            custom3    = #{custom3,jdbcType=VARCHAR},
+            custom4    = #{custom4,jdbcType=VARCHAR},
+            choice1    = #{choice1,jdbcType=VARCHAR},
+            choice2    = #{choice2,jdbcType=VARCHAR},
+            choice3    = #{choice3,jdbcType=VARCHAR},
+            choice4    = #{choice4,jdbcType=VARCHAR},
+            time1      = #{time1,jdbcType=TIMESTAMP},
+            time2      = #{time2,jdbcType=TIMESTAMP},
+            share_flag = #{shareFlag,jdbcType=CHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

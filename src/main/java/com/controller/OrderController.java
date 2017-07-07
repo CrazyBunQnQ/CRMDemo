@@ -24,6 +24,9 @@ public class OrderController extends BaseController<OrderWithBLOBs> {
     @RequestMapping("/orderList")
     public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, OrderWithBLOBs order, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baselist(orderService, pager, isDel, selectedId, order, exportType, response);
+        if (modelAndView == null) {
+            return null;
+        }
         modelAndView.addObject("order", order);
         modelAndView.setViewName("/jsp/order/orderList");
         return modelAndView;

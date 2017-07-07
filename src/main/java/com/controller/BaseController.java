@@ -22,6 +22,7 @@ public abstract class BaseController<B extends BaseBean> {
 
         if (exportType != null && !"".equals(exportType.trim())) {
             service.exportExcel(exportType, pager, selectedId, bean, response);
+            return null;
         }
 
         if (Constant.IS_DEL.equals(isDel)) {
