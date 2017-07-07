@@ -207,7 +207,7 @@
                     <tr>
                         <td height="16" valign="top"><br/>
                             <img src="image/s3.gif" width="62" height="22"
-                                 onclick="javascript:window.location.href='order/toAddOrder'">
+                                 onclick="javascript:window.location.href='order/toAddOrUpdateOrder'">
                             <img src="image/s7.gif" width="59" height="22" alt="删除按钮" onclick="toDel();">
                         </td>
                     </tr>
