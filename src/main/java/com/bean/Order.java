@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Data
 @Log4j
-public class Order {
+public class Order extends BaseBean {
     private Integer id;
     /**
      * 所属人
@@ -26,8 +26,8 @@ public class Order {
      * 创建人
      */
     private String creater;
-    /**创建时间
-     *
+    /**
+     * 创建时间
      */
     private Date createtime;
     private String createtimeStr;
@@ -118,13 +118,17 @@ public class Order {
     private Date time2;
     private String shareFlag;
 
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
     public void setCreatetimeStr(String createtimeStr) {
         this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
         this.createtimeStr = createtimeStr;
     }
 
-    public String getCreatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
     }
 
     public void setUpdatetimeStr(String updatetimeStr) {
@@ -132,8 +136,8 @@ public class Order {
         this.updatetimeStr = updatetimeStr;
     }
 
-    public String getUpdatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    public String getOrderDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", orderDate);
     }
 
     public void setOrderDateStr(String orderDateStr) {
@@ -141,17 +145,13 @@ public class Order {
         this.orderDateStr = orderDateStr;
     }
 
-    public String getOrderDateStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+    public String getAuditDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
     }
 
     public void setAuditDateStr(String auditDateStr) {
         this.auditDate = DateUtils.strToDate("yyyy-MM-dd", auditDateStr);
         this.auditDateStr = auditDateStr;
-    }
-
-    public String getAuditDateStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
     }
 
     public void setCreater(String creater) {
