@@ -245,7 +245,8 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
-                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 |
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16">
+                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">导出</span> |
                                         选择条目:<span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
