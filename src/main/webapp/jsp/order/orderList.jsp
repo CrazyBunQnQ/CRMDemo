@@ -93,7 +93,8 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <input type="text" name="cusName" value="${order.cusName}" class="inputTextStyle">
+                                        <input type="text" name="cusName" value="${order.cusName}"
+                                               class="inputTextStyle">
                                     </td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">
@@ -147,23 +148,17 @@
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
                                         ${pager.page}/${pager.totalPage}
                                         <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
-                                        <span onclick="lastPage(${pager.totalPage})" class="pager" style="cursor: pointer">末页</span>
+                                        <span onclick="lastPage(${pager.totalPage})" class="pager"
+                                              style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
                                                 id="_pageNum_up">
-                                            <%--<s:bean name="org.apache.struts2.util.Counter" id="counter">
-                                                <s:param name="first" value="0"/>
-                                                <s:param name="last" value="#request.pager.totalPage-1"/>
-                                                <s:iterator>
-                                                    <s:if test="#counter.current==#request.pager.page">
-                                                        <option value="${counter.current}" selected="selected">
-                                                            第${counter.current}页
-                                                        </option>
-                                                    </s:if>
-                                                    <s:else>
-                                                        <option value="${counter.current}">第${counter.current}页</option>
-                                                    </s:else>
-                                                </s:iterator>
-                                            </s:bean>--%>
+                                            <c:forEach var="i" begin="1" end="${pager.totalPage}" step="1">
+                                                <option value="${i}"
+                                                        <c:if test="${pager.page==i}">
+                                                            selected="selected"
+                                                        </c:if>>第&nbsp;${i}&nbsp;页
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                         <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
                                                 id="_pageSize_up">
@@ -250,7 +245,8 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
-                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 | 选择条目:<span id="select_num2">0</span>
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16"> 导出 |
+                                        选择条目:<span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
@@ -262,20 +258,13 @@
                                         <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_down','_null');"
                                                 id="_pageNum_down">
-                                            <%--<s:bean name="org.apache.struts2.util.Counter" id="counter">
-                                                <s:param name="first" value="0"/>
-                                                <s:param name="last" value="#request.pager.totalPage-1"/>
-                                                <s:iterator>
-                                                    <s:if test="#counter.current==#request.pager.page">
-                                                        <option value="${counter.current}" selected="selected">
-                                                            第${counter.current}页
-                                                        </option>
-                                                    </s:if>
-                                                    <s:else>
-                                                        <option value="${counter.current}">第${counter.current}页</option>
-                                                    </s:else>
-                                                </s:iterator>
-                                            </s:bean>--%>
+                                            <c:forEach var="i" begin="1" end="${pager.totalPage}" step="1">
+                                                <option value="${i}"
+                                                        <c:if test="${pager.page==i}">
+                                                            selected="selected"
+                                                        </c:if>>第&nbsp;${i}&nbsp;页
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                         <select name="_pageSize" onchange="toUrl('_null','_pageSize_down')"
                                                 id="_pageSize_down">
