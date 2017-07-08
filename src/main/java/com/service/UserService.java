@@ -18,4 +18,8 @@ public interface UserService extends BaseService<User> {
     public User findUser(String name, String password);
 
     public User getUserById(int userId);
+
+    public boolean enableByIds(Integer[] selectedId);
+
+    public boolean disableByIds(Integer[] selectedId);
 }

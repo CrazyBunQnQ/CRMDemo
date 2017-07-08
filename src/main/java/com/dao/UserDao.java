@@ -34,4 +34,6 @@ public interface UserDao extends BaseDao<User> {
 
     @Override
     int updateByPrimaryKey(User record);
+
+    int enableOrDisableByIds(@Param("ids") Integer[] ids, @Param("enable") Boolean enable);
 }

@@ -46,4 +46,18 @@ public class Constant {
     public static final String REMOVE_SUCCESS_PART = "部分删除成功！包含子类别或产品的类型无法删除！";
 
     public static final String REMOVE_FAILURE = "删除失败！";
+
+    public static final String UNSELECTED = "请选择条目";
+
+    public static final String ENABLE = "启用";
+
+    public static final String ENABLE_SUCCESS = "启用成功";
+
+    public static final String ENABLE_FAILURE = "启用失败";
+
+    public static final String DISABLE = "停用";
+
+    public static final String DISABLE_SUCCESS = "停用成功";
+
+    public static final String DISABLE_FAILURE = "停用失败";
 }

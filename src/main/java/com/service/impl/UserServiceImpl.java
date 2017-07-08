@@ -134,4 +134,14 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public User getUserById(int userId) {
         return this.userDao.selectByPrimaryKey(3);
     }
+
+    @Override
+    public boolean enableByIds(Integer[] selectedId) {
+        return userDao.enableOrDisableByIds(selectedId, true) > 0;
+    }
+
+    @Override
+    public boolean disableByIds(Integer[] selectedId) {
+        return userDao.enableOrDisableByIds(selectedId, false) > 0;
+    }
 }
