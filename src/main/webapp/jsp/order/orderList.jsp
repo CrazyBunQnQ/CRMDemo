@@ -93,7 +93,7 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <input type="text" name="cName" value="${order.cusName}" class="inputTextStyle">
+                                        <input type="text" name="cusName" value="${order.cusName}" class="inputTextStyle">
                                     </td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">

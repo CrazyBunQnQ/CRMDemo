@@ -28,6 +28,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
             return null;
         }
 
+        modelAndView.addObject("bean", bean);
         modelAndView.setViewName("/jsp/gather/gatherList");
         return modelAndView;
     }

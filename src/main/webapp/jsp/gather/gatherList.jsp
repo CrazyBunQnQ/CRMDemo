@@ -15,6 +15,17 @@
     <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
     <script type="text/javascript">
         function initPageSize() {
+            $("#gather_status span").click(function() {
+                var gatherStatus = $(this).html();
+
+                if (gatherStatus === "全部") {
+                    window.location = "gather/gatherList";
+                } else {
+                    gatherStatus = encodeURI(encodeURI(gatherStatus));
+                    window.location = "gather/gatherList?status=" + gatherStatus;
+                }
+            })
+
             var pageSizes = document.getElementsByName("_pageSize");
             for (var o = 0; o < pageSizes.length; o++) {
                 for (var i = 0; i < pageSizes[o].options.length; i++) {
@@ -30,6 +41,7 @@
 <form name="load4GatherMain.action" method="post" name="form1" id="form1">
     <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pageSize}" id="hiddenPageSize"/>
+    <input type="hidden" name="status" value="${bean.status}" id="hiddenStatus"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
     <input type="hidden" name="exportType" value="" id="exportType"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_content">
@@ -44,8 +56,14 @@
                     </tr>
                     <tr>
                         <td height="46" align="left" valign="middle" bgcolor="#f7fbfc"
-                            style="font-size:12px;color:#424446;">　　　草稿　　待审核　　已审核　　已驳回　　
-                            <span style="color:#FF0000">全部</span></td>
+                            style="font-size:12px;color:#424446;" id="gather_status">
+                            <span <c:if test="${bean.status=='草稿'}">style="color: #FF0000;" </c:if>>草稿</span>
+                            <span <c:if test="${bean.status=='待审核'}">style="color: #FF0000;" </c:if>>待审核</span>
+                            <span <c:if test="${bean.status=='已审核'}">style="color: #FF0000;" </c:if>>已审核</span>
+                            <span <c:if test="${bean.status=='已驳回'}">style="color: #FF0000;" </c:if>>已驳回</span>
+                            <span
+                                    <c:if test="${bean.status==null || bean.status eq ''}">style="color:#FF0000"</c:if>>全部</span>
+                        </td>
                     </tr>
                 </table>
 
@@ -63,11 +81,14 @@
                                    id="selectTable">
                                 <tr>
                                     <td width="11%">客户名称:</td>
-                                    <td width="17%"><input type="text" name="textfield" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="cusName" value="${bean.cusName}"
+                                                           class="inputTextStyle"></td>
                                     <td width="11%">收款单号:</td>
-                                    <td width="17%"><input type="text" name="textfield4" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="code" value="${bean.code}"
+                                                           class="inputTextStyle"></td>
                                     <td width="11%">收款时间:</td>
-                                    <td width="17%"><input type="text" name="textfield42" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="payDateStr" value="${bean.payDateStr}"
+                                                           class="inputTextStyle"></td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm()"></td>
                                     <td width="10%" align="left">
@@ -76,11 +97,13 @@
                                 </tr>
                                 <tr>
                                     <td>经手人:</td>
-                                    <td><select name="select3" class="selectOptionStyle">
-                                        <option value="-1" selected="selected">---</option>
-                                        <option value="1">重要客户</option>
-                                        <option value="2">潜在客户</option>
-                                    </select></td>
+                                    <td>
+                                        <select name="select3" name="handler" class="selectOptionStyle">
+                                            <option value="-1" selected="selected">---</option>
+                                            <option value="1">重要客户</option>
+                                            <option value="2">潜在客户</option>
+                                        </select>
+                                    </td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>

@@ -1,7 +1,9 @@
 package com.bean;
 
 import com.util.DateUtils;
+import com.util.StringUtil;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
 
 import java.util.Date;
 
@@ -12,6 +14,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
+@Log4j
 public class Gather extends BaseBean {
     private Integer id;
     /**
@@ -95,13 +98,17 @@ public class Gather extends BaseBean {
      */
     private String code;
 
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
     public void setCreatetimeStr(String createtimeStr) {
         this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
         this.createtimeStr = createtimeStr;
     }
 
-    public String getCreatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
     }
 
     public void setUpdatetimeStr(String updatetimeStr) {
@@ -109,17 +116,13 @@ public class Gather extends BaseBean {
         this.updatetimeStr = updatetimeStr;
     }
 
-    public String getUpdatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    public String getPayDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", payDate);
     }
 
     public void setPayDateStr(String payDateStr) {
         this.payDate = DateUtils.strToDate("yyyy-MM-dd", payDateStr);
         this.payDateStr = payDateStr;
-    }
-
-    public String getPayDateStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", payDate);
     }
 
     public String getAuditDatetr() {
@@ -168,6 +171,7 @@ public class Gather extends BaseBean {
     }
 
     public void setStatus(String status) {
+        status = StringUtil.decode(status, "utf-8");
         this.status = status == null ? null : status.trim();
     }
 
