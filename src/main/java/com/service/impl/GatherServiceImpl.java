@@ -33,22 +33,22 @@ public class GatherServiceImpl extends BaseServiceImpl<GatherWithBLOBs> implemen
 
     @Override
     public GatherWithBLOBs getById(Integer edit_id) {
-        return super.getById(gatherDao, edit_id);
+        return super.baseGetById(gatherDao, edit_id);
     }
 
     @Override
     public DataModel<GatherWithBLOBs> list(Pager pager, GatherWithBLOBs gather) {
-        return super.list(gatherDao, pager, gather);
+        return super.baseList(gatherDao, pager, gather);
     }
 
     @Override
     public boolean save(GatherWithBLOBs gather) {
-        return super.save(gatherDao, gather);
+        return super.baseSave(gatherDao, gather);
     }
 
     @Override
     public boolean update(GatherWithBLOBs gather) {
-        return super.update(gatherDao, gather);
+        return super.baseUpdate(gatherDao, gather);
     }
 
     @Override
@@ -117,6 +117,6 @@ public class GatherServiceImpl extends BaseServiceImpl<GatherWithBLOBs> implemen
 
     @Override
     public boolean removeByIds(Integer[] selectedId) {
-        return super.removeByIds(gatherDao, selectedId);
+        return super.baseRemoveByIds(gatherDao, selectedId);
     }
 }

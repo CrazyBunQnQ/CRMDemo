@@ -1,3 +1,11 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="../../taglibs.jsp" %>
+<html>
+<head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
     <title>人事管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="css_js/index.css" rel="stylesheet" type="text/css"/>
@@ -15,7 +23,6 @@
                     }
                 }
             }
-
         }
         function toDel() {
             var cbNum = checkBoxNum();

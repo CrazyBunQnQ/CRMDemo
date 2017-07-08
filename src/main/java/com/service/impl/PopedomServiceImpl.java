@@ -66,7 +66,7 @@ public class PopedomServiceImpl implements PopedomService {
     }
 
     public List<Popedom> listPopedomByRole() {
-//        List<Popedom> list = popedomDao.listSubPopedomByRole();
+//        List<Popedom> baseList = popedomDao.listSubPopedomByRole();
         return null;
     }
 

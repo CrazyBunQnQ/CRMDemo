@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.util.DateUtils;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
-public class User {
+public class User extends BaseBean {
     private Integer id;
     /**
      * 创建人
@@ -19,6 +20,7 @@ public class User {
      * 创建时间
      */
     private Date createtime;
+    private String createtimeStr;
     /**
      * 修改人
      */
@@ -27,6 +29,7 @@ public class User {
      * 修改时间
      */
     private Date updatetime;
+    private String updatetimeStr;
     /**
      * 用户名
      */
@@ -55,10 +58,12 @@ public class User {
      * 起始有效期
      */
     private Date begindate;
+    private String begindateStr;
     /**
      * 终止有效期
      */
     private Date enddate;
+    private String enddateStr;
     /**
      * 查询文件级别
      */
@@ -107,6 +112,7 @@ public class User {
      * 出生日期
      */
     private Date birthday;
+    private String birthdayStr;
     /**
      * 职员类别："全职"，"兼职"
      */
@@ -119,6 +125,7 @@ public class User {
      * 入职时间
      */
     private Date workdate;
+    private String workdateStr;
     /**
      * 最高学历
      */
@@ -131,6 +138,7 @@ public class User {
      * 毕业时间
      */
     private Date finishschooldate;
+    private String finishschooldateStr;
     /**
      * 配偶姓名
      */
@@ -155,14 +163,128 @@ public class User {
      * 角色 id
      */
     private Integer roleId;
+    private String roleName;
     /**
      * 用户组 id（部门 id）
      */
     private Integer groupId;
+    private String groupName;
     /**
      * 查询权限组 id
      */
     private Integer accessGroupId;
+    private String accessGroupName;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
+     * 菜单
+     */
+    private String menus;
+    /**
+     * 权限
+     */
+    private String popedom;
+    /**
+     * 业余爱好
+     */
+    private String avocation;
+    /**
+     * 偏好特长
+     */
+    private String strongsuit;
+    /**
+     * 信息沟通
+     */
+    private String communicate;
+    /**
+     * 培训情况
+     */
+    private String bringup;
+    /**
+     * 组织能力
+     */
+    private String organise;
+    /**
+     * 分析能力
+     */
+    private String analyse;
+    /**
+     * 计划能力
+     */
+    private String planing;
+    /**
+     * 人员开发
+     */
+    private String empolder;
+    /**
+     * 人际关系
+     */
+    private String relation;
+
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
+    public void setCreatetimeStr(String createtimeStr) {
+        this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
+        this.createtimeStr = createtimeStr;
+    }
+
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    }
+
+    public void setUpdatetimeStr(String updatetimeStr) {
+        this.updatetime = DateUtils.strToDate("yyyy-MM-dd", updatetimeStr);
+        this.updatetimeStr = updatetimeStr;
+    }
+
+    public String getEnddateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", enddate);
+    }
+
+    public void setEnddateStr(String enddateStr) {
+        this.enddate = DateUtils.strToDate("yyyy-MM-dd", enddateStr);
+        this.enddateStr = enddateStr;
+    }
+
+    public String getBegindateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", begindate);
+    }
+
+    public void setBegindateStr(String begindateStr) {
+        this.begindate = DateUtils.strToDate("yyyy-MM-dd", begindateStr);
+        this.begindateStr = begindateStr;
+    }
+
+    public String getBirthdayStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", birthday);
+    }
+
+    public void setBirthdayStr(String createtimeStr) {
+        this.birthday = DateUtils.strToDate("yyyy-MM-dd", birthdayStr);
+        this.birthdayStr = birthdayStr;
+    }
+
+    public String getWorkdateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", workdate);
+    }
+
+    public void setWorkdateStr(String workdateStr) {
+        this.workdate = DateUtils.strToDate("yyyy-MM-dd", workdateStr);
+        this.workdateStr = workdateStr;
+    }
+
+    public String getFinishschooldateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", finishschooldate);
+    }
+
+    public void setFinishschooldateStr(String finishschooldateStr) {
+        this.finishschooldate = DateUtils.strToDate("yyyy-MM-dd", finishschooldateStr);
+        this.finishschooldateStr = finishschooldateStr;
+    }
 
     public void setCreator(String creator) {
         this.creator = creator == null ? null : creator.trim();
@@ -274,5 +396,53 @@ public class User {
 
     public void setConsortcompany(String consortcompany) {
         this.consortcompany = consortcompany == null ? null : consortcompany.trim();
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public void setMenus(String menus) {
+        this.menus = menus == null ? null : menus.trim();
+    }
+
+    public void setPopedom(String popedom) {
+        this.popedom = popedom == null ? null : popedom.trim();
+    }
+
+    public void setAvocation(String avocation) {
+        this.avocation = avocation == null ? null : avocation.trim();
+    }
+
+    public void setStrongsuit(String strongsuit) {
+        this.strongsuit = strongsuit == null ? null : strongsuit.trim();
+    }
+
+    public void setCommunicate(String communicate) {
+        this.communicate = communicate == null ? null : communicate.trim();
+    }
+
+    public void setBringup(String bringup) {
+        this.bringup = bringup == null ? null : bringup.trim();
+    }
+
+    public void setOrganise(String organise) {
+        this.organise = organise == null ? null : organise.trim();
+    }
+
+    public void setAnalyse(String analyse) {
+        this.analyse = analyse == null ? null : analyse.trim();
+    }
+
+    public void setPlaning(String planing) {
+        this.planing = planing == null ? null : planing.trim();
+    }
+
+    public void setEmpolder(String empolder) {
+        this.empolder = empolder == null ? null : empolder.trim();
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation == null ? null : relation.trim();
     }
 }

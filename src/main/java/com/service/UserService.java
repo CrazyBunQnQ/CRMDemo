@@ -6,7 +6,7 @@ import com.bean.User;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface UserService {
+public interface UserService extends BaseService<User> {
     /**
      * According to the user name password query users
      *

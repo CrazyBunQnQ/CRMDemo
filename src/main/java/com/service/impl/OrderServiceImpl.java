@@ -35,22 +35,22 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
 
     @Override
     public OrderWithBLOBs getById(Integer edit_id) {
-        return getById(orderDao, edit_id);
+        return baseGetById(orderDao, edit_id);
     }
 
     @Override
     public DataModel<OrderWithBLOBs> list(Pager pager, OrderWithBLOBs order) {
-        return list(orderDao, pager, order);
+        return baseList(orderDao, pager, order);
     }
 
     @Override
     public boolean save(OrderWithBLOBs order) {
-        return save(orderDao, order);
+        return baseSave(orderDao, order);
     }
 
     @Override
     public boolean update(OrderWithBLOBs order) {
-        return update(orderDao, order);
+        return baseUpdate(orderDao, order);
     }
 
     @Override
@@ -127,6 +127,6 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
 
     @Override
     public boolean removeByIds(Integer[] selectedId) {
-        return removeByIds(orderDao, selectedId);
+        return baseRemoveByIds(orderDao, selectedId);
     }
 }
