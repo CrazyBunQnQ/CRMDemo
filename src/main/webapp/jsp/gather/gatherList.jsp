@@ -38,7 +38,7 @@
     </script>
 </head>
 <body onload="initPageSize()">
-<form action="gather/gatherList" method="post" name="form1" id="form1">
+<form name="gather/gatherList" method="post" name="form1" id="form1">
     <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="status" value="${bean.status}" id="hiddenStatus"/>
@@ -98,11 +98,11 @@
                                 <tr>
                                     <td>经手人:</td>
                                     <td>
-                                        <select name="handler" class="selectOptionStyle">
+                                        <%--<select name="handler" class="selectOptionStyle">
                                             <option value="-1" selected="selected">---</option>
                                             <option value="1">重要客户</option>
                                             <option value="2">潜在客户</option>
-                                        </select>
+                                        </select>--%>
                                     </td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
-                            <img src="image/s3.gif" width="62" height="22"></td>
+                            <img src="image/s3.gif" width="62" height="22" onclick="javascript:window.location.href='gather/toAddOrUpdateGather'"></td>
                     </tr>
                     <tr>
                         <td height="5" valign="top"></td>
