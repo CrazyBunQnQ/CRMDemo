@@ -26,7 +26,6 @@ public class UserController extends BaseController<User> {
     private UserService userService;
 
     @Override
-    @RequestMapping("/userBaseList")
     public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, User bean, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baselist(userService, pager, isDel, selectedId, bean, exportType, response);
         if (modelAndView == null) {
