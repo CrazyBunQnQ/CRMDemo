@@ -22,7 +22,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
 
     @Override
     @RequestMapping("/gatherList")
-    protected ModelAndView list(Pager pager, String isDel, Integer[] selectedId, GatherWithBLOBs bean, String exportType, HttpServletResponse response) {
+    public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, GatherWithBLOBs bean, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baselist(gatherService, pager, isDel, selectedId, bean, exportType, response);
         if (modelAndView == null ) {
             return null;
@@ -35,7 +35,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
 
     @Override
     @RequestMapping("toAddOrUpdateGather")
-    protected ModelAndView toAddOrUpdate(Integer edit_id) {
+    public ModelAndView toAddOrUpdate(Integer edit_id) {
         ModelAndView modelAndView = super.baseToAddOrUpdate(gatherService, edit_id);
         modelAndView.setViewName("/jsp/gather/gatherAdd");
         return modelAndView;
@@ -43,7 +43,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
 
     @Override
     @RequestMapping("addOrUpdateGather")
-    protected ModelAndView addOrUpdate(GatherWithBLOBs bean, Integer edit_id) {
+    public ModelAndView addOrUpdate(GatherWithBLOBs bean, Integer edit_id) {
         ModelAndView modelAndView = super.baseAddOrUpdate(gatherService, bean, edit_id);
         modelAndView.setViewName("/jsp/gather/gatherAdd");
         return modelAndView;
