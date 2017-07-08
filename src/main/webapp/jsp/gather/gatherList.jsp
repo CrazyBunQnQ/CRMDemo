@@ -38,7 +38,7 @@
     </script>
 </head>
 <body onload="initPageSize()">
-<form name="load4GatherMain.action" method="post" name="form1" id="form1">
+<form action="gather/gatherList" method="post" name="form1" id="form1">
     <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="status" value="${bean.status}" id="hiddenStatus"/>
@@ -98,7 +98,7 @@
                                 <tr>
                                     <td>经手人:</td>
                                     <td>
-                                        <select name="select3" name="handler" class="selectOptionStyle">
+                                        <select name="handler" class="selectOptionStyle">
                                             <option value="-1" selected="selected">---</option>
                                             <option value="1">重要客户</option>
                                             <option value="2">潜在客户</option>
