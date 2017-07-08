@@ -109,6 +109,13 @@ function submitForm() {
 }
 
 /**
+ * 清空搜索条件
+ */
+function clearSearchArea() {
+    $("#selectTable input").val("");
+}
+
+/**
  * 重置表单
  */
 function resetForm() {

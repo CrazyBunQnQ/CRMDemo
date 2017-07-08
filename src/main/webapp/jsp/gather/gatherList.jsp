@@ -68,8 +68,10 @@
                                     <td width="17%"><input type="text" name="textfield4" class="inputTextStyle"></td>
                                     <td width="11%">收款时间:</td>
                                     <td width="17%"><input type="text" name="textfield42" class="inputTextStyle"></td>
-                                    <td width="5%"><img src="image/s1.gif" width="59" height="22"></td>
-                                    <td width="10%" align="left"><img src="image/s2.gif" width="62" height="22"></td>
+                                    <td width="5%">
+                                        <img src="image/s1.gif" width="59" height="22" onclick="submitForm()"></td>
+                                    <td width="10%" align="left">
+                                        <img src="image/s2.gif" width="62" height="22" onclick="clearSearchArea()"></td>
                                     <td width="1%" align="left">&nbsp;</td>
                                 </tr>
                                 <tr>

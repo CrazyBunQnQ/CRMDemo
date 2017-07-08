@@ -99,7 +99,7 @@
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm();">
                                     </td>
                                     <td width="10%" align="left">
-                                        <img src="image/s2.gif" width="62" height="22">
+                                        <img src="image/s2.gif" width="62" height="22" onclick="clearSearchArea()">
                                     </td>
                                     <td width="1%" align="left">&nbsp;</td>
                                 </tr>
