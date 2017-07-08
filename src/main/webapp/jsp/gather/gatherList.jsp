@@ -99,7 +99,7 @@
                     <tr>
                         <td height="11">
                             <img src="image/t1.gif" align="absmiddle">
-                            <span style="font-size:14; font-weight:bold;">收款单列表</span>
+                            <span style="font-size:14px; font-weight:bold;">收款单列表</span>
                         </td>
                     </tr>
                     <tr>
@@ -191,10 +191,10 @@
                                                                onclick="updateNum()">
                                                     </td>
                                                     <td>
-                                                        <a href="gather/toAddOrUpdateGather?edit_id=${bgather.id}&CId=${bgather.CId}"
+                                                        <a href="gather/toAddOrUpdateGather?edit_id=${bgather.id}&cusId=${bgather.cusId}"
                                                            class="normal">${bgather.code }</a></td>
                                                     <td align="center">${bgather.payDate }</td>
-                                                    <td align="center">${bgather.CName }</td>
+                                                    <td align="center">${bgather.cusName }</td>
                                                     <td align="center">${bgather.total }</td>
                                                     <td align="center">${bgather.handler }</td>
                                                     <td align="center">${bgather.status }</td>
