@@ -53,15 +53,15 @@ public abstract class BaseController<B extends BaseBean> {
 
     protected abstract ModelAndView addOrUpdate(B b, Integer edit_id);
 
-    protected ModelAndView baseAddOrUpdate(BaseService service, B b, Integer edit_id) {
+    protected ModelAndView baseAddOrUpdate(BaseService service, B bean, Integer edit_id) {
         ModelAndView modelAndView = new ModelAndView();
         boolean success = false;
         if (edit_id == null) {//新建
-            success = service.save(b);
+            success = service.save(bean);
             modelAndView.addObject("suc", success ? Constant.ADD_SUCCESS : Constant.ADD_FAILURE);
         } else { //更新
-            b.setId(edit_id);
-            success = service.update(b);
+            bean.setId(edit_id);
+            success = service.update(bean);
             modelAndView.addObject("suc", success ? Constant.UPDATE_SUCCESS : Constant.UPDATE_FAILURE);
         }
         return modelAndView;
