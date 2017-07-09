@@ -64,6 +64,9 @@ public class UserController extends BaseController<User> {
         ModelAndView modelAndView = super.baseToAddOrUpdate(userService, edit_id);
         modelAndView.setViewName("/jsp/user/userAdd");
 
+        //TODO roleList
+        //TODO accessGroupList
+        //TODO groupList
         return modelAndView;
     }
 
