@@ -26,7 +26,8 @@
         }
 
         function openSetUserWindow(userGroupId) {
-            window.open("load4SetUsers.action?id=" + userGroupId, "_blank", "");
+            jumpToPage("group/toSetUserGroup?id=" + userGroupId);
+//            window.open("group/toSetUserGroup?id=" + userGroupId, "_blank", "");
         }
     </script>
 </head>
