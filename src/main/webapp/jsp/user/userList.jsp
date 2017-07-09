@@ -198,18 +198,18 @@
                                                 <td width="10%" align="center"
                                                     background="image/select_title_title.jpg"><strong>状态</strong></td>
                                             </tr>
-                                            <c:forEach items="${rows}" var="rows">
+                                            <c:forEach items="${rows}" var="row">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-                                                        <input type="checkbox" name="selectedId" value="${rows.id}"
+                                                        <input type="checkbox" name="selectedId" value="${row.id}"
                                                                onclick="updateNum();">
-                                                    <td align="center">${rows.cnname}</td>
-                                                    <td align="center">${rows.roleName}</td>
-                                                    <td align="center">${rows.accessGroupName}</td>
-                                                    <td align="center">${rows.GroupName}</td>
-                                                    <td align="center">${rows.begindateStr}</td>
-                                                    <td align="center">${rows.enddateStr}</td>
-                                                    <td align="center">${rows.status}</td>
+                                                    <td align="center">${row.cnname}</td>
+                                                    <td align="center">${row.roleName}</td>
+                                                    <td align="center">${row.accessGroupName}</td>
+                                                    <td align="center">${row.groupName}</td>
+                                                    <td align="center">${row.begindateStr}</td>
+                                                    <td align="center">${row.enddateStr}</td>
+                                                    <td align="center">${row.status}</td>
                                                 </tr>
                                             </c:forEach>
                                             <tr>
@@ -219,7 +219,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
+                                    <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
                                     <img src="image/t2.gif" align="absmiddle" width="15" height="16">
                                     <span onclick="exportExcel()" class="pager" style="cursor: pointer">
                                             &nbsp;导出&nbsp;
