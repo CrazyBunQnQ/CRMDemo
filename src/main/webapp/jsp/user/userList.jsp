@@ -29,7 +29,7 @@
         function toEnable() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
-                document.getElementById("changeStatus").valueOf = ("true");
+                document.getElementById("changeStatus").value = ("true");
                 document.forms[0].submit();
             }
         }
@@ -37,7 +37,7 @@
         function toDisable() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
-                document.getElementById("changeStatus").valueOf = ("false");
+                document.getElementById("changeStatus").value = ("false");
                 document.forms[0].submit();
             }
         }
@@ -45,7 +45,7 @@
 </head>
 <body onload="initPageSize()">
 <form action="user/userList" method="post" name="form1" id="form1">
-    <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
+    <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
     <input type="hidden" name="changeStatus" value="" id="changeStatus"/>
@@ -204,7 +204,8 @@
                                                     <td align="center">
                                                         <input type="checkbox" name="selectedId" value="${row.id}"
                                                                onclick="updateNum();">
-                                                    <td align="center">${row.name}</td>
+                                                    <td align="center">
+                                                    <a href="/user/toAddOrUpdate?edit_id=${row.id}">${row.name}</a></td>
                                                     <td align="center">${row.cnname}</td>
                                                     <td align="center">${row.roleName}</td>
                                                     <td align="center">${row.accessGroupName}</td>

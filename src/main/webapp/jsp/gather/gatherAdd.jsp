@@ -128,7 +128,7 @@
     </script>
 </head>
 <body>
-<form name="gatherForm" method="post" id="gatherForm" action="gatherAdd.action">
+<form name="gatherForm" method="post" id="gatherForm" action="/gather/addOrUpdateGather">
     <input type="hidden" name="pageFlag" value="gather" id="pageFlag"/>
     <input type="hidden" name="total" id="total" value="${gather.total}"/>
     <input type="hidden" name="ids" id="ids" value="${ids}"/>
@@ -138,8 +138,12 @@
     <input type="hidden" name="auditIdea" value="${gather.auditIdea}" id="auditReason"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
-            <td height="26" width="100%"><span
-                    style="color:#002450; font-size:13px; font-weight:bold;">　销售收款单--新建</span></td>
+            <td height="26" width="100%">
+                <span style="color:#002450; font-size:13px; font-weight:bold;">　销售收款单--
+                <c:if test="${edit_id == null}">新建</c:if>
+                <c:if test="${edit_id != null}">修改</c:if>
+                </span>
+            </td>
         </tr>
     </table>
 

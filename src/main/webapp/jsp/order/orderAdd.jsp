@@ -116,7 +116,11 @@
     <input type="hidden" name="edit_id" id="edit_id" value="${bean.id}">
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
-            <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　销售单--新建</span>
+            <td height="26" width="100%">
+                <span style="color:#002450; font-size:13px; font-weight:bold;">　销售单--
+                <c:if test="${edit_id == null}">新建</c:if>
+                <c:if test="${edit_id != null}">修改</c:if>
+               </span>
             </td>
         </tr>
     </table>

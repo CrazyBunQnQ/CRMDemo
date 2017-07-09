@@ -179,7 +179,10 @@
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
             <td height="26" width="100%">
-                <span style="color:#002450; font-size:13px; font-weight:bold;">　新建商品</span>
+                <span style="color:#002450; font-size:13px; font-weight:bold;">　
+                <c:if test="${edit_id == null}">新建</c:if>
+                <c:if test="${edit_id != null}">修改</c:if>
+                    商品</span>
             </td>
         </tr>
     </table>

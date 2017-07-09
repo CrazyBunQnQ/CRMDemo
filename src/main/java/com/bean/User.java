@@ -264,7 +264,7 @@ public class User extends BaseBean {
         return DateUtils.dateToStr("yyyy-MM-dd", birthday);
     }
 
-    public void setBirthdayStr(String createtimeStr) {
+    public void setBirthdayStr(String birthdayStr) {
         this.birthday = DateUtils.strToDate("yyyy-MM-dd", birthdayStr);
         this.birthdayStr = birthdayStr;
     }
