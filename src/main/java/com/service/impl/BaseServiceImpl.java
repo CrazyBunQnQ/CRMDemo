@@ -6,7 +6,6 @@ import com.util.Constant;
 import com.util.DataModel;
 import com.util.Pager;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public abstract class BaseServiceImpl<B> implements BaseService<B> {
 
-    public DataModel<B> list(BaseDao baseDao, Pager pager, B b) {
+    public DataModel<B> baseList(BaseDao baseDao, Pager pager, B b) {
 
         DataModel<B> dataModel = new DataModel<B>();
         int total = baseDao.count(b);
@@ -28,19 +27,19 @@ public abstract class BaseServiceImpl<B> implements BaseService<B> {
         return dataModel;
     }
 
-    public boolean removeByIds(BaseDao baseDao, Integer[] selectedId) {
+    public boolean baseRemoveByIds(BaseDao baseDao, Integer[] selectedId) {
         return baseDao.removeByPrimaryKeys(selectedId) > 0;
     }
 
-    public boolean save(BaseDao baseDao, B b) {
+    public boolean baseSave(BaseDao baseDao, B b) {
         return baseDao.insertSelective(b) > 0;
     }
 
-    public boolean update(BaseDao baseDao, B b) {
+    public boolean baseUpdate(BaseDao baseDao, B b) {
         return baseDao.updateByPrimaryKey(b) > 0;
     }
 
-    public B getById(BaseDao baseDao, Integer edit_id) {
+    public B baseGetById(BaseDao baseDao, Integer edit_id) {
         return (B) baseDao.selectByPrimaryKey(edit_id);
     }
 

@@ -1,11 +1,10 @@
 package com.bean;
 
 import com.util.DateUtils;
+import com.util.StringUtil;
 import lombok.Data;
 import lombok.extern.log4j.Log4j;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Log4j
-public class Order {
+public class Order extends BaseBean {
     private Integer id;
     /**
      * 所属人
@@ -26,8 +25,8 @@ public class Order {
      * 创建人
      */
     private String creater;
-    /**创建时间
-     *
+    /**
+     * 创建时间
      */
     private Date createtime;
     private String createtimeStr;
@@ -52,7 +51,7 @@ public class Order {
     /**
      * 客户 id
      */
-    private Integer cId;
+    private Integer cusId;
     /**
      * 客户名称
      */
@@ -115,16 +114,32 @@ public class Order {
     private String choice3;
     private String choice4;
     private Date time1;
+    private String time1Str;
     private Date time2;
+    private String time2Str;
     private String shareFlag;
+
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
 
     public void setCreatetimeStr(String createtimeStr) {
         this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
         this.createtimeStr = createtimeStr;
     }
 
-    public String getCreatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    public Date getCreatetime() {
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
     }
 
     public void setUpdatetimeStr(String updatetimeStr) {
@@ -132,8 +147,18 @@ public class Order {
         this.updatetimeStr = updatetimeStr;
     }
 
-    public String getUpdatetimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    public Date getUpdatetime() {
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    }
+
+    public String getOrderDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", orderDate);
     }
 
     public void setOrderDateStr(String orderDateStr) {
@@ -141,8 +166,18 @@ public class Order {
         this.orderDateStr = orderDateStr;
     }
 
-    public String getOrderDateStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+    public Date getOrderDate() {
+        this.orderDateStr = DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+        this.orderDateStr = DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+    }
+
+    public String getAuditDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
     }
 
     public void setAuditDateStr(String auditDateStr) {
@@ -150,8 +185,52 @@ public class Order {
         this.auditDateStr = auditDateStr;
     }
 
-    public String getAuditDateStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
+    public Date getAuditDate() {
+        this.auditDateStr = DateUtils.dateToStr("yyyy-MM-dd", auditDate);
+        return auditDate;
+    }
+
+    public void setAuditDate(Date auditDate) {
+        this.auditDate = auditDate;
+        this.auditDateStr = DateUtils.dateToStr("yyyy-MM-dd", auditDate);
+    }
+
+    public String getTime1Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd", time1);
+    }
+
+    public void setTime1Str(String time1Str) {
+        this.time1 = DateUtils.strToDate("yyyy-MM-dd", time1Str);
+        this.time1Str = time1Str;
+    }
+
+    public Date getTime1() {
+        this.time1Str = DateUtils.dateToStr("yyyy-MM-dd", time1);
+        return time1;
+    }
+
+    public void setTime1(Date time1) {
+        this.time1 = time1;
+        this.time1Str = DateUtils.dateToStr("yyyy-MM-dd", time1);
+    }
+
+    public String getTime2Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd", time2);
+    }
+
+    public void setTime2Str(String time2Str) {
+        this.time2 = DateUtils.strToDate("yyyy-MM-dd", time2Str);
+        this.time2Str = time2Str;
+    }
+
+    public Date getTime2() {
+        this.time2Str = DateUtils.dateToStr("yyyy-MM-dd", time2);
+        return time2;
+    }
+
+    public void setTime2(Date time2) {
+        this.time2 = time2;
+        this.time2Str = DateUtils.dateToStr("yyyy-MM-dd", time2);
     }
 
     public void setCreater(String creater) {
@@ -199,14 +278,7 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        if (status.contains("%")) {
-            try {
-                status = URLDecoder.decode(status, "utf-8");
-            } catch (UnsupportedEncodingException e) {
-                log.error("解码错误");
-                e.printStackTrace();
-            }
-        }
+        status = StringUtil.decode(status, "utf-8");
         this.status = status == null ? null : status.trim();
     }
 

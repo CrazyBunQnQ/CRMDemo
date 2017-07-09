@@ -1,9 +1,8 @@
 package com.service.impl;
 
-import com.bean.Order;
-import com.bean.OrderWithBLOBs;
-import com.dao.OrderDao;
-import com.service.OrderService;
+import com.bean.GatherWithBLOBs;
+import com.dao.GatherDao;
+import com.service.GatherService;
 import com.util.DataModel;
 import com.util.Pager;
 import jxl.Workbook;
@@ -28,35 +27,34 @@ import java.util.List;
  */
 @Log4j
 @Service
-public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements OrderService {
-
+public class GatherServiceImpl extends BaseServiceImpl<GatherWithBLOBs> implements GatherService {
     @Autowired
-    private OrderDao orderDao;
+    private GatherDao gatherDao;
 
     @Override
-    public OrderWithBLOBs getById(Integer edit_id) {
-        return baseGetById(orderDao, edit_id);
+    public GatherWithBLOBs getById(Integer edit_id) {
+        return super.baseGetById(gatherDao, edit_id);
     }
 
     @Override
-    public DataModel<OrderWithBLOBs> list(Pager pager, OrderWithBLOBs order) {
-        return baseList(orderDao, pager, order);
+    public DataModel<GatherWithBLOBs> list(Pager pager, GatherWithBLOBs gather) {
+        return super.baseList(gatherDao, pager, gather);
     }
 
     @Override
-    public boolean save(OrderWithBLOBs order) {
-        return baseSave(orderDao, order);
+    public boolean save(GatherWithBLOBs gather) {
+        return super.baseSave(gatherDao, gather);
     }
 
     @Override
-    public boolean update(OrderWithBLOBs order) {
-        return baseUpdate(orderDao, order);
+    public boolean update(GatherWithBLOBs gather) {
+        return super.baseUpdate(gatherDao, gather);
     }
 
     @Override
-    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, OrderWithBLOBs order, HttpServletResponse response) {
+    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, GatherWithBLOBs gather, HttpServletResponse response) {
         boolean exportSuccess = false;
-        List<OrderWithBLOBs> list = export(orderDao, exportType, pager, selectedId, order);
+        List<GatherWithBLOBs> list = super.export(gatherDao, exportType, pager, selectedId, gather);
         if (list == null) {
             return exportSuccess;
         }
@@ -74,27 +72,21 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
             WritableSheet sheet = workbook.createSheet("销售单", 0);
 
             sheet.addCell(new Label(0, 0, "销售单号"));
-            sheet.addCell(new Label(0, 0, "开单日期"));
-            sheet.addCell(new Label(0, 0, "客户名称"));
-            sheet.addCell(new Label(0, 0, "业务员"));
-            sheet.addCell(new Label(0, 0, "合计"));
-            sheet.addCell(new Label(0, 0, "整单折扣"));
-            sheet.addCell(new Label(0, 0, "应收金额"));
-            sheet.addCell(new Label(0, 0, "审核人"));
-            sheet.addCell(new Label(0, 0, "单据状态"));
+            sheet.addCell(new Label(1, 0, "收款日期"));
+            sheet.addCell(new Label(2, 0, "客户名称"));
+            sheet.addCell(new Label(3, 0, "总金额"));
+            sheet.addCell(new Label(4, 0, "经手人"));
+            sheet.addCell(new Label(5, 0, "单据状态"));
 
             int rowIndex = 1;
-            for (Order o : list) {
+            for (GatherWithBLOBs bean : list) {
                 int colIndex = 0;
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getCode()));
-//                sheet.addCell(new Label(colIndex++, rowIndex, o.getCreatetime()));
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getCusName()));
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getSeller()));
-                sheet.addCell(new Label(colIndex++, rowIndex, String.valueOf(o.getTotal())));
-                sheet.addCell(new Label(colIndex++, rowIndex, String.valueOf(o.getAgioTotal())));
-//                sheet.addCell(new Label(colIndex++, rowIndex, o.getNeedTotal()));
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getAuditor()));
-                sheet.addCell(new Label(colIndex++, rowIndex, o.getStatus()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getCode()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getPayDateStr()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getCusName()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getTotal()==null?"-":String.valueOf(bean.getTotal())));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getHandler()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getStatus()));
                 rowIndex++;
             }
 
@@ -127,6 +119,6 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements
 
     @Override
     public boolean removeByIds(Integer[] selectedId) {
-        return baseRemoveByIds(orderDao, selectedId);
+        return super.baseRemoveByIds(gatherDao, selectedId);
     }
 }

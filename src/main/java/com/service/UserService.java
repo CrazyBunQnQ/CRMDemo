@@ -6,7 +6,7 @@ import com.bean.User;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface UserService {
+public interface UserService extends BaseService<User> {
     /**
      * According to the user name password query users
      *
@@ -18,4 +18,8 @@ public interface UserService {
     public User findUser(String name, String password);
 
     public User getUserById(int userId);
+
+    public boolean enableByIds(Integer[] selectedId);
+
+    public boolean disableByIds(Integer[] selectedId);
 }
