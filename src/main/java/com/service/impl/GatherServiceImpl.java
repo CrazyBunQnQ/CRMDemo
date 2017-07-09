@@ -72,19 +72,21 @@ public class GatherServiceImpl extends BaseServiceImpl<GatherWithBLOBs> implemen
             WritableSheet sheet = workbook.createSheet("销售单", 0);
 
             sheet.addCell(new Label(0, 0, "销售单号"));
-            sheet.addCell(new Label(0, 0, "开单日期"));
-            sheet.addCell(new Label(0, 0, "客户名称"));
-            sheet.addCell(new Label(0, 0, "业务员"));
-            sheet.addCell(new Label(0, 0, "合计"));
-            sheet.addCell(new Label(0, 0, "整单折扣"));
-            sheet.addCell(new Label(0, 0, "应收金额"));
-            sheet.addCell(new Label(0, 0, "审核人"));
-            sheet.addCell(new Label(0, 0, "单据状态"));
+            sheet.addCell(new Label(1, 0, "收款日期"));
+            sheet.addCell(new Label(2, 0, "客户名称"));
+            sheet.addCell(new Label(3, 0, "总金额"));
+            sheet.addCell(new Label(4, 0, "经手人"));
+            sheet.addCell(new Label(5, 0, "单据状态"));
 
             int rowIndex = 1;
             for (GatherWithBLOBs bean : list) {
                 int colIndex = 0;
-//                sheet.addCell(new Label(colIndex++, rowIndex, bean.getStatus()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getCode()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getPayDateStr()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getCusName()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getTotal()==null?"-":String.valueOf(bean.getTotal())));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getHandler()));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getStatus()));
                 rowIndex++;
             }
 

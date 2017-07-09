@@ -98,11 +98,11 @@
                                 <tr>
                                     <td>经手人:</td>
                                     <td>
-                                        <%--<select name="handler" class="selectOptionStyle">
-                                            <option value="-1" selected="selected">---</option>
+                                        <select name="handler" class="selectOptionStyle">
+                                            <option value="" selected="selected">---</option>
                                             <option value="1">重要客户</option>
                                             <option value="2">潜在客户</option>
-                                        </select>--%>
+                                        </select>
                                     </td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
@@ -144,19 +144,21 @@
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
                                         <img src="image/t2.gif" align="absmiddle" width="15" height="16">
-                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">导出</span> |
-                                        选择条目:
+                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">
+                                            &nbsp;导出&nbsp;
+                                        </span>
+                                        |&nbsp;选择条目:&nbsp;
                                         <span id="select_num1">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
-                                        共${pager.totalRecord}条
-                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
-                                        <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
-                                        ${pager.page}/${pager.totalPage}
-                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
+                                        共${pager.totalRecord}条&nbsp;
+                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>&nbsp;
+                                        <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>&nbsp;
+                                        ${pager.page}/${pager.totalPage}&nbsp;
+                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>&nbsp;
                                         <span onclick="lastPage(${pager.totalPage})" class="pager"
-                                              style="cursor: pointer">末页</span>
+                                              style="cursor: pointer">末页</span>&nbsp;
                                         <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
                                                 id="_pageNum_up">
                                             <c:forEach var="i" begin="1" end="${pager.totalPage}" step="1">
@@ -166,20 +168,22 @@
                                                         </c:if>>第&nbsp;${i}&nbsp;页
                                                 </option>
                                             </c:forEach>
-                                        </select> <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
-                                                          id="_pageSize_up">
-                                        <option value="5">5条</option>
-                                        <option value="6">6条</option>
-                                        <option value="7">7条</option>
-                                        <option value="8">8条</option>
-                                        <option value="9">9条</option>
-                                        <option value="10">10条</option>
-                                        <option value="15">15条</option>
-                                        <option value="20">20条</option>
-                                        <option value="25">25条</option>
-                                        <option value="30">30条</option>
-                                        <option value="50">50条</option>
-                                    </select></td>
+                                        </select>&nbsp;
+                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
+                                                id="_pageSize_up">
+                                            <option value="5">5条</option>
+                                            <option value="6">6条</option>
+                                            <option value="7">7条</option>
+                                            <option value="8">8条</option>
+                                            <option value="9">9条</option>
+                                            <option value="10">10条</option>
+                                            <option value="15">15条</option>
+                                            <option value="20">20条</option>
+                                            <option value="25">25条</option>
+                                            <option value="30">30条</option>
+                                            <option value="50">50条</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" bgcolor="#f2faff">
@@ -228,19 +232,23 @@
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
                                         <img src="image/t2.gif" align="absmiddle" width="15" height="16">
-                                        导出 | 选择条目:<span id="select_num2">0</span>
+                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">
+                                            &nbsp;导出&nbsp;
+                                        </span>
+                                        |&nbsp;选择条目:&nbsp;
+                                        <span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">
-                                        共${pager.totalRecord}条
-                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>
-                                        <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
-                                        ${pager.page}/${pager.totalPage}
-                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
+                                        共${pager.totalRecord}条&nbsp;
+                                        <span class="pager" onclick="firstPage();" style="cursor: pointer">首页</span>&nbsp;
+                                        <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>&nbsp;
+                                        ${pager.page}/${pager.totalPage}&nbsp;
+                                        <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>&nbsp;
                                         <span onclick="lastPage(${pager.totalPage})" class="pager"
-                                              style="cursor: pointer">末页</span>
-                                        <select name="_pageNum" onchange="toUrl('_pageNum_down','_null');"
-                                                id="_pageNum_down">
+                                              style="cursor: pointer">末页</span>&nbsp;
+                                        <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
+                                                id="_pageNum_up">
                                             <c:forEach var="i" begin="1" end="${pager.totalPage}" step="1">
                                                 <option value="${i}"
                                                         <c:if test="${pager.page==i}">
@@ -248,9 +256,9 @@
                                                         </c:if>>第&nbsp;${i}&nbsp;页
                                                 </option>
                                             </c:forEach>
-                                        </select>
-                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_down')"
-                                                id="_pageSize_down">
+                                        </select>&nbsp;
+                                        <select name="_pageSize" onchange="toUrl('_null','_pageSize_up')"
+                                                id="_pageSize_up">
                                             <option value="5">5条</option>
                                             <option value="6">6条</option>
                                             <option value="7">7条</option>
