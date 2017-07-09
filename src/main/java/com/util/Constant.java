@@ -49,13 +49,13 @@ public class Constant {
 
     public static final String UNSELECTED = "请选择条目";
 
-    public static final String ENABLE = "启用";
+    public static final String ENABLE = "true";
 
     public static final String ENABLE_SUCCESS = "启用成功";
 
     public static final String ENABLE_FAILURE = "启用失败";
 
-    public static final String DISABLE = "停用";
+    public static final String DISABLE = "false";
 
     public static final String DISABLE_SUCCESS = "停用成功";
 

@@ -29,7 +29,7 @@
         function toEnable() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
-                document.getElementById("changeStatus").valueOf = ("true");
+                document.getElementById("changeStatus").value = ("true");
                 document.forms[0].submit();
             }
         }
@@ -37,7 +37,7 @@
         function toDisable() {
             var cbNum = checkBoxNum();
             if (cbNum > 0) {
-                document.getElementById("changeStatus").valueOf = ("false");
+                document.getElementById("changeStatus").value = ("false");
                 document.forms[0].submit();
             }
         }
