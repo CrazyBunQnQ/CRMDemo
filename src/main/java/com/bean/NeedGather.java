@@ -1,6 +1,7 @@
 package com.bean;
 
 import com.util.DateUtils;
+import com.util.StringUtil;
 import lombok.Data;
 
 import java.util.Date;
@@ -103,6 +104,9 @@ public class NeedGather extends BaseBean {
      */
     private String province;
     private String city;
+    /**
+     * 区域
+     */
     private String regionName;
 
     public String getCreatetimeStr() {
@@ -199,6 +203,7 @@ public class NeedGather extends BaseBean {
     }
 
     public void setStatus(String status) {
+        status = StringUtil.decode(status, "utf-8");
         this.status = status == null ? null : status.trim();
     }
 }

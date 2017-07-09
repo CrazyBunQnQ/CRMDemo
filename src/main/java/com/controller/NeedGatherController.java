@@ -23,7 +23,7 @@ public class NeedGatherController extends BaseController<NeedGather> {
     private NeedGatherService needGatherService;
 
     @Override
-    @RequestMapping("/needGather/List")
+    @RequestMapping("/needGatherList")
     protected ModelAndView list(Pager pager, String isDel, Integer[] selectedId, NeedGather bean, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baseList(needGatherService, pager, isDel, selectedId, bean, exportType, response);
         if (modelAndView == null) {

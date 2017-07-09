@@ -47,16 +47,16 @@
         SELECT COUNT(ng.id)
         FROM b_need_gather ng, c_company c, s_user u WHERE ng.c_id = c.id AND ng.owner_usr = u.id
         <if test="bean.saleCode != null and bean.saleCode != ''">
-            AND ng.sale_code LIKE CONCAT('%', #{bean.saleCode})
+            AND ng.sale_code LIKE CONCAT('%', #{bean.saleCode}, '%')
         </if>
         <if test="bean.cusName != null and bean.cusName != ''">
-            AND ng.c_name LIKE CONCAT('%', #{bean.cusName})
+            AND ng.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
         </if>
         <if test="bean.createtimeStr != null and bean.createtimeStr != ''">
-            AND ng.createTime = #{bean.createtimeStr})
+            AND ng.createTime = #{bean.createtimeStr}
         </if>
-        <if test="bean.ownerUser != null and bean.ownerUser != ''">
-            AND ng.owner_user LIKE CONCAT('%', #{bean.ownerUser})
+        <if test="bean.ownerUsrName != null and bean.ownerUsrName != ''">
+            AND u.name LIKE CONCAT('%', #{bean.ownerUsrName}, '%')
         </if>
         <if test="bean.province != null and bean.province != ''">
             AND c.province province = #{bean.province}
@@ -74,16 +74,16 @@
         ownerUsrName
         FROM b_need_gather ng, c_company c, s_user u WHERE ng.c_id = c.id AND ng.owner_usr = u.id
         <if test="bean.saleCode != null and bean.saleCode != ''">
-            AND ng.sale_code LIKE CONCAT('%', #{bean.saleCode})
+            AND ng.sale_code LIKE CONCAT('%', #{bean.saleCode}, '%')
         </if>
         <if test="bean.cusName != null and bean.cusName != ''">
-            AND ng.c_name LIKE CONCAT('%', #{bean.cusName})
+            AND ng.c_name LIKE CONCAT('%', #{bean.cusName}, '%')
         </if>
         <if test="bean.createtimeStr != null and bean.createtimeStr != ''">
-            AND ng.createTime = #{bean.createtimeStr})
+            AND ng.createTime = #{bean.createtimeStr}
         </if>
-        <if test="bean.ownerUser != null and bean.ownerUser != ''">
-            AND ng.owner_user LIKE CONCAT('%', #{bean.ownerUser})
+        <if test="bean.ownerUsrName != null and bean.ownerUsrName != ''">
+            AND u.name LIKE CONCAT('%', #{bean.ownerUsrName}, '%')
         </if>
         <if test="bean.province != null and bean.province != ''">
             AND c.province province = #{bean.province}
