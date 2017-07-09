@@ -27,8 +27,12 @@
     <input type="hidden" name="edit_id" id="edit_id" value="${role.id }"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
-            <td height="26" width="100%"><span
-                    style="color:#002450; font-size:13px; font-weight:bold;">　操作权限组-创建/修改</span></td>
+            <td height="26" width="100%">
+                <span style="color:#002450; font-size:13px; font-weight:bold;">　操作权限组-
+                <c:if test="${edit_id == null}">新建</c:if>
+                <c:if test="${edit_id != null}">修改</c:if>
+                </span>
+            </td>
         </tr>
     </table>
 

@@ -157,3 +157,11 @@ function toChange() {
     }
     updateNum();
 }
+
+/**
+ * 返回列表
+ * @param path
+ */
+function returnList(path) {
+    window.location = path;
+}
