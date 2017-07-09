@@ -392,7 +392,7 @@
                     <td width="8" class="center_control" valign="middle">
                         <img src="image/index_center_control.jpg" id="center_control_img"></td>
                     <td valign="top">
-                        <iframe src="html/workdesk.html" width="100%" height="100%" frameborder="0"
+                        <iframe src="workdesk.jsp" width="100%" height="100%" frameborder="0"
                                 name="right_window"></iframe>
                     </td>
                 </tr>
