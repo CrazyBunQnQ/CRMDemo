@@ -128,6 +128,16 @@ public class Order extends BaseBean {
         this.createtimeStr = createtimeStr;
     }
 
+    public Date getCreatetime() {
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
     public String getUpdatetimeStr() {
         return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
     }
@@ -135,6 +145,16 @@ public class Order extends BaseBean {
     public void setUpdatetimeStr(String updatetimeStr) {
         this.updatetime = DateUtils.strToDate("yyyy-MM-dd", updatetimeStr);
         this.updatetimeStr = updatetimeStr;
+    }
+
+    public Date getUpdatetime() {
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
     }
 
     public String getOrderDateStr() {
@@ -146,6 +166,16 @@ public class Order extends BaseBean {
         this.orderDateStr = orderDateStr;
     }
 
+    public Date getOrderDate() {
+        this.orderDateStr = DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+        this.orderDateStr = DateUtils.dateToStr("yyyy-MM-dd", orderDate);
+    }
+
     public String getAuditDateStr() {
         return DateUtils.dateToStr("yyyy-MM-dd", auditDate);
     }
@@ -153,6 +183,16 @@ public class Order extends BaseBean {
     public void setAuditDateStr(String auditDateStr) {
         this.auditDate = DateUtils.strToDate("yyyy-MM-dd", auditDateStr);
         this.auditDateStr = auditDateStr;
+    }
+
+    public Date getAuditDate() {
+        this.auditDateStr = DateUtils.dateToStr("yyyy-MM-dd", auditDate);
+        return auditDate;
+    }
+
+    public void setAuditDate(Date auditDate) {
+        this.auditDate = auditDate;
+        this.auditDateStr = DateUtils.dateToStr("yyyy-MM-dd", auditDate);
     }
 
     public String getTime1Str() {
@@ -164,6 +204,16 @@ public class Order extends BaseBean {
         this.time1Str = time1Str;
     }
 
+    public Date getTime1() {
+        this.time1Str = DateUtils.dateToStr("yyyy-MM-dd", time1);
+        return time1;
+    }
+
+    public void setTime1(Date time1) {
+        this.time1 = time1;
+        this.time1Str = DateUtils.dateToStr("yyyy-MM-dd", time1);
+    }
+
     public String getTime2Str() {
         return DateUtils.dateToStr("yyyy-MM-dd", time2);
     }
@@ -171,6 +221,16 @@ public class Order extends BaseBean {
     public void setTime2Str(String time2Str) {
         this.time2 = DateUtils.strToDate("yyyy-MM-dd", time2Str);
         this.time2Str = time2Str;
+    }
+
+    public Date getTime2() {
+        this.time2Str = DateUtils.dateToStr("yyyy-MM-dd", time2);
+        return time2;
+    }
+
+    public void setTime2(Date time2) {
+        this.time2 = time2;
+        this.time2Str = DateUtils.dateToStr("yyyy-MM-dd", time2);
     }
 
     public void setCreater(String creater) {
