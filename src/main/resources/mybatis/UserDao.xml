@@ -96,6 +96,12 @@
         SELECT COUNT(id)
         FROM s_user
         WHERE 1 = 1
+        <if test="bean.name != null and bean.name != ''">
+            AND name LIKE CONCAT('%', #{bean.name}, '%')
+        </if>
+        <if test="bean.cnname != null and bean.cnname != ''">
+            AND cnname LIKE CONCAT('%', #{bean.cnname}, '%')
+        </if>
     </select>
 
     <select id="listByPage" resultType="com.bean.User">
@@ -112,6 +118,12 @@
             status
         FROM s_user
         WHERE 1 = 1
+        <if test="bean.name != null and bean.name != ''">
+            AND name LIKE CONCAT('%', #{bean.name}, '%')
+        </if>
+        <if test="bean.cnname != null and bean.cnname != ''">
+            AND cnname LIKE CONCAT('%', #{bean.cnname}, '%')
+        </if>
         LIMIT #{from}, #{pageSize}
     </select>
 
