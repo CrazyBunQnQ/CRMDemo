@@ -39,7 +39,7 @@
 </head>
 <body onload="initPageSize()">
 <form action="needGather/needGatherList" method="post" name="form1" id="form1">
-    <input type="hidden" name="pageNum" value="${pager.page}" id="hiddenPageNum"/>
+    <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
     <input type="hidden" name="exportType" value="" id="exportType"/>
