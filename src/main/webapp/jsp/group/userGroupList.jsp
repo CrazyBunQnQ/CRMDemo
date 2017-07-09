@@ -34,7 +34,7 @@
 <body>
 <form action="group/groupList" method="post" name="form1" id="form1">
     <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
-    <input type="hidden" name="pageSize" value="${pageSize}" id="hiddenPageSize"/>
+    <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
     <input type="hidden" name="exportType" value="" id="exportType"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_content">
@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                         <td height="11"><img src="image/t1.gif" align="absmiddle">
-                            <span style="font-size:14; font-weight:bold;">部门列表</span></td>
+                            <span style="font-size:14px; font-weight:bold;">部门列表</span></td>
                     </tr>
                     <tr>
                         <td height="16" valign="top"><br/>
