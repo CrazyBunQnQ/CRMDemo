@@ -71,18 +71,19 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
             workbook = Workbook.createWorkbook(outputStream);
             WritableSheet sheet = workbook.createSheet("人员列表", 0);
 
-            sheet.addCell(new Label(0, 0, "用户名"));
-            sheet.addCell(new Label(0, 0, "中文名"));
-            sheet.addCell(new Label(0, 0, "操作权限组"));
-            sheet.addCell(new Label(0, 0, "查询权限组"));
-            sheet.addCell(new Label(0, 0, "所属部门"));
-            sheet.addCell(new Label(0, 0, "起始有效期"));
-            sheet.addCell(new Label(0, 0, "终止有效期"));
-            sheet.addCell(new Label(0, 0, "状态"));
+            int colIndex = 0;
+            sheet.addCell(new Label(colIndex++, 0, "用户名"));
+            sheet.addCell(new Label(colIndex++, 0, "中文名"));
+            sheet.addCell(new Label(colIndex++, 0, "操作权限组"));
+            sheet.addCell(new Label(colIndex++, 0, "查询权限组"));
+            sheet.addCell(new Label(colIndex++, 0, "所属部门"));
+            sheet.addCell(new Label(colIndex++, 0, "起始有效期"));
+            sheet.addCell(new Label(colIndex++, 0, "终止有效期"));
+            sheet.addCell(new Label(colIndex++, 0, "状态"));
 
             int rowIndex = 1;
             for (User u : list) {
-                int colIndex = 0;
+                colIndex = 0;
                 sheet.addCell(new Label(colIndex++, rowIndex, u.getName()));
                 sheet.addCell(new Label(colIndex++, rowIndex, u.getCnname()));
                 sheet.addCell(new Label(colIndex++, rowIndex, u.getRoleName()));

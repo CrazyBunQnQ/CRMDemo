@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.util.DateUtils;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
-public class NeedGather {
+public class NeedGather extends BaseBean {
     private Integer id;
     /**
      * 销售单 id
@@ -22,9 +23,10 @@ public class NeedGather {
      */
     private Integer pid;
     /**
-     * 所属人
+     * 所属人 id
      */
     private Integer ownerUsr;
+    private String ownerUsrName;
     /**
      * 创建人
      */
@@ -33,6 +35,7 @@ public class NeedGather {
      * 创建时间
      */
     private Date createtime;
+    private String createtimeStr;
     /**
      * 更改人
      */
@@ -41,22 +44,24 @@ public class NeedGather {
      * 更改时间
      */
     private Date updatetime;
+    private String updatetimeStr;
     /**
      * 客户 id
      */
-    private Integer cId;
+    private Integer cusId;
     /**
      * 客户名称
      */
-    private String cName;
+    private String cusName;
     /**
      * 客户类型
      */
-    private String cType;
+    private String cusType;
     /**
      * 日期
      */
     private Date buildDate;
+    private String buildDateStr;
     /**
      * 销售单号
      */
@@ -81,6 +86,93 @@ public class NeedGather {
      * 状态
      */
     private String status;
+    /**
+     * 共享 id
+     */
+    private String shareid;
+    /**
+     * （读）共享 id
+     */
+    private String readShareid;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
+     * 省份
+     */
+    private String province;
+    private String city;
+    private String regionName;
+
+    public String getCreatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", createtime);
+    }
+
+    public void setCreatetimeStr(String createtimeStr) {
+        this.createtime = DateUtils.strToDate("yyyy-MM-dd", createtimeStr);
+        this.createtimeStr = createtimeStr;
+    }
+
+    public Date getCreatetime() {
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtimeStr = DateUtils.dateToStr("yyyy-MM-dd", createtime);
+        this.createtime = createtime;
+    }
+
+    public String getUpdatetimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+    }
+
+    public void setUpdatetimeStr(String updatetimeStr) {
+        this.updatetime = DateUtils.strToDate("yyyy-MM-dd", updatetimeStr);
+        this.updatetimeStr = updatetimeStr;
+    }
+
+    public Date getUpdatetime() {
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetimeStr = DateUtils.dateToStr("yyyy-MM-dd", updatetime);
+        this.updatetime = updatetime;
+    }
+
+    public String getBuildDateStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", buildDate);
+    }
+
+    public void setBuildDateStr(String buildDateStr) {
+        this.buildDate = DateUtils.strToDate("yyyy-MM-dd", buildDateStr);
+        this.buildDateStr = buildDateStr;
+    }
+
+    public Date getBuildDate() {
+        this.buildDateStr = DateUtils.dateToStr("yyyy-MM-dd", buildDate);
+        return buildDate;
+    }
+
+    public void setBuildDate(Date buildDate) {
+        this.buildDateStr = DateUtils.dateToStr("yyyy-MM-dd", buildDate);
+        this.buildDate = buildDate;
+    }
+
+    public void setShareid(String shareid) {
+        this.shareid = shareid == null ? null : shareid.trim();
+    }
+
+    public void setReadShareid(String readShareid) {
+        this.readShareid = readShareid == null ? null : readShareid.trim();
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
 
     public void setCreator(String creator) {
         this.creator = creator == null ? null : creator.trim();
@@ -90,16 +182,12 @@ public class NeedGather {
         this.updater = updater == null ? null : updater.trim();
     }
 
-    public void setcName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+    public void setCusName(String cusName) {
+        this.cusName = cusName == null ? null : cusName.trim();
     }
 
-    public void setcType(String cType) {
-        this.cType = cType == null ? null : cType.trim();
-    }
-
-    public void setBuildDate(Date buildDate) {
-        this.buildDate = buildDate;
+    public void setCusType(String cusType) {
+        this.cusType = cusType == null ? null : cusType.trim();
     }
 
     public void setSaleCode(String saleCode) {
