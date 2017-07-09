@@ -51,8 +51,9 @@
             if (val.length > 0) {
                 val = val.substring(0, val.length - 1);
             }
-            if (val != "")
+            if (val != "") {
                 document.getElementById("_ids").value = val;
+            }
             document.forms[0].submit();
             window.close();
         }
@@ -66,6 +67,9 @@
         <tr>
             <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　选择相关辅助信息</span>
             </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; color: red;">${suc}</td>
         </tr>
     </table>
 
@@ -95,9 +99,9 @@
                                    id="selectTable">
                                 <tr>
                                     <td width="3%">&nbsp;</td>
-                                    <td width="36%">所有信息:</td>
+                                    <td width="36%">未指定部门:</td>
                                     <td width="19%">&nbsp;</td>
-                                    <td width="40%">当前选择信息</td>
+                                    <td width="40%">在当前部门:</td>
                                     <td width="2%">&nbsp;</td>
                                 </tr>
                                 <tr>

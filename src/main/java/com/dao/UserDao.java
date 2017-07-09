@@ -3,6 +3,8 @@ package com.dao;
 import com.bean.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
@@ -36,4 +38,8 @@ public interface UserDao extends BaseDao<User> {
     int updateByPrimaryKey(User record);
 
     int enableOrDisableByIds(@Param("ids") Integer[] ids, @Param("enable") Boolean enable);
+
+    List<User> listUserByGroup(@Param("id") Integer id, @Param("byId") boolean byId);
+
+    int updateUsersGroup(@Param("groupId") Integer groupId, @Param("ids") Integer[] ids);
 }

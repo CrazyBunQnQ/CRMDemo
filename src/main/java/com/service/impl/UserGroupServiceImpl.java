@@ -1,6 +1,8 @@
 package com.service.impl;
 
+import com.bean.User;
 import com.bean.UserGroup;
+import com.dao.UserDao;
 import com.dao.UserGroupDao;
 import com.service.UserGroupService;
 import com.util.DataModel;
@@ -31,6 +33,9 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
     @Autowired
     private UserGroupDao userGroupDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public String getTree() {
         List<UserGroup> rootList = userGroupDao.findRootProductType();
@@ -57,6 +62,28 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
             sb.append("</li>");
         }
         return sb.append("</ul>").toString();
+    }
+
+    @Override
+    public List<User> listUserNotByGroupId(Integer id) {
+        return userDao.listUserByGroup(id, false);
+    }
+
+    @Override
+    public List<User> listUserByGroupId(Integer id) {
+        return userDao.listUserByGroup(id, true);
+    }
+
+    @Override
+    public boolean setUser(Integer groupId, String userIds) {
+        String[] idsArr = userIds.split(",");
+        Integer[] ids = new Integer[idsArr.length];
+        int i = 0;
+        for (String s : idsArr) {
+            ids[i] = Integer.valueOf(s);
+            i++;
+        }
+        return userDao.updateUsersGroup(groupId, ids) > 0;
     }
 
     @Override
