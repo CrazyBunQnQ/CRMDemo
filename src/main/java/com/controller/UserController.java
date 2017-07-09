@@ -27,12 +27,11 @@ public class UserController extends BaseController<User> {
 
     @Override
     public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, User bean, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = super.baselist(userService, pager, isDel, selectedId, bean, exportType, response);
+        ModelAndView modelAndView = super.baseList(userService, pager, isDel, selectedId, bean, exportType, response);
         if (modelAndView == null) {
             return null;
         }
 
-        modelAndView.addObject("bean", bean);
         modelAndView.setViewName("/jsp/user/userList");
         return modelAndView;
     }
