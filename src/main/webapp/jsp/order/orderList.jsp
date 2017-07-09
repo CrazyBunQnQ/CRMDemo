@@ -217,24 +217,24 @@
                                                     <strong>单据状态</strong>
                                                 </td>
                                             </tr>
-                                            <c:forEach items="${rows}" var="border">
+                                            <c:forEach items="${rows}" var="row">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-                                                        <input type="checkbox" name="selectedId" value="${border.id}"
+                                                        <input type="checkbox" name="selectedId" value="${row.id}"
                                                                onclick="updateNum()">
                                                     </td>
-                                                        <%--<td><a href="load4EditOrder.action?edit_id=${border.id}"--%>
-                                                    <td><a href="order/toAddOrUpdateOrder?edit_id=${border.id}"
-                                                           class="normal">${border.code}</a></td>
+                                                    <td><a href="order/toAddOrUpdateOrder?edit_id=${row.id}"
+                                                           class="normal">${row.code}</a></td>
                                                     <td align="center">
-                                                            ${border.orderDateStr}
+                                                            ${row.orderDateStr}
                                                     </td>
-                                                    <td align="center">${border.cusName}</td>
-                                                    <td align="center">${border.total}</td>
-                                                    <td align="center">${border.agio}</td>
-                                                    <td align="center">${border.agioTotal}</td>
-                                                    <td align="center">${border.auditor}</td>
-                                                    <td align="center">${border.status}</td>
+                                                    <td align="center">${row.cusName}</td>
+                                                    <td align="center">${row.seller}</td>
+                                                    <td align="center">${row.total}</td>
+                                                    <td align="center">${row.agio}</td>
+                                                    <td align="center">${row.agioTotal}</td>
+                                                    <td align="center">${row.auditor}</td>
+                                                    <td align="center">${row.status}</td>
                                                 </tr>
                                             </c:forEach>
                                             <tr>

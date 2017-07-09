@@ -177,7 +177,7 @@
                                                     background="image/select_title_title.jpg">
                                                     <input type="checkbox" name="ids" id="ids" onclick="toChange()">
                                                 </td>
-                                                <td width="10%" align="left" background="image/select_title_title.jpg">
+                                                <td width="10%" align="center" background="image/select_title_title.jpg">
                                                     <strong>用户名</strong></td>
                                                 <td width="10%" align="center"
                                                     background="image/select_title_title.jpg"><strong>中文名</strong></td>
@@ -203,6 +203,7 @@
                                                     <td align="center">
                                                         <input type="checkbox" name="selectedId" value="${row.id}"
                                                                onclick="updateNum();">
+                                                    <td align="center">${row.name}</td>
                                                     <td align="center">${row.cnname}</td>
                                                     <td align="center">${row.roleName}</td>
                                                     <td align="center">${row.accessGroupName}</td>
