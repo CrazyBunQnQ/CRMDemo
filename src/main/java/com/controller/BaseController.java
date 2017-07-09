@@ -19,7 +19,7 @@ public abstract class BaseController<B extends BaseBean> {
 
     protected abstract ModelAndView list(Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response);
 
-    protected ModelAndView baselist(BaseService service, Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response) {
+    protected ModelAndView baseList(BaseService service, Pager pager, String isDel, Integer[] selectedId, B bean, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
 
         if (exportType != null && !"".equals(exportType.trim())) {
@@ -34,6 +34,7 @@ public abstract class BaseController<B extends BaseBean> {
         DataModel<B> dataModel = service.list(pager, bean);
 
         List<B> rows = dataModel.getRows();
+        modelAndView.addObject("bean", bean);
         modelAndView.addObject("rows", rows);
         modelAndView.addObject("pager", dataModel.getPager());
         return modelAndView;

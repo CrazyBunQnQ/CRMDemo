@@ -23,12 +23,11 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
     @Override
     @RequestMapping("/gatherList")
     public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, GatherWithBLOBs bean, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = super.baselist(gatherService, pager, isDel, selectedId, bean, exportType, response);
+        ModelAndView modelAndView = super.baseList(gatherService, pager, isDel, selectedId, bean, exportType, response);
         if (modelAndView == null ) {
             return null;
         }
 
-        modelAndView.addObject("bean", bean);
         modelAndView.setViewName("/jsp/gather/gatherList");
         return modelAndView;
     }

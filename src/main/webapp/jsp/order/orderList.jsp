@@ -43,7 +43,7 @@
 <form action="order/orderList" method="post" name="form1" id="form1">
     <input type="hidden" name="page" value="${pager.page}" id="hiddenPageNum"/>
     <input type="hidden" name="pageSize" value="${pager.pageSize}" id="hiddenPageSize"/>
-    <input type="hidden" name="status" value="${order.status }" id="hiddenStatus"/>
+    <input type="hidden" name="status" value="${bean.status }" id="hiddenStatus"/>
     <input type="hidden" name="isDel" value="" id="isDel"/>
     <input type="hidden" name="exportType" value="" id="exportType"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_content">
@@ -60,12 +60,12 @@
                     <tr>
                         <td height="46" align="left" valign="middle" bgcolor="#f7fbfc"
                             style="font-size: 12px; color: #424446;" id="order_status">
-                            <span <c:if test="${order.status=='草稿' }">style="color: #FF0000"</c:if>>草稿</span>
-                            <span <c:if test="${order.status=='待审核' }">style="color: #FF0000"</c:if>>待审核</span>
-                            <span <c:if test="${order.status=='已审核' }">style="color: #FF0000"</c:if>>已审核</span>
-                            <span <c:if test="${order.status=='已驳回' }">style="color: #FF0000"</c:if>>已驳回</span>
+                            <span <c:if test="${bean.status=='草稿' }">style="color: #FF0000"</c:if>>草稿</span>
+                            <span <c:if test="${bean.status=='待审核' }">style="color: #FF0000"</c:if>>待审核</span>
+                            <span <c:if test="${bean.status=='已审核' }">style="color: #FF0000"</c:if>>已审核</span>
+                            <span <c:if test="${bean.status=='已驳回' }">style="color: #FF0000"</c:if>>已驳回</span>
                             <span
-                                    <c:if test="${order.status==null || order.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
+                                    <c:if test="${bean.status==null || bean.status eq '' }">style="color: #FF0000"</c:if>>全部</span>
                         </td>
                     </tr>
                 </table>
@@ -85,7 +85,7 @@
                                 <tr>
                                     <td width="11%">销售单号:</td>
                                     <td width="17%">
-                                        <input type="text" name="code" value="${order.code}" class="inputTextStyle">
+                                        <input type="text" name="code" value="${bean.code}" class="inputTextStyle">
                                     </td>
                                     <td width="11%">业务员:</td>
                                     <td width="17%">
@@ -93,7 +93,7 @@
                                     </td>
                                     <td width="11%">客户名称:</td>
                                     <td width="17%">
-                                        <input type="text" name="cusName" value="${order.cusName}"
+                                        <input type="text" name="cusName" value="${bean.cusName}"
                                                class="inputTextStyle">
                                     </td>
                                     <td width="5%">
