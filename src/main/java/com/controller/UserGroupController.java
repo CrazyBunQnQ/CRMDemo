@@ -25,8 +25,8 @@ public class UserGroupController extends BaseController<UserGroup> {
     @Override
     @RequestMapping("/groupList")
     protected ModelAndView list(Pager pager, String isDel, Integer[] selectedId, UserGroup bean, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = super.baseList(userGroupService, pager,isDel, selectedId, bean, exportType, response);
-        if(modelAndView == null) {
+        ModelAndView modelAndView = super.baseList(userGroupService, pager, isDel, selectedId, bean, exportType, response);
+        if (modelAndView == null) {
             return null;
         }
 
@@ -47,6 +47,14 @@ public class UserGroupController extends BaseController<UserGroup> {
     protected ModelAndView addOrUpdate(UserGroup bean, Integer edit_id) {
         ModelAndView modelAndView = super.baseAddOrUpdate(userGroupService, bean, edit_id);
         modelAndView.setViewName("/jsp/group/userGroupAdd");
+        return modelAndView;
+    }
+
+    @RequestMapping("/optionTreeWindow")
+    public ModelAndView optionTreeWindow() {
+        ModelAndView modelAndView = new ModelAndView("/treeWindow");
+        String tree = userGroupService.getTree();
+        modelAndView.addObject("treeStr", tree);
         return modelAndView;
     }
 }

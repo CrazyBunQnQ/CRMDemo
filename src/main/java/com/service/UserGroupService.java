@@ -7,4 +7,5 @@ import com.bean.UserGroup;
  * @auther CrazyBunQnQ
  */
 public interface UserGroupService extends BaseService<UserGroup> {
+    public String getTree();
 }

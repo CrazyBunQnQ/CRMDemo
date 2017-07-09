@@ -26,8 +26,7 @@
         }
 
         function openSetUserWindow(userGroupId) {
-            window.open("load4SetUsers.action?id=" + userGroupId, "_blank",
-                "");
+            window.open("load4SetUsers.action?id=" + userGroupId, "_blank", "");
         }
     </script>
 </head>
@@ -92,9 +91,9 @@
                     <tr>
                         <td height="16" valign="top"><br/>
                             <img src="image/s3.gif" width="62" height="22"
-                                 onclick="javascript:window.location.href='group/toAddOrUpdate'">
+                                 onclick="jumpToPage('group/toAddOrUpdate')">
                             <img src="image/s7.gif" width="59" height="22" onclick="toDel()">
-                            <img src="image/shuxing.gif" width="62" height="22" onclick="openTreeWindow()">
+                            <img src="image/shuxing.gif" width="62" height="22" onclick="jumpToPage('group/optionTreeWindow')">
                         </td>
                     </tr>
                     <tr>

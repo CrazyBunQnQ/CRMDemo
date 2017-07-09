@@ -32,6 +32,34 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
     private UserGroupDao userGroupDao;
 
     @Override
+    public String getTree() {
+        List<UserGroup> rootList = userGroupDao.findRootProductType();
+        StringBuffer selectOptionStr = new StringBuffer("<ul class='simpleTree'><li class='root'><span>根节点</span><ul>");
+        if (rootList != null && rootList.size() > 0) {
+            for (UserGroup userGroup : rootList) {
+                selectOptionStr.append("<li id='" + userGroup.getId() + "'>" + "<span>" + userGroup.getName() + "</span>");
+                selectOptionStr.append(getTreeStr(userGroup.getId()));
+                selectOptionStr.append("</li>");
+            }
+        }
+        return selectOptionStr.append("</ul></li></ul>").toString();
+    }
+
+    private String getTreeStr(int pid) {
+        List<UserGroup> list = userGroupDao.findSubProductType(pid);
+        if (list == null || list.size() == 0) {
+            return "";
+        }
+        StringBuffer sb = new StringBuffer("<ul>");
+        for (UserGroup userGroup : list) {
+            sb.append("<li id='" + userGroup.getId() + "'><span>" + userGroup.getName() + "</span>");
+            sb.append(getTreeStr(userGroup.getId()));
+            sb.append("</li>");
+        }
+        return sb.append("</ul>").toString();
+    }
+
+    @Override
     public UserGroup getById(Integer edit_id) {
         return super.baseGetById(userGroupDao, edit_id);
     }

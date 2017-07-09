@@ -59,6 +59,22 @@
         </foreach>
     </select>
 
+    <select id="findRootProductType" resultType="com.bean.UserGroup">
+        SELECT
+            id,
+            name
+        FROM s_user_group
+        WHERE pid = 0
+    </select>
+
+    <select id="findSubProductType" resultType="com.bean.UserGroup">
+        SELECT
+            id,
+            name
+        FROM s_user_group
+        WHERE pid = #{pid}
+    </select>
+
     <delete id="removeByPrimaryKeys">
         DELETE FROM s_user_group WHERE id IN
         <foreach collection="ids" item="id" open="(" close=")" separator=",">

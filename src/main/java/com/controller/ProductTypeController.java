@@ -99,7 +99,7 @@ public class ProductTypeController {
 
     @RequestMapping("/optionTreeWindow")
     public ModelAndView optionTreeWindow() {
-        ModelAndView modelAndView = new ModelAndView("/jsp/productType/treeWindow");
+        ModelAndView modelAndView = new ModelAndView("/treeWindow");
         String tree = productTypeService.findTree();
         modelAndView.addObject("treeStr", tree);
         return modelAndView;

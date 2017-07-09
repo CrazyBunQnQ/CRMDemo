@@ -105,7 +105,7 @@
             <td valign="middle">
                 <img src="image/s10.gif" width="58" height="22" onclick="submitForm();">
                 <img src="image/xiugaimima.gif" width="59" height="22">
-                <img src="image/s8.gif" width="59" height="22" onclick="returnList('user/userList')">
+                <img src="image/s8.gif" width="59" height="22" onclick="jumpToPage('user/userList')">
             </td>
         </tr>
         <tr>
