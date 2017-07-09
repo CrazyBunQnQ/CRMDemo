@@ -1,7 +1,5 @@
 package com.service;
 
-import com.alibaba.fastjson.JSON;
-import com.bean.User;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

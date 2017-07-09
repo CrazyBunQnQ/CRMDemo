@@ -53,9 +53,9 @@ public class NeedGatherServiceImpl extends BaseServiceImpl<NeedGather> implement
 
     @Override
     public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, NeedGather needGather, HttpServletResponse response) {
-        boolean exportSuccess =false;
-        List<NeedGather> list = export(needGatherDao, exportType, pager,selectedId,needGather);
-        if (list==null){
+        boolean exportSuccess = false;
+        List<NeedGather> list = export(needGatherDao, exportType, pager, selectedId, needGather);
+        if (list == null) {
             return exportSuccess;
         }
 
@@ -88,9 +88,9 @@ public class NeedGatherServiceImpl extends BaseServiceImpl<NeedGather> implement
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getSaleCode()));
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getCusName()));
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getCreatetimeStr()));
-                sheet.addCell(new Label(colIndex++, rowIndex, g.getTotal()==null?"-":String.valueOf(g.getTotal())));
-                sheet.addCell(new Label(colIndex++, rowIndex, g.getPayed()==null?"-":String.valueOf(g.getPayed())));
-                sheet.addCell(new Label(colIndex++, rowIndex, g.getBalance()==null?"-":String.valueOf(g.getBalance())));
+                sheet.addCell(new Label(colIndex++, rowIndex, g.getTotal() == null ? "-" : String.valueOf(g.getTotal())));
+                sheet.addCell(new Label(colIndex++, rowIndex, g.getPayed() == null ? "-" : String.valueOf(g.getPayed())));
+                sheet.addCell(new Label(colIndex++, rowIndex, g.getBalance() == null ? "-" : String.valueOf(g.getBalance())));
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getOverFlag()));
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getOwnerUsrName()));
                 sheet.addCell(new Label(colIndex++, rowIndex, g.getStatus()));

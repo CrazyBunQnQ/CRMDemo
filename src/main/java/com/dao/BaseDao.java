@@ -19,7 +19,7 @@ public interface BaseDao<B> {
 
     int removeByPrimaryKeys(@Param("ids") Integer[] ids);
 
-    int insertSelective (B b);
+    int insertSelective(B b);
 
     int updateByPrimaryKey(B b);
 

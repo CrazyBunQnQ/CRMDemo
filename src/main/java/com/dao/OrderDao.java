@@ -1,6 +1,5 @@
 package com.dao;
 
-import com.bean.Order;
 import com.bean.OrderWithBLOBs;
 
 /**

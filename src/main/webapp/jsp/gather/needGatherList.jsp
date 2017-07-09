@@ -49,15 +49,18 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div1">
                     <tr>
                         <td height="21" background="image/index_main_div_titleBg.gif">
-                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2" align="absmiddle">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">
                             &nbsp;<span style="font-weight:bold;font-size:12px;">应收款</span>
                         </td>
                     </tr>
                     <tr>
-                        <td height="46" align="left" valign="middle" bgcolor="#f7fbfc" style="font-size:12px;color:#424446;" id="ng_status"> 　　
+                        <td height="46" align="left" valign="middle" bgcolor="#f7fbfc"
+                            style="font-size:12px;color:#424446;" id="ng_status"> 　　
                             <span <c:if test="${bean.status=='未结清'}">style="color:#FF0000;"</c:if>>未结清</span>
                             <span <c:if test="${bean.status=='已结清'}">style="color:#FF0000;"</c:if>>已结清</span>
-                            <span <c:if test="${bean.status==null||bean.status eq ''}">style="color:#FF0000;"</c:if>>全部</span>
+                            <span
+                                    <c:if test="${bean.status==null||bean.status eq ''}">style="color:#FF0000;"</c:if>>全部</span>
                         </td>
                     </tr>
                 </table>
@@ -65,19 +68,24 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="index_main_div2">
                     <tr>
                         <td height="21" background="image/index_main_div_titleBg.gif">
-                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2" align="absmiddle">
+                            <img style="margin-left:5px;" src="image/index_main_div_left.gif" width="6" height="2"
+                                 align="absmiddle">
                             &nbsp;<span style="font-weight:bold;font-size:12px;">应收款搜索</span></td>
                     </tr>
                     <tr>
                         <td height="56" align="left" valign="top" bgcolor="#f7fbfc">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" id="selectTable">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%"
+                                   id="selectTable">
                                 <tr>
                                     <td width="11%">销售单号:</td>
-                                    <td width="17%"><input type="text" name="saleCode" value="${bean.saleCode}" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="saleCode" value="${bean.saleCode}"
+                                                           class="inputTextStyle"></td>
                                     <td width="11%">客户名称:</td>
-                                    <td width="17%"><input type="text" name="cusName" value="${bean.cusName}" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="cusName" value="${bean.cusName}"
+                                                           class="inputTextStyle"></td>
                                     <td width="11%">产生日期:</td>
-                                    <td width="17%"><input type="text" name="createtimeStr" value="${bean.createtimeStr}" class="inputTextStyle"></td>
+                                    <td width="17%"><input type="text" name="createtimeStr"
+                                                           value="${bean.createtimeStr}" class="inputTextStyle"></td>
                                     <td width="5%">
                                         <img src="image/s1.gif" width="59" height="22" onclick="submitForm()">
                                     </td>
@@ -88,7 +96,8 @@
                                 </tr>
                                 <tr>
                                     <td>所属人:</td>
-                                    <td><input type="text" name="ownerUsrName" value="${bean.ownerUsrName}" class="inputTextStyle"></td>
+                                    <td><input type="text" name="ownerUsrName" value="${bean.ownerUsrName}"
+                                               class="inputTextStyle"></td>
                                     <td>客户省份:</td>
                                     <td><select name="province" class="selectOptionStyle">
                                         <option value="" selected="selected">---</option>
@@ -200,7 +209,8 @@
                                                     background="image/select_title_title.jpg">
                                                     <input type="checkbox" name="ids" id="ids" onclick="toChange()">
                                                 </td>
-                                                <td width="15%" align="center" background="image/select_title_title.jpg">
+                                                <td width="15%" align="center"
+                                                    background="image/select_title_title.jpg">
                                                     <strong>销售单号</strong></td>
                                                 <td width="10%" align="center"
                                                     background="image/select_title_title.jpg"><strong>客户名称</strong></td>

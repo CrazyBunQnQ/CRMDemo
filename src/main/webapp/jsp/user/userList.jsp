@@ -177,7 +177,8 @@
                                                     background="image/select_title_title.jpg">
                                                     <input type="checkbox" name="ids" id="ids" onclick="toChange()">
                                                 </td>
-                                                <td width="10%" align="center" background="image/select_title_title.jpg">
+                                                <td width="10%" align="center"
+                                                    background="image/select_title_title.jpg">
                                                     <strong>用户名</strong></td>
                                                 <td width="10%" align="center"
                                                     background="image/select_title_title.jpg"><strong>中文名</strong></td>
@@ -221,12 +222,12 @@
                                 </tr>
                                 <tr>
                                     <td width="40%" height="19" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;
-                                    <img src="image/t2.gif" align="absmiddle" width="15" height="16">
-                                    <span onclick="exportExcel()" class="pager" style="cursor: pointer">
+                                        <img src="image/t2.gif" align="absmiddle" width="15" height="16">
+                                        <span onclick="exportExcel()" class="pager" style="cursor: pointer">
                                             &nbsp;导出&nbsp;
                                         </span>
-                                    |&nbsp;选择条目:&nbsp;
-                                    <span id="select_num2">0</span>
+                                        |&nbsp;选择条目:&nbsp;
+                                        <span id="select_num2">0</span>
                                     </td>
                                     <td width="3%" bgcolor="#f2faff" style="font-size: 12px;">&nbsp;</td>
                                     <td width="57%" bgcolor="#f2faff" align="right" style="font-size: 12px;">

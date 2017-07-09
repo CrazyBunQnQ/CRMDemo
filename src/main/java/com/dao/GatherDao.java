@@ -1,6 +1,5 @@
 package com.dao;
 
-import com.bean.Gather;
 import com.bean.GatherWithBLOBs;
 
 /**

@@ -369,7 +369,9 @@
                                                         <input type="checkbox" name="product_id" value="${product.id}"
                                                                onclick="updateNum();">
                                                     </td>
-                                                    <td><a href="/product/toAddProduct?edit_id=${product.id}">${product.name}</a></td>
+                                                    <td>
+                                                        <a href="/product/toAddProduct?edit_id=${product.id}">${product.name}</a>
+                                                    </td>
                                                     <td align="center">${product.code}</td>
                                                     <td align="center">${product.productTypeName}</td>
                                                     <td align="center">${product.model}</td>

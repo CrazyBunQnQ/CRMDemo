@@ -24,7 +24,7 @@ public class GatherController extends BaseController<GatherWithBLOBs> {
     @RequestMapping("/gatherList")
     public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, GatherWithBLOBs bean, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baseList(gatherService, pager, isDel, selectedId, bean, exportType, response);
-        if (modelAndView == null ) {
+        if (modelAndView == null) {
             return null;
         }
 

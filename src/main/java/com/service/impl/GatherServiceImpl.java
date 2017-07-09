@@ -84,7 +84,7 @@ public class GatherServiceImpl extends BaseServiceImpl<GatherWithBLOBs> implemen
                 sheet.addCell(new Label(colIndex++, rowIndex, bean.getCode()));
                 sheet.addCell(new Label(colIndex++, rowIndex, bean.getPayDateStr()));
                 sheet.addCell(new Label(colIndex++, rowIndex, bean.getCusName()));
-                sheet.addCell(new Label(colIndex++, rowIndex, bean.getTotal()==null?"-":String.valueOf(bean.getTotal())));
+                sheet.addCell(new Label(colIndex++, rowIndex, bean.getTotal() == null ? "-" : String.valueOf(bean.getTotal())));
                 sheet.addCell(new Label(colIndex++, rowIndex, bean.getHandler()));
                 sheet.addCell(new Label(colIndex++, rowIndex, bean.getStatus()));
                 rowIndex++;

@@ -100,16 +100,16 @@
 
     <select id="listAll" resultType="com.bean.OrderWithBLOBs">
         SELECT
-            o.id,
-            o.code,
-            o.order_date,
-            o.c_name,
-            o.seller,
-            o.total,
-            o.agio_total,
-            ng.total,
-            o.auditor,
-            o.status
+        o.id,
+        o.code,
+        o.order_date,
+        o.c_name,
+        o.seller,
+        o.total,
+        o.agio_total,
+        ng.total,
+        o.auditor,
+        o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id
     </select>

@@ -208,7 +208,8 @@
                         <td height="5" valign="top"></td>
                     </tr>
                     <tr>
-                        <td id="errorInfo" style="font-size:12px;color:red;">${suc}</td></td>
+                        <td id="errorInfo" style="font-size:12px;color:red;">${suc}</td>
+                        </td>
                     </tr>
                     <tr>
                         <td height="28" valign="top">
