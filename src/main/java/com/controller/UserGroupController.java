@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.bean.UserGroup;
-import com.service.GroupService;
+import com.service.UserGroupService;
 import com.util.Pager;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 @Log4j
 @Controller
 @RequestMapping("/group")
-public class GroupController extends BaseController<UserGroup> {
+public class UserGroupController extends BaseController<UserGroup> {
     @Autowired
-    private GroupService groupService;
+    private UserGroupService userGroupService;
 
     @Override
+    @RequestMapping("/groupList")
     protected ModelAndView list(Pager pager, String isDel, Integer[] selectedId, UserGroup bean, String exportType, HttpServletResponse response) {
-        ModelAndView modelAndView = super.baseList(groupService, pager,isDel, selectedId, bean, exportType, response);
+        ModelAndView modelAndView = super.baseList(userGroupService, pager,isDel, selectedId, bean, exportType, response);
         if(modelAndView == null) {
             return null;
         }
@@ -34,15 +35,17 @@ public class GroupController extends BaseController<UserGroup> {
     }
 
     @Override
+    @RequestMapping("/toAddOrUpdate")
     protected ModelAndView toAddOrUpdate(Integer edit_id) {
-        ModelAndView modelAndView = super.baseToAddOrUpdate(groupService, edit_id);
+        ModelAndView modelAndView = super.baseToAddOrUpdate(userGroupService, edit_id);
         modelAndView.setViewName("/jsp/group/userGroupAdd");
         return modelAndView;
     }
 
     @Override
+    @RequestMapping("/addOrUpdate")
     protected ModelAndView addOrUpdate(UserGroup bean, Integer edit_id) {
-        ModelAndView modelAndView = super.baseAddOrUpdate(groupService, bean, edit_id);
+        ModelAndView modelAndView = super.baseAddOrUpdate(userGroupService, bean, edit_id);
         modelAndView.setViewName("/jsp/group/userGroupAdd");
         return modelAndView;
     }

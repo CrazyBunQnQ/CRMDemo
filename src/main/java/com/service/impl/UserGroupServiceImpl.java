@@ -2,7 +2,7 @@ package com.service.impl;
 
 import com.bean.UserGroup;
 import com.dao.UserGroupDao;
-import com.service.GroupService;
+import com.service.UserGroupService;
 import com.util.DataModel;
 import com.util.Pager;
 import jxl.Workbook;
@@ -27,7 +27,7 @@ import java.util.List;
  */
 @Log4j
 @Service
-public class GroupServiceImpl extends BaseServiceImpl<UserGroup> implements GroupService {
+public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements UserGroupService {
     @Autowired
     private UserGroupDao userGroupDao;
 
