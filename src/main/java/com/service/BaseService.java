@@ -6,7 +6,7 @@ import com.util.Pager;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by HCol on 2017/7/6.
+ * Created by CrazyBunQnQ on 2017/7/6.
  */
 public interface BaseService<B> {
 

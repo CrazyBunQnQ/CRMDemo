@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Created by HCol on 2017/7/6.
+ * Created by CrazyBunQnQ on 2017/7/6.
  */
 @Log4j
 public abstract class BaseController<B extends BaseBean> {
