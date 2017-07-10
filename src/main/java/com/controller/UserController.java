@@ -69,7 +69,6 @@ public class UserController extends BaseController<User> {
 
         List<RoleWithBLOBs> roleList = userService.listRole();
         List<AccessGroupWithBLOBs> accessGroupList = userService.listAccessGroup();
-        //TODO groupList
         List<UserGroup> groupList = userService.listGroup();
 
         modelAndView.addObject("roleList", roleList);
@@ -83,6 +82,7 @@ public class UserController extends BaseController<User> {
     public ModelAndView addOrUpdate(User bean, Integer edit_id) {
         ModelAndView modelAndView = super.baseAddOrUpdate(userService, bean, edit_id);
         modelAndView.setViewName("/jsp/user/userAdd");
+
         return modelAndView;
     }
 }

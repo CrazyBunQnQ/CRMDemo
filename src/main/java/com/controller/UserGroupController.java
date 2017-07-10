@@ -42,6 +42,10 @@ public class UserGroupController extends BaseController<UserGroup> {
     protected ModelAndView toAddOrUpdate(Integer edit_id) {
         ModelAndView modelAndView = super.baseToAddOrUpdate(userGroupService, edit_id);
         modelAndView.setViewName("/jsp/group/userGroupAdd");
+
+        List<UserGroup> groupList = userGroupService.listGroup();
+
+        modelAndView.addObject("groupList", groupList);
         return modelAndView;
     }
 

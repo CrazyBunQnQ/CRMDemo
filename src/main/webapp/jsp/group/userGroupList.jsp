@@ -177,7 +177,8 @@
                                                     <td align="center">
                                                         <input type="checkbox" name="selectedId" value="${row.id}"
                                                                onclick="updateNum();">
-                                                    <td align="center">${row.name}</td>
+                                                    <td align="center">
+                                                    <a href="/group/toAddOrUpdate?edit_id=${row.id}">${row.name}</a></td>
                                                     <td align="center">${row.principal}</td>
                                                     <td align="center">${row.incumbent}</td>
                                                     <td align="center">

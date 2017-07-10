@@ -86,12 +86,12 @@
 
 <body>
 <form name="form1" method="post" action="/user/addOrUpdate?" id="userForm">
-    <input type="hidden" name="edit_id" id="edit_id" value="${edit_id}"/>
+    <input type="hidden" name="edit_id" id="edit_id" value="${bean.id}"/>
     <table width="99%" border="0" cellspacing="0" cellpadding="0" id="index_main_table">
         <tr>
             <td height="26" width="100%"><span style="color:#002450; font-size:13px; font-weight:bold;">　人员-
-                <c:if test="${edit_id == null}">新建</c:if>
-                <c:if test="${edit_id != null}">修改</c:if>
+                <c:if test="${bean.id == null}">新建</c:if>
+                <c:if test="${bean.id != null}">修改</c:if>
             </span>
             </td>
         </tr>
