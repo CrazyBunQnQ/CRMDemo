@@ -1,7 +1,9 @@
 package com.service.impl;
 
+import com.bean.RoleWithBLOBs;
 import com.bean.User;
 import com.dao.UserDao;
+import com.service.RoleService;
 import com.service.UserService;
 import com.util.DataModel;
 import com.util.Pager;
@@ -31,6 +33,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private RoleService roleService;
+
     @Override
     public User getById(Integer edit_id) {
         return super.baseGetById(userDao, edit_id);
@@ -49,6 +54,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public boolean update(User user) {
         return super.baseUpdate(userDao, user);
+    }
+
+    @Override
+    public List<RoleWithBLOBs> listRole() {
+        return roleService.listAll();
     }
 
     @Override

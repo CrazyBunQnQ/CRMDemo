@@ -10,7 +10,7 @@ import java.util.List;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface RoleDao {
+public interface RoleDao extends BaseDao<RoleWithBLOBs> {
     int deleteByPrimaryKey(Integer id);
 
     int deleteByPrimaryKeys(@Param("ids") Integer[] ids);

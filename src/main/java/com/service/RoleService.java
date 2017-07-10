@@ -5,11 +5,13 @@ import com.bean.RoleWithBLOBs;
 import com.util.DataModel;
 import com.util.Pager;
 
+import java.util.List;
+
 /**
  * @version 2017/6/30.
  * @auther CrazyBunQnQ
  */
-public interface RoleService {
+public interface RoleService extends BaseService<RoleWithBLOBs> {
 
     /**
      * Paging search role
@@ -30,4 +32,6 @@ public interface RoleService {
      * @return
      */
     public boolean removeRoleByIds(Integer[] ids);
+
+    List<RoleWithBLOBs> listAll();
 }
