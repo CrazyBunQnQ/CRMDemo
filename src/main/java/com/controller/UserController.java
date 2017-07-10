@@ -1,6 +1,9 @@
 package com.controller;
 
+import com.bean.AccessGroupWithBLOBs;
+import com.bean.RoleWithBLOBs;
 import com.bean.User;
+import com.bean.UserGroup;
 import com.service.UserService;
 import com.util.Constant;
 import com.util.DataModel;
@@ -37,15 +40,15 @@ public class UserController extends BaseController<User> {
     }
 
     @RequestMapping("/userList")
-    public ModelAndView changeStatus(Pager pager, String isDel, Integer[] selectedId, User bean, String exportType, HttpServletResponse response, String enableOrDisable) {
+    public ModelAndView changeStatus(Pager pager, String isDel, Integer[] selectedId, User bean, String exportType, HttpServletResponse response, String changeStatus) {
         ModelAndView modelAndView = new ModelAndView();
 
-        if (enableOrDisable == null || !"".equals(enableOrDisable)) {
+        if (changeStatus == null || "".equals(changeStatus)) {
             modelAndView = list(pager,isDel,selectedId,bean,exportType,response);
             return modelAndView;
-        } else if (Constant.ENABLE.equals(enableOrDisable)) {
+        } else if (Constant.ENABLE.equals(changeStatus)) {
             modelAndView.addObject("suc", userService.enableByIds(selectedId) ? Constant.ENABLE_SUCCESS : Constant.ENABLE_FAILURE);
-        } else if (Constant.DISABLE.equals(enableOrDisable)) {
+        } else if (Constant.DISABLE.equals(changeStatus)) {
             modelAndView.addObject("suc", userService.disableByIds(selectedId) ? Constant.DISABLE_SUCCESS : Constant.DISABLE_FAILURE);
         }
 
@@ -64,6 +67,14 @@ public class UserController extends BaseController<User> {
         ModelAndView modelAndView = super.baseToAddOrUpdate(userService, edit_id);
         modelAndView.setViewName("/jsp/user/userAdd");
 
+        List<RoleWithBLOBs> roleList = userService.listRole();
+        List<AccessGroupWithBLOBs> accessGroupList = userService.listAccessGroup();
+        //TODO groupList
+        List<UserGroup> groupList = userService.listGroup();
+
+        modelAndView.addObject("roleList", roleList);
+        modelAndView.addObject("accessGroupList", accessGroupList);
+        modelAndView.addObject("groupList", groupList);
         return modelAndView;
     }
 

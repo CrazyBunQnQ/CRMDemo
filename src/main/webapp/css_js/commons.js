@@ -159,9 +159,9 @@ function toChange() {
 }
 
 /**
- * 返回列表
- * @param path
+ * 跳转到页面
+ * @param path 目标路径
  */
-function returnList(path) {
+function jumpToPage(path) {
     window.location = path;
 }

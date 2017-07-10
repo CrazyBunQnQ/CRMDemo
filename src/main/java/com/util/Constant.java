@@ -60,4 +60,8 @@ public class Constant {
     public static final String DISABLE_SUCCESS = "停用成功";
 
     public static final String DISABLE_FAILURE = "停用失败";
+
+    public static final String SET_SUCCESS = "设置成功";
+
+    public static final String SET_FAILURE = "设置失败";
 }

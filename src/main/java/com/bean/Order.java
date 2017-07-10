@@ -249,6 +249,14 @@ public class Order extends BaseBean {
         this.cusName = cusName == null ? null : cusName.trim();
     }
 
+    public void setcName(String cusName){
+        this.cusName = cusName.trim();
+    }
+
+    public String getCName() {
+        return cusName;
+    }
+
     public void setcType(String cType) {
         this.cType = cType == null ? null : cType.trim();
     }

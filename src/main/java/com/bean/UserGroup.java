@@ -7,11 +7,20 @@ import lombok.Data;
  * @auther CrazyBunQnQ
  */
 @Data
-public class UserGroup {
+public class UserGroup extends BaseBean {
     private Integer id;
     private String name;
+    /**
+     * 部门负责人
+     */
     private String principal;
+    /**
+     * 部门职能
+     */
     private String incumbent;
+    /**
+     * 父级部门 id
+     */
     private Integer pid;
     private String fcode;
     private String remark;

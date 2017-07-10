@@ -44,6 +44,10 @@
         </if>
     </select>
 
+    <select id="listAll" resultType="com.bean.RoleWithBLOBs">
+        SELECT id, name FROM s_role
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM s_role
         WHERE id = #{id,jdbcType=INTEGER}

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
-<%-- <%@ taglib prefix="s" uri="/struts-tags"%> --%>
 <html>
 <head>
 
@@ -334,7 +333,7 @@
                                             <td>
                                                 <img align="absmiddle" src="image/left_tree5_1.gif" width="16"
                                                      height="16">
-                                                <a href="userGroup/userGroupList" class="nav" target="right_window">
+                                                <a href="group/groupList" class="nav" target="right_window">
                                                     部门管理</a></td>
                                         </tr>
                                         <tr>

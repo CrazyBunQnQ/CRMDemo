@@ -1,6 +1,11 @@
 package com.service;
 
+import com.bean.AccessGroupWithBLOBs;
+import com.bean.RoleWithBLOBs;
 import com.bean.User;
+import com.bean.UserGroup;
+
+import java.util.List;
 
 /**
  * @version 2017/6/29.
@@ -22,4 +27,10 @@ public interface UserService extends BaseService<User> {
     public boolean enableByIds(Integer[] selectedId);
 
     public boolean disableByIds(Integer[] selectedId);
+
+    public List<RoleWithBLOBs> listRole();
+
+    public List<AccessGroupWithBLOBs> listAccessGroup();
+
+    public List<UserGroup> listGroup();
 }

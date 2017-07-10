@@ -161,6 +161,15 @@
             #{id, jdbcType=INTEGER}
         </foreach>
     </select>
+    <select id="listUserByGroup" resultType="com.bean.User">
+        SELECT DISTINCT u.id, u.name FROM s_user u WHERE 1 = 1
+        <if test="byId">
+            AND u.group_Id = #{id, jdbcType=INTEGER}
+        </if>
+        <if test="!byId">
+            AND u.group_Id IS NULL
+        </if>
+    </select>
 
     <delete id="removeByPrimaryKeys">
         DELETE FROM s_user WHERE id IN
@@ -797,5 +806,11 @@
                 #{id, jdbcType=INTEGER}
             </foreach>
         </if>
+    </update>
+    <update id="updateUsersGroup">
+        UPDATE s_user SET group_Id = #{groupId} WHERE id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id, jdbcType=INTEGER}
+        </foreach>
     </update>
 </mapper>
