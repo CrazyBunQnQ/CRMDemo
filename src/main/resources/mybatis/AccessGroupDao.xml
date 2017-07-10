@@ -43,6 +43,11 @@
         from s_access_group
         where Id = #{id,jdbcType=INTEGER}
     </select>
+
+    <select id="listAll" resultType="com.bean.AccessGroupWithBLOBs">
+        SELECT id, name FROM s_access_group
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         <!--
           WARNING - @mbg.generated

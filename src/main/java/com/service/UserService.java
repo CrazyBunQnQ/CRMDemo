@@ -1,5 +1,6 @@
 package com.service;
 
+import com.bean.AccessGroupWithBLOBs;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
 
@@ -27,4 +28,6 @@ public interface UserService extends BaseService<User> {
     public boolean disableByIds(Integer[] selectedId);
 
     public List<RoleWithBLOBs> listRole();
+
+    public List<AccessGroupWithBLOBs> listAccessGroup();
 }

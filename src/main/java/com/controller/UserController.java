@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.bean.AccessGroupWithBLOBs;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
 import com.service.UserService;
@@ -66,11 +67,11 @@ public class UserController extends BaseController<User> {
         modelAndView.setViewName("/jsp/user/userAdd");
 
         List<RoleWithBLOBs> roleList = userService.listRole();
-        //TODO accessGroupList
-//        List<AccessGroup>
+        List<AccessGroupWithBLOBs> accessGroupList = userService.listAccessGroup();
         //TODO groupList
 
         modelAndView.addObject("roleList", roleList);
+        modelAndView.addObject("accessGroupList", accessGroupList);
         return modelAndView;
     }
 
