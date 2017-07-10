@@ -93,36 +93,38 @@
     </select>
 
     <select id="count" resultType="java.lang.Integer">
-        SELECT COUNT(id)
-        FROM s_user
-        WHERE 1 = 1
+        SELECT COUNT(u.id)
+        FROM s_user u, s_access_group ag, s_user_group ug, s_role r
+        WHERE u.group_Id = ug.id AND u.access_group_id = ag.Id AND u.role_id = r.id
         <if test="bean.name != null and bean.name != ''">
-            AND name LIKE CONCAT('%', #{bean.name}, '%')
+            AND u.name LIKE CONCAT('%', #{bean.name}, '%')
         </if>
         <if test="bean.cnname != null and bean.cnname != ''">
-            AND cnname LIKE CONCAT('%', #{bean.cnname}, '%')
+            AND u.cnname LIKE CONCAT('%', #{bean.cnname}, '%')
         </if>
     </select>
 
     <select id="listByPage" resultType="com.bean.User">
-        SELECT
-        id,
-        name,
-        cnname,
-        role_id,
-        access_group_id,
-        group_id,
-        group_id,
-        beginDate,
-        endDate,
-        status
-        FROM s_user
-        WHERE 1 = 1
+        SELECT DISTINCT
+        u.id,
+        u.name,
+        u.cnname,
+        u.access_group_id,
+        ag.name accessGroupName,
+        u.group_Id,
+        ug.name groupName,
+        u.role_id,
+        r.name roleName,
+        u.beginDate,
+        u.endDate,
+        u.status
+        FROM s_user u, s_access_group ag, s_user_group ug, s_role r
+        WHERE 1 = 1 AND u.group_Id = ug.id AND u.access_group_id = ag.Id AND u.role_id = r.id
         <if test="bean.name != null and bean.name != ''">
-            AND name LIKE CONCAT('%', #{bean.name}, '%')
+            AND u.name LIKE CONCAT('%', #{bean.name}, '%')
         </if>
         <if test="bean.cnname != null and bean.cnname != ''">
-            AND cnname LIKE CONCAT('%', #{bean.cnname}, '%')
+            AND u.cnname LIKE CONCAT('%', #{bean.cnname}, '%')
         </if>
         LIMIT #{from}, #{pageSize}
     </select>
