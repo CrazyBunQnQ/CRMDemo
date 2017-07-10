@@ -44,7 +44,7 @@ public class UserController extends BaseController<User> {
         ModelAndView modelAndView = new ModelAndView();
 
         if (changeStatus == null || "".equals(changeStatus)) {
-            modelAndView = list(pager,isDel,selectedId,bean,exportType,response);
+            modelAndView = list(pager, isDel, selectedId, bean, exportType, response);
             return modelAndView;
         } else if (Constant.ENABLE.equals(changeStatus)) {
             modelAndView.addObject("suc", userService.enableByIds(selectedId) ? Constant.ENABLE_SUCCESS : Constant.ENABLE_FAILURE);

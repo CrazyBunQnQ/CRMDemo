@@ -99,15 +99,15 @@
 
     <select id="listAll" resultType="com.bean.NeedGather">
         SELECT
-            ng.id,
-            ng.sale_code,
-            ng.c_name,
-            ng.createTime,
-            ng.total,
-            ng.payed,
-            ng.balance,
-            ng.over_flag,
-            u.name ownerUsrName
+        ng.id,
+        ng.sale_code,
+        ng.c_name,
+        ng.createTime,
+        ng.total,
+        ng.payed,
+        ng.balance,
+        ng.over_flag,
+        u.name ownerUsrName
         FROM b_need_gather ng, c_company c, s_user u
         WHERE ng.c_id = c.id AND ng.owner_usr = u.id
     </select>

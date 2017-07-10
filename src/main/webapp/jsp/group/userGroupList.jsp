@@ -94,7 +94,8 @@
                             <img src="image/s3.gif" width="62" height="22"
                                  onclick="jumpToPage('group/toAddOrUpdate')">
                             <img src="image/s7.gif" width="59" height="22" onclick="toDel()">
-                            <img src="image/shuxing.gif" width="62" height="22" onclick="jumpToPage('group/optionTreeWindow')">
+                            <img src="image/shuxing.gif" width="62" height="22"
+                                 onclick="jumpToPage('group/optionTreeWindow')">
                         </td>
                     </tr>
                     <tr>

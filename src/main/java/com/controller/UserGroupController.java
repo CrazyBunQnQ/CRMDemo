@@ -72,11 +72,12 @@ public class UserGroupController extends BaseController<UserGroup> {
         modelAndView.addObject("curGroupUsers", curGroupUsers);
         return modelAndView;
     }
+
     @RequestMapping("/setUserGroup")
     public ModelAndView setUserGroup(Integer id, String ids) {
         ModelAndView modelAndView = new ModelAndView("/jsp/group/setUser");
 
-        modelAndView.addObject(userGroupService.setUser(id, ids)? Constant.SET_SUCCESS:Constant.SET_FAILURE);
+        modelAndView.addObject(userGroupService.setUser(id, ids) ? Constant.SET_SUCCESS : Constant.SET_FAILURE);
 
         List<User> userList = userGroupService.listUserNotByGroupId(id);
         List<User> curGroupUsers = userGroupService.listUserByGroupId(id);

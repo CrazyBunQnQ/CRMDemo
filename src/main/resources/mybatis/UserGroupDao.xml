@@ -44,10 +44,10 @@
 
     <select id="listAll" resultType="com.bean.UserGroup">
         SELECT
-            id,
-            name,
-            principal,
-            incumbent
+        id,
+        name,
+        principal,
+        incumbent
         FROM s_user_group
         WHERE 1 = 1
     </select>
@@ -61,16 +61,16 @@
 
     <select id="findRootProductType" resultType="com.bean.UserGroup">
         SELECT
-            id,
-            name
+        id,
+        name
         FROM s_user_group
         WHERE pid = 0
     </select>
 
     <select id="findSubProductType" resultType="com.bean.UserGroup">
         SELECT
-            id,
-            name
+        id,
+        name
         FROM s_user_group
         WHERE pid = #{pid}
     </select>
@@ -88,11 +88,11 @@
     </delete>
     <insert id="insert" parameterType="com.bean.UserGroup">
         INSERT INTO s_user_group (id, name, principal,
-                                  incumbent, pid, fcode,
-                                  remark)
+        incumbent, pid, fcode,
+        remark)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR},
-                #{incumbent,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{fcode,jdbcType=VARCHAR},
-                #{remark,jdbcType=LONGVARCHAR})
+        #{incumbent,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{fcode,jdbcType=VARCHAR},
+        #{remark,jdbcType=LONGVARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.bean.UserGroup">
         insert into s_user_group
@@ -169,21 +169,21 @@
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.UserGroup">
         UPDATE s_user_group
-        SET name      = #{name,jdbcType=VARCHAR},
-            principal = #{principal,jdbcType=VARCHAR},
-            incumbent = #{incumbent,jdbcType=VARCHAR},
-            pid       = #{pid,jdbcType=INTEGER},
-            fcode     = #{fcode,jdbcType=VARCHAR},
-            remark    = #{remark,jdbcType=LONGVARCHAR}
+        SET name = #{name,jdbcType=VARCHAR},
+        principal = #{principal,jdbcType=VARCHAR},
+        incumbent = #{incumbent,jdbcType=VARCHAR},
+        pid = #{pid,jdbcType=INTEGER},
+        fcode = #{fcode,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.bean.UserGroup">
         UPDATE s_user_group
-        SET name      = #{name,jdbcType=VARCHAR},
-            principal = #{principal,jdbcType=VARCHAR},
-            incumbent = #{incumbent,jdbcType=VARCHAR},
-            pid       = #{pid,jdbcType=INTEGER},
-            fcode     = #{fcode,jdbcType=VARCHAR}
+        SET name = #{name,jdbcType=VARCHAR},
+        principal = #{principal,jdbcType=VARCHAR},
+        incumbent = #{incumbent,jdbcType=VARCHAR},
+        pid = #{pid,jdbcType=INTEGER},
+        fcode = #{fcode,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

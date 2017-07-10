@@ -249,7 +249,7 @@ public class Order extends BaseBean {
         this.cusName = cusName == null ? null : cusName.trim();
     }
 
-    public void setcName(String cusName){
+    public void setcName(String cusName) {
         this.cusName = cusName.trim();
     }
 
