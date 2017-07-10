@@ -35,7 +35,7 @@ public class NeedGatherController extends BaseController<NeedGather> {
     }
 
     @Override
-    @RequestMapping("toAddOrUpdate")
+    @RequestMapping("/toAddOrUpdate")
     protected ModelAndView toAddOrUpdate(Integer edit_id) {
         ModelAndView modelAndView = super.baseToAddOrUpdate(needGatherService, edit_id);
         modelAndView.setViewName("/jsp/gather/gatherAdd");
@@ -43,6 +43,7 @@ public class NeedGatherController extends BaseController<NeedGather> {
     }
 
     @Override
+    @RequestMapping("/addOrUpdate")
     protected ModelAndView addOrUpdate(NeedGather bean, Integer edit_id) {
         ModelAndView modelAndView = super.baseAddOrUpdate(needGatherService, bean, edit_id);
         modelAndView.setViewName("/jsp/gather/gatherAdd");
