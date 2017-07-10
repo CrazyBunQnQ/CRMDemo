@@ -1,10 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="taglibs.jsp" %>
 <html>
 <head>
+    <%
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>工作台</title>
-    <link href="_main.css" rel="stylesheet" type="text/css">
+    <link href="css_js/_main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
 </head>
 
