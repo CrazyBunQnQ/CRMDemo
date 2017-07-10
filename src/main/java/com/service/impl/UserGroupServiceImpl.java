@@ -168,6 +168,11 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
     }
 
     @Override
+    public List<UserGroup> listAll() {
+        return userGroupDao.listAll();
+    }
+
+    @Override
     public boolean removeByIds(Integer[] selectedId) {
         return super.baseRemoveByIds(userGroupDao, selectedId);
     }

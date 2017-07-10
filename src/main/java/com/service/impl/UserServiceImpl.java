@@ -3,9 +3,11 @@ package com.service.impl;
 import com.bean.AccessGroupWithBLOBs;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
+import com.bean.UserGroup;
 import com.dao.UserDao;
 import com.service.AccessGroupService;
 import com.service.RoleService;
+import com.service.UserGroupService;
 import com.service.UserService;
 import com.util.DataModel;
 import com.util.Pager;
@@ -41,9 +43,17 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Autowired
     private AccessGroupService accessGroupService;
 
+    @Autowired
+    private UserGroupService userGroupService;
+
     @Override
     public List<AccessGroupWithBLOBs> listAccessGroup() {
         return accessGroupService.listAll();
+    }
+
+    @Override
+    public List<UserGroup> listGroup() {
+        return userGroupService.listAll();
     }
 
     @Override

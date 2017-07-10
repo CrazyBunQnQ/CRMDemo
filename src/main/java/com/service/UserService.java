@@ -3,6 +3,7 @@ package com.service;
 import com.bean.AccessGroupWithBLOBs;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
+import com.bean.UserGroup;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface UserService extends BaseService<User> {
     public List<RoleWithBLOBs> listRole();
 
     public List<AccessGroupWithBLOBs> listAccessGroup();
+
+    public List<UserGroup> listGroup();
 }

@@ -3,6 +3,7 @@ package com.controller;
 import com.bean.AccessGroupWithBLOBs;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
+import com.bean.UserGroup;
 import com.service.UserService;
 import com.util.Constant;
 import com.util.DataModel;
@@ -69,9 +70,11 @@ public class UserController extends BaseController<User> {
         List<RoleWithBLOBs> roleList = userService.listRole();
         List<AccessGroupWithBLOBs> accessGroupList = userService.listAccessGroup();
         //TODO groupList
+        List<UserGroup> groupList = userService.listGroup();
 
         modelAndView.addObject("roleList", roleList);
         modelAndView.addObject("accessGroupList", accessGroupList);
+        modelAndView.addObject("groupList", groupList);
         return modelAndView;
     }
 
