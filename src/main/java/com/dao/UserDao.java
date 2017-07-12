@@ -42,4 +42,8 @@ public interface UserDao extends BaseDao<User> {
     List<User> listUserByGroup(@Param("id") Integer id, @Param("byId") boolean byId);
 
     int updateUsersGroup(@Param("groupId") Integer groupId, @Param("ids") Integer[] ids);
+
+    int countUsersByAccessGroupId(@Param("agid") Integer accessGroupId);
+
+    int clearUserInGroup(@Param("id") Integer id);
 }

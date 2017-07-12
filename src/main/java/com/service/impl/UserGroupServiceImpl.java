@@ -75,7 +75,10 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
     }
 
     @Override
-    public boolean setUser(Integer groupId, String userIds) {
+    public Boolean setUser(Integer groupId, String userIds) {
+        if (userIds.equals("")) {
+            return null;
+        }
         String[] idsArr = userIds.split(",");
         Integer[] ids = new Integer[idsArr.length];
         int i = 0;
@@ -180,5 +183,10 @@ public class UserGroupServiceImpl extends BaseServiceImpl<UserGroup> implements 
     @Override
     public boolean removeByIds(Integer[] selectedId) {
         return super.baseRemoveByIds(userGroupDao, selectedId);
+    }
+
+    @Override
+    public boolean clearUserInGroup(Integer id) {
+        return userDao.listUserByGroup(id, true).size() == 0 || userDao.clearUserInGroup(id) > 0;
     }
 }

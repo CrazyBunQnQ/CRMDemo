@@ -16,9 +16,11 @@ public interface UserGroupService extends BaseService<UserGroup> {
 
     List<User> listUserByGroupId(Integer id);
 
-    boolean setUser(Integer groupId, String userIds);
+    Boolean setUser(Integer groupId, String userIds);
 
     List<UserGroup> listAll();
 
     List<UserGroup> listGroup();
+
+    boolean clearUserInGroup(Integer id);
 }

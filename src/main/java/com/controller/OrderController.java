@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.bean.OrderWithBLOBs;
+import com.bean.Order;
 import com.service.OrderService;
 import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping("/order")
-public class OrderController extends BaseController<OrderWithBLOBs> {
+public class OrderController extends BaseController<Order> {
 
     @Autowired
     private OrderService orderService;
 
     @Override
     @RequestMapping("/orderList")
-    public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, OrderWithBLOBs order, String exportType, HttpServletResponse response) {
+    public ModelAndView list(Pager pager, String isDel, Integer[] selectedId, Order order, String exportType, HttpServletResponse response) {
         ModelAndView modelAndView = super.baseList(orderService, pager, isDel, selectedId, order, exportType, response);
         if (modelAndView == null) {
             return null;
@@ -44,7 +44,7 @@ public class OrderController extends BaseController<OrderWithBLOBs> {
 
     @Override
     @RequestMapping("/addOrUpdateOrder")
-    protected ModelAndView addOrUpdate(OrderWithBLOBs bean, Integer edit_id) {
+    protected ModelAndView addOrUpdate(Order bean, Integer edit_id) {
         // TODO 拥有者
         if (bean.getOwnerUsr() == null) {
             bean.setOwnerUsr(1);

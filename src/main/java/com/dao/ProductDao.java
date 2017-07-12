@@ -9,7 +9,7 @@ import java.util.List;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface ProductDao {
+public interface ProductDao extends BaseDao<Product> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Product record);
@@ -33,4 +33,6 @@ public interface ProductDao {
     List<Product> listAllProduct();
 
     List<Product> listSelectedProduct(@Param("ids") Integer[] ids);
+
+    List<Product> findProductByName(@Param("pName") String pName);
 }

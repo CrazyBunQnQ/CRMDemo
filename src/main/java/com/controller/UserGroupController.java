@@ -72,6 +72,7 @@ public class UserGroupController extends BaseController<UserGroup> {
         List<User> userList = userGroupService.listUserNotByGroupId(id);
         List<User> curGroupUsers = userGroupService.listUserByGroupId(id);
 
+        modelAndView.addObject("id", id);
         modelAndView.addObject("userList", userList);
         modelAndView.addObject("curGroupUsers", curGroupUsers);
         return modelAndView;
@@ -81,11 +82,22 @@ public class UserGroupController extends BaseController<UserGroup> {
     public ModelAndView setUserGroup(Integer id, String ids) {
         ModelAndView modelAndView = new ModelAndView("/jsp/group/setUser");
 
-        modelAndView.addObject(userGroupService.setUser(id, ids) ? Constant.SET_SUCCESS : Constant.SET_FAILURE);
+        //TODO 事务管理
+        if (userGroupService.clearUserInGroup(id)) {
+            Boolean suc = userGroupService.setUser(id, ids);
+            if (suc == null || suc == true) {
+                modelAndView.addObject("suc", Constant.SET_SUCCESS);
+            } else {
+                modelAndView.addObject("suc", Constant.SET_FAILURE);
+            }
+        } else {
+            modelAndView.addObject("suc", Constant.SET_FAILURE);
+        }
 
         List<User> userList = userGroupService.listUserNotByGroupId(id);
         List<User> curGroupUsers = userGroupService.listUserByGroupId(id);
 
+        modelAndView.addObject("id", id);
         modelAndView.addObject("userList", userList);
         modelAndView.addObject("curGroupUsers", curGroupUsers);
         return modelAndView;

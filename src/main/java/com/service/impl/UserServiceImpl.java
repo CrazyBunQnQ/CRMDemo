@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.bean.AccessGroupWithBLOBs;
+import com.bean.AccessGroup;
 import com.bean.RoleWithBLOBs;
 import com.bean.User;
 import com.bean.UserGroup;
@@ -47,7 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private UserGroupService userGroupService;
 
     @Override
-    public List<AccessGroupWithBLOBs> listAccessGroup() {
+    public List<AccessGroup> listAccessGroup() {
         return accessGroupService.listAll();
     }
 

@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.bean.AccessGroupWithBLOBs;
+import com.bean.AccessGroup;
 import com.dao.AccessGroupDao;
 import com.service.AccessGroupService;
 import com.util.DataModel;
@@ -18,37 +18,37 @@ import java.util.List;
  */
 @Log4j
 @Service
-public class AccessGroupServiceImpl extends BaseServiceImpl<AccessGroupWithBLOBs> implements AccessGroupService {
+public class AccessGroupServiceImpl extends BaseServiceImpl<AccessGroup> implements AccessGroupService {
     @Autowired
     private AccessGroupDao accessGroupDao;
 
     @Override
-    public List<AccessGroupWithBLOBs> listAll() {
+    public List<AccessGroup> listAll() {
         return accessGroupDao.listAll();
     }
 
     @Override
-    public AccessGroupWithBLOBs getById(Integer edit_id) {
+    public AccessGroup getById(Integer edit_id) {
         return null;
     }
 
     @Override
-    public DataModel<AccessGroupWithBLOBs> list(Pager pager, AccessGroupWithBLOBs accessGroup) {
+    public DataModel<AccessGroup> list(Pager pager, AccessGroup accessGroup) {
         return null;
     }
 
     @Override
-    public boolean save(AccessGroupWithBLOBs accessGroup) {
+    public boolean save(AccessGroup accessGroup) {
         return false;
     }
 
     @Override
-    public boolean update(AccessGroupWithBLOBs accessGroup) {
+    public boolean update(AccessGroup accessGroup) {
         return false;
     }
 
     @Override
-    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, AccessGroupWithBLOBs accessGroup, HttpServletResponse response) {
+    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, AccessGroup accessGroup, HttpServletResponse response) {
         return false;
     }
 

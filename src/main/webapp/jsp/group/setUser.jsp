@@ -7,6 +7,7 @@
     %>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="css_js/commons.js"></script>
     <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
     <script src="css_js/popup4TouchTem.js" type="text/javascript"></script>
     <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>

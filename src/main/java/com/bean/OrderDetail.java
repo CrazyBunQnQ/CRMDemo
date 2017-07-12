@@ -9,7 +9,7 @@ import lombok.Data;
  * @auther CrazyBunQnQ
  */
 @Data
-public class OrderDetail {
+public class OrderDetail extends BaseBean {
     private Integer id;
     /**
      * 产品名称

@@ -1,7 +1,6 @@
 package com.service.impl;
 
 import com.bean.Order;
-import com.bean.OrderWithBLOBs;
 import com.dao.OrderDao;
 import com.service.OrderService;
 import com.util.DataModel;
@@ -28,35 +27,35 @@ import java.util.List;
  */
 @Log4j
 @Service
-public class OrderServiceImpl extends BaseServiceImpl<OrderWithBLOBs> implements OrderService {
+public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderService {
 
     @Autowired
     private OrderDao orderDao;
 
     @Override
-    public OrderWithBLOBs getById(Integer edit_id) {
+    public Order getById(Integer edit_id) {
         return baseGetById(orderDao, edit_id);
     }
 
     @Override
-    public DataModel<OrderWithBLOBs> list(Pager pager, OrderWithBLOBs order) {
+    public DataModel<Order> list(Pager pager, Order order) {
         return baseList(orderDao, pager, order);
     }
 
     @Override
-    public boolean save(OrderWithBLOBs order) {
+    public boolean save(Order order) {
         return baseSave(orderDao, order);
     }
 
     @Override
-    public boolean update(OrderWithBLOBs order) {
+    public boolean update(Order order) {
         return baseUpdate(orderDao, order);
     }
 
     @Override
-    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, OrderWithBLOBs order, HttpServletResponse response) {
+    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, Order order, HttpServletResponse response) {
         boolean exportSuccess = false;
-        List<OrderWithBLOBs> list = export(orderDao, exportType, pager, selectedId, order);
+        List<Order> list = export(orderDao, exportType, pager, selectedId, order);
         if (list == null) {
             return exportSuccess;
         }

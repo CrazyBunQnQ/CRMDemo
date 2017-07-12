@@ -118,6 +118,21 @@ public class Order extends BaseBean {
     private Date time2;
     private String time2Str;
     private String shareFlag;
+    private String remark;
+    private String auditReason;
+    private String shareIds;
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public void setAuditReason(String auditReason) {
+        this.auditReason = auditReason == null ? null : auditReason.trim();
+    }
+
+    public void setShareIds(String shareIds) {
+        this.shareIds = shareIds == null ? null : shareIds.trim();
+    }
 
     public String getCreatetimeStr() {
         return DateUtils.dateToStr("yyyy-MM-dd", createtime);

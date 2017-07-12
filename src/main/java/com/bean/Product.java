@@ -10,7 +10,7 @@ import java.util.Date;
  * @auther CrazyBunQnQ
  */
 @Data
-public class Product {
+public class Product extends BaseBean {
     private Integer id;
     /**
      * 类别 id （关联 productType）
@@ -151,13 +151,17 @@ public class Product {
      */
     private String remark;
 
+    public String getCreateTimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", createTime);
+    }
+
     public void setCreateTimeStr(String createTimeStr) {
         this.createTime = DateUtils.strToDate("yyyy-MM-dd", createTimeStr);
         this.createTimeStr = createTimeStr;
     }
 
-    public String getCreateTimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd HH:mm:ss", createTime);
+    public String getUpdateTimeStr() {
+        return DateUtils.dateToStr("yyyy-MM-dd", updateTime);
     }
 
     public void setUpdateTimeStr(String updateTimeStr) {
@@ -165,17 +169,13 @@ public class Product {
         this.updateTimeStr = updateTimeStr;
     }
 
-    public String getUpdateTimeStr() {
-        return DateUtils.dateToStr("yyyy-MM-dd", updateTime);
+    public String getTime1Str() {
+        return DateUtils.dateToStr("yyyy-MM-dd", time1);
     }
 
     public void setTime1Str(String time1Str) {
         this.time1 = DateUtils.strToDate("yyyy-MM-dd", time1Str);
         this.time1Str = time1Str;
-    }
-
-    public String getTime1Str() {
-        return DateUtils.dateToStr("yyyy-MM-dd", time1);
     }
 
     public String getTime2Str() {

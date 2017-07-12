@@ -1,6 +1,6 @@
 package com.service;
 
-import com.bean.AccessGroupWithBLOBs;
+import com.bean.AccessGroup;
 
 import java.util.List;
 
@@ -8,6 +8,6 @@ import java.util.List;
  * @version 2017/7/10.
  * @auther CrazyBunQnQ
  */
-public interface AccessGroupService extends BaseService<AccessGroupWithBLOBs> {
-    List<AccessGroupWithBLOBs> listAll();
+public interface AccessGroupService extends BaseService<AccessGroup> {
+    List<AccessGroup> listAll();
 }

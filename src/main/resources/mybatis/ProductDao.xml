@@ -59,6 +59,11 @@
         from b_product
         where id = #{id,jdbcType=INTEGER}
     </select>
+
+    <select id="findProductByName" resultType="com.bean.Product">
+        select id, spec, unit, price from b_product where name=#{pName}
+    </select>
+
     <select id="listProductByPage" resultType="com.bean.Product">
         SELECT
         p.id,

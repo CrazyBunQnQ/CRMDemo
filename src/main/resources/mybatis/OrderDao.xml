@@ -35,9 +35,6 @@
         <result column="time1" jdbcType="TIMESTAMP" property="time1"/>
         <result column="time2" jdbcType="TIMESTAMP" property="time2"/>
         <result column="share_flag" jdbcType="CHAR" property="shareFlag"/>
-    </resultMap>
-
-    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bean.OrderWithBLOBs">
         <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
         <result column="audit_reason" jdbcType="LONGVARCHAR" property="auditReason"/>
         <result column="share_ids" jdbcType="LONGVARCHAR" property="shareIds"/>
@@ -47,18 +44,13 @@
         id, owner_usr, creater, createTime, updater, updateTime, code, order_date, c_id,
         c_name, c_type, linkman, telephone, address, seller, total, agio, agio_total, auditor,
         audit_date, status_id, status, custom1, custom2, custom3, custom4, choice1, choice2,
-        choice3, choice4, time1, time2, share_flag
-    </sql>
-
-    <sql id="Blob_Column_List">
+        choice3, choice4, time1, time2, share_flag,
         remark, audit_reason, share_ids
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
         from b_order
         where id = #{id,jdbcType=INTEGER}
     </select>
@@ -79,7 +71,33 @@
         </if>
     </select>
 
-    <select id="listByPage" resultType="com.bean.OrderWithBLOBs">
+    <!-- 根据查询条件查询销售单数  -->
+    <select id="countOrder" resultType="int">
+        select count(o.id)
+        from b_order o join s_user u on o.owner_usr=u.id where 1=1
+        <if test="user.roleId==2">
+            and o.owner_usr in (select id from s_user where group_Id = #{user.groupId})
+        </if>
+        <if test="user.roleId!=1 and user.roleId!=2">
+            and o.owner_usr = #{user.id}
+        </if>
+        <if test="order.id!=null and order.id!=''">
+            and o.id = #{order.id}
+        </if>
+        <if test="order.ownerUsr!=-1 and order.ownerUsr!=null and order.ownerUsr!=''">
+            and o.owner_usr = #{order.ownerUsr}
+        </if>
+        <if test="order.cName!=null and order.cName!=''">
+            and o.c_name like concat('%',#{order.cusName},'%')
+        </if>
+        <if test="order.status!=null and order.status!=''">
+            <if test="order.status!='全部'">
+                and o.status = #{order.status}
+            </if>
+        </if>
+    </select>
+
+    <select id="listByPage" resultType="com.bean.Order">
         SELECT o.id, o.code, o.order_date, o.c_name, o.seller, o.total, o.agio_total, ng.total, o.auditor, o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id
@@ -98,29 +116,92 @@
         LIMIT #{from}, #{pageSize}
     </select>
 
-    <select id="listAll" resultType="com.bean.OrderWithBLOBs">
+    <!-- 根据查询条件分页条件查询销售单 -->
+    <select id="findOrderList" resultType="com.bean.Order">
+        select u.cnname cnName,
+        <include refid="Base_Column_List" />
+        from b_order o join s_user u on o.owner_usr=u.id where 1=1
+        <if test="user.roleId==2">
+            and o.owner_usr in (select id from s_user where group_Id = #{user.groupId})
+        </if>
+        <if test="user.roleId!=1 and user.roleId!=2">
+            and o.owner_usr = #{user.id}
+        </if>
+        <if test="order.code!=null and order.code!=''">
+            and o.code like concat('%',#{order.code},'%')
+        </if>
+        <if test="order.ownerUsr!=-1 and order.ownerUsr!=null and order.ownerUsr!=''">
+            and o.owner_usr = #{order.ownerUsr}
+        </if>
+        <if test="order.cName!=null and order.cName!=''">
+            and o.c_name like concat('%',#{order.cusName},'%')
+        </if>
+        <if test="order.status!=null and order.status!=''">
+            <if test="order.status!='全部'">
+                and o.status = #{order.status}
+            </if>
+        </if>
+        limit #{from},#{pageSize}
+    </select>
+
+    <select id="listAll" resultType="com.bean.Order">
         SELECT
-        o.id,
-        o.code,
-        o.order_date,
-        o.c_name,
-        o.seller,
-        o.total,
-        o.agio_total,
-        ng.total,
-        o.auditor,
-        o.status
+            o.id,
+            o.code,
+            o.order_date orderDate,
+            o.c_name cusName,
+            o.seller,
+            o.total,
+            o.agio_total,
+            ng.total,
+            o.auditor,
+            o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id
     </select>
 
-    <select id="listSelected" resultType="com.bean.OrderWithBLOBs">
+    <select id="listSelected" resultType="com.bean.Order">
         SELECT o.id, o.code, o.order_date, o.c_name, o.seller, o.total, o.agio_total, ng.total, o.auditor, o.status
         FROM b_order o, b_need_gather ng
         WHERE o.id = ng.sale_id AND o.id IN
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
             #{id, jdbcType=INTEGER}
         </foreach>
+    </select>
+
+    <!-- 查询选中的销售单 -->
+    <select id="findSelectedOrder" resultType="com.bean.Order">
+        select u.cnname cnName,
+        <include refid="Base_Column_List" />
+        from b_order o join s_user u on o.owner_usr=u.id where o.id in
+        <foreach collection="ids"  item="id" open="("  close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <!-- 查询所有销售单 -->
+    <select id="listAllOrder" resultType="com.bean.Order">
+        select u.cnname as cnName,
+        <include refid="Base_Column_List" />
+        from b_order o join s_user u on o.owner_usr=u.id where 1=1
+        <if test="user.roleId==2">
+            and o.owner_usr in (select id from s_user where group_Id = #{user.groupId})
+        </if>
+        <if test="user.roleId!=1 and user.roleId!=2">
+            and o.owner_usr = #{user.id}
+        </if>
+    </select>
+
+    <!-- 查询业务员集合 -->
+    <select id="findOwnerList" resultType="com.bean.Order">
+        select DISTINCT u.cnname cnName, o.owner_usr ownerUsr
+        from b_order o join s_user u on o.owner_usr=u.id where 1=1
+        <if test="user.roleId==2">
+            and o.owner_usr in (select id from s_user where group_Id = #{user.groupId})
+        </if>
+        <if test="user.roleId!=1 and user.roleId!=2">
+            and o.owner_usr = #{user.id}
+        </if>
     </select>
 
     <delete id="removeByPrimaryKeys">
@@ -135,38 +216,38 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <insert id="insert" parameterType="com.bean.OrderWithBLOBs">
+    <insert id="insert" parameterType="com.bean.Order">
         INSERT INTO b_order (id, owner_usr, creater,
-        createTime, updater, updateTime,
-        code, order_date, c_id,
-        c_name, c_type, linkman,
-        telephone, address, seller,
-        total, agio, agio_total,
-        auditor, audit_date, status_id,
-        status, custom1, custom2,
-        custom3, custom4, choice1,
-        choice2, choice3, choice4,
-        time1, time2, share_flag,
-        remark, audit_reason, share_ids
+                             createTime, updater, updateTime,
+                             code, order_date, c_id,
+                             c_name, c_type, linkman,
+                             telephone, address, seller,
+                             total, agio, agio_total,
+                             auditor, audit_date, status_id,
+                             status, custom1, custom2,
+                             custom3, custom4, choice1,
+                             choice2, choice3, choice4,
+                             time1, time2, share_flag,
+                             remark, audit_reason, share_ids
         )
         VALUES (#{id,jdbcType=INTEGER}, #{ownerUsr,jdbcType=INTEGER}, #{creater,jdbcType=VARCHAR},
-        #{createtime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR},
-        #{updatetime,jdbcType=TIMESTAMP},
-        #{code,jdbcType=VARCHAR}, #{orderDate,jdbcType=DATE}, #{cusId,jdbcType=INTEGER},
-        #{cusName,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR},
-        #{linkman,jdbcType=VARCHAR},
-        #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{seller,jdbcType=VARCHAR},
-        #{total,jdbcType=DOUBLE}, #{agio,jdbcType=DOUBLE}, #{agioTotal,jdbcType=DOUBLE},
-        #{auditor,jdbcType=VARCHAR}, #{auditDate,jdbcType=DATE}, #{statusId,jdbcType=VARCHAR},
-        #{status,jdbcType=VARCHAR}, #{custom1,jdbcType=VARCHAR}, #{custom2,jdbcType=VARCHAR},
-        #{custom3,jdbcType=VARCHAR}, #{custom4,jdbcType=VARCHAR}, #{choice1,jdbcType=VARCHAR},
-        #{choice2,jdbcType=VARCHAR}, #{choice3,jdbcType=VARCHAR}, #{choice4,jdbcType=VARCHAR},
-        #{time1,jdbcType=TIMESTAMP}, #{time2,jdbcType=TIMESTAMP}, #{shareFlag,jdbcType=CHAR},
-        #{remark,jdbcType=LONGVARCHAR}, #{auditReason,jdbcType=LONGVARCHAR}, #{shareIds,jdbcType=LONGVARCHAR}
+                                        #{createtime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR},
+                                        #{updatetime,jdbcType=TIMESTAMP},
+                                        #{code,jdbcType=VARCHAR}, #{orderDate,jdbcType=DATE}, #{cusId,jdbcType=INTEGER},
+                                        #{cusName,jdbcType=VARCHAR}, #{cType,jdbcType=VARCHAR},
+            #{linkman,jdbcType=VARCHAR},
+            #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{seller,jdbcType=VARCHAR},
+            #{total,jdbcType=DOUBLE}, #{agio,jdbcType=DOUBLE}, #{agioTotal,jdbcType=DOUBLE},
+            #{auditor,jdbcType=VARCHAR}, #{auditDate,jdbcType=DATE}, #{statusId,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR}, #{custom1,jdbcType=VARCHAR}, #{custom2,jdbcType=VARCHAR},
+            #{custom3,jdbcType=VARCHAR}, #{custom4,jdbcType=VARCHAR}, #{choice1,jdbcType=VARCHAR},
+            #{choice2,jdbcType=VARCHAR}, #{choice3,jdbcType=VARCHAR}, #{choice4,jdbcType=VARCHAR},
+            #{time1,jdbcType=TIMESTAMP}, #{time2,jdbcType=TIMESTAMP}, #{shareFlag,jdbcType=CHAR},
+                #{remark,jdbcType=LONGVARCHAR}, #{auditReason,jdbcType=LONGVARCHAR}, #{shareIds,jdbcType=LONGVARCHAR}
         )
     </insert>
 
-    <insert id="insertSelective" parameterType="com.bean.OrderWithBLOBs">
+    <insert id="insertSelective" parameterType="com.bean.Order">
         insert into b_order
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -390,7 +471,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.bean.OrderWithBLOBs">
+    <update id="updateByPrimaryKeySelective" parameterType="com.bean.Order">
         update b_order
         <set>
             <if test="ownerUsr != null">
@@ -502,80 +583,80 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.OrderWithBLOBs">
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.Order">
         UPDATE b_order
-        SET owner_usr = #{ownerUsr,jdbcType=INTEGER},
-        creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-        updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-        code = #{code,jdbcType=VARCHAR},
-        order_date = #{orderDate,jdbcType=DATE},
-        c_id = #{cusId,jdbcType=INTEGER},
-        c_name = #{cusName,jdbcType=VARCHAR},
-        c_type = #{cType,jdbcType=VARCHAR},
-        linkman = #{linkman,jdbcType=VARCHAR},
-        telephone = #{telephone,jdbcType=VARCHAR},
-        address = #{address,jdbcType=VARCHAR},
-        seller = #{seller,jdbcType=VARCHAR},
-        total = #{total,jdbcType=DOUBLE},
-        agio = #{agio,jdbcType=DOUBLE},
-        agio_total = #{agioTotal,jdbcType=DOUBLE},
-        auditor = #{auditor,jdbcType=VARCHAR},
-        audit_date = #{auditDate,jdbcType=DATE},
-        status_id = #{statusId,jdbcType=VARCHAR},
-        status = #{status,jdbcType=VARCHAR},
-        custom1 = #{custom1,jdbcType=VARCHAR},
-        custom2 = #{custom2,jdbcType=VARCHAR},
-        custom3 = #{custom3,jdbcType=VARCHAR},
-        custom4 = #{custom4,jdbcType=VARCHAR},
-        choice1 = #{choice1,jdbcType=VARCHAR},
-        choice2 = #{choice2,jdbcType=VARCHAR},
-        choice3 = #{choice3,jdbcType=VARCHAR},
-        choice4 = #{choice4,jdbcType=VARCHAR},
-        time1 = #{time1,jdbcType=TIMESTAMP},
-        time2 = #{time2,jdbcType=TIMESTAMP},
-        share_flag = #{shareFlag,jdbcType=CHAR},
-        remark = #{remark,jdbcType=LONGVARCHAR},
-        audit_reason = #{auditReason,jdbcType=LONGVARCHAR},
-        share_ids = #{shareIds,jdbcType=LONGVARCHAR}
+        SET owner_usr    = #{ownerUsr,jdbcType=INTEGER},
+            creater      = #{creater,jdbcType=VARCHAR},
+            createTime   = #{createtime,jdbcType=TIMESTAMP},
+            updater      = #{updater,jdbcType=VARCHAR},
+            updateTime   = #{updatetime,jdbcType=TIMESTAMP},
+            code         = #{code,jdbcType=VARCHAR},
+            order_date   = #{orderDate,jdbcType=DATE},
+            c_id         = #{cusId,jdbcType=INTEGER},
+            c_name       = #{cusName,jdbcType=VARCHAR},
+            c_type       = #{cType,jdbcType=VARCHAR},
+            linkman      = #{linkman,jdbcType=VARCHAR},
+            telephone    = #{telephone,jdbcType=VARCHAR},
+            address      = #{address,jdbcType=VARCHAR},
+            seller       = #{seller,jdbcType=VARCHAR},
+            total        = #{total,jdbcType=DOUBLE},
+            agio         = #{agio,jdbcType=DOUBLE},
+            agio_total   = #{agioTotal,jdbcType=DOUBLE},
+            auditor      = #{auditor,jdbcType=VARCHAR},
+            audit_date   = #{auditDate,jdbcType=DATE},
+            status_id    = #{statusId,jdbcType=VARCHAR},
+            status       = #{status,jdbcType=VARCHAR},
+            custom1      = #{custom1,jdbcType=VARCHAR},
+            custom2      = #{custom2,jdbcType=VARCHAR},
+            custom3      = #{custom3,jdbcType=VARCHAR},
+            custom4      = #{custom4,jdbcType=VARCHAR},
+            choice1      = #{choice1,jdbcType=VARCHAR},
+            choice2      = #{choice2,jdbcType=VARCHAR},
+            choice3      = #{choice3,jdbcType=VARCHAR},
+            choice4      = #{choice4,jdbcType=VARCHAR},
+            time1        = #{time1,jdbcType=TIMESTAMP},
+            time2        = #{time2,jdbcType=TIMESTAMP},
+            share_flag   = #{shareFlag,jdbcType=CHAR},
+            remark       = #{remark,jdbcType=LONGVARCHAR},
+            audit_reason = #{auditReason,jdbcType=LONGVARCHAR},
+            share_ids    = #{shareIds,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.bean.Order">
         UPDATE b_order
-        SET owner_usr = #{ownerUsr,jdbcType=INTEGER},
-        creater = #{creater,jdbcType=VARCHAR},
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-        updater = #{updater,jdbcType=VARCHAR},
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-        code = #{code,jdbcType=VARCHAR},
-        order_date = #{orderDate,jdbcType=DATE},
-        c_id = #{cusId,jdbcType=INTEGER},
-        c_name = #{cusName,jdbcType=VARCHAR},
-        c_type = #{cType,jdbcType=VARCHAR},
-        linkman = #{linkman,jdbcType=VARCHAR},
-        telephone = #{telephone,jdbcType=VARCHAR},
-        address = #{address,jdbcType=VARCHAR},
-        seller = #{seller,jdbcType=VARCHAR},
-        total = #{total,jdbcType=DOUBLE},
-        agio = #{agio,jdbcType=DOUBLE},
-        agio_total = #{agioTotal,jdbcType=DOUBLE},
-        auditor = #{auditor,jdbcType=VARCHAR},
-        audit_date = #{auditDate,jdbcType=DATE},
-        status_id = #{statusId,jdbcType=VARCHAR},
-        status = #{status,jdbcType=VARCHAR},
-        custom1 = #{custom1,jdbcType=VARCHAR},
-        custom2 = #{custom2,jdbcType=VARCHAR},
-        custom3 = #{custom3,jdbcType=VARCHAR},
-        custom4 = #{custom4,jdbcType=VARCHAR},
-        choice1 = #{choice1,jdbcType=VARCHAR},
-        choice2 = #{choice2,jdbcType=VARCHAR},
-        choice3 = #{choice3,jdbcType=VARCHAR},
-        choice4 = #{choice4,jdbcType=VARCHAR},
-        time1 = #{time1,jdbcType=TIMESTAMP},
-        time2 = #{time2,jdbcType=TIMESTAMP},
-        share_flag = #{shareFlag,jdbcType=CHAR}
+        SET owner_usr  = #{ownerUsr,jdbcType=INTEGER},
+            creater    = #{creater,jdbcType=VARCHAR},
+            createTime = #{createtime,jdbcType=TIMESTAMP},
+            updater    = #{updater,jdbcType=VARCHAR},
+            updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            code       = #{code,jdbcType=VARCHAR},
+            order_date = #{orderDate,jdbcType=DATE},
+            c_id       = #{cusId,jdbcType=INTEGER},
+            c_name     = #{cusName,jdbcType=VARCHAR},
+            c_type     = #{cType,jdbcType=VARCHAR},
+            linkman    = #{linkman,jdbcType=VARCHAR},
+            telephone  = #{telephone,jdbcType=VARCHAR},
+            address    = #{address,jdbcType=VARCHAR},
+            seller     = #{seller,jdbcType=VARCHAR},
+            total      = #{total,jdbcType=DOUBLE},
+            agio       = #{agio,jdbcType=DOUBLE},
+            agio_total = #{agioTotal,jdbcType=DOUBLE},
+            auditor    = #{auditor,jdbcType=VARCHAR},
+            audit_date = #{auditDate,jdbcType=DATE},
+            status_id  = #{statusId,jdbcType=VARCHAR},
+            status     = #{status,jdbcType=VARCHAR},
+            custom1    = #{custom1,jdbcType=VARCHAR},
+            custom2    = #{custom2,jdbcType=VARCHAR},
+            custom3    = #{custom3,jdbcType=VARCHAR},
+            custom4    = #{custom4,jdbcType=VARCHAR},
+            choice1    = #{choice1,jdbcType=VARCHAR},
+            choice2    = #{choice2,jdbcType=VARCHAR},
+            choice3    = #{choice3,jdbcType=VARCHAR},
+            choice4    = #{choice4,jdbcType=VARCHAR},
+            time1      = #{time1,jdbcType=TIMESTAMP},
+            time2      = #{time2,jdbcType=TIMESTAMP},
+            share_flag = #{shareFlag,jdbcType=CHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>
