@@ -1,7 +1,7 @@
 package com.service.impl;
 
 import com.bean.AccessGroup;
-import com.bean.RoleWithBLOBs;
+import com.bean.Role;
 import com.bean.User;
 import com.bean.UserGroup;
 import com.dao.UserDao;
@@ -77,7 +77,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public List<RoleWithBLOBs> listRole() {
+    public List<Role> listRole() {
         return roleService.listAll();
     }
 

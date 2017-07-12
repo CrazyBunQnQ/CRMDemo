@@ -9,9 +9,25 @@ import lombok.Data;
  * @auther CrazyBunQnQ
  */
 @Data
-public class Role {
+public class Role extends BaseBean {
     private Integer id;
     private String name;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
+     * 权限
+     */
+    private String popedom;
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public void setPopedom(String popedom) {
+        this.popedom = popedom == null ? null : popedom.trim();
+    }
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();

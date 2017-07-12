@@ -41,8 +41,6 @@
         <result column="role_id" jdbcType="INTEGER" property="roleId"/>
         <result column="group_Id" jdbcType="INTEGER" property="groupId"/>
         <result column="access_group_id" jdbcType="INTEGER" property="accessGroupId"/>
-        <!--</resultMap>-->
-        <!--<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bean.UserWithBLOBs">-->
         <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
         <result column="menus" jdbcType="LONGVARCHAR" property="menus"/>
         <result column="popedom" jdbcType="LONGVARCHAR" property="popedom"/>
@@ -63,16 +61,12 @@
         birthday, personneltype, duty, workdate, highschool, finishschool, finishschooldate,
         consortname, youngonename, officetelephone, consorttelephone, consortcompany, role_id,
         group_Id, access_group_id,
-        <!--</sql>
-        <sql id="Blob_Column_List">-->
         remark, menus, popedom, avocation, strongsuit, communicate, bringup, organise, analyse,
         planing, empolder, relation
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        # ,
-        <!--<include refid="Blob_Column_List"/>-->
         from s_user
         where id = #{id,jdbcType=INTEGER}
     </select>
@@ -179,7 +173,20 @@
             AND u.group_Id IS NULL
         </if>
     </select>
-
+    <!-- 根据角色id查询用户 -->
+    <select id="findUserByRoleId" resultType="com.bean.User">
+        SELECT
+            id,
+            name
+        FROM s_user
+        WHERE role_id = #{id}
+    </select>
+    <!-- 查询对应id的角色下的员工数 -->
+    <select id="CountUsersByRoleId" resultType="int">
+        SELECT count(id)
+        FROM s_user
+        WHERE role_id = #{id}
+    </select>
     <delete id="removeByPrimaryKeys">
         DELETE FROM s_user WHERE id IN
         <foreach collection="ids" item="id" open="(" close=")" separator=",">
@@ -832,5 +839,22 @@
         UPDATE s_user
         SET group_id = NULL
         WHERE group_id = #{id}
+    </update>
+
+    <!-- 人员设置  清空原有员工 -->
+    <!--<update id="clearUserInPopedom">
+        UPDATE s_user
+        SET popedom = NULL
+        WHERE popedom = #{str}
+    </update>-->
+
+    <!-- 设置用户权限 -->
+    <update id="updateUserPopedom">
+        <if test="ids != null">
+            update s_user set popedom=#{str} where id in
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id, jdbcType=INTEGER}
+            </foreach>
+        </if>
     </update>
 </mapper>

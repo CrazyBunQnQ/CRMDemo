@@ -5,47 +5,44 @@
     <resultMap id="BaseResultMap" type="com.bean.Role">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
-    </resultMap>
-    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bean.RoleWithBLOBs">
         <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
         <result column="popedom" jdbcType="LONGVARCHAR" property="popedom"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, name
-    </sql>
-    <sql id="Blob_Column_List">
+        id, name,
         remark, popedom
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        ,
-        <include refid="Blob_Column_List"/>
         from s_role
         where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="selectRoleByPage" resultType="com.bean.Role">
+    <select id="listByPage" resultType="com.bean.Role">
         SELECT id, name
         FROM s_role
-        <if test="name != null">
-            WHERE name LIKE '%${name}%'
+        <if test="bean.name != null">
+            WHERE name LIKE CONCAT('%', ${bean.name}, '%')
         </if>
         LIMIT #{from}, #{pageSize}
     </select>
 
-    <select id="countRole" resultType="java.lang.Integer">
+    <select id="count" resultType="java.lang.Integer">
         SELECT COUNT(id)
         FROM s_role
-        <if test="name != null">
-            WHERE name LIKE '%${name}%'
+        <if test="bean.name != null">
+            WHERE name LIKE CONCAT('%', ${bean.name}, '%')
         </if>
     </select>
 
-    <select id="listAll" resultType="com.bean.RoleWithBLOBs">
-        SELECT id, name FROM s_role
+    <select id="listAll" resultType="com.bean.Role">
+        SELECT
+            id,
+            name
+        FROM s_role
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -61,13 +58,13 @@
         </foreach>
     </delete>
 
-    <insert id="insert" parameterType="com.bean.RoleWithBLOBs">
+    <insert id="insert" parameterType="com.bean.Role">
         INSERT INTO s_role (id, name, remark, popedom)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR},
-        #{popedom,jdbcType=LONGVARCHAR})
+                #{popedom,jdbcType=LONGVARCHAR})
     </insert>
 
-    <insert id="insertSelective" parameterType="com.bean.RoleWithBLOBs">
+    <insert id="insertSelective" parameterType="com.bean.Role">
         insert into s_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -99,7 +96,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.bean.RoleWithBLOBs">
+    <update id="updateByPrimaryKeySelective" parameterType="com.bean.Role">
         update s_role
         <set>
             <if test="name != null">
@@ -115,11 +112,11 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.RoleWithBLOBs">
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.Role">
         UPDATE s_role
-        SET name = #{name,jdbcType=VARCHAR},
-        remark = #{remark,jdbcType=LONGVARCHAR},
-        popedom = #{popedom,jdbcType=LONGVARCHAR}
+        SET name    = #{name,jdbcType=VARCHAR},
+            remark  = #{remark,jdbcType=LONGVARCHAR},
+            popedom = #{popedom,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 

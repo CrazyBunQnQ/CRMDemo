@@ -112,14 +112,6 @@
             window.open("${contextPath}/popedom/getPopedomTreeStr?role_id=" + role_id, "_blank",
                 "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
         }
-        /*function openTreeWindow2(role_id) {
-         window.open("${contextPath}/popedom/toSetPopedom2?role_id=" + role_id, "_blank",
-         "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
-         }
-         function openTreeWindow3(role_id) {
-         window.open("${contextPath}/popedom/toSetPopedom3?role_id=" + role_id, "_blank",
-         "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
-         }*/
         function clearSearchArea() {
             $("#selectTable input").val("");
         }
@@ -172,7 +164,7 @@
                                 <tr>
                                     <td width="11%" height="41">名称:</td>
                                     <td width="17%"><input type="text" name="name" class="inputTextStyle"
-                                                           value="${role.name }"></td>
+                                                           value="${bean.name}"></td>
                                     <td width="11%">&nbsp;</td>
                                     <td width="17%">&nbsp;</td>
                                     <td width="11%">&nbsp;</td>
@@ -301,13 +293,8 @@
                                                     <td align="center">
                                                         <span onclick="openTreeWindow('${role.id}')"
                                                               style="cursor: pointer">设置</span>
-                                                            <%--<span onclick="openTreeWindow2('${role.id}')"
-                                                                  style="cursor: pointer">设置2</span>
-                                                            <span onclick="openTreeWindow3('${role.id}')"
-                                                                  style="cursor: pointer">设置3</span>--%>
                                                     </td>
                                                 </tr>
-
                                             </c:forEach>
 
                                             <tr>

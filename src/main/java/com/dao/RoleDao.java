@@ -1,7 +1,6 @@
 package com.dao;
 
 import com.bean.Role;
-import com.bean.RoleWithBLOBs;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,16 +9,16 @@ import java.util.List;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface RoleDao extends BaseDao<RoleWithBLOBs> {
+public interface RoleDao extends BaseDao<Role> {
     int deleteByPrimaryKey(Integer id);
 
     int deleteByPrimaryKeys(@Param("ids") Integer[] ids);
 
-    int insert(RoleWithBLOBs record);
+    int insert(Role record);
 
-    int insertSelective(RoleWithBLOBs record);
+    int insertSelective(Role record);
 
-    RoleWithBLOBs selectByPrimaryKey(Integer id);
+    Role selectByPrimaryKey(Integer id);
 
     /**
      * Paging query role
@@ -38,9 +37,9 @@ public interface RoleDao extends BaseDao<RoleWithBLOBs> {
      */
     int countRole(@Param("name") String name);
 
-    int updateByPrimaryKeySelective(RoleWithBLOBs record);
+    int updateByPrimaryKeySelective(Role record);
 
-    int updateByPrimaryKeyWithBLOBs(RoleWithBLOBs record);
+    int updateByPrimaryKeyWithBLOBs(Role record);
 
     int updateByPrimaryKey(Role record);
 }

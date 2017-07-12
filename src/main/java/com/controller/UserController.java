@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.bean.AccessGroup;
-import com.bean.RoleWithBLOBs;
+import com.bean.Role;
 import com.bean.User;
 import com.bean.UserGroup;
 import com.service.UserService;
@@ -67,7 +67,7 @@ public class UserController extends BaseController<User> {
         ModelAndView modelAndView = super.baseToAddOrUpdate(userService, edit_id);
         modelAndView.setViewName("/jsp/user/userAdd");
 
-        List<RoleWithBLOBs> roleList = userService.listRole();
+        List<Role> roleList = userService.listRole();
         List<AccessGroup> accessGroupList = userService.listAccessGroup();
         List<UserGroup> groupList = userService.listGroup();
 

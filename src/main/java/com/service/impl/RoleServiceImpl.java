@@ -1,7 +1,6 @@
 package com.service.impl;
 
 import com.bean.Role;
-import com.bean.RoleWithBLOBs;
 import com.dao.RoleDao;
 import com.service.RoleService;
 import com.util.DataModel;
@@ -19,12 +18,12 @@ import java.util.List;
  */
 @Log4j
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<RoleWithBLOBs> implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
     @Override
-    public List<RoleWithBLOBs> listAll() {
+    public List<Role> listAll() {
         return roleDao.listAll();
     }
 
@@ -43,7 +42,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleWithBLOBs> implements R
     }
 
     @Override
-    public boolean saveRole(RoleWithBLOBs role) {
+    public boolean saveRole(Role role) {
         return roleDao.insertSelective(role) > 0;
     }
 
@@ -53,27 +52,27 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleWithBLOBs> implements R
     }
 
     @Override
-    public RoleWithBLOBs getById(Integer edit_id) {
-        return null;
+    public Role getById(Integer edit_id) {
+        return super.baseGetById(roleDao, edit_id);
     }
 
     @Override
-    public DataModel<RoleWithBLOBs> list(Pager pager, RoleWithBLOBs roleWithBLOBs) {
-        return null;
+    public DataModel<Role> list(Pager pager, Role role) {
+        return super.baseList(roleDao, pager, role);
     }
 
     @Override
-    public boolean save(RoleWithBLOBs roleWithBLOBs) {
-        return false;
+    public boolean save(Role role) {
+        return super.baseSave(roleDao, role);
     }
 
     @Override
-    public boolean update(RoleWithBLOBs roleWithBLOBs) {
-        return false;
+    public boolean update(Role role) {
+        return super.baseUpdate(roleDao, role);
     }
 
     @Override
-    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, RoleWithBLOBs roleWithBLOBs, HttpServletResponse response) {
+    public boolean exportExcel(String exportType, Pager pager, Integer[] selectedId, Role role, HttpServletResponse response) {
         return false;
     }
 

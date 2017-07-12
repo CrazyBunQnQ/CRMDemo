@@ -1,7 +1,6 @@
 package com.service;
 
 import com.bean.Role;
-import com.bean.RoleWithBLOBs;
 import com.util.DataModel;
 import com.util.Pager;
 
@@ -11,7 +10,7 @@ import java.util.List;
  * @version 2017/6/30.
  * @auther CrazyBunQnQ
  */
-public interface RoleService extends BaseService<RoleWithBLOBs> {
+public interface RoleService extends BaseService<Role> {
 
     /**
      * Paging search role
@@ -22,7 +21,7 @@ public interface RoleService extends BaseService<RoleWithBLOBs> {
      */
     public DataModel<Role> listRoles(Role role, Pager pager);
 
-    public boolean saveRole(RoleWithBLOBs role);
+    public boolean saveRole(Role role);
 
     /**
      * According to the id array batch remove roles
@@ -33,5 +32,5 @@ public interface RoleService extends BaseService<RoleWithBLOBs> {
      */
     public boolean removeRoleByIds(Integer[] ids);
 
-    List<RoleWithBLOBs> listAll();
+    List<Role> listAll();
 }
