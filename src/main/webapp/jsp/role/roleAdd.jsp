@@ -8,6 +8,7 @@
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="css_js/commons.js"></script>
     <link href="css_js/index.css" rel="stylesheet" type="text/css"></link>
     <title>添加用户</title>
     <script type="text/javascript">
@@ -43,7 +44,7 @@
         <tr>
             <td valign="middle"><img src="image/s10.gif" width="58"
                                      height="22" style="cursor: pointer;" onclick="submitForm();"><img
-                    src="image/s8.gif" width="59" height="22"></td>
+                    src="image/s8.gif" width="59" height="22" onclick="jumpToPage('role/roleList')"></td>
         </tr>
         <tr>
             <%--<td id="errorInfo" style="font-size:12px;color:red;"><s:actionmessage/></td>--%>

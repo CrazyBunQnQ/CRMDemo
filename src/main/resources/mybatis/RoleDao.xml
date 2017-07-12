@@ -24,7 +24,7 @@
     <select id="listByPage" resultType="com.bean.Role">
         SELECT id, name
         FROM s_role
-        <if test="bean.name != null">
+        <if test="bean.name != null and bean.name !=''">
             WHERE name LIKE CONCAT('%', ${bean.name}, '%')
         </if>
         LIMIT #{from}, #{pageSize}
@@ -33,7 +33,7 @@
     <select id="count" resultType="java.lang.Integer">
         SELECT COUNT(id)
         FROM s_role
-        <if test="bean.name != null">
+        <if test="bean.name != null and bean.name !=''">
             WHERE name LIKE CONCAT('%', ${bean.name}, '%')
         </if>
     </select>
@@ -50,7 +50,7 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
 
-    <delete id="deleteByPrimaryKeys">
+    <delete id="removeByPrimaryKeys">
         DELETE FROM s_role
         WHERE id IN
         <foreach collection="ids" item="item" separator="," open="(" close=")">

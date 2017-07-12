@@ -78,6 +78,6 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public boolean removeByIds(Integer[] selectedId) {
-        return false;
+        return super.baseRemoveByIds(roleDao, selectedId);
     }
 }

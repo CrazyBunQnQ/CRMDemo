@@ -10,6 +10,7 @@
     <title>操作权限组新建</title>
     <link href="css_js/index.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="css_js/jquery/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="css_js/commons.js"></script>
     <script src="css_js/popup4exExcel.js" type="text/javascript"></script>
     <link href="css_js/general.css" rel="stylesheet" type="text/css"></link>
     <script type="text/javascript">
@@ -22,103 +23,6 @@
                     }
                 }
             }
-        }
-        function toDel() {
-            var cbNum = checkBoxNum();
-            if (cbNum > 0) {
-                if (window.confirm("确定删除？")) {
-                    document.getElementById("isDel").value = "true";
-                    document.forms[0].submit();
-                }
-            }
-        }
-        //判断列表复选框选中个数是否大于0，是：返回个数，否：返回0
-        function checkBoxNum() {
-            if ($("input[name='role_id']:checked").length > 0) {
-                return $("input[name='role_id']:checked").length;
-            } else {
-                return 0;
-            }
-        }
-        function toUrl(pageNumId, pageSizeId) {
-            var _pageNum, _pageSize;
-            if (pageNumId != "_null") {
-                _pageNum = document.getElementById(pageNumId);
-            } else {
-                _pageNum = document.getElementById("_pageNum_up");
-            }
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = _pageNum.options[_pageNum.selectedIndex].value;
-            }
-            if (pageSizeId != "_null") {
-                _pageSize = document.getElementById(pageSizeId);
-            } else {
-                _pageSize = document.getElementById("_pageSize_up");
-            }
-            var hiddenPageSize = document.getElementById("hiddenPageSize");
-            if ("" != hiddenPageSize.value) {
-                hiddenPageSize.value = _pageSize.options[_pageSize.selectedIndex].value;
-            }
-            document.forms[0].submit();
-        }
-
-        function nextPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            var totalPage =${pager.totalPage};
-            if (hiddenPageNum.value >= totalPage) {
-                return;
-            }
-
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = hiddenPageNum.value - 0 + 1;
-                document.forms[0].submit();
-            }
-        }
-        function prePage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = hiddenPageNum.value - 0;
-                if (hiddenPageNum.value > 1) {
-                    hiddenPageNum.value -= 1;
-                }
-                document.forms[0].submit();
-            }
-        }
-        function firstPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = 1;
-                document.forms[0].submit();
-            }
-        }
-        function lastPage() {
-            var hiddenPageNum = document.getElementById("hiddenPageNum");
-            if ("" != hiddenPageNum.value) {
-                hiddenPageNum.value = ${pager.totalPage};
-                document.forms[0].submit();
-            }
-        }
-        function submitForm() {
-            document.forms[0].submit();
-        }
-        function resetForm() {
-            document.forms[0].reset();
-        }
-        function exportExcel() {
-            loadPopup_excel('导出Excel');
-        }
-        function openTreeWindow(role_id) {
-            window.open("${contextPath}/popedom/getPopedomTreeStr?role_id=" + role_id, "_blank",
-                "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
-        }
-        function clearSearchArea() {
-            $("#selectTable input").val("");
-        }
-        function updateNum() {
-            var num = $(".select_content_bg input:checked").length;
-            $("#select_num").html(num);
-            $("#select_num2").html(num);
         }
         function toChange() {
             //var num=$("input[name='checkbox']:checked").length;
@@ -171,7 +75,8 @@
                                     <td width="17%">&nbsp;</td>
                                     <td width="5%"><img src="image/s1.gif" width="59" height="22"
                                                         onclick="submitForm();"></td>
-                                    <td width="10%" align="left"><img src="image/s2.gif" width="62" height="22"
+                                    <td width="10%" align="left">
+                                        <img src="image/s2.gif" width="62" height="22"
                                                                       onclick="clearSearchArea();"></td>
                                     <td width="1%" align="left">&nbsp;</td>
                                 </tr>
@@ -220,7 +125,7 @@
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
                                         ${pager.page}/${pager.totalPage}
                                         <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
-                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        <span onclick="lastPage(${pager.totalPage})" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_up','_null');"
                                                 id="_pageNum_up">
                                             <c:forEach begin="1" end="${pager.totalPage }" var="i">
@@ -286,7 +191,7 @@
                                             <c:forEach items="${rows}" var="role">
                                                 <tr class="select_content_bg">
                                                     <td align="center">
-                                                        <input type="checkbox" name="role_id" value="${role.id}"
+                                                        <input type="checkbox" name="selectedId" id="selectedId" value="${role.id}"
                                                                onclick="updateNum();">
                                                     </td>
                                                     <td>${role.name}</td>
@@ -316,7 +221,7 @@
                                         <span class="pager" onclick="prePage();" style="cursor: pointer">上一页</span>
                                         ${pager.page}/${pager.totalPage}
                                         <span onclick="nextPage()" class="pager" style="cursor: pointer">下一页</span>
-                                        <span onclick="lastPage()" class="pager" style="cursor: pointer">末页</span>
+                                        <span onclick="lastPage(${pager.totalPage})" class="pager" style="cursor: pointer">末页</span>
                                         <select name="_pageNum" onchange="toUrl('_pageNum_down','_null');"
                                                 id="_pageNum_down">
                                             <c:forEach begin="1" end="${pager.totalPage }" var="i">
