@@ -51,7 +51,7 @@ public interface UserDao extends BaseDao<User> {
 
     int CountUsersByRoleId(@Param("id") Integer roleId);
 
-    int updateUserPopedom(@Param("str") String popedomName, @Param("ids") Integer[] ids);
+    int updateUserPopedom(@Param("str") String popedomName, @Param("id") Integer id);
 
 //    int clearUserInPopedom(@Param("str") String peopedomName);
 }

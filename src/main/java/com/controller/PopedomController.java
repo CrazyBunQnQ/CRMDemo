@@ -18,14 +18,15 @@ public class PopedomController {
     @Autowired
     private PopedomService popedomService;
 
-    @RequestMapping("getPopedomTreeStr")
+    @RequestMapping("/getPopedomTreeStr")
     public ModelAndView getPopedomTreeStr(Integer role_id, Integer id) {
         ModelAndView modelAndView = new ModelAndView();
 
         String treeStr = popedomService.getTree();
-        String dragStr = popedomService.getDrag(role_id, id);
+        String dragStr = popedomService.getDrag(role_id, id, true);
         String popedom = popedomService.getPopedomByRoleId(role_id);
 
+        modelAndView.addObject("role_id", role_id);
         modelAndView.addObject("treeStr", treeStr);
         modelAndView.addObject("tableStr", dragStr);
         modelAndView.setViewName("/jsp/role/popedomSet");

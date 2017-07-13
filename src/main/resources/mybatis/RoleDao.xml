@@ -44,6 +44,9 @@
             name
         FROM s_role
     </select>
+    <select id="getPopedomByRole" resultType="java.lang.String">
+        SELECT popedom FROM s_role WHERE id = #{id}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM s_role
@@ -124,5 +127,12 @@
         UPDATE s_role
         SET name = #{name,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 设置用户权限 -->
+    <update id="updateRolePopedom">
+        UPDATE s_role
+        SET popedom = #{str}
+        WHERE id = #{id}
     </update>
 </mapper>

@@ -850,11 +850,8 @@
 
     <!-- 设置用户权限 -->
     <update id="updateUserPopedom">
-        <if test="ids != null">
-            update s_user set popedom=#{str} where id in
-            <foreach collection="ids" item="id" open="(" close=")" separator=",">
-                #{id, jdbcType=INTEGER}
-            </foreach>
-        </if>
+        UPDATE s_user
+        SET popedom = #{str}
+        WHERE id = #{id}
     </update>
 </mapper>

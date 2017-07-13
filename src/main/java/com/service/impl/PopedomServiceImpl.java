@@ -66,7 +66,7 @@ public class PopedomServiceImpl implements PopedomService {
     }
 
     public List<Popedom> listPopedomByRole() {
-//        List<Popedom> baseList = popedomDao.listSubPopedomByRole();
+//        List<Popedom> baseList = popedomDao.listPopedomByRole();
         return null;
     }
 
@@ -109,13 +109,29 @@ public class PopedomServiceImpl implements PopedomService {
     }*/
 
     @Override
-    public String getDrag(Integer role_id, Integer id) {
+    public String getDrag(Integer role_id, Integer id, boolean enable) {
         List<Popedom> list = popedomDao.listSubPopedom(id == null ? Integer.valueOf(0) : Integer.valueOf(id));
+        String[] all = roleDao.getPopedomByRole(role_id).split(",");
+        List<Integer> allId = new ArrayList<Integer>();
+        for (int i = 0; i < all.length; i ++) {
+            allId.add(Integer.valueOf(all[i]));
+        }
         StringBuffer checkedOptionStr = new StringBuffer("<ul>");
         if (list != null && list.size() > 0) {
             for (Popedom p : list) {
-                checkedOptionStr.append("<li id><span><input type='checkbox' id='" + p.getCode() + "_" + p.getId() + "'>" + p.getName() + "</span>");
-                checkedOptionStr.append(getDrag(role_id, p.getId()));
+                checkedOptionStr.append("<li id><span>");
+                if (enable) {
+//                    checkedOptionStr.append("<input type='checkbox' id='" + p.getCode() + "_" + p.getId() + "'>" + p.getName() + "</span>");
+                    checkedOptionStr.append("<input type='checkbox' name='popedomValue' value='" + p.getId());
+                    if (allId.contains(p.getId())) {
+                        checkedOptionStr.append("' checked='checked'>" + p.getName() + "</span>");
+                    } else {
+                        checkedOptionStr.append("'>" + p.getName() + "</span>");
+                    }
+                } else {
+                    checkedOptionStr.append(p.getName() + "</span>");
+                }
+                checkedOptionStr.append(getDrag(role_id, p.getId(), false));
                 checkedOptionStr.append("</li>");
             }
         }

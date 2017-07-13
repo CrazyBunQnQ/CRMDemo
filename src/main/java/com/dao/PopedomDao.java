@@ -9,7 +9,7 @@ import java.util.List;
  * @version 2017/6/29.
  * @auther CrazyBunQnQ
  */
-public interface PopedomDao {
+public interface PopedomDao extends BaseDao<Popedom> {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Popedom record);
@@ -34,7 +34,7 @@ public interface PopedomDao {
      */
     List<Popedom> listSubPopedom(@Param("pid") Integer pid);
 
-    List<Popedom> listSubPopedomByRole(@Param("role_id") Integer role_id);
+    List<Popedom> listPopedomByRole(@Param("role_id") Integer role_id);
 
     int updateByPrimaryKeySelective(Popedom record);
 

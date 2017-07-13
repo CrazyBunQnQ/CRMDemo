@@ -34,6 +34,11 @@
             }
             updateNum();
         }
+
+        function openTreeWindow(role_id) {
+            window.open("${contextPath}/popedom/getPopedomTreeStr?role_id=" + role_id, "_blank",
+                "width=740,height=680,toolbar=no,menubar=no,resizable=no,status=no,scrollbars=yes");
+        }
     </script>
 </head>
 <body onload="initPageSize()">

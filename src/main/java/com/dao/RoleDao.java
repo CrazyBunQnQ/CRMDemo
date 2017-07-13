@@ -42,4 +42,8 @@ public interface RoleDao extends BaseDao<Role> {
     int updateByPrimaryKeyWithBLOBs(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    int updateRolePopedom(@Param("str") String popedom, @Param("id") Integer role_id);
+
+    String getPopedomByRole(@Param("id") Integer role_id);
 }

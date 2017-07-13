@@ -267,41 +267,22 @@
     </script>
 </head>
 <body>
-<form action="setPopedom.action" method="post" id="form1">
-    <input type="hidden" name="roleId" value="${role_id}"/>
+<form action="/role/setPopedom" method="post" id="form1">
+    <input type="hidden" name="role_id" value="${role_id}"/>
     <table width="98%" height="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td width="20%" valign="top">${treeStr}</td>
             <td width="80%" valign="top">
                 <img alt="" src="image/s10.gif" onclick="submitForm()">
                 <img alt="" src="image/genmulu.gif"
-                     onclick="javascript:window.location='getPopedomTreeStr?role_id=${role_id}'">
+                     onclick="javascript:window.location='popedom/getPopedomTreeStr?role_id=${role_id}'">
                 <img alt="" src="image/guanbi.gif" onclick="window.close();">
+                <br/>
+                <span style="font-size:12px;color:red;">${suc}</span>
                 <br/>
                 <span style="color:#ff0000; font-size:12px;float:left;">${mess}</span>
                 <div id="drag_container">
                     ${tableStr}
-                    <ul>
-                        <li><span>
-                            <input type="checkbox" id="1_11">sfasfsfa
-                        </span></li>
-                        <li><span>
-                            <input type="checkbox" id="2_22">sfasfsfa
-                        </span>
-                            <ul>
-                                <li><span>
-                                <input type="checkbox" id="code_pop">sfasdfagasgs
-                                    s=code
-                            </span></li>
-                            </ul>
-                        </li>
-                        <li><span>
-                            <input type="checkbox" id="3_33">sfasfsfa
-                        </span></li>
-                        <li><span>
-                            <input type="checkbox" id="4_44">sfasfsfa
-                        </span></li>
-                    </ul>
                 </div>
             </td>
         </tr>

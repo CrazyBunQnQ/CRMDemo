@@ -1,5 +1,6 @@
 package com.service;
 
+import com.bean.Popedom;
 import com.bean.Role;
 import com.util.DataModel;
 import com.util.Pager;
@@ -33,4 +34,8 @@ public interface RoleService extends BaseService<Role> {
     public boolean removeRoleByIds(Integer[] ids);
 
     List<Role> listAll();
+
+    List<Popedom> findAllPopedomList(Integer role_id);
+
+    boolean updatePopedom(Integer role_id, Integer[] popedomValue);
 }

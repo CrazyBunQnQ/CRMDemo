@@ -34,25 +34,48 @@
 
     <select id="listRootPopedom" resultType="com.bean.Popedom">
         SELECT
-        id,
-        name,
-        code,
-        remark
+            id,
+            name,
+            code,
+            remark
         FROM s_popedom
         WHERE pid = 0
     </select>
 
     <select id="listSubPopedom" resultType="com.bean.Popedom">
         SELECT
-        id,
-        name,
-        code,
-        remark
+            id,
+            name,
+            code,
+            remark
         FROM s_popedom
         WHERE pid = #{pid}
     </select>
-    <select id="listSubPopedomByRole" resultType="com.bean.Popedom">
+    <select id="listPopedomByRole" resultType="com.bean.Popedom">
+        SELECT
+            id,
+            name,
+            remark,
+            pid,
+            code,
+            istable,
+            actionname,
+            methodname
+        FROM s_popedom
+        WHERE id = #{role_id}
+    </select>
 
+    <select id="listAll" resultType="com.bean.Popedom">
+        SELECT
+            id,
+            name,
+            remark,
+            pid,
+            code,
+            istable,
+            actionname,
+            methodname
+        FROM s_popedom
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -62,11 +85,11 @@
 
     <insert id="insert" parameterType="com.bean.Popedom">
         INSERT INTO s_popedom (id, pid, code,
-        name, istable, actionName,
-        methodName, remark)
+                               name, istable, actionName,
+                               methodName, remark)
         VALUES (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR},
-        #{name,jdbcType=VARCHAR}, #{istable,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR},
-        #{methodname,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+                #{name,jdbcType=VARCHAR}, #{istable,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR},
+                #{methodname,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
     </insert>
 
     <insert id="insertSelective" parameterType="com.bean.Popedom">
@@ -155,24 +178,24 @@
 
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bean.Popedom">
         UPDATE s_popedom
-        SET pid = #{pid,jdbcType=INTEGER},
-        code = #{code,jdbcType=VARCHAR},
-        name = #{name,jdbcType=VARCHAR},
-        istable = #{istable,jdbcType=VARCHAR},
-        actionName = #{actionname,jdbcType=VARCHAR},
-        methodName = #{methodname,jdbcType=VARCHAR},
-        remark = #{remark,jdbcType=LONGVARCHAR}
+        SET pid        = #{pid,jdbcType=INTEGER},
+            code       = #{code,jdbcType=VARCHAR},
+            name       = #{name,jdbcType=VARCHAR},
+            istable    = #{istable,jdbcType=VARCHAR},
+            actionName = #{actionname,jdbcType=VARCHAR},
+            methodName = #{methodname,jdbcType=VARCHAR},
+            remark     = #{remark,jdbcType=LONGVARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
     <update id="updateByPrimaryKey" parameterType="com.bean.Popedom">
         UPDATE s_popedom
-        SET pid = #{pid,jdbcType=INTEGER},
-        code = #{code,jdbcType=VARCHAR},
-        name = #{name,jdbcType=VARCHAR},
-        istable = #{istable,jdbcType=VARCHAR},
-        actionName = #{actionname,jdbcType=VARCHAR},
-        methodName = #{methodname,jdbcType=VARCHAR}
+        SET pid        = #{pid,jdbcType=INTEGER},
+            code       = #{code,jdbcType=VARCHAR},
+            name       = #{name,jdbcType=VARCHAR},
+            istable    = #{istable,jdbcType=VARCHAR},
+            actionName = #{actionname,jdbcType=VARCHAR},
+            methodName = #{methodname,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

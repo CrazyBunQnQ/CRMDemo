@@ -9,7 +9,7 @@ import lombok.Data;
  * @auther CrazyBunQnQ
  */
 @Data
-public class Popedom {
+public class Popedom extends BaseBean {
     private Integer id;
     /**
      * 父 id
@@ -33,6 +33,7 @@ public class Popedom {
      * 备注
      */
     private String remark;
+    private boolean flag;
 
     public void setCode(String code) {
         this.code = code == null ? null : code.trim();

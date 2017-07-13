@@ -1,6 +1,8 @@
 package com.service.impl;
 
+import com.bean.Popedom;
 import com.bean.Role;
+import com.dao.PopedomDao;
 import com.dao.RoleDao;
 import com.service.RoleService;
 import com.util.DataModel;
@@ -21,6 +23,9 @@ import java.util.List;
 public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
     @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    private PopedomDao popedomDao;
 
     @Override
     public List<Role> listAll() {
@@ -79,5 +84,20 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
     @Override
     public boolean removeByIds(Integer[] selectedId) {
         return super.baseRemoveByIds(roleDao, selectedId);
+    }
+
+    @Override
+    public List<Popedom> findAllPopedomList(Integer role_id) {
+        return popedomDao.listAll();
+    }
+
+    @Override
+    public boolean updatePopedom(Integer role_id, Integer[] popedomValue) {
+        StringBuffer sb = new StringBuffer();
+        for (Integer i : popedomValue) {
+            sb.append(i + ",");
+        }
+        String str = sb.subSequence(0, sb.length() - 1).toString();
+        return roleDao.updateRolePopedom(str, role_id) > 0;
     }
 }

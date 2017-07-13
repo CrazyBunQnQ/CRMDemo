@@ -16,5 +16,5 @@ public interface PopedomService {
 
     public List<Popedom> listPopedom();
 
-    String getDrag(Integer role_id, Integer id);
+    String getDrag(Integer role_id, Integer id, boolean enable);
 }
